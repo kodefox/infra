@@ -1,0 +1,21 @@
+{
+  "name": "infra-navigation",
+  "version": "0.0.1",
+  "description": "KodeFox Infrastructure Multi-platform Navigation",
+  "main": "index.js",
+  "author": "KodeFox",
+  "license": "MIT",
+  "peerDependencies": {
+    "hookrouter": "^1.2.3"
+  },
+  "devDependencies": {
+    "@types/hookrouter": "^2.2.1",
+    "@types/react": "^16.8.24",
+    "react": "^16.8.0",
+    "react-navigation": "^3.0.0",
+    "tsconfig-kodefox": "^1.0.1",
+    "tslint-config-kodefox": "^1.1.1",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {}
+}
