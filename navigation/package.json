@@ -16,6 +16,5 @@
     "tsconfig-kodefox": "^1.0.1",
     "tslint-config-kodefox": "^1.1.1",
     "typescript": "^3.5.3"
-  },
-  "dependencies": {}
+  }
 }
