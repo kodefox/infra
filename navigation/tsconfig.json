@@ -2,6 +2,9 @@
   "extends": "tsconfig-kodefox",
   "compilerOptions": {
     "jsx": "react-native",
-    "typeRoots": ["node_modules/@types"]
-  }
+    "typeRoots": ["node_modules/@types"],
+    "noEmit": false,
+    "allowJs": false
+  },
+  "exclude": ["example/", "lib/"]
 }
