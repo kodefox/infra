@@ -1,4 +1,4 @@
-import {useNavigation as useBaseNavigation} from './helpers/navigation-hooks';
+import {useNavigation as useBaseNavigation} from 'react-navigation-hooks';
 
 export function useNavigation() {
   let {navigate, replace, goBack, getParam} = useBaseNavigation();
