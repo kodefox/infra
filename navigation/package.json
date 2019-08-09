@@ -2,19 +2,41 @@
   "name": "infra-navigation",
   "version": "0.0.1",
   "description": "KodeFox Infrastructure Multi-platform Navigation",
-  "main": "index.js",
+  "main": "lib/module/index.js",
+  "types": "lib/typescript/src/index.d.ts",
   "author": "KodeFox",
   "license": "MIT",
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "build": "yarn bob build",
+    "prepare": "yarn build"
+  },
   "peerDependencies": {
-    "hookrouter": "^1.2.3"
+    "react-navigation": "^3.0.0"
+  },
+  "dependencies": {
+    "hookrouter": "^1.2.3",
+    "react-navigation-hooks": "^1.0.2-alpha.0"
   },
   "devDependencies": {
+    "@react-native-community/bob": "^0.6.1",
     "@types/hookrouter": "^2.2.1",
-    "@types/react": "^16.8.24",
-    "react": "^16.8.0",
-    "react-navigation": "^3.0.0",
+    "react-navigation": "^3.11.1",
     "tsconfig-kodefox": "^1.0.1",
     "tslint-config-kodefox": "^1.1.1",
     "typescript": "^3.5.3"
+  },
+  "@react-native-community/bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "module",
+      "typescript"
+    ],
+    "files": [
+      "src/"
+    ]
   }
 }
