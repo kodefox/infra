@@ -1,3 +1,1 @@
-import {useNavigation} from './navigation';
-
-export {useNavigation};
+export {useNavigation} from './navigation';
