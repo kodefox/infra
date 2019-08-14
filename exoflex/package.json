@@ -1,0 +1,50 @@
+{
+  "name": "exoflex",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/module/index.js",
+  "types": "lib/typescript/src/index.d.ts",
+  "files": [
+    "lib/"
+  ],
+  "author": "KodeFox",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn bob build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier-eslint --write \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "check-format": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint --max-warnings 0 .",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "devDependencies": {
+    "@react-native-community/bob": "^0.6.1",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "prettier": "^1.18.2",
+    "prettier-eslint": "^9.0.0",
+    "prettier-eslint-cli": "^5.0.0",
+    "typescript": "^3.5.3"
+  },
+  "@react-native-community/bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "module",
+      "typescript"
+    ],
+    "files": [
+      "src/"
+    ]
+  },
+  "prettier": {
+    "bracketSpacing": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always"
+  }
+}
