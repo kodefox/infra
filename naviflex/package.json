@@ -1,5 +1,5 @@
 {
-  "name": "infra-navigation",
+  "name": "naviflex",
   "version": "0.0.1",
   "description": "KodeFox Infrastructure Multi-platform Navigation",
   "main": "lib/module/index.js",
