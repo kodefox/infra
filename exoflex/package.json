@@ -18,8 +18,8 @@
     "typecheck": "tsc --noEmit -p ."
   },
   "peerDependencies": {
-    "react": "*",
-    "react-native": "*"
+    "react": "^16.8.0",
+    "react-native": "^0.59.0"
   },
   "devDependencies": {
     "@react-native-community/bob": "^0.6.1",
