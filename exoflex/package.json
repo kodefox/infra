@@ -17,6 +17,10 @@
     "lint": "eslint --max-warnings 0 .",
     "typecheck": "tsc --noEmit -p ."
   },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
   "devDependencies": {
     "@react-native-community/bob": "^0.6.1",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
