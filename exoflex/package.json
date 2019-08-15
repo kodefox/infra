@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "main": "lib/module/index.js",
-  "types": "lib/typescript/src/index.d.ts",
+  "types": "lib/typescript/index.d.ts",
   "files": [
     "lib/"
   ],
@@ -12,7 +12,7 @@
   "scripts": {
     "build": "yarn bob build",
     "test": "yarn lint && yarn typecheck && yarn jest",
-    "format": "prettier-eslint --write \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "format": "prettier-eslint --write \"src/**/*.{ts,tsx}\" \"src/**/*.tsx\"",
     "check-format": "prettier --check \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --max-warnings 0 .",
     "typecheck": "tsc --noEmit -p ."
