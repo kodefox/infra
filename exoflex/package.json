@@ -11,7 +11,8 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn bob build",
-    "test": "yarn lint && yarn typecheck && yarn jest",
+    "test-src": "yarn jest",
+    "test": "yarn lint && yarn typecheck && yarn test-src",
     "format": "prettier-eslint --write \"src/**/*.{ts,tsx}\" \"src/**/*.tsx\"",
     "check-format": "prettier --check \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --max-warnings 0 .",
