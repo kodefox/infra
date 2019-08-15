@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "KodeFox Infrastructure Multi-platform Navigation",
   "main": "lib/module/index.js",
-  "types": "lib/typescript/src/index.d.ts",
+  "types": "lib/typescript/index.d.ts",
   "author": "KodeFox",
   "license": "MIT",
   "files": [
