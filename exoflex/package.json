@@ -11,7 +11,7 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn bob build",
-    "test": "yarn jest",
+    "test": "yarn lint && yarn typecheck && yarn jest",
     "format": "prettier-eslint --write \"src/**/*.ts\" \"src/**/*.tsx\"",
     "check-format": "prettier --check \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --max-warnings 0 .",
@@ -32,6 +32,7 @@
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
+    "husky": "^3.0.3",
     "jest": "^24.8.0",
     "prettier": "^1.18.2",
     "prettier-eslint": "^9.0.0",
@@ -62,5 +63,11 @@
   },
   "dependencies": {
     "react-native-paper": "^2.16.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn format",
+      "pre-push": "yarn test"
+    }
   }
 }
