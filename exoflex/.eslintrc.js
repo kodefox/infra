@@ -16,12 +16,13 @@ module.exports = {
   ],
   rules: {
     indent: 'off',
+    'prefer-const': 'off',
     '@typescript-eslint/prefer-interface': 0,
     '@typescript-eslint/explicit-member-accessibility': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
-    '@typescript-eslint/no-use-before-define': ['error', {variables: false}],
-    '@typescript-eslint/no-unused-vars': ['error', {argsIgnorePattern: '^_'}],
-    '@typescript-eslint/array-type': ['error', { default: 'generic' }]
+    '@typescript-eslint/no-use-before-define': ['error', { variables: false }],
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    '@typescript-eslint/array-type': ['error', { default: 'generic' }],
   },
   settings: {
     react: {
