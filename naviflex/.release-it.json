@@ -1,0 +1,11 @@
+{
+  "npm": {
+    "publish": true
+  },
+  "github": {
+    "release": true
+  },
+  "git": {
+    "pushRepo": "upstream"
+  }
+}

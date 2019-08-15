@@ -14,7 +14,8 @@
   ],
   "scripts": {
     "build": "yarn bob build",
-    "prepare": "yarn build"
+    "prepare": "yarn build",
+    "release": "release-it"
   },
   "peerDependencies": {
     "hookrouter": "^1.2.3",
@@ -28,6 +29,7 @@
     "@types/hookrouter": "^2.2.1",
     "hookrouter": "^1.2.3",
     "react-navigation": "^3.11.1",
+    "release-it": "^12.3.5",
     "tsconfig-kodefox": "^1.0.1",
     "tslint-config-kodefox": "^1.1.1",
     "typescript": "^3.5.3"
