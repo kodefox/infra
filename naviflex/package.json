@@ -2,12 +2,15 @@
   "name": "naviflex",
   "version": "0.0.1",
   "description": "KodeFox Infrastructure Multi-platform Navigation",
-  "main": "lib/module/index.js",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "react-native": "src/index.ts",
   "types": "lib/typescript/index.d.ts",
   "author": "KodeFox",
   "license": "MIT",
   "files": [
-    "lib/"
+    "lib/",
+    "src"
   ],
   "scripts": {
     "build": "yarn bob build",
@@ -32,11 +35,9 @@
     "source": "src",
     "output": "lib",
     "targets": [
+      "commonjs",
       "module",
       "typescript"
-    ],
-    "files": [
-      "src/"
     ]
   }
 }
