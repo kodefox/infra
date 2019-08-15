@@ -1,4 +1,4 @@
-const { defaults: tsjPreset } = require('ts-jest/presets');
+const { default: tsjPreset } = require('ts-jest/presets');
 
 module.exports = {
   ...tsjPreset,
