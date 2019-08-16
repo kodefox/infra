@@ -3591,6 +3591,14 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+naviflex@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/naviflex/-/naviflex-0.0.1.tgz#1e1daf9935aaf16972d2f2de3cd68d7c378c3e02"
+  integrity sha512-aZAjnyaA8mzoN7Fl2tnZtNE/rMUQVUvgBdu5neMsZRkLcnktOOB9rLJl9Ncugd+LPOrjx1cKb7tB7QwsJWXAzA==
+  dependencies:
+    hookrouter "^1.2.3"
+    react-navigation-hooks "^1.0.2-alpha.0"
+
 needle@^2.2.1:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/needle/-/needle-2.4.0.tgz#6833e74975c444642590e15a750288c5f939b57c"
@@ -4312,6 +4320,11 @@ react-navigation-drawer@~1.2.1:
   integrity sha512-T2kaBjY2c4/3I6noWFnaf/c18ntNH5DsST38i+pdc2NPxn5Yi5lkK+ZZTeKuHSFD4a7G0jWY9OGf1iRkHWLMAQ==
   dependencies:
     react-native-tab-view "^1.2.0"
+
+react-navigation-hooks@^1.0.2-alpha.0:
+  version "1.0.2-alpha.0"
+  resolved "https://registry.yarnpkg.com/react-navigation-hooks/-/react-navigation-hooks-1.0.2-alpha.0.tgz#bcffa6e41f1692c9dda48df719f724823af1dd10"
+  integrity sha512-brYtHv5shH2DvTTibJNJ2U4KYv70h0l2B+MFWRhtWsMkJUmJWPEznZJqAV6aRXV8JOVvi5B76hnOb4tZD83GJg==
 
 react-navigation-stack@~1.4.0:
   version "1.4.0"
