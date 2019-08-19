@@ -11,6 +11,7 @@
     "requireUpstream": false,
     "commitMessage": "Release naviflex ${version}",
     "tagAnnotation": "Naviflex ${version}",
-    "tagName": "naviflex-${version}"
+    "tagName": "naviflex-${version}",
+    "changelog": "git log --pretty=format:\"* %s (%h)\" ${latestTag}...HEAD | grep -F \"naviflex:\""
   }
 }
