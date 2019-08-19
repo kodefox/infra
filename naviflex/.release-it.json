@@ -3,10 +3,14 @@
     "publish": true
   },
   "github": {
-    "release": true
+    "release": true,
+    "releaseName": "Naviflex ${version}"
   },
   "git": {
     "pushRepo": "upstream",
-    "requireUpstream": false
+    "requireUpstream": false,
+    "commitMessage": "Release naviflex ${version}",
+    "tagAnnotation": "Naviflex ${version}",
+    "tagName": "naviflex-${version}"
   }
 }
