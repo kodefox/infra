@@ -1,0 +1,57 @@
+version: 2.1
+
+orbs:
+  compare-url: iynere/compare-url@1.2.0
+
+jobs:
+  testing:
+    docker:
+      - image: circleci/node:8.15.0
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - compare-url/reconstruct
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "packages/naviflex/package.json" }}
+            - v1-dependencies-{{ checksum "packages/exoflex/package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - compare-url/use:
+          step-name: Testing Phase
+          custom-logic: |
+            for ORB in packages/*/; do
+              orbname=$(basename $ORB)
+              if [[ $(git diff $COMMIT_RANGE --name-status | grep "$orbname") ]]; then
+                echo "testing ${orbname}"
+                if [ ${orbname} != "naviflex" ]; then
+                  cd packages/${orbname}
+                  yarn install
+                  yarn test
+                  cd ../..
+                else
+                  echo "no need to test this project"
+                fi
+              else
+                echo "${orbname} not modified; no need to test"
+              fi
+            done
+
+      - save_cache:
+          paths:
+            - packages/naviflex/node_modules
+          key: v1-dependencies-{{ checksum "packages/naviflex/package.json" }}
+
+      - save_cache:
+          paths:
+            - packages/exoflex/node_modules
+          key: v1-dependencies-{{ checksum "packages/exoflex/package.json" }}
+
+workflows:
+  main:
+    jobs:
+      - testing
