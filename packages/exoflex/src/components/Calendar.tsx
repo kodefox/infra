@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import {Calendar, DateObject} from 'react-native-calendars';
-import XDate from 'xdate'
+import React, { useState, useEffect } from 'react';
+import { Calendar, DateObject } from 'react-native-calendars';
+import XDate from 'xdate';
 
 type Props = {
   initialRange?: Array<string>;
-  theme: {markColor: string; todayTextColor: string};
+  theme: { markColor: string; todayTextColor: string };
   onSuccess?: (fromDate: string, toDate: string) => void;
 };
 
@@ -17,7 +17,7 @@ export default function DateRangePicker(props: Props) {
   let {
     initialRange,
     onSuccess,
-    theme: {markColor, todayTextColor},
+    theme: { markColor, todayTextColor },
   } = props;
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function DateRangePicker(props: Props) {
     if (!isFromDatePicked || (isFromDatePicked && isToDatePicked)) {
       _setupStartMarker(day);
     } else if (!isToDatePicked) {
-      let newMarkedDates = {...markedDates};
+      let newMarkedDates = { ...markedDates };
       let [mMarkedDates, range] = _setupMarkedDates(
         fromDate,
         day.dateString,
@@ -64,16 +64,16 @@ export default function DateRangePicker(props: Props) {
   let _setupMarkedDates = (
     newFromDate: string,
     newToDate: string,
-    newMarkedDates: {[key: string]: object},
+    newMarkedDates: { [key: string]: object },
   ) => {
     let mFromDate = new XDate(newFromDate);
     let mToDate = new XDate(newToDate);
     let range = mFromDate.diffDays(mToDate);
     if (range >= 0) {
       if (range == 0) {
-        newMarkedDates = {[newToDate]: {}};
+        newMarkedDates = { [newToDate]: {} };
       } else {
-        for (var i = 1; i <= range; i++) {
+        for (let i = 1; i <= range; i++) {
           let tempDate = mFromDate.addDays(1).toString('yyyy-MM-dd');
           if (i < range) {
             newMarkedDates[tempDate] = {
@@ -94,7 +94,7 @@ export default function DateRangePicker(props: Props) {
   let _setupInitialRange = () => {
     if (!initialRange) return;
     let [newFromDate, newToDate] = initialRange;
-    let newMarkedDates = {[newFromDate]: {startingDay: true}};
+    let newMarkedDates = { [newFromDate]: { startingDay: true } };
     let [mMarkedDates] = _setupMarkedDates(
       newFromDate,
       newToDate,
@@ -112,7 +112,7 @@ export default function DateRangePicker(props: Props) {
       onDayPress={(day) => {
         _onDayPress(day);
       }}
-      theme={{todayTextColor: todayTextColor}}
+      theme={{ todayTextColor: todayTextColor }}
     />
   );
 }
