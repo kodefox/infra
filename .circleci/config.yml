@@ -18,7 +18,7 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "packages/naviflex/package.json" }}
             - v1-dependencies-{{ checksum "packages/exoflex/package.json" }}
-            # fallback to using the latest cache if no exact match is found
+            # fallback to use the latest cache if no exact match is found
             - v1-dependencies-
 
       - compare-url/use:
