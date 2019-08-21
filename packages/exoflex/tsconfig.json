@@ -9,8 +9,7 @@
     "skipLibCheck": true,
     "strict": true,
     "noUnusedLocals": true,
-    "forceConsistentCasingInFileNames": true,
-    "typeRoots": ["node_modules/@types", "custom_types"]
+    "forceConsistentCasingInFileNames": true
   },
   "exclude": ["example/", "lib/"]
 }
