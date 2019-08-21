@@ -12,7 +12,7 @@
   "scripts": {
     "build": "yarn bob build",
     "test-src": "yarn jest",
-    "test": "yarn lint && yarn typecheck && yarn test-src",
+    "test": "yarn format:check && yarn lint && yarn typecheck && yarn test-src",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --max-warnings 0 .",
