@@ -1093,8 +1093,14 @@
   version "24.0.18"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-24.0.18.tgz#9c7858d450c59e2164a8a9df0905fc5091944498"
   integrity sha512-jcDDXdjTcrQzdN06+TSVsPPqxvsZA/5QkYfIZlq1JMw7FdP5AZylbOc+6B/cuDurctRe+MziUMtQ3xQdrbjqyQ==
+
+"@types/jest-in-case@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/jest-in-case/-/jest-in-case-1.0.1.tgz#712b6ccd1a51fe6e342cf836a99fbb6889a83034"
+  integrity sha512-fADBNWvW40tsitQhPWewmVNTr6oZj7W0FVYlwRrBNQGLyqOznWdM5S1Nnw/3IWdG1Q4edgNYQHX4Et4POKpWiw==
   dependencies:
-    "@types/jest-diff" "*"
+    "@types/jest" "*"
+    "@types/node" "*"
 
 "@types/json-schema@^7.0.3":
   version "7.0.3"
