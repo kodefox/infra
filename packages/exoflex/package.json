@@ -11,12 +11,12 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn bob build",
-    "test-src": "yarn jest",
-    "test": "yarn format:check && yarn lint && yarn typecheck && yarn test-src",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --max-warnings 0 .",
-    "typecheck": "tsc --noEmit -p ."
+    "typecheck": "tsc --noEmit -p .",
+    "jest": "jest --coverage --passWithNoTests",
+    "test": "yarn format:check && yarn lint && yarn typecheck && yarn jest"
   },
   "peerDependencies": {
     "react": "^16.8.0",
