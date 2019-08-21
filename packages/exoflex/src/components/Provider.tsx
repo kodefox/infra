@@ -1,6 +1,7 @@
 import React, { Component, ReactNode } from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
 
+import { FontsContext } from './Font';
 import { Theme } from '../types';
 
 type Props = {
@@ -10,7 +11,13 @@ type Props = {
 
 class Provider extends Component<Props> {
   render() {
-    return <PaperProvider {...this.props} />;
+    let { theme, ...otherProps } = this.props;
+    let { fonts, ...otherTheme } = theme || { fonts: {} };
+    return (
+      <FontsContext.Provider value={fonts || {}}>
+        <PaperProvider theme={otherTheme} {...otherProps} />
+      </FontsContext.Provider>
+    );
   }
 }
 
