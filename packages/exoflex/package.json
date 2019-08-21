@@ -17,8 +17,8 @@
     "check-format": "prettier --check \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --max-warnings 0 .",
     "typecheck": "tsc --noEmit -p .",
-    "docz dev": "docz dev",
-    "docz build": "docz build"
+    "docz-dev": "docz dev",
+    "docz-build": "docz build"
   },
   "peerDependencies": {
     "react": "^16.8.0",
