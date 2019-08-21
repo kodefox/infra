@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { useMemo } from 'react';
 import { Text as TextNative, TextProps } from 'react-native';
 
 import resolveTextStyle from '../helpers/resolveTextStyle';
 import { FontWeight, FontStyle } from '../types';
+import { useFonts } from './Font';
 
 type Props = TextProps & {
   preset: string;
@@ -10,20 +11,21 @@ type Props = TextProps & {
   fontStyle: FontStyle;
 };
 
-class Text extends Component<Props> {
-  static defaultProps = {
-    preset: 'default',
-    weight: '400',
-    fontStyle: 'normal',
-  };
+function Text({ preset, weight, fontStyle, style, ...otherProps }: Props) {
+  let fonts = useFonts();
 
-  render() {
-    let { preset, weight, fontStyle, style, ...otherProps } = this.props;
+  let resolvedTextStyle = useMemo(
+    () => resolveTextStyle(fonts || {}, preset, weight, fontStyle),
+    [fonts, preset, weight, fontStyle],
+  );
 
-    let resolvedTextStyle = resolveTextStyle({}, preset, weight, fontStyle);
-
-    return <TextNative {...otherProps} style={[resolvedTextStyle, style]} />;
-  }
+  return <TextNative {...otherProps} style={[resolvedTextStyle, style]} />;
 }
+
+Text.defaultProps = {
+  preset: 'default',
+  weight: '400',
+  fontStyle: 'normal',
+};
 
 export default Text;
