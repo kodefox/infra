@@ -9,7 +9,9 @@ export default function resolveTextStyle(
   fontWeight: FontWeight,
   fontStyle: FontStyle = 'normal',
 ): TextStyle | undefined {
-  let fontPreset = availableFonts[fontPresetName];
+  let useItalicPreset = fontStyle === 'italic';
+
+  let fontPreset = availableFonts[useItalicPreset ? 'italic' : fontPresetName];
 
   if (!fontPreset) {
     console.warn(`Font preset "${fontPreset}" not found`);
