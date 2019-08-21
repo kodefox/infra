@@ -8,18 +8,15 @@ export default function resolveTextStyle(
   fontPresetName: string,
   fontWeight: FontWeight,
   fontStyle: FontStyle = 'normal',
-): TextStyle {
+): TextStyle | undefined {
   let fontPreset = availableFonts[fontPresetName];
 
   if (!fontPreset) {
-    throw new Error(`Font preset "${fontPreset}" not found`);
+    console.warn(`Font preset "${fontPreset}" not found`);
+    return;
   }
 
   let font = fontPreset[FontWeights[fontWeight]];
-
-  if (!font) {
-    throw new Error(`Font "${font}" not found`);
-  }
 
   return {
     fontFamily: font.name,
