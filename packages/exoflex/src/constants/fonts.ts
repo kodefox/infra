@@ -7,7 +7,7 @@ import RubikMediumItalic from '../../assets/fonts/Rubik-MediumItalic.ttf';
 import RubikRegular from '../../assets/fonts/Rubik-Regular.ttf';
 import RubikRegularItalic from '../../assets/fonts/Rubik-RegularItalic.ttf';
 
-import { Fonts, FontWeight, FontPreset } from '../types';
+import { FontWeight, FontPreset } from '../types';
 
 export const FontWeights: Record<FontWeight, keyof FontPreset> = {
   light: 'light',
@@ -18,45 +18,6 @@ export const FontWeights: Record<FontWeight, keyof FontPreset> = {
   '400': 'normal',
   '500': 'medium',
   '700': 'bold',
-};
-
-export const DefaultThemeFonts: Fonts = {
-  default: {
-    light: {
-      name: 'Rubik-Light',
-      weight: '300',
-    },
-    normal: {
-      name: 'Rubik-Regular',
-      weight: '400',
-    },
-    medium: {
-      name: 'Rubik-Medium',
-      weight: '500',
-    },
-    bold: {
-      name: 'Rubik-Bold',
-      weight: '700',
-    },
-  },
-  italic: {
-    light: {
-      name: 'Rubik-LightItalic',
-      weight: '300',
-    },
-    normal: {
-      name: 'Rubik-RegularItalic',
-      weight: '400',
-    },
-    medium: {
-      name: 'Rubik-MediumItalic',
-      weight: '500',
-    },
-    bold: {
-      name: 'Rubik-BoldItalic',
-      weight: '700',
-    },
-  },
 };
 
 export const BuiltInFonts = {
