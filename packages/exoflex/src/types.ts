@@ -4,27 +4,43 @@ export type Theme = Omit<ThemeShape, 'fonts'> & {
   fonts?: Fonts;
 };
 
-type FontWeight =
+export type FullFontWeight =
   | '100'
   | '200'
-  | '300'
-  | '400'
-  | '500'
+  | '300' // light
+  | '400' // normal
+  | '500' // medium
   | '600'
-  | '700'
+  | '700' // bold
   | '800'
   | '900'
-  | 'regular'
   | 'normal'
-  | 'bold'
-  | 'light';
+  | 'bold';
 
-type FontStyle = 'normal' | 'italic';
+export type FontWeight =
+  | '300' // light
+  | '400' // normal
+  | '500' // medium
+  | '700' // bold
+  | 'light'
+  | 'normal'
+  | 'medium'
+  | 'bold';
+
+export type FontStyle = 'normal' | 'italic';
 
 type Font = {
-  file: string;
-  weight: FontWeight;
-  style: FontStyle;
+  name: string;
+  weight: FullFontWeight;
+  style?: FontStyle;
+  size?: number;
 };
 
-export type Fonts = { [fontFamily: string]: Array<Font> };
+export type FontPreset = {
+  light: Font;
+  normal: Font;
+  medium: Font;
+  bold: Font;
+};
+
+export type Fonts = { [fontPresetName: string]: FontPreset };
