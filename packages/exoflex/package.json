@@ -11,12 +11,12 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn bob build",
-    "test-src": "yarn jest",
-    "test": "yarn lint && yarn typecheck && yarn test-src",
-    "format": "prettier-eslint --write \"src/**/*.{ts,tsx}\" \"src/**/*.tsx\"",
-    "check-format": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --max-warnings 0 .",
-    "typecheck": "tsc --noEmit -p ."
+    "typecheck": "tsc --noEmit -p .",
+    "jest": "jest --coverage --passWithNoTests",
+    "test": "yarn format:check && yarn lint && yarn typecheck && yarn jest"
   },
   "peerDependencies": {
     "react": "^16.8.0",
@@ -39,8 +39,6 @@
     "jest": "^24.8.0",
     "jest-with-platform": "^0.0.3",
     "prettier": "^1.18.2",
-    "prettier-eslint": "^9.0.0",
-    "prettier-eslint-cli": "^5.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-native": "^0.60.5",
@@ -72,7 +70,6 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format",
       "pre-push": "yarn test"
     }
   }
