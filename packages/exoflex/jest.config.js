@@ -13,4 +13,7 @@ module.exports = {
     },
   },
   modulePathIgnorePatterns: ['<rootDir>/lib/'],
+  transformIgnorePatterns: [
+    'node_modules/(?!(react-native|react-native-paper|react-native-safe-area-view)/)'
+  ],
 };
