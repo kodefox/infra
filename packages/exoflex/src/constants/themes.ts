@@ -4,37 +4,37 @@ export const DefaultTheme: Theme = {
   fonts: {
     default: {
       light: {
-        name: 'Rubik-Light',
+        name: 'RubikLight',
         weight: '300',
       },
       normal: {
-        name: 'Rubik-Regular',
+        name: 'RubikRegular',
         weight: '400',
       },
       medium: {
-        name: 'Rubik-Medium',
+        name: 'RubikMedium',
         weight: '500',
       },
       bold: {
-        name: 'Rubik-Bold',
+        name: 'RubikBold',
         weight: '700',
       },
     },
     italic: {
       light: {
-        name: 'Rubik-LightItalic',
+        name: 'RubikLightItalic',
         weight: '300',
       },
       normal: {
-        name: 'Rubik-RegularItalic',
+        name: 'RubikRegularItalic',
         weight: '400',
       },
       medium: {
-        name: 'Rubik-MediumItalic',
+        name: 'RubikMediumItalic',
         weight: '500',
       },
       bold: {
-        name: 'Rubik-BoldItalic',
+        name: 'RubikBoldItalic',
         weight: '700',
       },
     },
