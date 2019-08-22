@@ -22,6 +22,9 @@
     "react": "^16.8.0",
     "react-native": "^0.59.0"
   },
+  "dependencies": {
+    "react-native-paper": "^2.16.0"
+  },
   "devDependencies": {
     "@react-native-community/bob": "^0.6.1",
     "@testing-library/react": "^9.1.1",
@@ -65,9 +68,6 @@
     "singleQuote": true,
     "trailingComma": "all",
     "arrowParens": "always"
-  },
-  "dependencies": {
-    "react-native-paper": "^2.16.0"
   },
   "husky": {
     "hooks": {
