@@ -6,6 +6,7 @@ import { FontWeight, FontStyle } from '../types';
 import { useFonts } from './Font';
 
 type Props = TextProps & {
+  children?: string;
   preset: string;
   weight: FontWeight;
   fontStyle: FontStyle;
