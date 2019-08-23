@@ -14,7 +14,7 @@ export default function resolveTextStyle(
   let fontPreset = availableFonts[useItalicPreset ? 'italic' : fontPresetName];
 
   if (!fontPreset) {
-    console.warn(`Font preset "${fontPreset}" not found`);
+    console.warn(`Font preset "${fontPresetName}" not found`);
     return;
   }
 
