@@ -1,5 +1,10 @@
-import React from 'react';
-import { Button as PaperButton, ButtonProps } from 'react-native-paper';
+import React, { useMemo } from 'react';
+import {
+  Button as PaperButton,
+  ButtonProps,
+  DefaultTheme, // TODO: Change this to refer DefaultTheme from our DefaultTheme
+} from 'react-native-paper';
+import deepmerge from 'deepmerge';
 
 type ButtonPresets = {
   primary: 'contained';
@@ -19,13 +24,18 @@ const PRESETS: ButtonPresets = {
 };
 
 export default function Button(props: Props) {
-  let { preset, ...buttonProps } = props;
+  let { preset, theme, ...buttonProps } = props;
   let mode = PRESETS[preset];
+
+  let combinedTheme = useMemo(() => deepmerge(DefaultTheme, theme || {}), [
+    theme,
+  ]);
+
   return (
     <PaperButton
       mode={mode}
       color={PRIMARY_COLOR}
-      theme={{ roundness: 4 }}
+      theme={combinedTheme}
       {...buttonProps}
     />
   );
