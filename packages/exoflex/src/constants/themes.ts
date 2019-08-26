@@ -1,6 +1,9 @@
+import { DefaultTheme as PaperDefaultTheme } from 'react-native-paper';
+
 import { Theme } from '../types';
 
 export const DefaultTheme: Theme = {
+  ...PaperDefaultTheme,
   fonts: {
     default: {
       light: {
