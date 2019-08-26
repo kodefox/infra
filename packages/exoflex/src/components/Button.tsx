@@ -23,6 +23,8 @@ const PRESETS: ButtonPresets = {
   invisible: 'text',
 };
 
+// TODO: Should refactor this after #20 landed
+// make sure this component using our text component
 export default function Button(props: Props) {
   let { preset, theme, ...buttonProps } = props;
   let mode = PRESETS[preset];
