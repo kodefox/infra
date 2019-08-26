@@ -9,6 +9,7 @@ export { DefaultTheme } from './constants/themes';
 export {
   Chip,
   Provider,
+  Slider,
   Switch,
   Text,
   Toast,

@@ -8,6 +8,7 @@ import {
   BuiltInFonts,
   Toast,
   ToastContainer,
+  Slider,
 } from 'exoflex';
 
 export default function App() {
@@ -42,6 +43,7 @@ export default function App() {
         <Text fontStyle="italic" onPress={() => setVisible(!visible)}>
           Cool
         </Text>
+        <Slider values={[3, 9]} />
       </View>
       <Toast visible={visible} mode="success">
         Info Messages

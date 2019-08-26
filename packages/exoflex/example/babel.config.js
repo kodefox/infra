@@ -9,6 +9,8 @@ module.exports = function(api) {
           root: ['./'],
           alias: {
             exoflex: '../src/index',
+            'react-native-multi-slider':
+              '@ptomasroos/react-native-multi-slider',
           },
         },
       ],
