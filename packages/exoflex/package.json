@@ -2,7 +2,8 @@
   "name": "exoflex",
   "version": "0.0.1",
   "description": "",
-  "main": "lib/module/index.js",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
   "types": "lib/typescript/index.d.ts",
   "files": [
     "lib/"
@@ -56,6 +57,7 @@
     "source": "src",
     "output": "lib",
     "targets": [
+      "commonjs",
       "module",
       "typescript"
     ],

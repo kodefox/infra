@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, ActivityIndicator } from 'react-native';
 import { loadAsync } from 'expo-font';
-import { Text, Provider, DefaultTheme, BuiltInFonts } from 'exoflex';
+import {
+  Text,
+  Provider,
+  DefaultTheme,
+  BuiltInFonts,
+  CustomText,
+} from 'exoflex';
 
 export default function App() {
   let [isFontLoaded, setFontLoaded] = useState(false);
@@ -19,6 +25,8 @@ export default function App() {
   return (
     <Provider theme={DefaultTheme}>
       <View style={styles.container}>
+        <Text>Exoflex</Text>
+        <CustomText />
         <Text weight="700">Exoflex</Text>
         <Text fontStyle="italic">Cool</Text>
       </View>
