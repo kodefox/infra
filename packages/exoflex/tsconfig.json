@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "noEmit": true,
+    "noEmit": false,
     "lib": ["esnext", "dom"],
     "module": "esnext",
     "jsx": "react",
