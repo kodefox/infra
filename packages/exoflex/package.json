@@ -23,6 +23,7 @@
     "react-native": "^0.59.0"
   },
   "dependencies": {
+    "deepmerge": "^4.0.0",
     "react-native-paper": "^2.16.0"
   },
   "devDependencies": {
