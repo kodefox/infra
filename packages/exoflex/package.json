@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "main": "lib/commonjs/index.js",
-  "module": "lib/module/index.js",
+  "module": "lib/module/index.ts",
   "types": "lib/typescript/index.d.ts",
   "files": [
     "lib/"
