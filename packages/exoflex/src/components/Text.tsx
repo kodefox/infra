@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import { Text as TextNative, TextProps } from 'react-native';
 
+import { useTheme } from './Provider';
 import resolveTextStyle from '../helpers/resolveTextStyle';
 import { FontWeight, FontStyle } from '../types';
-import { useFonts } from './Font';
 
 type Props = TextProps & {
   children?: string;
@@ -13,7 +13,7 @@ type Props = TextProps & {
 };
 
 function Text({ preset, weight, fontStyle, style, ...otherProps }: Props) {
-  let fonts = useFonts();
+  let { fonts } = useTheme();
 
   let resolvedTextStyle = useMemo(
     () => resolveTextStyle(fonts || {}, preset, weight, fontStyle),
