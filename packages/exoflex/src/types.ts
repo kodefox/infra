@@ -1,6 +1,13 @@
-import { ThemeShape } from 'react-native-paper';
+import {
+  Theme as PaperTheme,
+  ThemeShape as PaperThemeShape,
+} from 'react-native-paper';
 
-export type Theme = Omit<ThemeShape, 'fonts'> & {
+export type Theme = Omit<PaperTheme, 'fonts'> & {
+  fonts: Fonts;
+};
+
+export type ThemeShape = Omit<PaperThemeShape, 'fonts'> & {
   fonts?: Fonts;
 };
 
