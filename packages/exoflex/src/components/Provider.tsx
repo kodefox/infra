@@ -1,10 +1,4 @@
-import React, {
-  Component,
-  ReactNode,
-  createContext,
-  useContext,
-  useMemo,
-} from 'react';
+import React, { ReactNode, createContext, useContext, useMemo } from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
 import deepmerge from 'deepmerge';
 
@@ -13,7 +7,7 @@ import { Theme, ThemeShape } from '../types';
 
 type Props = {
   children: ReactNode;
-  theme?: ThemeShape;
+  theme: ThemeShape;
 };
 
 /**
@@ -26,18 +20,19 @@ export function useTheme() {
   return useContext(ThemeContext);
 }
 
-class Provider extends Component<Props> {
-  render() {
-    let { theme, ...otherProps } = this.props;
-    let mergedTheme = useMemo(() => deepmerge(DefaultTheme, theme || {}), [
-      theme,
-    ]) as Theme;
-    return (
-      <ThemeContext.Provider value={mergedTheme}>
-        <PaperProvider theme={theme} {...otherProps} />
-      </ThemeContext.Provider>
-    );
-  }
+function Provider({ theme, ...otherProps }: Props) {
+  let mergedTheme = useMemo(() => deepmerge(DefaultTheme, theme), [
+    theme,
+  ]) as Theme;
+  return (
+    <ThemeContext.Provider value={mergedTheme}>
+      <PaperProvider theme={theme} {...otherProps} />
+    </ThemeContext.Provider>
+  );
 }
+
+Provider.defaultProps = {
+  theme: {},
+};
 
 export default Provider;
