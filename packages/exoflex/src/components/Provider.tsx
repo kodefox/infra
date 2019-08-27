@@ -12,10 +12,10 @@ type Props = {
 class Provider extends Component<Props> {
   render() {
     let { theme, ...otherProps } = this.props;
-    let { fonts, ...otherTheme } = theme || { fonts: {} };
+    let fonts = (theme && theme.fonts) || {};
     return (
-      <FontsContext.Provider value={fonts || {}}>
-        <PaperProvider theme={otherTheme} {...otherProps} />
+      <FontsContext.Provider value={fonts}>
+        <PaperProvider theme={theme} {...otherProps} />
       </FontsContext.Provider>
     );
   }
