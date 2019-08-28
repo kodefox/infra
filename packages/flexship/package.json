@@ -1,0 +1,44 @@
+{
+  "name": "flexship",
+  "version": "0.0.1",
+  "license": "MIT",
+  "preferGlobal": true,
+  "bin": {
+    "flexship": "dist/main.js"
+  },
+  "scripts": {
+    "build": "yarn test && yarn build-ts && chmod +x dist/main.js",
+    "watch": "yarn watch-ts",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint \"./src/*.ts\" --max-warnings 0",
+    "typecheck": "tsc --noEmit -p .",
+    "jest": "jest --coverage --passWithNoTests",
+    "test": "yarn lint && yarn typecheck && yarn format:check && yarn jest"
+  },
+  "dependencies": {
+    "inquirer": "^7.0.0",
+    "yargs": "^14.0.0"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^6.5.0",
+    "@types/jest": "^24.0.18",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "eslint": "^6.2.1",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
+  },
+  "prettier": {
+    "bracketSpacing": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always"
+  }
+}
