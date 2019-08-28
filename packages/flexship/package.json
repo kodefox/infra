@@ -1,6 +1,6 @@
 {
-  "name": "example-express-ts",
-  "version": "1.0.0",
+  "name": "flexship",
+  "version": "0.0.1",
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
@@ -20,7 +20,6 @@
   },
   "dependencies": {
     "inquirer": "^7.0.0",
-    "typescript": "^3.5.3",
     "yargs": "^14.0.0"
   },
   "devDependencies": {
@@ -33,7 +32,8 @@
     "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
-    "ts-jest": "^24.0.2"
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
   },
   "prettier": {
     "bracketSpacing": true,

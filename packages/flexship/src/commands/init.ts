@@ -34,7 +34,7 @@ export let handler = async () => {
     },
   ]);
 
-  let echo = spawn('git', ['clone', REPO[projectType], projectName]);
+  let echo = spawn('git', ['clone', REPO[projectType], projectName.trim()]);
 
   echo.stderr.on('data', (data) => {
     console.log(`${data}`);
