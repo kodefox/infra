@@ -9,7 +9,6 @@
     "postinstall": "node scripts/cleanPackage.js"
   },
   "dependencies": {
-    "exoflex": "../",
     "expo": "^34.0.1",
     "expo-font": "^6.0.1",
     "react": "16.8.3",
