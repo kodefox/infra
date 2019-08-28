@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "yarn test && yarn build-ts && chmod +x dist/main.js",
-    "watch": "concurrently \"yarn watch-ts\" \"yarn watch-node\" ",
+    "watch": "yarn watch-ts",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",

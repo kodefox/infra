@@ -8,7 +8,7 @@ type Answers = {
   projectType: ProjectType;
   projectName: string;
 };
-let REPO: { [id in ProjectType]: string } = {
+let REPO: Record<ProjectType, string> = {
   'Expo (Frontend)': 'https://github.com/kodefox/example-expo-ts.git',
   'Express (Backend)': 'https://github.com/kodefox/example-express-ts.git',
 };
@@ -34,15 +34,15 @@ export let handler = async () => {
     },
   ]);
 
-  let echo = spawn('git', ['clone', REPO[projectType], projectName.trim()]);
+  let git = spawn('git', ['clone', REPO[projectType], projectName.trim()]);
 
-  echo.stderr.on('data', (data) => {
+  git.stderr.on('data', (data) => {
     console.log(`${data}`);
   });
 
-  echo.on('close', (code) => {
+  git.on('close', (code) => {
     if (code !== 0) {
-      console.log(`Something went wrong, process exited with code ${code}`);
+      console.log(`Something went wrong, git exited with code ${code}`);
       return;
     }
     console.log('Finish cloning the repo');
