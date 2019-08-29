@@ -6,4 +6,4 @@ export { BuiltInFonts } from './constants/fonts';
 export { DefaultTheme } from './constants/themes';
 
 // Components
-export { Provider, Text } from './components';
+export { Chip, Provider, Text } from './components';
