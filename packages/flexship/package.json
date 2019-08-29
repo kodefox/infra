@@ -1,6 +1,6 @@
 {
   "name": "flexship",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
