@@ -20,8 +20,17 @@ type ModeProps = 'info' | 'warning' | 'error' | 'success';
 type ColorsProps = Record<ModeProps, string>;
 
 type Props = {
+  /**
+   * Will determine the icon and the color used for the Toast.
+   */
   mode: ModeProps;
+  /**
+   * Configure the color of the surface of the Toast for each mode.
+   */
   colors: ColorsProps;
+  /**
+   * Determine the visibility of the Toast.
+   */
   visible: boolean;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
