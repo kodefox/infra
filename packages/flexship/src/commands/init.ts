@@ -2,7 +2,7 @@ import inquirer from 'inquirer';
 
 import { REPO } from '../constants/repo';
 import { Answers } from '../type';
-import { cloneRepo } from '../helpers';
+import { cloneRepo, setProjectName } from '../helpers';
 
 export let command = 'init';
 export let desc = 'Create a new project';
@@ -27,9 +27,12 @@ export let handler = async () => {
       },
     },
   ]);
+  let parsedProjectName = projectName.trim();
   try {
-    await cloneRepo({ projectName, projectType });
+    await cloneRepo({ projectName: parsedProjectName, projectType });
+    await setProjectName(parsedProjectName);
   } catch (error) {
     console.log('Something went wrong ', error);
   }
+  console.log('finish creating new project 👌');
 };
