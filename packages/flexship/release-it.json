@@ -1,0 +1,17 @@
+{
+  "npm": {
+    "publish": true
+  },
+  "github": {
+    "release": true,
+    "releaseName": "Flexship ${version}"
+  },
+  "git": {
+    "pushRepo": "upstream",
+    "requireUpstream": false,
+    "commitMessage": "Release flexship ${version}",
+    "tagAnnotation": "Flexship ${version}",
+    "tagName": "flexship-${version}",
+    "changelog": "git log --pretty=format:\"* %s (%h)\" ${latestTag}...HEAD | grep -F \"flexship:\""
+  }
+}
