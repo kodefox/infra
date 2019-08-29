@@ -9,7 +9,8 @@
     "skipLibCheck": true,
     "strict": true,
     "noUnusedLocals": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "downlevelIteration": true
   },
   "exclude": ["example/", "lib/"]
 }
