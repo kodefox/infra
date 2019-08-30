@@ -45,7 +45,6 @@ declare module 'react-native-multi-slider' {
     markerContainerStyle?: StyleProp<ViewStyle>;
     markerStyle?: StyleProp<ViewStyle>;
     pressedMarkerStyle?: StyleProp<ViewStyle>;
-    trackThreeStyle?: StyleProp<ViewStyle>;
     valuePrefix?: string;
     valueSuffix?: string;
     enabledOne?: boolean;
