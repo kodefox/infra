@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "noEmit": false,
     "lib": ["esnext", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
