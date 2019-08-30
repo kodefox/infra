@@ -13,9 +13,10 @@ import { useAnimation } from 'react-native-animation-hooks';
 
 import { useTheme } from './Provider';
 import Text from './Text';
+import { ToastConfig } from './ToastContainer';
 import { DefaultTheme } from '../constants/themes';
 
-type ModeProps = 'info' | 'warning' | 'error' | 'success';
+export type ModeProps = 'info' | 'warning' | 'error' | 'success';
 
 type ColorsProps = Record<ModeProps, string>;
 
@@ -91,6 +92,22 @@ function Toast({ mode, visible, style, children, colors, textStyle }: Props) {
     </SafeAreaView>
   );
 }
+
+//  This kinda hacky
+//  If we set the property in ToastContainer,
+//  we get the "property does not exist error".
+//  If we import the function and set the property here,
+//  we get the circular dependency warning.
+
+/**
+ * Show a toast with the specified config.
+ */
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+Toast.showToast = (config: ToastConfig) => {};
+/**
+ * Immidiately hide the currently visible toast.
+ */
+Toast.hideToast = () => {};
 
 Toast.defaultProps = {
   mode: 'info',
