@@ -84,4 +84,5 @@ Switch.defaultProps = {
   onValueChange: () => {},
   value: true,
   width: 48,
+  disabled: false,
 };
