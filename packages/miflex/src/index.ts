@@ -7,7 +7,8 @@ class EventEmitter<T extends {}, K extends keyof T> {
     return new EventEmitter<T, keyof T>();
   }
 
-  _events: Map<K, any> = new Map();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  _events: Map<K, EventHandlerList<any>> = new Map();
 
   on = <U extends K>(
     eventName: U,
