@@ -4,7 +4,12 @@
   "description": "Small event emitter",
   "main": "lib/commonjs/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "lint": "eslint --max-warnings 0 .",
+    "typecheck": "tsc --noEmit -p .",
+    "jest": "jest --coverage --passWithNoTests",
+    "test": "yarn format:check && yarn lint && yarn typecheck && yarn jest"
   },
   "author": "KodeFox",
   "license": "MIT",
