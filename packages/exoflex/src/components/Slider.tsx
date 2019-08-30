@@ -1,33 +1,60 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableHighlight } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  Platform,
+} from 'react-native';
 import MultiSlider, {
   MultiSliderProps,
   MarkerProps,
 } from 'react-native-multi-slider';
+import { useTheme } from './Provider';
 
-type Props = MultiSliderProps;
+type Props = MultiSliderProps & {
+  showLabel: boolean;
+};
 
 export default function Slider(props: Props) {
   let {
-    values, // if you want to use multiple slider, set the length to 2
+    values,
     markerContainerStyle,
     trackStyle,
     selectedStyle,
     markerStyle,
     unselectedStyle,
     customMarker,
+    showLabel,
     ...otherProps
   } = props;
+
+  let { colors } = useTheme();
+  let CustomMarker;
+  if (showLabel) {
+    CustomMarker = customMarker;
+  }
 
   return (
     <MultiSlider
       values={values}
       markerContainerStyle={[styles.markerContainerStyle, markerContainerStyle]}
-      trackStyle={[styles.trackStyle, trackStyle]}
-      selectedStyle={[styles.selectedStyle, selectedStyle]}
-      unselectedStyle={[styles.unselectedStyle, unselectedStyle]}
-      markerStyle={[styles.markerStyle, markerStyle]}
-      customMarker={customMarker}
+      trackStyle={[
+        { borderColor: colors.disabled },
+        styles.trackStyle,
+        trackStyle,
+      ]}
+      selectedStyle={[{ backgroundColor: colors.primary }, selectedStyle]}
+      unselectedStyle={[
+        { backgroundColor: colors.background },
+        unselectedStyle,
+      ]}
+      markerStyle={[
+        { borderColor: colors.primary, backgroundColor: colors.background },
+        styles.markerStyle,
+        markerStyle,
+      ]}
+      customMarker={CustomMarker}
       {...otherProps}
     />
   );
@@ -41,8 +68,8 @@ let DefaultMarker = ({
   markerStyle,
 }: MarkerProps) => {
   return (
-    <View style={styles.customMarkerContainer}>
-      <Text style={{ height: 18 }}>{pressed ? currentValue : ''}</Text>
+    <View style={[styles.customMarkerContainer, pressed && { top: -17 }]}>
+      {pressed && <Tooltip value={currentValue} />}
       <TouchableHighlight>
         <View
           style={
@@ -56,55 +83,70 @@ let DefaultMarker = ({
   );
 };
 
+function Tooltip({ value }: { value: number }) {
+  let { colors } = useTheme();
+
+  return (
+    <View style={styles.tooltipContainer}>
+      <View
+        style={[
+          styles.box,
+          {
+            borderColor: colors.disabled,
+            backgroundColor: colors.background,
+          },
+        ]}
+      >
+        <Text style={styles.height}>{value}</Text>
+      </View>
+      <View
+        style={[
+          styles.triangle,
+          styles.largerTriangle,
+          { borderTopColor: colors.disabled },
+        ]}
+      />
+      <View
+        style={[
+          styles.triangle,
+          styles.smallerTriangle,
+          { borderTopColor: colors.background },
+        ]}
+      />
+    </View>
+  );
+}
+
 Slider.defaultProps = {
-  values: [0, 3],
-  onValuesChangeStart: () => {},
-  onValuesChange: () => {},
-  onValuesChangeFinish: () => {},
-  onMarkersPosition: () => {},
-  step: 1,
-  min: 0,
-  max: 10,
-  touchDimensions: {
-    height: 50,
-    width: 50,
-    borderRadius: 15,
-    slipDisplacement: 200,
-  },
-  markerOffsetX: 0,
-  markerOffsetY: 0,
-  sliderLength: 280,
-  onToggleOne: undefined,
-  onToggleTwo: undefined,
-  enabledOne: true,
-  enabledTwo: true,
-  allowOverlap: false,
-  snapped: true,
-  vertical: false,
-  minMarkerOverlapDistance: 0,
   customMarker: DefaultMarker,
+  showLabel: true,
 };
 
 const styles = StyleSheet.create({
   trackStyle: {
     height: 8,
     borderRadius: 4,
-    borderColor: '#e8e8e8',
     borderWidth: 1,
   },
-  selectedStyle: {
-    backgroundColor: '#0099dd', // TODO: get color from provider
-  },
   markerStyle: {
-    borderColor: '#0099dd',
     borderWidth: 1,
     height: 24,
     width: 24,
     borderRadius: 12,
-    backgroundColor: '#FFFFFF',
-  },
-  unselectedStyle: {
-    backgroundColor: '#FFFFFF',
+    ...Platform.select({
+      ios: {
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+      },
+      web: {
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+      },
+    }),
   },
   markerContainerStyle: { marginTop: 4 },
   disabled: {
@@ -112,6 +154,32 @@ const styles = StyleSheet.create({
   },
   customMarkerContainer: {
     alignItems: 'center',
-    marginTop: -18,
   },
+  triangle: {
+    width: 0,
+    height: 0,
+    backgroundColor: 'transparent',
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+  },
+  largerTriangle: {
+    position: 'relative',
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+    borderTopWidth: 8,
+  },
+  smallerTriangle: {
+    position: 'absolute',
+    top: 19,
+    borderLeftWidth: 4,
+    borderRightWidth: 4,
+    borderTopWidth: 7,
+  },
+  tooltipContainer: {
+    marginBottom: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  box: { paddingHorizontal: 10, borderWidth: 1, borderRadius: 4 },
+  height: { height: 18 },
 });
