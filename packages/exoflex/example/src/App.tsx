@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, ActivityIndicator } from 'react-native';
 import { loadAsync } from 'expo-font';
-import { Text, Provider, DefaultTheme, BuiltInFonts, Toast } from 'exoflex';
+import {
+  Text,
+  Provider,
+  DefaultTheme,
+  BuiltInFonts,
+  Toast,
+  ToastContainer,
+} from 'exoflex';
 
 export default function App() {
   let [isFontLoaded, setFontLoaded] = useState(false);
@@ -20,12 +27,26 @@ export default function App() {
   return (
     <Provider theme={DefaultTheme}>
       <View style={styles.container}>
-        <Text onPress={() => setVisible(!visible)} weight="700">
+        <Text
+          onPress={() =>
+            Toast.showToast({
+              message: 'Warning!',
+              duration: 1000,
+              mode: 'error',
+            })
+          }
+          weight="700"
+        >
           Exoflex
         </Text>
-        <Text fontStyle="italic">Cool</Text>
+        <Text fontStyle="italic" onPress={() => setVisible(!visible)}>
+          Cool
+        </Text>
       </View>
-      <Toast visible={visible}>Info Messages</Toast>
+      <Toast visible={visible} mode="success">
+        Info Messages
+      </Toast>
+      <ToastContainer />
     </Provider>
   );
 }
