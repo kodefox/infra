@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import CollapsibleBase from 'react-native-collapsible';
 import { IconButton } from 'react-native-paper';
+import { useAnimation } from 'react-native-animation-hooks';
 
 import Text from './Text';
 import { useTheme } from './Provider';
@@ -37,6 +38,13 @@ function Collapsible({
     setCollapsed((c) => !c);
   }, []);
 
+  let arrowRotation = useAnimation({
+    type: 'timing',
+    initialValue: -0.5,
+    toValue: isCollapsed ? -0.5 : 0.5,
+    duration: 300,
+  });
+
   return (
     <Animated.View
       style={[
@@ -56,7 +64,23 @@ function Collapsible({
         <Text numberOfLines={1} style={titleStyle}>
           {title}
         </Text>
-        <IconButton icon="chevron-right" style={[styles.icon, iconStyle]} />
+        <Animated.View
+          style={[
+            styles.icon,
+            {
+              transform: [
+                {
+                  rotate: arrowRotation.interpolate({
+                    inputRange: [-0.5, 0.5],
+                    outputRange: ['-90deg', '90deg'],
+                  }),
+                },
+              ],
+            },
+          ]}
+        >
+          <IconButton icon="chevron-right" style={iconStyle} />
+        </Animated.View>
       </TouchableOpacity>
       <CollapsibleBase
         collapsed={isCollapsed}
