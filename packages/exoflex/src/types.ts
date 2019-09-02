@@ -1,15 +1,13 @@
-import {
-  Theme as PaperTheme,
-  ThemeShape as PaperThemeShape,
-} from 'react-native-paper';
+import { DeepPartial } from 'react-native-paper';
 
-export type Theme = Omit<PaperTheme, 'fonts'> & {
+export type Theme = {
   fonts: Fonts;
+  colors: Colors;
+  dark: boolean;
+  roundness: number;
 };
 
-export type ThemeShape = Omit<PaperThemeShape, 'fonts'> & {
-  fonts?: Fonts;
-};
+export type ThemeShape = DeepPartial<Theme>;
 
 export type FullFontWeight =
   | '100'
@@ -51,3 +49,16 @@ export type FontPreset = {
 };
 
 export type Fonts = { [fontPresetName: string]: FontPreset };
+
+export type Colors = {
+  primary: string;
+  background: string;
+  surface: string;
+  accent: string;
+  error: string;
+  text: string;
+  disabled: string;
+  border: string;
+  placeholder: string;
+  backdrop: string;
+};

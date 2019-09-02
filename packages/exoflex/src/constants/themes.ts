@@ -28,7 +28,11 @@ export const DefaultTheme: Theme = {
     /**
      * color for disabled elements.
      */
-    disabled: '#e8e8e8',
+    disabled: '#f8f8f8',
+    /**
+     * border color of elements, such as textinput box
+     */
+    border: '#e8e8e8',
     /**
      * color for placeholder text, such as input placeholder.
      */
