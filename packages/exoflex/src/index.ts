@@ -8,6 +8,7 @@ export { DefaultTheme } from './constants/themes';
 // Components
 export {
   Chip,
+  Collapsible,
   Provider,
   Slider,
   Switch,
