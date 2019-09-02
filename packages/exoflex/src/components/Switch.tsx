@@ -4,7 +4,7 @@ import { useTheme } from './Provider';
 
 type Props = {
   value: boolean;
-  onValueChange: () => void;
+  onValueChange: (value?: boolean) => void;
   disabled: boolean;
   width: number;
   trackStyle?: StyleProp<ViewStyle>;
@@ -27,10 +27,10 @@ export default function Switch(props: Props) {
       height: width / 2,
       borderRadius: width / 4,
       backgroundColor: disabled
-        ? '#f8f8f8'
+        ? colors.disabled
         : value
         ? colors.primary
-        : colors.disabled,
+        : colors.border,
     },
     thumb: {
       margin: MARGIN,
@@ -58,9 +58,9 @@ export default function Switch(props: Props) {
 
   return (
     <TouchableOpacity
-      style={[styles.track, {}, trackStyle] as StyleProp<ViewStyle>}
+      style={[styles.track, trackStyle] as StyleProp<ViewStyle>}
       activeOpacity={0.9}
-      onPress={onValueChange}
+      onPress={() => onValueChange(!value)}
       disabled={disabled}
     >
       <Animated.View
