@@ -5954,6 +5954,11 @@ react-native-safe-area-view@^0.12.0:
   dependencies:
     hoist-non-react-statics "^2.3.1"
 
+react-native-svg@^9.8.3:
+  version "9.8.3"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.8.3.tgz#c80f129009a06d66598b77ee91284ab548fb3a91"
+  integrity sha512-aisbIjc26fW3+phV7gb54Ky3WTFzVzDB4aGipZP3VqWWmWRZik9Z92IYWJa+QPXElkUwADgAZp3zDRrOTcYW0w==
+
 react-native-testing-library@^1.11.1:
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/react-native-testing-library/-/react-native-testing-library-1.11.1.tgz#0e2d73991110cf7d7800d86610ad7b7f8a4c9455"

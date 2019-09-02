@@ -6,16 +6,17 @@ import {
   Provider,
   DefaultTheme,
   BuiltInFonts,
-  Toast,
   Slider,
   Collapsible,
   Button,
+  Checkbox,
+  Toast,
 } from 'exoflex';
 
 export default function App() {
   let [isFontLoaded, setFontLoaded] = useState(false);
   let [visible, setVisible] = useState(false);
-
+  let [checked, setCheckbox] = useState(false);
   useEffect(() => {
     loadAsync(BuiltInFonts).then(() => {
       setFontLoaded(true);
@@ -99,6 +100,12 @@ export default function App() {
         >
           With Icon
         </Button>
+        <Text fontStyle="italic">Cool</Text>
+        <Checkbox
+          value="Test"
+          checked={checked}
+          onPress={() => setCheckbox(!checked)}
+        />
       </View>
       <Toast visible={visible} mode="success">
         Info Messages
