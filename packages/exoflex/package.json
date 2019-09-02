@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "deepmerge": "^4.0.0",
+    "react-native-animation-hooks": "^1.0.1",
     "react-native-paper": "^2.16.0"
   },
   "devDependencies": {
