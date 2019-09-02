@@ -27,6 +27,7 @@
     "deepmerge": "^4.0.0",
     "react-native-animation-hooks": "^1.0.1",
     "react-native-multi-slider": "npm:@ptomasroos/react-native-multi-slider",
+    "react-native-collapsible": "^1.5.1",
     "react-native-paper": "^2.16.0"
   },
   "devDependencies": {
