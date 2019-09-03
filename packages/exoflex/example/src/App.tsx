@@ -104,12 +104,12 @@ export default function App() {
         <Checkbox
           value="Test"
           checked={checked}
-          onPress={() => setCheckbox(!checked)}
+          onPress={(newCheckValue: boolean) => setCheckbox(newCheckValue)}
         />
         <Checkbox
           value="Test"
           checked={checked}
-          onPress={() => setCheckbox(!checked)}
+          onPress={(newCheckValue: boolean) => setCheckbox(newCheckValue)}
           disabled
         />
       </View>

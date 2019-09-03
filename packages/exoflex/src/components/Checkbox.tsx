@@ -36,7 +36,7 @@ type Props = {
   /**
    * Callback function to be called when checkbox is pressed
    */
-  onPress: () => void;
+  onPress: (isChecked?: boolean) => void;
   /**
    * Additional style for the text
    */
@@ -47,15 +47,13 @@ type Props = {
   style?: StyleProp<ViewStyle>;
 };
 
-const PADDING = 4;
-
 export default function Checkbox(props: Props) {
   let { size, checked, disabled, onPress, value, textStyle, style } = props;
   let { colors } = useTheme();
   return (
     <TouchableOpacity
       style={[styles.container, style]}
-      onPress={onPress}
+      onPress={() => onPress(!checked)}
       disabled={disabled}
       activeOpacity={0.7}
     >
@@ -72,7 +70,7 @@ export default function Checkbox(props: Props) {
           disabled && { backgroundColor: colors.disabled },
         ]}
       >
-        {checked && <Check size={size - PADDING} fill="white" />}
+        {checked && <Check size={size} fill="white" />}
       </View>
       <Text style={[styles.text, textStyle]}>{value}</Text>
     </TouchableOpacity>
