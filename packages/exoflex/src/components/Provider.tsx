@@ -2,6 +2,7 @@ import React, { ReactNode, createContext, useContext, useMemo } from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
 import deepmerge from 'deepmerge';
 
+import ToastContainer from './ToastContainer';
 import { DefaultTheme } from '../constants/themes';
 import { Theme, ThemeShape } from '../types';
 
@@ -20,13 +21,16 @@ export function useTheme() {
   return useContext(ThemeContext);
 }
 
-function Provider({ theme, ...otherProps }: Props) {
+function Provider({ theme, children, ...otherProps }: Props) {
   let mergedTheme = useMemo(() => deepmerge(DefaultTheme, theme), [
     theme,
   ]) as Theme;
   return (
     <ThemeContext.Provider value={mergedTheme}>
-      <PaperProvider theme={theme} {...otherProps} />
+      <PaperProvider theme={theme} {...otherProps}>
+        {children}
+        <ToastContainer />
+      </PaperProvider>
     </ThemeContext.Provider>
   );
 }
