@@ -40,7 +40,7 @@ export default function Slider(props: Props) {
       values={values}
       markerContainerStyle={[styles.markerContainerStyle, markerContainerStyle]}
       trackStyle={[
-        { borderColor: colors.disabled },
+        { borderColor: colors.border },
         styles.trackStyle,
         trackStyle,
       ]}
@@ -67,6 +67,7 @@ let DefaultMarker = ({
   pressedMarkerStyle,
   markerStyle,
 }: MarkerProps) => {
+  let { colors } = useTheme();
   return (
     <View style={[styles.customMarkerContainer, pressed && { top: -17 }]}>
       {pressed && <Tooltip value={currentValue} />}
@@ -75,7 +76,7 @@ let DefaultMarker = ({
           style={
             enabled
               ? [styles.markerStyle, markerStyle, pressed && pressedMarkerStyle]
-              : [styles.markerStyle, styles.disabled]
+              : [styles.markerStyle, { backgroundColor: colors.disabled }]
           }
         />
       </TouchableHighlight>
@@ -92,7 +93,7 @@ function Tooltip({ value }: { value: number }) {
         style={[
           styles.box,
           {
-            borderColor: colors.disabled,
+            borderColor: colors.border,
             backgroundColor: colors.background,
           },
         ]}
@@ -103,7 +104,7 @@ function Tooltip({ value }: { value: number }) {
         style={[
           styles.triangle,
           styles.largerTriangle,
-          { borderTopColor: colors.disabled },
+          { borderTopColor: colors.border },
         ]}
       />
       <View
@@ -149,9 +150,6 @@ const styles = StyleSheet.create({
     }),
   },
   markerContainerStyle: { marginTop: 4 },
-  disabled: {
-    backgroundColor: 'grey',
-  },
   customMarkerContainer: {
     alignItems: 'center',
   },
