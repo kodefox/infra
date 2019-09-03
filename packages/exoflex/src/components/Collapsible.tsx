@@ -23,6 +23,10 @@ type Props = {
   iconStyle?: StyleProp<ViewStyle>;
 };
 
+let AnimatedIconButton: typeof IconButton = Animated.createAnimatedComponent(
+  IconButton,
+);
+
 function Collapsible({
   title,
   style,
@@ -64,23 +68,25 @@ function Collapsible({
         <Text numberOfLines={1} style={[styles.title, titleStyle]}>
           {title}
         </Text>
-        <Animated.View
-          style={[
-            styles.icon,
-            {
-              transform: [
-                {
-                  rotate: arrowRotation.interpolate({
-                    inputRange: [-0.5, 0.5],
-                    outputRange: ['-90deg', '90deg'],
-                  }),
-                },
-              ],
-            },
-          ]}
-        >
-          <IconButton icon="chevron-right" style={iconStyle} />
-        </Animated.View>
+        <AnimatedIconButton
+          icon="chevron-right"
+          style={
+            [
+              styles.icon,
+              {
+                transform: [
+                  {
+                    rotate: arrowRotation.interpolate({
+                      inputRange: [-0.5, 0.5],
+                      outputRange: ['-90deg', '90deg'],
+                    }),
+                  },
+                ],
+              },
+              iconStyle,
+            ] as StyleProp<ViewStyle>
+          }
+        />
       </TouchableOpacity>
       <CollapsibleBase
         collapsed={isCollapsed}
