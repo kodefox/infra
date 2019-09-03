@@ -1,17 +1,11 @@
 import inquirer from 'inquirer';
-import { spawn } from 'child_process';
+
+import { REPOS } from '../constants/repo';
+import { Answers } from '../type';
+import { cloneRepo, setProjectName } from '../helpers';
+
 export let command = 'init';
 export let desc = 'Create a new project';
-
-type ProjectType = 'Expo (Frontend)' | 'Express (Backend)';
-type Answers = {
-  projectType: ProjectType;
-  projectName: string;
-};
-let REPO: Record<ProjectType, string> = {
-  'Expo (Frontend)': 'https://github.com/kodefox/example-expo-ts.git',
-  'Express (Backend)': 'https://github.com/kodefox/example-express-ts.git',
-};
 
 export let handler = async () => {
   let { projectType, projectName }: Answers = await inquirer.prompt([
@@ -19,7 +13,7 @@ export let handler = async () => {
       type: 'list',
       name: 'projectType',
       message: 'What project you want to create?',
-      choices: Object.keys(REPO),
+      choices: Object.keys(REPOS),
     },
     {
       type: 'input',
@@ -33,18 +27,12 @@ export let handler = async () => {
       },
     },
   ]);
-
-  let git = spawn('git', ['clone', REPO[projectType], projectName.trim()]);
-
-  git.stderr.on('data', (data) => {
-    console.log(`${data}`);
-  });
-
-  git.on('close', (code) => {
-    if (code !== 0) {
-      console.log(`Something went wrong, git exited with code ${code}`);
-      return;
-    }
-    console.log('Finish cloning the repo');
-  });
+  let parsedProjectName = projectName.trim();
+  try {
+    await cloneRepo({ projectName: parsedProjectName, projectType });
+    await setProjectName(parsedProjectName);
+  } catch (error) {
+    console.log('Something went wrong ', error);
+  }
+  console.log('finished creating new project 👌');
 };

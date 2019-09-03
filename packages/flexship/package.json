@@ -20,6 +20,8 @@
   },
   "dependencies": {
     "inquirer": "^7.0.0",
+    "load-json-file": "^6.2.0",
+    "write-json-file": "^4.2.0",
     "yargs": "^14.0.0"
   },
   "devDependencies": {
