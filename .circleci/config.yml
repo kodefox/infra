@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  compare-url: iynere/compare-url@1.2.0
+  compare-url: xdays/compare-url@1.1.0
 
 jobs:
   testing:
@@ -18,6 +18,8 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "packages/naviflex/package.json" }}
             - v1-dependencies-{{ checksum "packages/exoflex/package.json" }}
+            - v1-dependencies-{{ checksum "packages/miflex/package.json" }}
+            - v1-dependencies-{{ checksum "packages/flexship/package.json" }}
             # fallback to use the latest cache if no exact match is found
             - v1-dependencies-
 
@@ -50,6 +52,16 @@ jobs:
           paths:
             - packages/exoflex/node_modules
           key: v1-dependencies-{{ checksum "packages/exoflex/package.json" }}
+
+      - save_cache:
+          paths:
+            - packages/miflex/node_modules
+          key: v1-dependencies-{{ checksum "packages/miflex/package.json" }}
+
+      - save_cache:
+          paths:
+            - packages/flexship/node_modules
+          key: v1-dependencies-{{ checksum "packages/flexship/package.json" }}
 
 workflows:
   main:
