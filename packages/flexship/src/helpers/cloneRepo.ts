@@ -1,11 +1,11 @@
 import { spawn } from 'child_process';
 
 import { Answers } from '../type';
-import { REPO } from '../constants/repo';
+import { REPOS } from '../constants/repo';
 
 export default ({ projectType, projectName }: Answers) => {
   return new Promise((resolve, reject) => {
-    let git = spawn('git', ['clone', REPO[projectType], projectName.trim()]);
+    let git = spawn('git', ['clone', REPOS[projectType], projectName.trim()]);
 
     git.stderr.on('data', (data) => {
       console.log(`${data}`);
