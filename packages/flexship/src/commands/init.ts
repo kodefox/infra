@@ -1,6 +1,6 @@
 import inquirer from 'inquirer';
 
-import { REPO } from '../constants/repo';
+import { REPOS } from '../constants/repo';
 import { Answers } from '../type';
 import { cloneRepo, setProjectName } from '../helpers';
 
@@ -13,7 +13,7 @@ export let handler = async () => {
       type: 'list',
       name: 'projectType',
       message: 'What project you want to create?',
-      choices: Object.keys(REPO),
+      choices: Object.keys(REPOS),
     },
     {
       type: 'input',
@@ -34,5 +34,5 @@ export let handler = async () => {
   } catch (error) {
     console.log('Something went wrong ', error);
   }
-  console.log('finish creating new project 👌');
+  console.log('finished creating new project 👌');
 };
