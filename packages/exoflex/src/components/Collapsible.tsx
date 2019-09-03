@@ -61,7 +61,7 @@ function Collapsible({
         onPress={toggleCollapsible}
         style={styles.titleContainer}
       >
-        <Text numberOfLines={1} style={titleStyle}>
+        <Text numberOfLines={1} style={[styles.title, titleStyle]}>
           {title}
         </Text>
         <Animated.View
@@ -99,6 +99,9 @@ let styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 16,
+  },
+  title: {
+    marginRight: 24,
   },
   icon: {
     position: 'absolute',
