@@ -68,7 +68,8 @@ export default function Checkbox(props: Props) {
           },
           checked
             ? { backgroundColor: colors.primary }
-            : { borderWidth: 1, borderColor: colors.disabled },
+            : { borderWidth: 1, borderColor: colors.border },
+          disabled && { backgroundColor: colors.disabled },
         ]}
       >
         {checked && <Check size={size - PADDING} fill="white" />}

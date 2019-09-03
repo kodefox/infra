@@ -106,6 +106,12 @@ export default function App() {
           checked={checked}
           onPress={() => setCheckbox(!checked)}
         />
+        <Checkbox
+          value="Test"
+          checked={checked}
+          onPress={() => setCheckbox(!checked)}
+          disabled
+        />
       </View>
       <Toast visible={visible} mode="success">
         Info Messages
