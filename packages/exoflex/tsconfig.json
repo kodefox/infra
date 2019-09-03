@@ -9,7 +9,9 @@
     "skipLibCheck": true,
     "strict": true,
     "noUnusedLocals": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "downlevelIteration": true,
+    "types": ["react", "react-native", "jest"]
   },
   "exclude": ["example/", "lib/"]
 }
