@@ -9,6 +9,7 @@ import {
   Toast,
   Slider,
   Collapsible,
+  Button,
 } from 'exoflex';
 
 export default function App() {
@@ -46,6 +47,13 @@ export default function App() {
           </Text>
         </Collapsible>
         <Slider values={[3, 9]} />
+        <Button preset="primary" onPress={() => alert('Primary Button pressed')} style={{marginVertical: 10}}>Primary button</Button>
+        <Button preset="secondary" onPress={() => alert('Secondary Button pressed')} style={{marginVertical: 10}}>Secondary button</Button>
+        <Button preset="invisible" onPress={() => alert('Invisible Button pressed')} style={{marginVertical: 10}}>Invisible button</Button>
+        <Button disabled preset="primary" onPress={() => alert('Primary Button pressed')} style={{marginVertical: 10}}>Disabled Primary button</Button>
+        <Button disabled preset="secondary" onPress={() => alert('Secondary Button pressed')} style={{marginVertical: 10}}>Disabled Secondary button</Button>
+        <Button disabled preset="invisible" onPress={() => alert('Invisible Button pressed')} style={{marginVertical: 10}}>Disabled Invisible button</Button>
+        <Button icon="home" onPress={() => alert('Button with Icon pressed')} style={{marginVertical: 10}}>With Icon</Button>
       </View>
       <Toast visible={visible} mode="success">
         Info Messages
