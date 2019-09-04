@@ -7,6 +7,7 @@ export { DefaultTheme } from './constants/themes';
 
 // Components
 export {
+  ActivityIndicator,
   Chip,
   Provider,
   Slider,
