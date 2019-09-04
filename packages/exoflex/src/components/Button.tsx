@@ -11,8 +11,7 @@ type ButtonPresets = {
   invisible: 'text';
 };
 
-// TODO: Enable icon?
-type Props = Omit<ButtonProps, 'theme' | 'mode' | 'icon'> & {
+type Props = Omit<ButtonProps, 'theme' | 'mode'> & {
   preset: 'primary' | 'secondary' | 'invisible';
 };
 
@@ -47,7 +46,7 @@ export default function Button(props: Props) {
           borderWidth: 2,
           borderColor: colors.primary,
         },
-        disabled && {opacity: 0.4},
+        disabled && { opacity: 0.4 },
         style,
       ]}
       onPress={!disabled ? onPress : undefined}
