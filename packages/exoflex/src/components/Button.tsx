@@ -1,10 +1,8 @@
-import React, { useMemo } from 'react';
-import {
-  Button as PaperButton,
-  ButtonProps,
-  DefaultTheme, // TODO: Change this to refer DefaultTheme from our DefaultTheme
-} from 'react-native-paper';
-import deepmerge from 'deepmerge';
+import React from 'react';
+import { Button as PaperButton, ButtonProps } from 'react-native-paper';
+import Text from './Text';
+
+// import { useTheme } from './Provider';
 
 type ButtonPresets = {
   primary: 'contained';
@@ -12,33 +10,37 @@ type ButtonPresets = {
   invisible: 'text';
 };
 
-type Props = ButtonProps & {
+// TODO: Enable icon?
+type Props = Omit<ButtonProps, 'theme' | 'mode' | 'icon'> & {
   preset: 'primary' | 'secondary' | 'invisible';
 };
 
-const PRIMARY_COLOR = '#0099dd';
 const PRESETS: ButtonPresets = {
   primary: 'contained',
   secondary: 'outlined',
   invisible: 'text',
 };
 
-// TODO: Should refactor this after #20 landed
-// make sure this component using our text component
 export default function Button(props: Props) {
-  let { preset, theme, ...buttonProps } = props;
+  let { preset, children, uppercase, ...buttonProps } = props;
   let mode = PRESETS[preset];
 
-  let combinedTheme = useMemo(() => deepmerge(DefaultTheme, theme || {}), [
-    theme,
-  ]);
+  let renderChildren = children;
+  if (typeof children === 'string') {
+    renderChildren = (
+      <Text weight="500">{uppercase ? children.toUpperCase() : children}</Text>
+    );
+  }
 
+  // TODO: Use combined/merged theme
   return (
-    <PaperButton
-      mode={mode}
-      color={PRIMARY_COLOR}
-      theme={combinedTheme}
-      {...buttonProps}
-    />
+    <PaperButton mode={mode} uppercase={uppercase} {...buttonProps}>
+      {renderChildren}
+    </PaperButton>
   );
 }
+
+Button.defaultProps = {
+  preset: 'primary',
+  uppercase: true,
+};
