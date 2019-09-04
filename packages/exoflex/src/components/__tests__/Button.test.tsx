@@ -23,6 +23,14 @@ const ClickableButton = (props: { onPress: jest.Mock<any, any> }) => (
   </Provider>
 );
 
+const DisabledButton = (props: { onPress: jest.Mock<any, any> }) => (
+  <Provider>
+    <Button disabled preset="primary" onPress={props.onPress}>
+      Press me!
+    </Button>
+  </Provider>
+);
+
 type Platforms = 'web' | 'ios' | 'android';
 
 describe('Button', () => {
@@ -62,6 +70,35 @@ describe('Button', () => {
         fireEvent.press(getByText('PRESS ME!'));
       }
       expect(mockedOnPress).toBeCalledTimes(1);
+    },
+    [
+      { name: 'on web', platform: 'web' },
+      { name: 'on ios', platform: 'ios' },
+      { name: 'on android', platform: 'android' },
+    ],
+  );
+
+  cases(
+    'should render disabled',
+    (opts) => {
+      let platform = opts.platform as Platforms;
+      let mockedOnPress = jest.fn();
+      if (platform === 'web') {
+        let { getByText } = renderWeb(
+          <DisabledButton onPress={mockedOnPress} />,
+        );
+        let element = getByText('PRESS ME!');
+        fireEventWeb.mouseDown(element);
+        fireEventWeb.mouseUp(element);
+        expect(element).toBeTruthy();
+      } else {
+        let { getByText } = render(<DisabledButton onPress={mockedOnPress} />);
+        let element = getByText('PRESS ME!');
+        // NOTE: Disable this as this is still an issue (https://github.com/callstack/react-native-testing-library/issues/28)
+        // fireEvent.press(element);
+        expect(element).toBeTruthy();
+      }
+      expect(mockedOnPress).toBeCalledTimes(0);
     },
     [
       { name: 'on web', platform: 'web' },
