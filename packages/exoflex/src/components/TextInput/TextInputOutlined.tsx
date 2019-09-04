@@ -48,7 +48,7 @@ function TextInputOutlined({
         style={[
           {
             color: color(colors.text)
-              .alpha(editable ? 1 : 0.6)
+              .alpha(disabled ? 0.6 : 1)
               .rgb()
               .toString(),
           },
