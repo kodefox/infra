@@ -29,6 +29,9 @@ export default function Button(props: Props) {
     uppercase,
     contentStyle,
     style,
+    color,
+    disabled,
+    onPress,
     ...buttonProps
   } = props;
   let { colors } = useTheme();
@@ -44,12 +47,14 @@ export default function Button(props: Props) {
           borderWidth: 2,
           borderColor: colors.primary,
         },
+        disabled && {opacity: 0.4},
         style,
       ]}
+      onPress={!disabled ? onPress : undefined}
       {...buttonProps}
     >
       {typeof children === 'string' ? (
-        <Text weight="500" style={{ fontSize: 14 }}>
+        <Text weight="500" style={[{ fontSize: 14 }]}>
           {uppercase ? children.toUpperCase() : children}
         </Text>
       ) : (
