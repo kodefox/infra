@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
+import { IconButton } from 'react-native-paper';
 import color from 'color';
 
 import { useTheme } from '../Provider';
@@ -9,12 +10,13 @@ import { ChildTextInputProps } from './types';
 export type Props = ChildTextInputProps;
 
 function TextInputOutlined({
+  error,
   label,
   disabled,
   editable,
   isFocused,
   style,
-  ...otheProps
+  ...otherProps
 }: Props) {
   let { colors, roundness } = useTheme();
 
@@ -26,6 +28,8 @@ function TextInputOutlined({
           borderRadius: roundness,
           borderColor: disabled
             ? colors.disabled
+            : error
+            ? colors.error
             : isFocused
             ? colors.accent
             : colors.border,
@@ -50,9 +54,16 @@ function TextInputOutlined({
           },
           style,
         ]}
-        {...otheProps}
+        {...otherProps}
       />
+      {error && <ErrorIcon color={colors.error} />}
     </View>
+  );
+}
+
+function ErrorIcon(props: { color: string }) {
+  return (
+    <IconButton icon="error-outline" style={styles.errorIcon} {...props} />
   );
 }
 
@@ -65,6 +76,13 @@ let styles = StyleSheet.create({
     justifyContent: 'space-between',
     // temp
     marginBottom: 20,
+  },
+  errorIcon: {
+    position: 'absolute',
+    alignSelf: 'center',
+    right: 4,
+    top: 10,
+    margin: 0,
   },
 });
 

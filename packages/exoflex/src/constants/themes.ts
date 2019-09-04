@@ -44,7 +44,7 @@ export const DefaultTheme: Theme = {
     /**
      * color for backdrops of various components such as modals.
      */
-    error: '#dd0000',
+    error: '#dd0101',
   },
   /**
    * roundness of common elements, such as buttons.

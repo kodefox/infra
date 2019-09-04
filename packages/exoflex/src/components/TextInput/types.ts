@@ -4,16 +4,22 @@ type ModeProps = 'flat' | 'outlined';
 
 export type TextInputProps = BaseTextInputProps & {
   /**
+   * When set to true, will use the error styling for the text input.
+   * Defaults to false.
+   */
+  error: boolean;
+  /**
    * Label for the text input
    */
   label: string;
   /**
-   * Disable all interaction with the text inpput
+   * When set to true, will disable all interaction with the text inpput
+   * Defaults to 'false'.
    */
   disabled: boolean;
   /**
    * Determine how the text input is displayed.
-   * @default outlined
+   * Defaults to 'outlined'.
    */
   mode: ModeProps;
 };

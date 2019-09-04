@@ -58,6 +58,7 @@ function TextInput(props: TextInputProps) {
 
 TextInput.defaultProps = {
   autoCorrect: false,
+  error: false,
   disabled: false,
   editable: true,
   mode: 'outlined',
