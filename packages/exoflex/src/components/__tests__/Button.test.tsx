@@ -15,6 +15,14 @@ const BasicButton = () => (
   </Provider>
 );
 
+const BasicButtonWithIcon = () => (
+  <Provider>
+    <Button preset="primary" icon="home">
+      This is primary button with icon
+    </Button>
+  </Provider>
+);
+
 const ClickableButton = (props: { onPress: jest.Mock<any, any> }) => (
   <Provider>
     <Button preset="primary" onPress={props.onPress}>
@@ -44,6 +52,25 @@ describe('Button', () => {
             ? renderWeb(<BasicButton />)
             : render(<BasicButton />);
         expect(getByText('THIS IS PRIMARY BUTTON')).toBeTruthy();
+      });
+    },
+    [
+      { name: 'on web', platform: 'web' },
+      { name: 'on ios', platform: 'ios' },
+      { name: 'on android', platform: 'android' },
+    ],
+  );
+
+  cases(
+    'should render normally with icon',
+    (opts) => {
+      let platform = opts.platform as Platforms;
+      withPlatform(platform, () => {
+        let { getByText } =
+          platform === 'web'
+            ? renderWeb(<BasicButtonWithIcon />)
+            : render(<BasicButtonWithIcon />);
+        expect(getByText('THIS IS PRIMARY BUTTON WITH ICON')).toBeTruthy();
       });
     },
     [
