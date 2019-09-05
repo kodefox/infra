@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   TouchableOpacity,
   View,
@@ -7,8 +7,9 @@ import {
   ViewStyle,
   StyleSheet,
 } from 'react-native';
-import Text from './Text';
 import useTheme from '../helpers/useTheme';
+import Text from './Text';
+import { RadioButtonContext } from './RadioButtonGroup';
 
 type Props = {
   /**
@@ -57,11 +58,22 @@ export default function RadioButton(props: Props) {
     style,
   } = props;
   let { colors } = useTheme();
+  let { value: contextValue, onValueChange: contextOnValueChange } = useContext(
+    RadioButtonContext,
+  );
+
   let innerCircleSize = size / 2;
+
+  let _isChecked = contextValue === value || checked ? true : false;
+
+  let _handlePress = () =>
+    contextOnValueChange
+      ? contextOnValueChange(value === contextValue ? '' : value)
+      : onPress(!checked);
 
   return (
     <TouchableOpacity
-      onPress={() => onPress(!checked)}
+      onPress={_handlePress}
       style={[styles.container, style]}
       activeOpacity={0.7}
       disabled={disabled}
@@ -75,13 +87,13 @@ export default function RadioButton(props: Props) {
             height: size,
             borderColor: disabled
               ? colors.disabled
-              : checked
+              : _isChecked
               ? color || colors.primary
               : colors.border,
           },
         ]}
       >
-        {checked && (
+        {_isChecked && (
           <View
             style={{
               width: innerCircleSize,
