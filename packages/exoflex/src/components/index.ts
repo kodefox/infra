@@ -1,4 +1,5 @@
 export { default as ActivityIndicator } from './ActivityIndicator';
+export { default as Button } from './Button';
 export { default as Chip } from './Chip';
 export { default as Collapsible } from './Collapsible';
 export { default as Provider } from './Provider';

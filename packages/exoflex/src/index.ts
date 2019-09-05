@@ -8,6 +8,7 @@ export { DefaultTheme } from './constants/themes';
 // Components
 export {
   ActivityIndicator,
+  Button,
   Chip,
   Collapsible,
   Provider,

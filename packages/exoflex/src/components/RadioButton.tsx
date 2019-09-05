@@ -8,7 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import Text from './Text';
-import { useTheme } from './Provider';
+import useTheme from '../helpers/useTheme';
 
 type Props = {
   /**
