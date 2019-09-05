@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import color from 'color';
 
 import Text, { Props as TextProps } from './Text';
-import { useTheme } from './Provider';
+import useTheme from '../helpers/useTheme';
 
 type Props = TextProps;
 

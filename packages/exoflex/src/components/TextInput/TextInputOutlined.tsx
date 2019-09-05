@@ -3,8 +3,8 @@ import { View, TextInput, StyleSheet } from 'react-native';
 import { IconButton } from 'react-native-paper';
 import color from 'color';
 
-import { useTheme } from '../Provider';
 import Label from '../Label';
+import useTheme from '../../helpers/useTheme';
 import { ChildTextInputProps } from './types';
 
 export type Props = ChildTextInputProps;
