@@ -3,7 +3,7 @@ import { StyleSheet, StyleProp, TextStyle } from 'react-native';
 import { Button as PaperButton, ButtonProps } from 'react-native-paper';
 import Text from './Text';
 
-import { useTheme } from './Provider';
+import useTheme from './../helpers/useTheme';
 
 type ButtonPresets = {
   primary: 'contained';
