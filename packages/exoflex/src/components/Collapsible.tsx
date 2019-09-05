@@ -12,7 +12,7 @@ import { IconButton } from 'react-native-paper';
 import { useAnimation } from 'react-native-animation-hooks';
 
 import Text from './Text';
-import { useTheme } from './Provider';
+import useTheme from '../helpers/useTheme';
 
 type Props = {
   title: string;
