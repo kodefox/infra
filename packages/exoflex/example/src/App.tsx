@@ -9,6 +9,7 @@ import {
   Toast,
   ToastContainer,
   Slider,
+  Collapsible,
 } from 'exoflex';
 
 export default function App() {
@@ -40,9 +41,11 @@ export default function App() {
         >
           Exoflex
         </Text>
-        <Text fontStyle="italic" onPress={() => setVisible(!visible)}>
-          Cool
-        </Text>
+        <Collapsible title="Press Me">
+          <Text fontStyle="italic" onPress={() => setVisible(!visible)}>
+            Hello!
+          </Text>
+        </Collapsible>
         <Slider values={[3, 9]} />
       </View>
       <Toast visible={visible} mode="success">

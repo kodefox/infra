@@ -9,6 +9,7 @@ export { DefaultTheme } from './constants/themes';
 export {
   ActivityIndicator,
   Chip,
+  Collapsible,
   Provider,
   Slider,
   Switch,
