@@ -11,6 +11,7 @@ export {
   Chip,
   Collapsible,
   Provider,
+  RadioButton,
   Slider,
   Switch,
   Text,
