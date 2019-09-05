@@ -43,7 +43,7 @@ function ToastContainer() {
 
   useEffect(() => {
     if (visible) {
-      timerID.current = setTimeout(hideToast, config.duration);
+      timerID.current = window.setTimeout(hideToast, config.duration);
     }
     return () => clearTimeout(timerID.current);
   }, [visible]);
