@@ -22,6 +22,9 @@ module.exports = async function(env, argv) {
    * @see https://stackoverflow.com/questions/57455200/cant-use-hooks-with-my-react-component-library-invariant-violation-invalid-hoo
    */
   config.resolve.alias['react'] = path.resolve('./node_modules/react');
+  config.resolve.alias['@ptomasroos/react-native-multi-slider'] = path.resolve(
+    './node_modules/react-native-multi-slider',
+  );
 
   // Add rule to transform exoflex files before loading it.
   config.module.rules = [
