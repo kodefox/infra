@@ -1,4 +1,9 @@
-import { TextInputProps as BaseTextInputProps } from 'react-native';
+import {
+  TextInputProps as BaseTextInputProps,
+  StyleProp,
+  ViewStyle,
+  TextStyle,
+} from 'react-native';
 
 type ModeProps = 'flat' | 'outlined';
 
@@ -23,6 +28,18 @@ export type TextInputProps = BaseTextInputProps & {
    * Defaults to 'outlined'.
    */
   mode: ModeProps;
+  /**
+   * Additional style passed to the container of the TextInput
+   */
+  containerStyle?: StyleProp<ViewStyle>;
+  /**
+   * Additional style passed to the label
+   */
+  labelStyle?: StyleProp<TextStyle>;
+  /**
+   * Additional style passed to the label
+   */
+  errorMessageStyle?: StyleProp<TextStyle>;
 };
 
 export type ChildTextInputProps = Omit<TextInputProps, 'mode'> & {

@@ -17,6 +17,9 @@ function TextInputOutlined({
   editable,
   isFocused,
   style,
+  containerStyle,
+  labelStyle,
+  errorMessageStyle,
   ...otherProps
 }: Props) {
   let { colors, roundness } = useTheme();
@@ -38,9 +41,10 @@ function TextInputOutlined({
             : colors.border,
           backgroundColor: disabled ? colors.disabled : colors.surface,
         },
+        containerStyle,
       ]}
     >
-      <Label>{label}</Label>
+      <Label style={labelStyle}>{label}</Label>
       <TextInput
         editable={!disabled && editable}
         underlineColorAndroid="transparent"
@@ -62,7 +66,7 @@ function TextInputOutlined({
       {isError && (
         <>
           <ErrorIcon color={colors.error} />
-          <ErrorMessage style={styles.errorMessage}>
+          <ErrorMessage style={[styles.errorMessage, errorMessageStyle]}>
             {errorMessage}
           </ErrorMessage>
         </>
@@ -84,8 +88,6 @@ let styles = StyleSheet.create({
     padding: 12,
     paddingVertical: 10,
     justifyContent: 'space-between',
-    // temp
-    marginBottom: 20,
   },
   errorIcon: {
     position: 'absolute',
