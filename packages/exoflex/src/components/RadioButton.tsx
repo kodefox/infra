@@ -64,7 +64,7 @@ export default function RadioButton(props: Props) {
       onPress={() => onPress(!checked)}
       style={[styles.container, style]}
       activeOpacity={0.7}
-      disabled={!onPress}
+      disabled={disabled}
     >
       <View
         style={[
@@ -73,7 +73,11 @@ export default function RadioButton(props: Props) {
             borderRadius: size / 2,
             width: size,
             height: size,
-            borderColor: checked ? color || colors.primary : colors.border,
+            borderColor: disabled
+              ? colors.disabled
+              : checked
+              ? color || colors.primary
+              : colors.border,
           },
         ]}
       >
@@ -84,8 +88,8 @@ export default function RadioButton(props: Props) {
               height: innerCircleSize,
               borderRadius: innerCircleSize / 2,
               backgroundColor: disabled
-                ? color || colors.disabled
-                : colors.primary,
+                ? colors.disabled
+                : color || colors.primary,
             }}
           />
         )}
