@@ -4,10 +4,11 @@ type ModeProps = 'flat' | 'outlined';
 
 export type TextInputProps = BaseTextInputProps & {
   /**
-   * When set to true, will use the error styling for the text input.
+   * When provided, will use the error styling for the text input
+   * and display the error message below the text input.
    * Defaults to false.
    */
-  error: boolean;
+  errorMessage?: string;
   /**
    * Label for the text input
    */
