@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Text from './Text';
 import { DefaultTheme } from '../constants/themes';
-import { useTheme } from './Provider';
+import useTheme from '../helpers/useTheme';
 import Check from './svg/Check';
 
 type Props = {
@@ -48,8 +48,18 @@ type Props = {
 };
 
 export default function Checkbox(props: Props) {
-  let { size, checked, disabled, onPress, value, textStyle, style } = props;
-  let { colors } = useTheme();
+  let {
+    size,
+    checked,
+    disabled,
+    color,
+    onPress,
+    value,
+    textStyle,
+    style,
+  } = props;
+  let { colors, roundness } = useTheme();
+
   return (
     <TouchableOpacity
       style={[styles.container, style]}
@@ -61,11 +71,12 @@ export default function Checkbox(props: Props) {
         style={[
           styles.iconContainer,
           {
+            borderRadius: roundness,
             width: size,
             height: size,
           },
           checked
-            ? { backgroundColor: colors.primary }
+            ? { backgroundColor: color || colors.primary }
             : { borderWidth: 1, borderColor: colors.border },
           disabled && { backgroundColor: colors.disabled },
         ]}
@@ -95,7 +106,6 @@ const styles = StyleSheet.create({
   iconContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 4,
   },
   text: {
     paddingLeft: 10,
