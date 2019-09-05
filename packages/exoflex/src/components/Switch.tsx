@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { TouchableOpacity, Animated, StyleProp, ViewStyle } from 'react-native';
-import { useTheme } from './Provider';
+
+import useTheme from '../helpers/useTheme';
 
 type Props = {
   value: boolean;

@@ -7,8 +7,8 @@ import {
   TextStyle,
 } from 'react-native';
 
-import { useTheme } from './Provider';
 import Text from './Text';
+import useTheme from '../helpers/useTheme';
 
 type ModeProps = 'active' | 'inactive';
 

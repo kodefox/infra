@@ -11,9 +11,9 @@ import {
 import { Surface } from 'react-native-paper';
 import { useAnimation } from 'react-native-animation-hooks';
 
-import { useTheme } from './Provider';
 import Text from './Text';
 import { ToastConfig } from './ToastContainer';
+import useTheme from '../helpers/useTheme';
 import { DefaultTheme } from '../constants/themes';
 
 export type ModeProps = 'info' | 'warning' | 'error' | 'success';

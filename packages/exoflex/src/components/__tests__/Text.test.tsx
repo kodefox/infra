@@ -23,18 +23,33 @@ describe('Text', () => {
     });
   });
 
+  /**
+   * BUG: This web test case must be executed first before the native one.
+   *
+   * The error thrown when `renderWeb` is called.
+   * Error thrown: Error: Uncaught [TypeError: Array.prototype.slice called on null or undefined]
+   */
+  it('should render text when wrapped with provider on the web', () => {
+    let App = () => (
+      <Provider theme={DefaultTheme}>
+        <Text>Foobar 3000</Text>
+      </Provider>
+    );
+
+    withPlatform('web', () => {
+      let { getByText } = renderWeb(<App />);
+      expect(getByText('Foobar 3000')).toBeTruthy();
+    });
+  });
+
   it('should render text when wrapped with provider', () => {
     let App = () => (
       <Provider theme={DefaultTheme}>
         <Text>Foobar 3000</Text>
       </Provider>
     );
+
     let { getByText } = render(<App />);
     expect(getByText('Foobar 3000')).toBeTruthy();
-
-    withPlatform('web', () => {
-      let { getByText } = renderWeb(<App />);
-      expect(getByText('Foobar 3000')).toBeTruthy();
-    });
   });
 });

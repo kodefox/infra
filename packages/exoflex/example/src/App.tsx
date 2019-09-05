@@ -7,7 +7,6 @@ import {
   DefaultTheme,
   BuiltInFonts,
   Toast,
-  ToastContainer,
   Slider,
   Collapsible,
 } from 'exoflex';
@@ -51,7 +50,6 @@ export default function App() {
       <Toast visible={visible} mode="success">
         Info Messages
       </Toast>
-      <ToastContainer />
     </Provider>
   );
 }

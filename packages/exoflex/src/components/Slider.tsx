@@ -10,7 +10,8 @@ import MultiSlider, {
   MultiSliderProps,
   MarkerProps,
 } from 'react-native-multi-slider';
-import { useTheme } from './Provider';
+
+import useTheme from '../helpers/useTheme';
 
 type Props = MultiSliderProps & {
   showLabel: boolean;

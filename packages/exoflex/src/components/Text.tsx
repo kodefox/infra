@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { Text as TextNative, TextProps } from 'react-native';
 
-import { useTheme } from './Provider';
 import resolveTextStyle from '../helpers/resolveTextStyle';
+import useTheme from '../helpers/useTheme';
 import { FontWeight, FontStyle } from '../types';
 
 type Props = TextProps & {
