@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, StyleProp, TextStyle } from 'react-native';
 import { Button as PaperButton, ButtonProps } from 'react-native-paper';
 import Text from './Text';
 
@@ -12,7 +12,8 @@ type ButtonPresets = {
 };
 
 type Props = Omit<ButtonProps, 'theme' | 'mode'> & {
-  preset: 'primary' | 'secondary' | 'invisible';
+  preset: keyof ButtonPresets;
+  labelStyle?: StyleProp<TextStyle>;
 };
 
 const PRESETS: ButtonPresets = {
@@ -28,6 +29,7 @@ export default function Button(props: Props) {
     uppercase,
     contentStyle,
     style,
+    labelStyle,
     color,
     disabled,
     onPress,
@@ -53,7 +55,7 @@ export default function Button(props: Props) {
       {...buttonProps}
     >
       {typeof children === 'string' ? (
-        <Text weight="500" style={[{ fontSize: 14 }]}>
+        <Text weight="500" style={labelStyle}>
           {uppercase ? children.toUpperCase() : children}
         </Text>
       ) : (
