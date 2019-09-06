@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, StyleProp, ViewStyle, TextStyle } from 'react-native';
-import { TouchableRipple } from 'react-native-paper';
+import { TouchableRipple, IconButton } from 'react-native-paper';
 import Text from '../Text';
 
 type Props = {
@@ -8,12 +8,12 @@ type Props = {
   active: boolean;
   style?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
-  // TODO: Icon?
+  icon?: string;
   onPress: () => void;
 };
 
 export default function DrawerItem(props: Props) {
-  let { label, labelStyle, active, style, onPress } = props;
+  let { label, labelStyle, active, style, icon, onPress } = props;
   return (
     <TouchableRipple
       onPress={onPress}
@@ -23,7 +23,10 @@ export default function DrawerItem(props: Props) {
         style,
       ]}
     >
-      <Text style={labelStyle}>{label}</Text>
+      <>
+        {icon && <IconButton icon={icon} style={styles.icon} />}
+        <Text style={[styles.label, labelStyle]}>{label}</Text>
+      </>
     </TouchableRipple>
   );
 }
@@ -32,5 +35,14 @@ const styles = StyleSheet.create({
   container: {
     paddingVertical: 19,
     paddingHorizontal: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  icon: {
+    // NOTE: Because IconButton from paper has `margin: 6`
+    margin: -6,
+  },
+  label: {
+    paddingLeft: 12,
   },
 });
