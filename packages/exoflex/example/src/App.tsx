@@ -181,7 +181,7 @@ export default function App() {
               value="Input Text"
               errorMessage="Something Went Wrong"
               containerStyle={{ marginVertical: 10 }}
-            />{' '}
+            />
           </ScrollView>
         </DrawerLayout>
         <Toast visible={visible} mode="success">
