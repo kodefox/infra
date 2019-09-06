@@ -25,6 +25,18 @@ module.exports = async function(env, argv) {
   config.resolve.alias['@ptomasroos/react-native-multi-slider'] = path.resolve(
     './node_modules/react-native-multi-slider',
   );
+  config.resolve.alias['@unimodules/core'] = path.resolve(
+    './node_modules/@unimodules/core',
+  );
+  config.resolve.alias['expo-asset'] = path.resolve(
+    './node_modules/expo-asset',
+  );
+  config.resolve.alias['expo-constants'] = path.resolve(
+    './node_modules/expo-constants',
+  );
+  config.resolve.alias['react-native-web/dist/exports'] = path.resolve(
+    './node_modules/react-native-web/dist/exports',
+  );
 
   // Add rule to transform exoflex files before loading it.
   config.module.rules = [
