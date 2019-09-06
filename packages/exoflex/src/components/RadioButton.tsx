@@ -15,7 +15,7 @@ type Props = {
   /**
    * The text/string for the radio button
    */
-  value: string;
+  label: string;
   /**
    * Boolean whether the radio button is checked or not.
    */
@@ -48,7 +48,7 @@ type Props = {
 
 export default function RadioButton(props: Props) {
   let {
-    value,
+    label,
     size,
     checked,
     color,
@@ -64,11 +64,11 @@ export default function RadioButton(props: Props) {
 
   let innerCircleSize = size / 2;
 
-  let _isChecked = contextValue === value || checked ? true : false;
+  let _isChecked = contextValue === label || checked ? true : false;
 
   let _handlePress = () =>
     contextOnValueChange
-      ? contextOnValueChange(value === contextValue ? '' : value)
+      ? contextOnValueChange(label === contextValue ? '' : label)
       : onPress(!checked);
 
   return (
@@ -106,7 +106,7 @@ export default function RadioButton(props: Props) {
           />
         )}
       </View>
-      <Text style={[styles.text, textStyle]}>{value}</Text>
+      <Text style={[styles.text, textStyle]}>{label}</Text>
     </TouchableOpacity>
   );
 }
