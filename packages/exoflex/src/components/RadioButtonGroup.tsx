@@ -16,8 +16,17 @@ export let RadioButtonContext = createContext<RadioButtonContextType>(
 );
 
 type Props = {
+  /**
+   * Value of the selected radio button
+   */
   value: string;
+  /**
+   * Callback function to be called when radio button is pressed
+   */
   onValueChange: (newValue: string) => void;
+  /**
+   * Any react node, preferable RadioButton component(s)
+   */
   children: ReactNode;
 };
 
@@ -27,8 +36,8 @@ export default function RadioButtonGroup(props: Props) {
   return (
     <RadioButtonContext.Provider
       value={{
-        value: value,
-        onValueChange: onValueChange,
+        value,
+        onValueChange,
       }}
     >
       {children}

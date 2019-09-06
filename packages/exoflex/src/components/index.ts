@@ -4,7 +4,6 @@ export { default as Chip } from './Chip';
 export { default as Collapsible } from './Collapsible';
 export { default as Provider } from './Provider';
 export { default as RadioButton } from './RadioButton';
-export { default as RadioButtonGroup } from './RadioButtonGroup';
 export { default as Slider } from './Slider';
 export { default as Switch } from './Switch';
 export { default as Text } from './Text';

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import useTheme from '../helpers/useTheme';
 import Text from './Text';
-import { RadioButtonContext } from './RadioButtonGroup';
+import RadioButtonGroup, { RadioButtonContext } from './RadioButtonGroup';
 
 type Props = {
   /**
@@ -110,6 +110,8 @@ export default function RadioButton(props: Props) {
     </TouchableOpacity>
   );
 }
+
+RadioButton.Group = RadioButtonGroup;
 
 RadioButton.defaultProps = {
   value: '',

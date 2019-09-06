@@ -13,7 +13,6 @@ export {
   Collapsible,
   Provider,
   RadioButton,
-  RadioButtonGroup,
   Slider,
   Switch,
   Text,
