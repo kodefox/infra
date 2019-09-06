@@ -23,7 +23,9 @@ const BasicButtonWithIcon = () => (
   </Provider>
 );
 
-const ClickableButton = (props: { onPress: jest.Mock<any, any> }) => (
+const ClickableButton = (props: {
+  onPress: jest.Mock<unknown, Array<unknown>>;
+}) => (
   <Provider>
     <Button preset="primary" onPress={props.onPress}>
       Press me!
@@ -31,7 +33,9 @@ const ClickableButton = (props: { onPress: jest.Mock<any, any> }) => (
   </Provider>
 );
 
-const DisabledButton = (props: { onPress: jest.Mock<any, any> }) => (
+const DisabledButton = (props: {
+  onPress: jest.Mock<unknown, Array<unknown>>;
+}) => (
   <Provider>
     <Button disabled preset="primary" onPress={props.onPress}>
       Press me!
