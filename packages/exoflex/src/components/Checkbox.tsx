@@ -16,7 +16,7 @@ type Props = {
   /**
    * The text/string for the checkbox
    */
-  value: string;
+  label: string;
   /**
    * Boolean whether the checkbox is checked or not.
    */
@@ -54,7 +54,7 @@ export default function Checkbox(props: Props) {
     disabled,
     color,
     onPress,
-    value,
+    label,
     textStyle,
     style,
   } = props;
@@ -83,7 +83,7 @@ export default function Checkbox(props: Props) {
       >
         {checked && <Check size={size} fill="white" />}
       </View>
-      <Text style={[styles.text, textStyle]}>{value}</Text>
+      <Text style={[styles.text, textStyle]}>{label}</Text>
     </TouchableOpacity>
   );
 }

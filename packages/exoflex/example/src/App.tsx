@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet, View, ActivityIndicator } from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  ActivityIndicator,
+  SafeAreaView,
+} from 'react-native';
 import { loadAsync } from 'expo-font';
 import {
   Text,
@@ -12,12 +17,11 @@ import {
   Checkbox,
   Toast,
 } from 'exoflex';
-import { SafeAreaView } from 'react-native';
 
 export default function App() {
   let [isFontLoaded, setFontLoaded] = useState(false);
   let [visible, setVisible] = useState(false);
-  let [checked, setCheckbox] = useState(true);
+  let [checked, setCheckbox] = useState(false);
   useEffect(() => {
     loadAsync(BuiltInFonts).then(() => {
       setFontLoaded(true);
@@ -51,12 +55,12 @@ export default function App() {
           </Collapsible>
           <Slider values={[3, 9]} />
           <Checkbox
-            value="Agree"
+            label="Agree"
             checked={checked}
             onPress={(newCheckValue: boolean) => setCheckbox(newCheckValue)}
           />
           <Checkbox
-            value="Agree"
+            label="Agree"
             checked={checked}
             onPress={(newCheckValue: boolean) => setCheckbox(newCheckValue)}
             disabled
