@@ -25,7 +25,6 @@
     "react-native-svg": ">=7.0.0"
   },
   "dependencies": {
-    "color": "^3.1.2",
     "deepmerge": "^4.0.0",
     "react-native-animation-hooks": "^1.0.1",
     "react-native-collapsible": "^1.5.1",
@@ -35,7 +34,6 @@
   "devDependencies": {
     "@react-native-community/bob": "^0.6.1",
     "@testing-library/react": "^9.1.1",
-    "@types/color": "^3.0.0",
     "@types/jest": "^24.0.18",
     "@types/jest-in-case": "^1.0.1",
     "@types/react": "^16.9.1",
