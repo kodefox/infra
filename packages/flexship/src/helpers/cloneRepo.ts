@@ -1,11 +1,16 @@
 import { spawn } from 'child_process';
+import { platform } from 'os';
 
 import { Answers } from '../type';
 import { REPOS } from '../constants/repo';
 
+let isWindows = platform() === 'win32';
+
 export default ({ projectType, projectName }: Answers) => {
   return new Promise((resolve, reject) => {
-    let git = spawn('git', ['clone', REPOS[projectType], projectName.trim()]);
+    let git = spawn('git', ['clone', REPOS[projectType], projectName.trim()], {
+      shell: isWindows,
+    });
 
     git.stderr.on('data', (data) => {
       console.log(`${data}`);
