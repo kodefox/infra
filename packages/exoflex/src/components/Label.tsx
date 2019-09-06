@@ -1,25 +1,19 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import color from 'color';
 
 import Text, { Props as TextProps } from './Text';
-import useTheme from '../helpers/useTheme';
 
 type Props = TextProps;
 
 function Label({ style, ...otherProps }: Props) {
-  let { colors } = useTheme();
-
   return (
     <Text
       {...otherProps}
       style={[
         styles.root,
         {
-          color: color(colors.text)
-            .alpha(0.6)
-            .rgb()
-            .toString(),
+          // TODO: This color should use colors.text with 0.6 opacity.
+          color: '#757575',
         },
         style,
       ]}

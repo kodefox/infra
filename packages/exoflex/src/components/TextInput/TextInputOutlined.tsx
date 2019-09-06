@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import { IconButton } from 'react-native-paper';
-import color from 'color';
 
 import ErrorMessage from './ErrorMessage';
 import Label from '../Label';
@@ -48,16 +47,12 @@ function TextInputOutlined({
       <TextInput
         editable={!disabled && editable}
         underlineColorAndroid="transparent"
-        placeholderTextColor={color(colors.text)
-          .alpha(0.6)
-          .rgb()
-          .toString()}
+        // TODO: This color should use colors.text with 0.6 opacity.
+        placeholderTextColor="#757575"
         style={[
           {
-            color: color(colors.text)
-              .alpha(disabled ? 0.6 : 1)
-              .rgb()
-              .toString(),
+            // TODO: This color should use colors.text with 0.6 opacity when disabled.
+            color: disabled ? '#757575' : colors.text,
           },
           style,
         ]}
