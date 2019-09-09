@@ -25,7 +25,9 @@ const BasicItemWithIcon = () => (
   </Provider>
 );
 
-const ClickableBasicItem = (props: { onPress: jest.Mock<any, any> }) => (
+const ClickableBasicItem = (props: {
+  onPress: jest.Mock<unknown, Array<unknown>>;
+}) => (
   <Provider>
     <DrawerItem label="First menu" icon="home" onPress={props.onPress} />
   </Provider>
