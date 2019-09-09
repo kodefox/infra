@@ -64,12 +64,10 @@ export default function RadioButton(props: Props) {
 
   let innerCircleSize = size / 2;
 
-  let _isChecked = contextValue === label || checked ? true : false;
+  let _isChecked = contextValue === label || checked;
 
   let _handlePress = () =>
-    contextOnValueChange
-      ? contextOnValueChange(label === contextValue ? '' : label)
-      : onPress(!checked);
+    contextOnValueChange ? contextOnValueChange(label) : onPress(!checked);
 
   return (
     <TouchableOpacity
