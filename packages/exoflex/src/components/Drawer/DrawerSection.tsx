@@ -27,13 +27,16 @@ export default function DrawerSection(props: Props) {
   const Header = () => {
     if (headerMode === 'circle') {
       return (
-        <View style={styles.headerCircleWrapper}>
+        <View
+          style={styles.headerCircleWrapper}
+          testID="drawerHeaderCircleImage"
+        >
           <Avatar.Image size={72} source={headerSource} />
         </View>
       );
     }
     return (
-      <View style={styles.headerFullWrapper}>
+      <View style={styles.headerFullWrapper} testID="drawerHeaderFullImage">
         <Image source={headerSource} style={styles.headerFullImage} />
       </View>
     );
