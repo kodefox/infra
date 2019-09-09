@@ -30,7 +30,6 @@ export default function Button(props: Props) {
     contentStyle,
     style,
     labelStyle,
-    color,
     disabled,
     onPress,
     ...buttonProps
