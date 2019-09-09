@@ -14,6 +14,7 @@
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
     "react-native-multi-slider": "npm:@ptomasroos/react-native-multi-slider",
+    "react-native-svg": "^9.8.5",
     "react-native-web": "^0.11.4"
   },
   "devDependencies": {
@@ -28,7 +29,6 @@
     "react-native-animation-hooks": "^1.0.1",
     "react-native-collapsible": "^1.5.1",
     "react-native-paper": "^2.16.0",
-    "react-native-svg": "^9.8.4",
     "typescript": "^3.4.5"
   },
   "private": true
