@@ -5,7 +5,7 @@ import Text from '../Text';
 
 type Props = {
   label: string;
-  active: boolean;
+  active?: boolean;
   style?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
   icon?: string;

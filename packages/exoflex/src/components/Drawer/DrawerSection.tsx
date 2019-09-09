@@ -1,15 +1,28 @@
 import React, { ReactNode } from 'react';
 import { View, Image, StyleSheet, ImageSourcePropType } from 'react-native';
 import { Avatar } from 'react-native-paper';
+import DrawerItem from './DrawerItem';
 
 type Props = {
   headerMode: 'full' | 'circle';
   headerSource: ImageSourcePropType;
   children: ReactNode;
+  footerLabel?: string;
+  footerIcon?: string;
+  footerOnPress?: () => void;
 };
 
+const emptyFn = () => {};
+
 export default function DrawerSection(props: Props) {
-  let { headerMode, headerSource, children } = props;
+  let {
+    headerMode,
+    headerSource,
+    children,
+    footerLabel,
+    footerIcon,
+    footerOnPress,
+  } = props;
 
   const Header = () => {
     if (headerMode === 'circle') {
@@ -29,7 +42,14 @@ export default function DrawerSection(props: Props) {
   return (
     <View style={styles.container}>
       <Header />
-      {children}
+      <View style={{ flex: 1 }}>{children}</View>
+      {footerLabel && (
+        <DrawerItem
+          label={footerLabel}
+          icon={footerIcon}
+          onPress={footerOnPress || emptyFn}
+        />
+      )}
     </View>
   );
 }

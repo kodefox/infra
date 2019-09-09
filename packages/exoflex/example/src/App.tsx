@@ -45,6 +45,9 @@ export default function App() {
       headerMode="full"
       // headerSource={{ uri: 'https://picsum.photos/300' }}
       headerSource={drawerImage}
+      footerLabel="Sign out"
+      footerIcon="exit-to-app"
+      footerOnPress={() => alert('Sign out pressed!')}
     >
       <Drawer.Item
         label="First Item"
