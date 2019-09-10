@@ -15,7 +15,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
     "react-native-gesture-handler": "~1.3.0",
     "react-native-multi-slider": "npm:@ptomasroos/react-native-multi-slider",
-    "react-native-svg": "^9.8.5",
+    "react-native-svg": "9.5.1",
     "react-native-web": "^0.11.4"
   },
   "devDependencies": {

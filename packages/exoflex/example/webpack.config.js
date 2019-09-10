@@ -37,6 +37,12 @@ module.exports = async function(env, argv) {
   config.resolve.alias['react-native-web/dist/exports'] = path.resolve(
     './node_modules/react-native-web/dist/exports',
   );
+  config.resolve.alias['react-native-svg'] = path.resolve(
+    './node_modules/react-native-svg',
+  );
+  config.resolve.alias['@expo/vector-icons'] = path.resolve(
+    './node_modules/@expo/vector-icons',
+  );
 
   // Add rule to transform exoflex files before loading it.
   config.module.rules = [
