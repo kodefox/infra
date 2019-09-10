@@ -5,10 +5,10 @@ The default theme use "Rubik" font family.
 
 | Prop                                                                      | Description                                                                                                         | Default Value |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | :-----------: |
-| children                                                                  | String to display                                                                                                   |   undefined   |
-| preset                                                                    | A preset of font to use when determining the font style                                                             |  `'default'`  |
-| weight                                                                    | Set the font weight of the text. Allowed value:   `'300', '400', '500', '700', 'light', 'normal', 'medium', 'bold'` |    `'400'`    |
-| fontStyle                                                                 | Set the font style of the text. Allowed value: `'normal', 'italic'`*                                                |  `'normal'`   |
+| `children`                                                                | String to display                                                                                                   |   undefined   |
+| `preset`                                                                  | A preset of font to use when determining the font style                                                             |  `'default'`  |
+| `weight`                                                                  | Set the font weight of the text. Allowed value:   `'300', '400', '500', '700', 'light', 'normal', 'medium', 'bold'` |    `'400'`    |
+| `fontStyle`                                                               | Set the font style of the text. Allowed value: `'normal', 'italic'`*                                                |  `'normal'`   |
 | [TextProps](https://facebook.github.io/react-native/docs/text.html#props) | Additional text props will be spread to the Text component                                                          |               |
 
 Notes:
