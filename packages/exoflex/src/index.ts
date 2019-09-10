@@ -12,6 +12,7 @@ export {
   Checkbox,
   Chip,
   Collapsible,
+  Drawer,
   Provider,
   RadioButton,
   Slider,
