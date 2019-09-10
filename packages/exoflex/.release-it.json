@@ -1,0 +1,17 @@
+{
+  "npm": {
+    "publish": true
+  },
+  "github": {
+    "release": true,
+    "releaseName": "Exoflex ${version}"
+  },
+  "git": {
+    "pushRepo": "upstream",
+    "requireUpstream": false,
+    "commitMessage": "Release exoflex ${version}",
+    "tagAnnotation": "Exoflex ${version}",
+    "tagName": "exoflex-${version}",
+    "changelog": "git log --pretty=format:\"* %s (%h)\" ${latestTag}...HEAD | grep -F \"exoflex:\""
+  }
+}
