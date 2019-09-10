@@ -50,7 +50,6 @@ Notes:
     I'm bold and italic.
   </Text>
   
-  
   <Text preset="code" weight="300">
     Look ma, monospaced font!
   </Text>
