@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   TouchableOpacity,
   View,
@@ -7,14 +7,15 @@ import {
   ViewStyle,
   StyleSheet,
 } from 'react-native';
-import Text from './Text';
 import useTheme from '../helpers/useTheme';
+import Text from './Text';
+import RadioButtonGroup, { RadioButtonContext } from './RadioButtonGroup';
 
 type Props = {
   /**
    * The text/string for the radio button
    */
-  value: string;
+  label: string;
   /**
    * Boolean whether the radio button is checked or not.
    */
@@ -47,7 +48,7 @@ type Props = {
 
 export default function RadioButton(props: Props) {
   let {
-    value,
+    label,
     size,
     checked,
     color,
@@ -57,11 +58,20 @@ export default function RadioButton(props: Props) {
     style,
   } = props;
   let { colors } = useTheme();
+  let { value: contextValue, onValueChange: contextOnValueChange } = useContext(
+    RadioButtonContext,
+  );
+
   let innerCircleSize = size / 2;
+
+  let _isChecked = contextValue === label || checked;
+
+  let _handlePress = () =>
+    contextOnValueChange ? contextOnValueChange(label) : onPress(!checked);
 
   return (
     <TouchableOpacity
-      onPress={() => onPress(!checked)}
+      onPress={_handlePress}
       style={[styles.container, style]}
       activeOpacity={0.7}
       disabled={disabled}
@@ -75,13 +85,13 @@ export default function RadioButton(props: Props) {
             height: size,
             borderColor: disabled
               ? colors.disabled
-              : checked
+              : _isChecked
               ? color || colors.primary
               : colors.border,
           },
         ]}
       >
-        {checked && (
+        {_isChecked && (
           <View
             style={{
               width: innerCircleSize,
@@ -94,10 +104,12 @@ export default function RadioButton(props: Props) {
           />
         )}
       </View>
-      <Text style={[styles.text, textStyle]}>{value}</Text>
+      <Text style={[styles.text, textStyle]}>{label}</Text>
     </TouchableOpacity>
   );
 }
+
+RadioButton.Group = RadioButtonGroup;
 
 RadioButton.defaultProps = {
   value: '',
