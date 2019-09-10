@@ -2,6 +2,7 @@ const { defaults: tsjPreset } = require('ts-jest/presets');
 
 module.exports = {
   ...tsjPreset,
+  setupFiles: ['<rootDir>/./test/modules-mock'],
   preset: 'react-native-web',
   transform: {
     ...tsjPreset.transform,
@@ -14,7 +15,7 @@ module.exports = {
   },
   modulePathIgnorePatterns: ['<rootDir>/lib/'],
   transformIgnorePatterns: [
-    'node_modules/(?!(react-native|react-native-paper|react-native-safe-area-view|react-native-animation-hooks)/)',
+    'node_modules/(?!(react-native|react-native-paper|react-native-safe-area-view|react-native-animation-hooks|react-native-svg)/)',
   ],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|css|styl)$':

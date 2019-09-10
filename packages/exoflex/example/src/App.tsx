@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, ActivityIndicator } from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  ActivityIndicator,
+  SafeAreaView,
+} from 'react-native';
 import { loadAsync } from 'expo-font';
 import {
   Text,
   Provider,
   DefaultTheme,
   BuiltInFonts,
-  Toast,
   Slider,
   Collapsible,
   Button,
+  Checkbox,
+  Toast,
 } from 'exoflex';
 
 export default function App() {
   let [isFontLoaded, setFontLoaded] = useState(false);
   let [visible, setVisible] = useState(false);
-
+  let [checked, setCheckbox] = useState(false);
   useEffect(() => {
     loadAsync(BuiltInFonts).then(() => {
       setFontLoaded(true);
@@ -28,89 +34,102 @@ export default function App() {
 
   return (
     <Provider theme={DefaultTheme}>
-      <View style={styles.container}>
-        <Text
-          onPress={() =>
-            Toast.showToast({
-              message: 'Warning!',
-              duration: 1000,
-              mode: 'error',
-            })
-          }
-          weight="700"
-        >
-          Exoflex
-        </Text>
-        <Collapsible title="Press Me">
-          <Text fontStyle="italic" onPress={() => setVisible(!visible)}>
-            Hello!
+      <SafeAreaView>
+        <ScrollView contentContainerStyle={styles.container}>
+          <Text
+            onPress={() =>
+              Toast.showToast({
+                message: 'Warning!',
+                duration: 1000,
+                mode: 'error',
+              })
+            }
+            weight="700"
+          >
+            Exoflex
           </Text>
-        </Collapsible>
-        <Slider values={[3, 9]} />
-        <Button
-          preset="primary"
-          onPress={() => alert('Primary Button pressed')}
-          style={{ marginVertical: 10 }}
-        >
-          Primary button
-        </Button>
-        <Button
-          preset="secondary"
-          onPress={() => alert('Secondary Button pressed')}
-          style={{ marginVertical: 10 }}
-        >
-          Secondary button
-        </Button>
-        <Button
-          preset="invisible"
-          onPress={() => alert('Invisible Button pressed')}
-          style={{ marginVertical: 10 }}
-        >
-          Invisible button
-        </Button>
-        <Button
-          disabled
-          preset="primary"
-          onPress={() => alert('Primary Button pressed')}
-          style={{ marginVertical: 10 }}
-        >
-          Disabled Primary button
-        </Button>
-        <Button
-          disabled
-          preset="secondary"
-          onPress={() => alert('Secondary Button pressed')}
-          style={{ marginVertical: 10 }}
-        >
-          Disabled Secondary button
-        </Button>
-        <Button
-          disabled
-          preset="invisible"
-          onPress={() => alert('Invisible Button pressed')}
-          style={{ marginVertical: 10 }}
-        >
-          Disabled Invisible button
-        </Button>
-        <Button
-          icon="home"
-          onPress={() => alert('Button with Icon pressed')}
-          style={{ marginVertical: 10 }}
-        >
-          With Icon
-        </Button>
-      </View>
-      <Toast visible={visible} mode="success">
-        Info Messages
-      </Toast>
+          <Collapsible title="Press Me">
+            <Text fontStyle="italic" onPress={() => setVisible(!visible)}>
+              Hello!
+            </Text>
+          </Collapsible>
+          <Slider values={[3, 9]} />
+          <Checkbox
+            label="Agree"
+            checked={checked}
+            onPress={(newCheckValue: boolean) => setCheckbox(newCheckValue)}
+          />
+          <Checkbox
+            label="Agree"
+            checked={checked}
+            onPress={(newCheckValue: boolean) => setCheckbox(newCheckValue)}
+            disabled
+          />
+          <Button
+            preset="primary"
+            onPress={() => alert('Primary Button pressed')}
+            style={{ marginVertical: 10 }}
+          >
+            Primary button
+          </Button>
+          <Button
+            preset="secondary"
+            onPress={() => alert('Secondary Button pressed')}
+            style={{ marginVertical: 10 }}
+          >
+            Secondary button
+          </Button>
+          <Button
+            preset="invisible"
+            onPress={() => alert('Invisible Button pressed')}
+            style={{ marginVertical: 10 }}
+          >
+            Invisible button
+          </Button>
+          <Button
+            disabled
+            preset="primary"
+            onPress={() => alert('Primary Button pressed')}
+            style={{ marginVertical: 10 }}
+          >
+            Disabled Primary button
+          </Button>
+          <Button
+            disabled
+            preset="secondary"
+            onPress={() => alert('Secondary Button pressed')}
+            style={{ marginVertical: 10 }}
+          >
+            Disabled Secondary button
+          </Button>
+          <Button
+            disabled
+            preset="invisible"
+            onPress={() => alert('Invisible Button pressed')}
+            style={{ marginVertical: 10 }}
+          >
+            Disabled Invisible button
+          </Button>
+          <Button
+            icon="home"
+            onPress={() => alert('Button with Icon pressed')}
+            style={{ marginVertical: 10 }}
+          >
+            With Icon
+          </Button>
+          <Text fontStyle="italic">Cool</Text>
+        </ScrollView>
+        <Toast visible={visible} mode="success">
+          Info Messages
+        </Toast>
+      </SafeAreaView>
     </Provider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
   },

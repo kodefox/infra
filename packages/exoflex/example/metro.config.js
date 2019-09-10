@@ -22,6 +22,7 @@ module.exports = {
       'react-native',
       'react',
       '@babel/runtime',
+      'react-native-svg',
       ...dependencies,
     ],
   },

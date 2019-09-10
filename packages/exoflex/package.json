@@ -21,13 +21,14 @@
   },
   "peerDependencies": {
     "react": "^16.8.0",
-    "react-native": "^0.59.0"
+    "react-native": "^0.59.0",
+    "react-native-svg": ">=7.0.0"
   },
   "dependencies": {
     "deepmerge": "^4.0.0",
     "react-native-animation-hooks": "^1.0.1",
-    "react-native-multi-slider": "npm:@ptomasroos/react-native-multi-slider",
     "react-native-collapsible": "^1.5.1",
+    "react-native-multi-slider": "npm:@ptomasroos/react-native-multi-slider",
     "react-native-paper": "^2.16.0"
   },
   "devDependencies": {
