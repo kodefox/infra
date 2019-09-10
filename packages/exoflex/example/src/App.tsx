@@ -66,7 +66,7 @@ export default function App() {
 
   return (
     <Provider theme={DefaultTheme}>
-      <SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>
         <DrawerLayout
           ref={drawer}
           // drawerWidth={200}
