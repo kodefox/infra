@@ -1,4 +1,4 @@
-import * as Drawer from './Drawer/Drawer';
+import * as Drawer from './Drawer';
 
 export { default as ActivityIndicator } from './ActivityIndicator';
 export { default as Button } from './Button';

@@ -3,6 +3,8 @@ import { View, Image, StyleSheet, ImageSourcePropType } from 'react-native';
 import { Avatar } from 'react-native-paper';
 import DrawerItem from './DrawerItem';
 
+import { DefaultTheme } from '../../constants/themes';
+
 type Props = {
   headerMode: 'full' | 'circle';
   headerSource: ImageSourcePropType;
@@ -64,7 +66,7 @@ DrawerSection.defaultProps = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: DefaultTheme.colors.surface,
   },
   headerFullWrapper: {
     width: '100%',
