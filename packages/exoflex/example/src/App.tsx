@@ -18,6 +18,7 @@ import {
   Checkbox,
   Toast,
   Drawer,
+  TextInput,
 } from 'exoflex';
 import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 
@@ -159,7 +160,28 @@ export default function App() {
             >
               With Icon
             </Button>
-            <Text fontStyle="italic">Cool</Text>
+            <TextInput
+              label="Input Label (Default)"
+              placeholder="Hint Text"
+              containerStyle={{ marginVertical: 10 }}
+            />
+            <TextInput
+              label="Input Label (Disabled)"
+              value="Input Text"
+              disabled={true}
+              containerStyle={{ marginVertical: 10 }}
+            />
+            <TextInput
+              label="Input Label (Focus)"
+              value="Input Text"
+              containerStyle={{ marginVertical: 10 }}
+            />
+            <TextInput
+              label="Input Label (Error)"
+              value="Input Text"
+              errorMessage="Something Went Wrong"
+              containerStyle={{ marginVertical: 10 }}
+            />
           </ScrollView>
         </DrawerLayout>
         <Toast visible={visible} mode="success">

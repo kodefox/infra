@@ -18,6 +18,7 @@ export {
   Slider,
   Switch,
   Text,
+  TextInput,
   Toast,
   ToastContainer,
 } from './components';
