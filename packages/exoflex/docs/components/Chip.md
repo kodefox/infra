@@ -2,7 +2,7 @@
 
 ### Preview
 
-<img width="153" alt="chip-preview" src="https://user-images.githubusercontent.com/19742419/64677215-5a38b600-d4a1-11e9-9853-a71f2a8fc113.png">
+![chip_preview](../assets/chip_preview.png)
 
 ### Props
 
