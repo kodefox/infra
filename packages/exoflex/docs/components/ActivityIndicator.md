@@ -1,0 +1,28 @@
+# ActivityIndicator
+
+Activity indicator is used to present progress of some activity in the app.
+
+### Preview
+
+![activity_indicator_preview](../assets/activity_indicator_preview.png)
+
+### Props
+
+| Name               |              Type              |   Default   | Description                                           |
+| ------------------ | :----------------------------: | :---------: | ----------------------------------------------------- |
+| `animating`        |           `boolean`            |   `true`    | Whether to show the indicator or hide it.             |
+| `color`            |            `string`            | `undefined` | The color of the spinner.                             |
+| `size`             | `'small' \| 'large' \| number` |  `'small'`  | Size of the indicator.                                |
+| `hidesWhenStopped` |           `boolean`            |   `true`    | Whether the indicator should hide when not animating. |
+| `style`            |     `StyleProp<ViewStyle>`     | `undefined` | Additional style for the container.                   |
+
+### Example
+
+```tsx
+<Provider>
+  <ActivityIndicator />
+
+  <ActivityIndicator size="large" color="salmon" />
+</Provider>
+```
+
