@@ -112,7 +112,7 @@ export default function RadioButton(props: Props) {
 RadioButton.Group = RadioButtonGroup;
 
 RadioButton.defaultProps = {
-  value: '',
+  label: '',
   checked: false,
   disabled: false,
   size: 24,
