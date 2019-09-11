@@ -4,7 +4,7 @@ Activity indicator is used to present progress of some activity in the app.
 
 ### Preview
 
-![activity_indicator_preview](../assets/activity_indicator_preview.png)
+![activity_indicator_preview](../assets/activity_indicator_preview.gif)
 
 ### Props
 
