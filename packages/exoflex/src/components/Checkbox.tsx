@@ -94,7 +94,7 @@ Checkbox.defaultProps = {
   disabled: false,
   onPress: () => {},
   color: DefaultTheme.colors.primary,
-  value: '',
+  label: '',
 };
 
 const styles = StyleSheet.create({
