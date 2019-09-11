@@ -6,7 +6,7 @@
 
 ### Props
 
-| Prop                                                                                         |           Type           |   Default   | Description                                                 |
+| Name                                                                                         |           Type           |   Default   | Description                                                 |
 | -------------------------------------------------------------------------------------------- | :----------------------: | :---------: | ----------------------------------------------------------- |
 | `children`                                                                                   |         `string`         | `undefined` | String to display inside the chip.                          |
 | `mode`                                                                                       | `'active' \| 'inactive'` | `'active'`  | Determine how the chip is displayed.                        |
