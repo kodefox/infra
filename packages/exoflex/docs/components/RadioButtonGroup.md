@@ -1,6 +1,6 @@
 # RadioButton.Group
 
-A radio button with text. Radio buttons allow the selection a single option from a set.
+Radio button group allows to control a group of radio buttons.
 
 ### Preview
 
