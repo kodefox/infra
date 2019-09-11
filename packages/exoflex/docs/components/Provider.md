@@ -10,6 +10,7 @@ Provider also render `<ToastContainer />` to display a `<Toast />` using `Toast.
 | `children *` | `ReactNode` |                  `undefined`                  | The root component                          |
 | `theme`      |   `Theme`   | [DefaultTheme](../../src/constants/themes.ts) | A theme used to style exoflex's components. |
 
+Prop marked with `*` is required.
 
 ### Example
 
