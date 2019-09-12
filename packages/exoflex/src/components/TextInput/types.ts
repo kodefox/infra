@@ -11,7 +11,6 @@ export type TextInputProps = BaseTextInputProps & {
   /**
    * When provided, will use the error styling for the text input
    * and display the error message below the text input.
-   * Defaults to false.
    */
   errorMessage?: string;
   /**
@@ -19,7 +18,7 @@ export type TextInputProps = BaseTextInputProps & {
    */
   label: string;
   /**
-   * When set to true, will disable all interaction with the text inpput
+   * When set to true, will disable all interaction with the text input
    * Defaults to 'false'.
    */
   disabled: boolean;
