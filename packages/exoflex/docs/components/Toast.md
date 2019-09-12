@@ -17,6 +17,23 @@ Toast is an alert like component that shows from the bottom of the screen.
 | `style`     |            `StyleProp<ViewStyle>`             |                                                                                            | Additional props passed to the toast container. |
 | `textStyle` |            `StyleProp<TextStyle>`             |                                                                                            | Additional props passed to the text.            |
 
+### Static
+
+For the static method to work, `<ToastContainer />` must be rendered.
+If the root component has already been wrapped by `<Provider />`, then `<ToastContainer />` is already included.
+
+- `showToast(params)` - show a Toast and then dismiss it after the specified duration has passed.
+
+#### Params
+
+| Name        |                     Type                      | Default  | Description                                    |
+| ----------- | :-------------------------------------------: | :------: | ---------------------------------------------- |
+| `message *` |                   `string`                    |          | Text to display in the toast.                  |
+| `mode`      | `'info' \| 'warning' \| 'error' \| 'success'` | `'info'` | Determine the color and icon to display.       |
+| `duration`  |                   `number`                    |  `4000`  | How long the toast stay in the screen (in ms). |
+
+- `hideToast()` - dismiss the currently visible toast. Does nothing when there's no visible toast.
+
 ### Example
 
 ```tsx
