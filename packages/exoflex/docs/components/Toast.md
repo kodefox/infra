@@ -41,5 +41,15 @@ If the root component has already been wrapped by `<Provider />`, then `<ToastCo
   <Toast visible={true} mode="info">
     Yuhu
   </Toast>
+
+  <Button
+    onPress={() =>
+      Toast.showToast({
+        message: 'Ouch!',
+        duration: 1000,
+        mode: 'error',
+      })
+    }
+  />
 </Provider>
 ```
