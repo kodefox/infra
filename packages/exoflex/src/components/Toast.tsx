@@ -8,7 +8,7 @@ import {
   TextStyle,
   Platform,
 } from 'react-native';
-import { Surface } from 'react-native-paper';
+import { Surface, IconButton } from 'react-native-paper';
 import { useAnimation } from 'react-native-animation-hooks';
 
 import Text from './Text';
@@ -76,15 +76,7 @@ function Toast({ mode, visible, style, children, colors, textStyle }: Props) {
           ] as StyleProp<ViewStyle>
         }
       >
-        <View
-          style={[
-            styles.iconContainer,
-            { backgroundColor: themeColors.surface },
-          ]}
-        >
-          {/* TODO: Replace Text with Icon component */}
-          <Text style={{ color: colors[mode] }}>i</Text>
-        </View>
+        <ToastIcon name={IconName[mode]} color={colors[mode]} />
         <Text style={[{ color: themeColors.surface }, textStyle]}>
           {children}
         </Text>
@@ -92,6 +84,37 @@ function Toast({ mode, visible, style, children, colors, textStyle }: Props) {
     </SafeAreaView>
   );
 }
+
+let ToastIcon = ({ name, color }: { name: string; color: string }) => {
+  let { colors } = useTheme();
+
+  // There's no `i` icon that doesn't have outline or circle around it in IconButton.
+  let isInfo = name === 'info';
+
+  return (
+    <View
+      style={[
+        styles.iconContainer,
+        !isInfo && {
+          backgroundColor: colors.surface,
+        },
+      ]}
+    >
+      {isInfo ? (
+        <IconButton icon={name} color={colors.surface} size={36} />
+      ) : (
+        <IconButton icon={name} color={color} />
+      )}
+    </View>
+  );
+};
+
+let IconName: Record<ModeProps, string> = {
+  info: 'info',
+  warning: 'info',
+  error: 'close',
+  success: 'check',
+};
 
 //  This kinda hacky
 //  If we set the property in ToastContainer,
