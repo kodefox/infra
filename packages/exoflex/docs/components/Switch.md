@@ -8,7 +8,7 @@ A selection control component which values are either on/off (true/false).
 
 ### Props
 
-| Prop            |             Type              |  Default   | Description                                                   |
+| Name            |             Type              |  Default   | Description                                                   |
 | --------------- | :---------------------------: | :--------: | ------------------------------------------------------------- |
 | `value`         |           `boolean`           |   `true`   | Indicator whether the switch is on (`true`) or off (`false`). |
 | `onValueChange` | `(newValue: boolean) => void` | `() => {}` | Callback that is called when the switch is pressed.           |
