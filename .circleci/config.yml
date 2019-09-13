@@ -12,7 +12,8 @@ jobs:
 
     steps:
       - checkout
-      - compare-url/reconstruct
+      - compare-url/reconstruct:
+          project-path: ~/repo
 
       - restore_cache:
           keys:
