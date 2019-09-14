@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  compare-url: oshimayoan/compare-url@1.2.2
+  compare-url: oshimayoan/compare-url@1.2.3
 
 jobs:
   testing:
