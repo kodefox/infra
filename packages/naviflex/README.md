@@ -30,19 +30,40 @@ Currently, there are four syntaxes available through naviflex. But these four sy
 
 #### navigate
 
-This navigate function receives the same parameters as `react-navigation`. But currently, the web side doesn't support `action` and `key` yet. You still could put it on parameters but there will be no effect on the web.
+This navigate function receives four parameters similar to [react-navigation](https://reactnavigation.org/docs/en/navigation-prop.html#navigate-link-to-other-screens):
+
+- `routeName` - A destination routeName that has been registered somewhere in the app's router
+- `params` - Params to merge into the destination route
+- `action` - (advanced) The sub-action to run in the child router, if the screen is a navigator
+- `key` - Optional identifier of what route to navigate to. Navigate back to this route, if it already exists
+
+Currently, the web side doesn't support `action` and `key` yet. You still could put it on parameters but there will be no effect on the web.
 
 #### replace
 
-This replaces function receives the same parameters as `react-navigation`. But currently, the web side doesn't support `action` yet. You still could put it on parameters but there will be no effect on the web.
+This replace function receives three parameters similar to navigate without `key`. But this will replace the current screen, so you won't be able to move back to the current screen.
+
+Currently, the web side doesn't support `action` yet. You still could put it on parameters but there will be no effect on the web.
 
 #### goBack
 
-This goBack function receives the same parameter as `react-navigation`.
+This goBack function receives the same parameter as [react-navigation](https://reactnavigation.org/docs/en/navigation-prop.html#goback-close-the-active-screen-and-move-back). Except, the parameter won't have any effect on the web.
 
 #### getParam
 
-This getParam function receives the same parameters as `react-navigation`.
+This getParam function receives the same parameters as [react-navigation](https://reactnavigation.org/docs/en/navigation-prop.html#getparam-get-a-specific-param-value-with-a-fallback).
+
+You can use it on the web similarly with the mobile:
+
+```tsx
+import {useNavigation} from 'naviflex';
+
+function SomeScreen() {
+  let {getParam} = useNavigation();
+  let name = getParam('name');
+  return <View />;
+}
+```
 
 ## Usage
 
