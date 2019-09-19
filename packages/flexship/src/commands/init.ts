@@ -32,8 +32,8 @@ export let handler = async () => {
     await cloneRepo({ projectName: parsedProjectName, projectType });
     await setProjectName(parsedProjectName);
     await reinitializeGit(parsedProjectName);
+    console.log('Finished creating new project 👌');
   } catch (error) {
     console.log('Something went wrong ', error);
   }
-  console.log('finished creating new project 👌');
 };
