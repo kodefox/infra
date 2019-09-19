@@ -1,16 +1,20 @@
-import { spawn } from 'child_process';
+import { spawn, SpawnOptionsWithoutStdio } from 'child_process';
 import { platform } from 'os';
 
 let isWindows = platform() === 'win32';
 
-export default (command: string, args: Array<string>, message: string) => {
+type Option = { startMessage?: string } & SpawnOptionsWithoutStdio;
+
+export default (
+  command: string,
+  args: Array<string>,
+  { cwd, startMessage }: Option = {},
+) => {
   return new Promise((resolve, reject) => {
+    startMessage && console.log(startMessage);
     let commandProcess = spawn(command, args, {
       shell: isWindows,
-    });
-
-    commandProcess.stderr.on('data', (data) => {
-      console.log(`${data}`);
+      cwd,
     });
 
     commandProcess.on('close', (code) => {
@@ -21,7 +25,6 @@ export default (command: string, args: Array<string>, message: string) => {
         reject();
         return;
       }
-      console.log(message);
       resolve();
     });
   });
