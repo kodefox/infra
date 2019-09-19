@@ -5,6 +5,6 @@ import { REPOS } from '../constants/repo';
 export default async ({ projectType, projectName }: Answers) => {
   let command = 'git';
   let args = ['clone', REPOS[projectType], projectName];
-  let finishMessage = 'Finish cloning the repo';
-  return await spawn(command, args, finishMessage);
+  let startMessage = 'Cloning the repo...';
+  return await spawn(command, args, { startMessage });
 };
