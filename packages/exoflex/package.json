@@ -45,7 +45,6 @@
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
-    "husky": "^3.0.3",
     "jest": "^24.9.0",
     "jest-in-case": "^1.0.2",
     "jest-with-platform": "^0.0.3",
@@ -78,10 +77,5 @@
     "singleQuote": true,
     "trailingComma": "all",
     "arrowParens": "always"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn test"
-    }
   }
 }
