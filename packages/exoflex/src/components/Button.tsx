@@ -71,7 +71,7 @@ Button.defaultProps = {
 
 const styles = StyleSheet.create({
   contentWrapper: {
-    padding: 16,
+    height: 48,
     minWidth: 158,
   },
 });
