@@ -9,7 +9,7 @@
   "git": {
     "pushRepo": "upstream",
     "requireUpstream": false,
-    "commitMessage": "Release exoflex ${version}",
+    "commitMessage": "release(exoflex): ${version}",
     "tagAnnotation": "Exoflex ${version}",
     "tagName": "exoflex-${version}",
     "changelog": "git log --pretty=format:\"* %s (%h)\" ${latestTag}...HEAD | grep -F \"(exoflex):\""
