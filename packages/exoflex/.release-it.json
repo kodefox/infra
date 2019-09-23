@@ -12,6 +12,6 @@
     "commitMessage": "Release exoflex ${version}",
     "tagAnnotation": "Exoflex ${version}",
     "tagName": "exoflex-${version}",
-    "changelog": "git log --pretty=format:\"* %s (%h)\" ${latestTag}...HEAD | grep -F \"exoflex:\""
+    "changelog": "git log --pretty=format:\"* %s (%h)\" ${latestTag}...HEAD | grep -F \"(exoflex):\""
   }
 }
