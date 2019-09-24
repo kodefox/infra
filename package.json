@@ -5,7 +5,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "yarn test"
+      "pre-push": "./scripts/pre-push.sh"
     }
   }
 }
