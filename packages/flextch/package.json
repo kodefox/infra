@@ -1,0 +1,11 @@
+{
+  "name": "flextch",
+  "version": "0.0.0",
+  "description": "KodeFox fetching library for REST API",
+  "main": "index.js",
+  "author": "KodeFox",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.6.3"
+  }
+}
