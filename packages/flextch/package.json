@@ -23,6 +23,7 @@
     "eslint-plugin-react": "^7.14.3",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
+    "react": "^16.9.0",
     "ts-jest": "^24.1.0",
     "typescript": "^3.6.3"
   },
@@ -31,5 +32,8 @@
     "singleQuote": true,
     "trailingComma": "all",
     "arrowParens": "always"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
   }
 }
