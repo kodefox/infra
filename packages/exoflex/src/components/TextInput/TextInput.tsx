@@ -9,8 +9,8 @@ import Text from '../Text';
 import TextInputOutlined from './TextInputOutlined';
 import { TextInputProps } from './types';
 
-function TextInput(props: TextInputProps, ref: Ref<NativeTextInput>) {
-  let {
+function TextInput(
+  {
     autoCorrect = false,
     disabled = false,
     editable = true,
@@ -19,41 +19,43 @@ function TextInput(props: TextInputProps, ref: Ref<NativeTextInput>) {
     onBlur,
     onChangeText,
     ...otherProps
-  } = props;
+  }: TextInputProps,
+  ref: Ref<NativeTextInput>,
+) {
   let [isFocused, setIsFocused] = useState(false);
 
   let _onFocus = useCallback(
     (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
-      if (props.disabled || !props.editable) {
+      if (disabled || !editable) {
         return;
       }
 
       setIsFocused(true);
       onFocus && onFocus(e);
     },
-    [onFocus],
+    [onFocus, disabled, editable],
   );
   let _onBlur = useCallback(
     (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
-      if (props.disabled || !props.editable) {
+      if (disabled || !editable) {
         return;
       }
 
       setIsFocused(false);
       onBlur && onBlur(e);
     },
-    [onBlur],
+    [onBlur, disabled, editable],
   );
 
   let _onChangeText = useCallback(
     (text: string) => {
-      if (props.disabled || !props.editable) {
+      if (disabled || !editable) {
         return;
       }
 
       onChangeText && onChangeText(text);
     },
-    [onChangeText],
+    [onChangeText, disabled, editable],
   );
 
   return mode === 'outlined' ? (
