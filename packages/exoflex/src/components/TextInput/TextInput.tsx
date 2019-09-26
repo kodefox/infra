@@ -1,11 +1,15 @@
-import React, { useState, useCallback } from 'react';
-import { NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
+import React, { useState, useCallback, forwardRef, Ref } from 'react';
+import {
+  NativeSyntheticEvent,
+  TextInputFocusEventData,
+  TextInput as NativeTextInput,
+} from 'react-native';
 
 import Text from '../Text';
 import TextInputOutlined from './TextInputOutlined';
 import { TextInputProps } from './types';
 
-function TextInput(props: TextInputProps) {
+function TextInput(props: TextInputProps, ref: Ref<NativeTextInput>) {
   let { mode, onFocus, onBlur, onChangeText, ...otherProps } = props;
   let [isFocused, setIsFocused] = useState(false);
 
@@ -46,6 +50,7 @@ function TextInput(props: TextInputProps) {
   return mode === 'outlined' ? (
     <TextInputOutlined
       {...otherProps}
+      ref={ref}
       onFocus={_onFocus}
       onBlur={_onBlur}
       onChangeText={_onChangeText}
@@ -60,7 +65,7 @@ TextInput.defaultProps = {
   autoCorrect: false,
   disabled: false,
   editable: true,
-  mode: 'outlined',
+  mode: 'outlined' as 'outlined',
 };
 
-export default TextInput;
+export default forwardRef(TextInput);

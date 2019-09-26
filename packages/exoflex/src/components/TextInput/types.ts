@@ -3,7 +3,9 @@ import {
   StyleProp,
   ViewStyle,
   TextStyle,
+  TextInput,
 } from 'react-native';
+import { Ref } from 'react';
 
 type ModeProps = 'flat' | 'outlined';
 
@@ -21,12 +23,12 @@ export type TextInputProps = BaseTextInputProps & {
    * When set to true, will disable all interaction with the text input
    * Defaults to 'false'.
    */
-  disabled: boolean;
+  disabled?: boolean;
   /**
    * Determine how the text input is displayed.
    * Defaults to 'outlined'.
    */
-  mode: ModeProps;
+  mode?: ModeProps;
   /**
    * Additional style passed to the container of the TextInput
    */
@@ -42,5 +44,6 @@ export type TextInputProps = BaseTextInputProps & {
 };
 
 export type ChildTextInputProps = Omit<TextInputProps, 'mode'> & {
+  ref?: Ref<TextInput>;
   isFocused: boolean;
 };
