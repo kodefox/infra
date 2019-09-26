@@ -10,7 +10,16 @@ import TextInputOutlined from './TextInputOutlined';
 import { TextInputProps } from './types';
 
 function TextInput(props: TextInputProps, ref: Ref<NativeTextInput>) {
-  let { mode, onFocus, onBlur, onChangeText, ...otherProps } = props;
+  let {
+    autoCorrect = false,
+    disabled = false,
+    editable = true,
+    mode = 'outlined',
+    onFocus,
+    onBlur,
+    onChangeText,
+    ...otherProps
+  } = props;
   let [isFocused, setIsFocused] = useState(false);
 
   let _onFocus = useCallback(
@@ -51,6 +60,9 @@ function TextInput(props: TextInputProps, ref: Ref<NativeTextInput>) {
     <TextInputOutlined
       {...otherProps}
       ref={ref}
+      autoCorrect={autoCorrect}
+      disabled={disabled}
+      editable={editable}
       onFocus={_onFocus}
       onBlur={_onBlur}
       onChangeText={_onChangeText}
@@ -60,12 +72,5 @@ function TextInput(props: TextInputProps, ref: Ref<NativeTextInput>) {
     <Text>Flat mode is not yet supported.</Text>
   );
 }
-
-TextInput.defaultProps = {
-  autoCorrect: false,
-  disabled: false,
-  editable: true,
-  mode: 'outlined' as 'outlined',
-};
 
 export default forwardRef(TextInput);

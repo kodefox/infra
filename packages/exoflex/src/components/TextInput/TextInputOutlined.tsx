@@ -25,7 +25,6 @@ function TextInputOutlined(
   ref: Ref<TextInput>,
 ) {
   let { colors, roundness } = useTheme();
-  console.log('disabled', disabled);
 
   let isError = errorMessage != null;
 
