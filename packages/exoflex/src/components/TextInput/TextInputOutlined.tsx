@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef, Ref } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import { IconButton } from 'react-native-paper';
 
@@ -9,18 +9,21 @@ import { ChildTextInputProps } from './types';
 
 export type Props = ChildTextInputProps;
 
-function TextInputOutlined({
-  errorMessage,
-  label,
-  disabled,
-  editable,
-  isFocused,
-  style,
-  containerStyle,
-  labelStyle,
-  errorMessageStyle,
-  ...otherProps
-}: Props) {
+function TextInputOutlined(
+  {
+    errorMessage,
+    label,
+    disabled,
+    editable,
+    isFocused,
+    style,
+    containerStyle,
+    labelStyle,
+    errorMessageStyle,
+    ...otherProps
+  }: Props,
+  ref: Ref<TextInput>,
+) {
   let { colors, roundness } = useTheme();
 
   let isError = errorMessage != null;
@@ -45,6 +48,7 @@ function TextInputOutlined({
     >
       <Label style={labelStyle}>{label}</Label>
       <TextInput
+        ref={ref}
         editable={!disabled && editable}
         underlineColorAndroid="transparent"
         // TODO: This color should use colors.text with 0.6 opacity.
@@ -97,4 +101,4 @@ let styles = StyleSheet.create({
   },
 });
 
-export default TextInputOutlined;
+export default forwardRef(TextInputOutlined);
