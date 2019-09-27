@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "devDependencies": {
+    "husky": "^3.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "./scripts/pre-push.sh"
+    }
+  }
+}
