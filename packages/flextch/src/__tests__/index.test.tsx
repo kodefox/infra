@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import { createClient, ClientContextProvider } from 'react-fetching-library';
 import fetchMock from 'fetch-mock';
@@ -10,6 +10,13 @@ const Result = iots.strict({ hello: iots.string });
 const Results = iots.array(Result);
 const Payload = iots.strict({ result: Results });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const wrapper: FunctionComponent<any> = ({
+  children,
+}: {
+  children: ReactNode;
+}) => <ClientContextProvider client={client}>{children}</ClientContextProvider>;
+
 describe('useQuery', () => {
   afterEach(() => {
     fetchMock.restore();
@@ -18,9 +25,6 @@ describe('useQuery', () => {
   it('should error fetching server', async () => {
     fetchMock.mock('/test', 404);
 
-    const wrapper: FunctionComponent = ({ children }) => (
-      <ClientContextProvider client={client}>{children}</ClientContextProvider>
-    );
     let { result, waitForNextUpdate } = renderHook(
       () =>
         useQuery(
@@ -50,9 +54,6 @@ describe('useQuery', () => {
       ],
     });
 
-    const wrapper: FunctionComponent = ({ children }) => (
-      <ClientContextProvider client={client}>{children}</ClientContextProvider>
-    );
     let { result, waitForNextUpdate } = renderHook(
       () =>
         useQuery(
@@ -82,9 +83,6 @@ describe('useQuery', () => {
       ],
     });
 
-    const wrapper: FunctionComponent = ({ children }) => (
-      <ClientContextProvider client={client}>{children}</ClientContextProvider>
-    );
     let { result, waitForNextUpdate } = renderHook(
       () =>
         useQuery(

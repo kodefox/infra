@@ -5,7 +5,7 @@ import * as iots from 'io-ts';
 // Re-export all io-ts modules
 export { iots };
 
-export function useQuery<T = any, R = {}>(
+export function useQuery<T, R = {}>(
   action: Action<R>,
   validator: iots.Type<T>,
   initFetch?: boolean,
