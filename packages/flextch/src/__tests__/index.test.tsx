@@ -134,4 +134,34 @@ describe('useQuery', () => {
       result: [{ hello: 'world' }],
     });
   });
+
+  it('should success fetching fixtures', async () => {
+    const Data = iots.strict({ name: iots.string, value: iots.string });
+    const Payload = iots.strict({ data: Data });
+
+    const FIXTURES = { data: { name: 'KodeFox', value: 'This is fixtures' } };
+
+    let { result } = renderHook(
+      () =>
+        useQuery(
+          {
+            method: 'GET',
+            endpoint: '/test',
+          },
+          Payload,
+          false,
+          FIXTURES,
+        ),
+      { wrapper },
+    );
+
+    // NOTE: For coverage
+    result.current.abort();
+    result.current.query();
+    result.current.reset();
+
+    expect(result.current.loading).toBeFalsy();
+    expect(result.current.error).toBeFalsy();
+    expect(result.current.payload).toEqual(FIXTURES);
+  });
 });

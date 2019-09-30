@@ -9,7 +9,22 @@ export function useQuery<T, R = {}>(
   action: Action<R>,
   validator: iots.Type<T>,
   initFetch?: boolean,
+  fixtures?: T,
 ) {
+  if (fixtures) {
+    let result = {
+      status: 200,
+      error: false,
+      errorObject: {},
+      payload: fixtures,
+      abort: () => {},
+      loading: false,
+      query: () => {},
+      reset: () => {},
+    };
+    return result;
+  }
+
   let result = useRFLQuery<T>(action, initFetch);
   let { payload, error } = result;
   if (error) {
