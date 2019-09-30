@@ -74,6 +74,35 @@ describe('useQuery', () => {
     expect(result.current.error).toBeTruthy();
   });
 
+  it('should error when server return wrong schema', async () => {
+    fetchMock.mock('/test', {
+      data: [
+        {
+          name: 'kodefox',
+        },
+      ],
+    });
+
+    let { result, waitForNextUpdate } = renderHook(
+      () =>
+        useQuery(
+          {
+            method: 'GET',
+            endpoint: '/test',
+          },
+          Payload,
+        ),
+      { wrapper },
+    );
+
+    expect(result.current.loading).toBeTruthy();
+
+    await waitForNextUpdate();
+
+    expect(result.current.loading).toBeFalsy();
+    expect(result.current.error).toBeTruthy();
+  });
+
   it('should success fetching', async () => {
     fetchMock.get('/test', {
       result: [
