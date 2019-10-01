@@ -3,6 +3,7 @@ import {
   Calendar as WixCalendar,
   CalendarMarkingProps,
   CalendarBaseProps,
+  CalendarTheme,
 } from 'react-native-calendars';
 
 import resolveTextStyle from '../../helpers/resolveTextStyle';
@@ -17,14 +18,13 @@ export default function Calendar(props: Props) {
     [fonts],
   );
 
-  let calendarTheme = {};
+  let calendarTheme: Partial<CalendarTheme> = {};
   if (resolvedTextStyle) {
     let { fontFamily, fontSize } = resolvedTextStyle;
     calendarTheme = {
       textDayFontFamily: fontFamily,
       textMonthFontFamily: fontFamily,
       textDayHeaderFontFamily: fontFamily,
-      textTodayFontFamily: fontFamily,
       textDayFontSize: fontSize,
       textMonthFontSize: fontSize,
       textDayHeaderFontSize: fontSize,
