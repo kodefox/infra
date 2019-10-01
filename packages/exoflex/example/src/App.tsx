@@ -89,7 +89,6 @@ export default function App() {
                 '2019-10-16': {
                   selected: true,
                   marked: true,
-                  selectedColor: 'blue',
                 },
                 '2019-10-17': { marked: true },
                 '2019-10-18': {

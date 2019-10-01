@@ -9,16 +9,18 @@ import {
 import resolveTextStyle from '../../helpers/resolveTextStyle';
 import useTheme from '../../helpers/useTheme';
 
-type Props = CalendarMarkingProps & CalendarBaseProps;
+type Props = CalendarMarkingProps & CalendarBaseProps & { textPreset?: string };
 
 export default function Calendar(props: Props) {
-  let { fonts } = useTheme();
+  let { fonts, colors } = useTheme();
+
+  let { theme, textPreset = 'default', ...otherProps } = props;
   let resolvedTextStyle = useMemo(
-    () => resolveTextStyle(fonts || {}, 'default', '400', 'normal'),
+    () => resolveTextStyle(fonts || {}, textPreset, '400', 'normal'),
     [fonts],
   );
 
-  let calendarTheme: Partial<CalendarTheme> = {};
+  let calendarTheme: Partial<CalendarTheme> = { ...theme };
   if (resolvedTextStyle) {
     let { fontFamily, fontSize } = resolvedTextStyle;
     calendarTheme = {
@@ -28,8 +30,11 @@ export default function Calendar(props: Props) {
       textDayFontSize: fontSize,
       textMonthFontSize: fontSize,
       textDayHeaderFontSize: fontSize,
+      todayTextColor: colors.primary,
+      selectedDayBackgroundColor: colors.primary,
+      ...theme,
     };
   }
 
-  return <WixCalendar {...props} theme={calendarTheme} />;
+  return <WixCalendar {...otherProps} theme={calendarTheme} />;
 }
