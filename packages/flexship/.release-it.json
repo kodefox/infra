@@ -12,6 +12,6 @@
     "commitMessage": "Release flexship ${version}",
     "tagAnnotation": "Flexship ${version}",
     "tagName": "flexship-${version}",
-    "changelog": "git log --pretty=format:\"* %s (%h)\" ${latestTag}...HEAD | grep -F \"flexship:\""
+    "changelog": "git log --pretty=format:\"* %s (%h)\" ${latestTag}...HEAD | grep -F \"(flexship):\""
   }
 }
