@@ -9,6 +9,7 @@ export { DefaultTheme } from './constants/themes';
 export {
   ActivityIndicator,
   Button,
+  Calendar,
   Checkbox,
   Chip,
   Collapsible,

@@ -18,6 +18,7 @@ import {
   Drawer,
   TextInput,
   IconButton,
+  Calendar,
 } from 'exoflex';
 import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 
@@ -81,6 +82,24 @@ export default function App() {
                 Hello!
               </Text>
             </Collapsible>
+            <Text weight="bold">Below is Default Calendar:</Text>
+            <Calendar
+              // Collection of dates that have to be marked. Default = {}
+              markedDates={{
+                '2019-10-16': {
+                  selected: true,
+                  marked: true,
+                  selectedColor: 'blue',
+                },
+                '2019-10-17': { marked: true },
+                '2019-10-18': {
+                  marked: true,
+                  dotColor: 'red',
+                  activeOpacity: 0,
+                },
+                '2019-10-19': { disabled: true, disableTouchEvent: true },
+              }}
+            />
             <Slider values={[3, 9]} />
             <TouchableOpacity onPress={() => drawer.current.openDrawer()}>
               <Text>Open drawer</Text>

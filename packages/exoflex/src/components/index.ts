@@ -16,3 +16,4 @@ export { default as Toast } from './Toast';
 export { default as ToastContainer } from './ToastContainer';
 
 export { Drawer };
+export { Calendar } from './Calendar';
