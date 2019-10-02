@@ -19,10 +19,7 @@ function useQuery<T>(
 ): UseQueryResponse<T> {
   let { payload, ...queryResult } = useLibraryQuery(action, option.initFetch);
   //loading
-  if (queryResult.loading) {
-    return { ...queryResult, loading: true };
-  }
-  if (queryResult.error) {
+  if (queryResult.loading || queryResult.error) {
     return { ...queryResult };
   }
   let decodedPayload = option.schema.decode(payload);
