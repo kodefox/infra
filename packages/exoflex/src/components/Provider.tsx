@@ -8,23 +8,37 @@ import useLoadFont from '../helpers/useLoadFont';
 import { ThemeContext } from '../helpers/useTheme';
 import { BuiltInFonts } from '../constants/fonts';
 import { DefaultTheme } from '../constants/themes';
-import { Theme, ThemeShape } from '../types';
+import { Theme, ThemeShape, FontSource } from '../types';
 
 type Props = {
   children: ReactNode;
   theme?: ThemeShape;
+  /**
+   * Record of fonts to load.
+   * Defaults to the Rubik font families.
+   */
+  fonts?: Record<string, FontSource>;
+  /**
+   * Set to true to skip the font loading.
+   * Defaults to false.
+   */
   skipFontLoading?: boolean;
+  /**
+   * Component rendered during the font loading.
+   * Only relevant when `skipFontLoading` is false and using Expo.
+   */
   LoadingPlaceholder?: ComponentType<{ theme: Theme }>;
 };
 
 function Provider({
   theme = {},
   children,
+  fonts = BuiltInFonts,
   skipFontLoading = false,
   LoadingPlaceholder = DefaultLoadingPlaceholder,
   ...otherProps
 }: Props) {
-  let isFontLoaded = useLoadFont(BuiltInFonts, skipFontLoading);
+  let isFontLoaded = useLoadFont(fonts, skipFontLoading);
 
   let mergedTheme = useMemo(() => deepmerge(DefaultTheme, theme), [
     theme,
