@@ -10,7 +10,7 @@ The default theme use "Rubik" font family.
 | `children`                                                                |                                    `string`                                     |             | String to display.                                          |
 | `preset`                                                                  |                                    `string`                                     | `'default'` | A preset of font to use when determining the font style.    |
 | `weight`                                                                  | `'300' \| '400' \| '500' \| '700' \| 'light' \| 'normal' \| 'medium' \| 'bold'` |   `'400'`   | Set the font weight of the text.                            |
-| `fontStyle`                                                               |                              `'normal' \| 'bold'`                               | `'normal'`  | Set the font style of the text.                             |
+| `fontStyle`                                                               |                             `'normal' \| 'italic'`                              | `'normal'`  | Set the font style of the text.                             |
 | [TextProps](https://facebook.github.io/react-native/docs/text.html#props) |                                                                                 |             | Additional text props will be spread to the Text component. |
 
 Notes:
