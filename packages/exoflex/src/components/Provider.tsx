@@ -4,7 +4,7 @@ import deepmerge from 'deepmerge';
 
 import DefaultLoadingPlaceholder from './LoadingPlaceholder';
 import ToastContainer from './ToastContainer';
-import useLoadFont from '../helpers/useLoadFont';
+import useLoadFonts from '../helpers/useLoadFonts';
 import { ThemeContext } from '../helpers/useTheme';
 import { BuiltInFonts } from '../constants/fonts';
 import { DefaultTheme } from '../constants/themes';
@@ -15,17 +15,18 @@ type Props = {
   theme?: ThemeShape;
   /**
    * Record of fonts to load.
+   * Will be loaded only when `expo-font` module is available.
    * Defaults to the Rubik font families.
    */
   fonts?: Record<string, FontSource>;
   /**
-   * Set to true to skip the font loading.
+   * Set to true to skip the fonts loading.
    * Defaults to false.
    */
-  skipFontLoading?: boolean;
+  skipFontsLoading?: boolean;
   /**
-   * Component rendered during the font loading.
-   * Only relevant when `skipFontLoading` is false and using Expo.
+   * Component rendered during the fonts loading.
+   * Only relevant when `skipFontsLoading` is false.
    */
   LoadingPlaceholder?: ComponentType<{ theme: Theme }>;
 };
@@ -34,11 +35,11 @@ function Provider({
   theme = {},
   children,
   fonts = BuiltInFonts,
-  skipFontLoading = false,
+  skipFontsLoading = false,
   LoadingPlaceholder = DefaultLoadingPlaceholder,
   ...otherProps
 }: Props) {
-  let isFontLoaded = useLoadFont(fonts, skipFontLoading);
+  let isFontLoaded = useLoadFonts(fonts, skipFontsLoading);
 
   let mergedTheme = useMemo(() => deepmerge(DefaultTheme, theme), [
     theme,
