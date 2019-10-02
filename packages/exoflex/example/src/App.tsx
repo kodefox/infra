@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   StyleSheet,
   ScrollView,
-  ActivityIndicator,
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
 import { loadAsync } from 'expo-font';
 import {
+  ActivityIndicator,
   Text,
   Provider,
   DefaultTheme,
@@ -19,6 +19,7 @@ import {
   Toast,
   Drawer,
   TextInput,
+  IconButton,
 } from 'exoflex';
 import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 
@@ -108,6 +109,8 @@ export default function App() {
               onPress={(newCheckValue: boolean) => setCheckbox(newCheckValue)}
               disabled
             />
+            <IconButton icon="camera" />
+            <IconButton icon="settings" onPress={() => {}} color="red" />
             <Button
               preset="primary"
               onPress={() => alert('Primary Button pressed')}
