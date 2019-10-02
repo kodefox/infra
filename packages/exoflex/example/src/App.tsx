@@ -1,17 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   StyleSheet,
   ScrollView,
-  ActivityIndicator,
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import { loadAsync } from 'expo-font';
 import {
   Text,
   Provider,
   DefaultTheme,
-  BuiltInFonts,
   Slider,
   Collapsible,
   Button,
@@ -25,21 +22,10 @@ import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 import drawerImage from '../assets/drawer_header.png';
 
 export default function App() {
-  let [isFontLoaded, setFontLoaded] = useState(false);
   let [visible, setVisible] = useState(false);
   let [checked, setCheckbox] = useState(false);
 
   let drawer = useRef<DrawerLayout>(null);
-
-  useEffect(() => {
-    loadAsync(BuiltInFonts).then(() => {
-      setFontLoaded(true);
-    });
-  }, []);
-
-  if (!isFontLoaded) {
-    return <ActivityIndicator />;
-  }
 
   let renderDrawer = () => (
     <Drawer.Section

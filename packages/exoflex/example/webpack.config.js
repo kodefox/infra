@@ -34,6 +34,7 @@ module.exports = async function(env, argv) {
   config.resolve.alias['expo-constants'] = path.resolve(
     './node_modules/expo-constants',
   );
+  config.resolve.alias['expo-font'] = path.resolve('./node_modules/expo-font');
   config.resolve.alias['react-native-web/dist/exports'] = path.resolve(
     './node_modules/react-native-web/dist/exports',
   );

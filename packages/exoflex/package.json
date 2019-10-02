@@ -22,7 +22,8 @@
   "peerDependencies": {
     "react": "^16.8.0",
     "react-native": "^0.59.0",
-    "react-native-svg": ">=9.3.3"
+    "react-native-svg": ">=9.3.3",
+    "expo-font": "*"
   },
   "dependencies": {
     "deepmerge": "^4.0.0",

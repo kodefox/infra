@@ -62,3 +62,5 @@ export type Colors = {
   placeholder: string;
   backdrop: string;
 };
+
+export type FontSource = string | number;
