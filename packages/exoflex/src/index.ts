@@ -13,6 +13,7 @@ export {
   Chip,
   Collapsible,
   Drawer,
+  IconButton,
   Provider,
   RadioButton,
   Slider,
