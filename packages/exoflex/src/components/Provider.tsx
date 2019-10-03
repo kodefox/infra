@@ -51,7 +51,7 @@ function Provider({
 
   return (
     <ThemeContext.Provider value={mergedTheme}>
-      <PaperProvider theme={theme} {...otherProps}>
+      <PaperProvider theme={mergedTheme} {...otherProps}>
         {children}
         <ToastContainer />
       </PaperProvider>
