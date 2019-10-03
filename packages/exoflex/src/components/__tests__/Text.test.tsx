@@ -5,7 +5,6 @@ import { render as renderWeb } from '@testing-library/react';
 
 import Provider from '../Provider';
 import Text from '../Text';
-import { DefaultTheme } from '../../constants/themes';
 
 describe('Text', () => {
   it('should render text when not wrapped with provider', () => {
@@ -31,7 +30,7 @@ describe('Text', () => {
    */
   it('should render text when wrapped with provider on the web', () => {
     let App = () => (
-      <Provider theme={DefaultTheme}>
+      <Provider skipFontsLoading>
         <Text>Foobar 3000</Text>
       </Provider>
     );
@@ -44,7 +43,7 @@ describe('Text', () => {
 
   it('should render text when wrapped with provider', () => {
     let App = () => (
-      <Provider theme={DefaultTheme}>
+      <Provider skipFontsLoading>
         <Text>Foobar 3000</Text>
       </Provider>
     );
