@@ -24,6 +24,25 @@ import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 
 import drawerImage from '../assets/drawer_header.png';
 
+const createDate = (increaseDays: number = 0) => {
+  let date = new Date();
+  let result = date.setDate(date.getDate() + increaseDays);
+  return new Date(result).toISOString().split('T')[0];
+};
+const MARKED_DATES = {
+  [createDate()]: {
+    selected: true,
+    marked: true,
+  },
+  [createDate(1)]: { marked: true },
+  [createDate(2)]: {
+    marked: true,
+    dotColor: 'red',
+    activeOpacity: 0,
+  },
+  [createDate(3)]: { disabled: true, disableTouchEvent: true },
+};
+
 export default function App() {
   let [visible, setVisible] = useState(false);
   let [checked, setCheckbox] = useState(false);
@@ -85,19 +104,7 @@ export default function App() {
             <Text weight="bold">Below is Default Calendar:</Text>
             <Calendar
               // Collection of dates that have to be marked. Default = {}
-              markedDates={{
-                '2019-10-16': {
-                  selected: true,
-                  marked: true,
-                },
-                '2019-10-17': { marked: true },
-                '2019-10-18': {
-                  marked: true,
-                  dotColor: 'red',
-                  activeOpacity: 0,
-                },
-                '2019-10-19': { disabled: true, disableTouchEvent: true },
-              }}
+              markedDates={MARKED_DATES}
             />
             <Slider values={[3, 9]} />
             <TouchableOpacity onPress={() => drawer.current.openDrawer()}>
