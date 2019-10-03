@@ -17,11 +17,10 @@ function findFixtures(
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function generateResponseFromFixture(body: any): Response {
-  let blob = new Blob([JSON.stringify(body)], {
-    type: 'application/json',
-  });
-  let init = { status: 200, statusText: 'OK' };
-  return new Response(blob, init);
+  let headers = new Headers();
+  headers.append('Content-Type', 'json');
+  let init = { status: 200, statusText: 'OK', headers };
+  return new Response(JSON.stringify(body), init);
 }
 
 export { findFixtures, generateResponseFromFixture };
