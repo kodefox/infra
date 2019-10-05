@@ -15,7 +15,7 @@ module.exports = {
   },
   modulePathIgnorePatterns: ['<rootDir>/lib/'],
   transformIgnorePatterns: [
-    'node_modules/(?!(react-native|react-native-paper|react-native-safe-area-view|react-native-animation-hooks|react-native-svg|react-native-calendars)/)',
+    'node_modules/(?!(react-native|react-native-paper|react-native-safe-area-view|react-native-animation-hooks|react-native-svg|react-native-calendars|react-native-multi-slider|react-native-collapsible)/)',
   ],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|css|styl)$':
