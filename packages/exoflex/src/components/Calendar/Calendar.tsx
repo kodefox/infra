@@ -17,7 +17,7 @@ export default function Calendar(props: Props) {
   let { theme, textPreset = 'default', ...otherProps } = props;
   let resolvedTextStyle = useMemo(
     () => resolveTextStyle(fonts || {}, textPreset, '400', 'normal'),
-    [fonts],
+    [fonts, textPreset],
   );
 
   let calendarTheme: Partial<CalendarTheme> = { ...theme };
