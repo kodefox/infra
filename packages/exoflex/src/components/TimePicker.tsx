@@ -196,11 +196,15 @@ export function TimePickerInput(props: TimePickerInputProps) {
           icon="keyboard-arrow-up"
           onPress={pressUp}
           style={styles.arrow}
+          testID={`arrowUp${otherProps.label}`}
+          data-testid={`arrowUp${otherProps.label}`}
         />
         <IconButton
           icon="keyboard-arrow-down"
           onPress={pressDown}
           style={styles.arrow}
+          testID={`arrowDown${otherProps.label}`}
+          data-testid={`arrowDown${otherProps.label}`}
         />
       </View>
     </View>
