@@ -6,7 +6,7 @@ async function readFile(): Promise<string> {
       `${process.env.HOME}/.flexship/token`,
       'utf8',
       (error, data) => {
-        if (error || data === null || data.length === 0) {
+        if (error) {
           resolve('');
         } else {
           resolve(data);

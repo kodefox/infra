@@ -1,6 +1,11 @@
 import inquirer from 'inquirer';
 
-// type Record<K extends string, T> = { [P in K]: T; }
+export function validate(answer: string) {
+  if (answer.trim() === '') {
+    return `Answer can't be empty`;
+  }
+  return true;
+}
 
 export default async function promptCLI<N = string>(
   name: N,
@@ -13,12 +18,7 @@ export default async function promptCLI<N = string>(
       type: type,
       name: name,
       message: message,
-      validate: (answer: string) => {
-        if (answer.trim() === '') {
-          return `${name} can't be empty`;
-        }
-        return true;
-      },
+      validate,
     },
   ]);
   return result;

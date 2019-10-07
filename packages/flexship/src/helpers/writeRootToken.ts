@@ -1,11 +1,14 @@
 import fs from 'fs';
 import spawn from './spawn';
 
-async function readdir(): Promise<boolean> {
+export async function readdir(): Promise<boolean> {
   return new Promise((resolve) => {
     fs.readdir(`${process.env.HOME}/.flexship`, (err) => {
-      if (err) resolve(false);
-      else resolve(true);
+      if (err) {
+        resolve(false);
+      } else {
+        resolve(true);
+      }
     });
   });
 }
@@ -19,8 +22,11 @@ export default async function writeRootToken(githubToken: string) {
       githubToken,
       'utf8',
       function(err) {
-        if (err) throw err;
-        console.log('Write Token Saved!');
+        if (err) {
+          console.error(err.message);
+        } else {
+          console.log('Write Token Saved!');
+        }
       },
     );
   } else {
@@ -35,8 +41,11 @@ export default async function writeRootToken(githubToken: string) {
       githubToken,
       'utf8',
       function(err) {
-        if (err) throw err;
-        console.log('Append Token Saved!');
+        if (err) {
+          console.error(err.message);
+        } else {
+          console.log('Append Token Saved!');
+        }
       },
     );
   }

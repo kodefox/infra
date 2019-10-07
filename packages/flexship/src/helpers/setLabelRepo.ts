@@ -1,6 +1,8 @@
 import fetch from 'node-fetch';
 
-const addedLabels = [
+import { Fetch } from '../type';
+
+export const addedLabels = [
   {
     name: 'approved with minor suggestions',
     color: '006b75',
@@ -31,7 +33,7 @@ const addedLabels = [
   },
 ];
 
-const deletedLabels = [
+export const deletedLabels = [
   'duplicate',
   'good first issue',
   'help wanted',
@@ -41,10 +43,13 @@ const deletedLabels = [
 export default async function setLabelRepo(
   repoName: string,
   githubToken: string,
+  mockFetch?: Fetch,
 ) {
+  let fetchFn = mockFetch || fetch;
+
   let addNewLabel = async () => {
     addedLabels.forEach((label) => {
-      fetch(`https://api.github.com/repos/KodeFox/${repoName}/labels`, {
+      fetchFn(`https://api.github.com/repos/kevinlie19/${repoName}/labels`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,15 +57,13 @@ export default async function setLabelRepo(
           Authorization: `token ${githubToken}`,
         },
         body: JSON.stringify(label),
-      })
-        .then((res) => res.json())
-        .catch((err) => console.error(err));
+      }).catch((err) => console.error(err));
     });
   };
 
   let deleteLabels = async () => {
     deletedLabels.forEach((label) => {
-      fetch(
+      fetchFn(
         `https://api.github.com/repos/KodeFox/${repoName}/labels/${label}`,
         {
           method: 'DELETE',
@@ -72,6 +75,11 @@ export default async function setLabelRepo(
     });
   };
 
-  await addNewLabel();
-  await deleteLabels();
+  try {
+    await addNewLabel();
+    await deleteLabels();
+    console.log('Finished setting labels 👌');
+  } catch (error) {
+    console.error('Something went wrong when setting the label ', error);
+  }
 }

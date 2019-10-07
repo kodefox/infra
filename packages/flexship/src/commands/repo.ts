@@ -1,10 +1,10 @@
-import { createRepoGithub, promptCLI } from '../helpers';
-import getRootToken from '../helpers/getRootToken';
+import { Fetch } from '../type';
+import { createRepoGithub, promptCLI, getRootToken } from '../helpers';
 
 export let command = 'create-repo';
 export let desc = 'Create a new repo in github';
 
-let handlerCreateRepo = async (token: string) => {
+export let handlerCreateRepo = async (token: string, mockFetch?: Fetch) => {
   let parsedRepoName: string = '';
   let parsedGithubToken: string = '';
 
@@ -18,7 +18,7 @@ let handlerCreateRepo = async (token: string) => {
     let { inputGithubToken } = await promptCLI<'inputGithubToken'>(
       'inputGithubToken',
       'input',
-      'What is the github token?',
+      'What is your Github TOKEN?',
     );
     parsedGithubToken = inputGithubToken.trim();
   } else {
@@ -28,17 +28,23 @@ let handlerCreateRepo = async (token: string) => {
   parsedRepoName = repoName.trim();
 
   try {
-    await createRepoGithub(parsedRepoName, parsedGithubToken);
-    console.log('Finished creating new repo 👌');
+    await createRepoGithub(parsedRepoName, parsedGithubToken, mockFetch);
+    console.log('Finished creating a new repo 👌');
   } catch (error) {
     if (error.message === 'Bad credentials') {
-      return handler();
+      throw new Error(error.message);
     }
-    console.log('Something went wrong ', error);
+    throw new Error(error.message);
   }
 };
 
-export let handler = async () => {
+export let handler = async (mockFetch?: Fetch) => {
   let token: string = await getRootToken();
-  await handlerCreateRepo(token);
+  try {
+    await handlerCreateRepo(token, mockFetch);
+  } catch (error) {
+    throw new Error(error);
+  }
 };
+
+export default { handler, handlerCreateRepo };
