@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   View,
   StyleSheet,
@@ -71,18 +71,21 @@ export default function TimePicker(props: Props) {
   return (
     <View style={{ flexDirection: 'row' }}>
       <TimePickerInput
+        format={format}
         label="Hours"
         value={hour}
         onChangeText={changeHour}
         onBlur={checkHour}
       />
       <TimePickerInput
+        format={format}
         label="Minutes"
         value={minute}
         onChangeText={changeMinute}
         onBlur={checkMinute}
       />
       <TimePickerInput
+        format={format}
         label="Seconds"
         value={second}
         onChangeText={changeSecond}
@@ -90,6 +93,7 @@ export default function TimePicker(props: Props) {
       />
       {format === '12' && (
         <TimePickerInput
+          format={format}
           label="Midnight"
           value={midnight}
           onChangeText={changeMidnight}
@@ -101,8 +105,9 @@ export default function TimePicker(props: Props) {
 }
 
 export type TimePickerInputProps = {
-  readonly label: string;
+  readonly label: 'Hours' | 'Minutes' | 'Seconds' | 'Midnight';
   readonly value: string;
+  readonly format: HourFormat;
   readonly onChangeText?: (text: string) => void;
   readonly onBlur?: (
     event: NativeSyntheticEvent<TextInputFocusEventData>,
@@ -111,6 +116,62 @@ export type TimePickerInputProps = {
 
 export function TimePickerInput(props: TimePickerInputProps) {
   let { colors, roundness } = useTheme();
+  let { format, ...otherProps } = props;
+
+  let toggleMidnight = () => {
+    let { value, onChangeText } = otherProps;
+    onChangeText && onChangeText(value === 'am' ? 'pm' : 'am');
+  };
+
+  let pressUp = useCallback(() => {
+    let { label, value, onChangeText } = otherProps;
+    if (label === 'Midnight') {
+      toggleMidnight();
+      return;
+    }
+    let newValue = ~~value + 1;
+    switch (label) {
+      case 'Hours':
+        if (format === '12' && newValue > 12) {
+          newValue = newValue - 12;
+        } else if (format === '24' && newValue > 23) {
+          newValue = newValue - 24;
+        }
+        break;
+      // NOTE: For `minutes` and `seconds`
+      default:
+        if (newValue > 59) {
+          newValue = newValue - 60;
+        }
+        break;
+    }
+    onChangeText && onChangeText(newValue.toString().padStart(2, '0'));
+  }, [otherProps.value]);
+
+  let pressDown = useCallback(() => {
+    let { label, value, onChangeText } = otherProps;
+    if (label === 'Midnight') {
+      toggleMidnight();
+      return;
+    }
+    let newValue = ~~value - 1;
+    switch (label) {
+      case 'Hours':
+        if (format === '12' && newValue < 1) {
+          newValue = newValue + 12;
+        } else if (format === '24' && newValue < 0) {
+          newValue = newValue + 24;
+        }
+        break;
+      // NOTE: For `minutes` and `seconds`
+      default:
+        if (newValue < 0) {
+          newValue = newValue + 60;
+        }
+        break;
+    }
+    onChangeText && onChangeText(newValue.toString().padStart(2, '0'));
+  }, [otherProps.value]);
 
   return (
     <View
@@ -119,7 +180,7 @@ export function TimePickerInput(props: TimePickerInputProps) {
         {
           borderColor: colors.border,
           borderRadius: roundness,
-          marginLeft: props.label === 'Hours' ? 0 : 10,
+          marginLeft: otherProps.label === 'Hours' ? 0 : 10,
         },
       ]}
     >
@@ -128,17 +189,17 @@ export function TimePickerInput(props: TimePickerInputProps) {
         maxLength={2}
         containerStyle={{ borderWidth: 0 }}
         style={{ width: 50 }}
-        {...props}
+        {...otherProps}
       />
       <View style={[styles.arrowWrapper, { borderColor: colors.border }]}>
         <IconButton
           icon="keyboard-arrow-up"
-          onPress={() => {}}
+          onPress={pressUp}
           style={styles.arrow}
         />
         <IconButton
           icon="keyboard-arrow-down"
-          onPress={() => {}}
+          onPress={pressDown}
           style={styles.arrow}
         />
       </View>
