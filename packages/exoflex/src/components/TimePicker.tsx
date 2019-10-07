@@ -16,6 +16,21 @@ import {
   Midnight,
 } from '../helpers/timeChecker';
 
+export function convertTimeToDate(
+  hour: string,
+  minute: string,
+  second: string,
+  midnight?: Midnight,
+): string {
+  let hourBasedOnMidnight = ~~hour;
+  if (midnight === 'pm') {
+    hourBasedOnMidnight = hourBasedOnMidnight + 12;
+  }
+  return new Date(
+    new Date().setHours(hourBasedOnMidnight, ~~minute, ~~second),
+  ).toISOString();
+}
+
 export type Props = {
   readonly format?: HourFormat;
   readonly onChangeTime?: (utcString: string) => void;
@@ -129,21 +144,6 @@ export function TimePickerInput(props: TimePickerInputProps) {
       </View>
     </View>
   );
-}
-
-export function convertTimeToDate(
-  hour: string,
-  minute: string,
-  second: string,
-  midnight?: Midnight,
-): string {
-  let hourBasedOnMidnight = ~~hour;
-  if (midnight === 'pm') {
-    hourBasedOnMidnight = hourBasedOnMidnight + 12;
-  }
-  return new Date(
-    new Date().setHours(hourBasedOnMidnight, ~~minute, ~~second),
-  ).toISOString();
 }
 
 const styles = StyleSheet.create({
