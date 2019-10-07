@@ -7,7 +7,7 @@ import ToastContainer from './ToastContainer';
 import useLoadFonts from '../helpers/useLoadFonts';
 import { ThemeContext } from '../helpers/useTheme';
 import { BuiltInFonts } from '../constants/fonts';
-import { DefaultTheme } from '../constants/themes';
+import { DefaultTheme, SystemFontsTheme } from '../constants/themes';
 import { Theme, ThemeShape, FontSource } from '../types';
 
 type Props = {
@@ -19,6 +19,13 @@ type Props = {
    * Defaults to the Rubik font families.
    */
   fonts?: Record<string, FontSource>;
+  /**
+   * Set to true to use fonts available in the system instead of loading
+   * custom fonts.
+   * Implies `skipFontsLoading` set to true.
+   * Defaults to true.
+   */
+  useSystemFonts?: boolean;
   /**
    * Set to true to skip the fonts loading.
    * Defaults to false.
@@ -34,16 +41,23 @@ type Props = {
 function Provider({
   theme = {},
   children,
+  useSystemFonts = true,
   fonts = BuiltInFonts,
   skipFontsLoading = false,
   LoadingPlaceholder = DefaultLoadingPlaceholder,
   ...otherProps
 }: Props) {
-  let isFontLoaded = useLoadFonts(fonts, skipFontsLoading);
+  let isFontLoaded = useLoadFonts(fonts, useSystemFonts || skipFontsLoading);
 
-  let mergedTheme = useMemo(() => deepmerge(DefaultTheme, theme), [
-    theme,
-  ]) as Theme;
+  let mergedTheme = useMemo(
+    () =>
+      deepmerge.all([
+        DefaultTheme,
+        useSystemFonts ? SystemFontsTheme : {},
+        theme,
+      ]),
+    [theme, useSystemFonts],
+  ) as Theme;
 
   if (!isFontLoaded) {
     return <LoadingPlaceholder theme={mergedTheme} />;

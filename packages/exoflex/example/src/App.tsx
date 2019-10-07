@@ -1,15 +1,14 @@
 import React, { useState, useRef } from 'react';
 import {
+  StatusBar,
   StyleSheet,
   ScrollView,
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
 import {
-  ActivityIndicator,
   Text,
   Provider,
-  DefaultTheme,
   Slider,
   Collapsible,
   Button,
@@ -54,8 +53,8 @@ export default function App() {
   );
 
   return (
-    <Provider theme={DefaultTheme}>
-      <SafeAreaView style={{ flex: 1 }}>
+    <Provider>
+      <SafeAreaView style={styles.root}>
         <DrawerLayout
           ref={drawer}
           // drawerWidth={200}
@@ -183,6 +182,10 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+    paddingTop: StatusBar.currentHeight,
+  },
   container: {
     backgroundColor: '#ffffff',
     alignItems: 'center',
