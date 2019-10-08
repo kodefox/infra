@@ -21,7 +21,7 @@ export default async function createRepoGithub(
   let fetchFn = mockFetch || fetch;
 
   try {
-    let response = await fetchFn('https://api.github.com/user/repos', {
+    let response = await fetchFn('https://api.github.com/orgs/KodeFox/repos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

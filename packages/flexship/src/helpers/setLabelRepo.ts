@@ -49,7 +49,7 @@ export default async function setLabelRepo(
 
   let addNewLabel = async () => {
     addedLabels.forEach((label) => {
-      fetchFn(`https://api.github.com/repos/kevinlie19/${repoName}/labels`, {
+      fetchFn(`https://api.github.com/repos/KodeFox/${repoName}/labels`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
