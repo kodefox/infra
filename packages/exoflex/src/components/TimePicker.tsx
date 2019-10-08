@@ -5,7 +5,8 @@ import {
   NativeSyntheticEvent,
   TextInputFocusEventData,
 } from 'react-native';
-import { TextInput, IconButton } from '../';
+import TextInput from './TextInput/TextInput';
+import IconButton from './IconButton';
 
 import useTheme from '../helpers/useTheme';
 import {
