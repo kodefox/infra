@@ -32,18 +32,19 @@ export let handlerCreateRepo = async (token: string, mockFetch?: Fetch) => {
     console.log('Finished creating a new repo 👌');
   } catch (error) {
     if (error.message === 'Bad credentials') {
+      console.error('Bad credentials, please input the right token');
       throw new Error(error.message);
     }
     throw new Error(error.message);
   }
 };
 
-export let handler = async (mockFetch?: Fetch) => {
+export let handler = async () => {
   let token: string = await getRootToken();
   try {
-    await handlerCreateRepo(token, mockFetch);
+    await handlerCreateRepo(token);
   } catch (error) {
-    throw new Error(error);
+    throw new Error(error.message);
   }
 };
 

@@ -46,8 +46,6 @@ describe('repo', () => {
     } catch (error) {
       expect(error.message).toBe('Error: Bad credentials');
     }
-
-    console.log('1');
   });
 
   it('should catch unexpected error', async () => {
@@ -57,13 +55,10 @@ describe('repo', () => {
     } catch (error) {
       expect(error.message).toBe('Error: Unexpected error');
     }
-
-    console.log('2');
   });
 
   it('should success with mocked token', async () => {
     errorType = 'no error';
     await handler();
-    console.log('3');
   });
 });

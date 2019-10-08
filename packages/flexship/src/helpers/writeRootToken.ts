@@ -21,7 +21,7 @@ export default async function writeRootToken(githubToken: string) {
       `${process.env.HOME}/.flexship/token`,
       githubToken,
       'utf8',
-      function(err) {
+      (err) => {
         if (err) {
           console.error(err.message);
         } else {
@@ -40,7 +40,7 @@ export default async function writeRootToken(githubToken: string) {
       `${process.env.HOME}/.flexship/token`,
       githubToken,
       'utf8',
-      function(err) {
+      (err) => {
         if (err) {
           console.error(err.message);
         } else {

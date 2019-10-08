@@ -10,13 +10,13 @@ const CONSOLE_ERROR_SPY = jest
 
 let readdirSuccess = true;
 let writeFileSuccess = true;
-let appenFileSuccess = true;
+let appendFileSuccess = true;
 
 jest.mock('fs', () => ({
   readdir: jest.fn(
-    (path: PathLike, callback?: (err?: NodeJS.ErrnoException) => void) => {
+    (path: PathLike, callback: (err?: NodeJS.ErrnoException) => void) => {
       let err = new Error('mocked readdir error');
-      callback && readdirSuccess ? callback() : callback(err);
+      readdirSuccess ? callback() : callback(err);
     },
   ),
   writeFile: jest.fn(
@@ -24,10 +24,10 @@ jest.mock('fs', () => ({
       path: PathLike,
       data: any,
       options: WriteFileOptions,
-      callback?: (err?: NodeJS.ErrnoException) => void,
+      callback: (err?: NodeJS.ErrnoException) => void,
     ) => {
       let err = new Error('mocked writeFile error');
-      callback && writeFileSuccess ? callback() : callback(err);
+      writeFileSuccess ? callback() : callback(err);
     },
   ),
   appendFile: jest.fn(
@@ -35,10 +35,10 @@ jest.mock('fs', () => ({
       file: PathLike,
       data: any,
       options: WriteFileOptions,
-      callback?: (err?: NodeJS.ErrnoException) => void,
+      callback: (err?: NodeJS.ErrnoException) => void,
     ) => {
       let err = new Error('mocked appendFile error');
-      callback && appenFileSuccess ? callback() : callback(err);
+      appendFileSuccess ? callback() : callback(err);
     },
   ),
 }));
@@ -52,37 +52,37 @@ describe('writeRootToken', () => {
   it('should called writeRootToken and successfully called readdir function', async () => {
     readdirSuccess = true;
     writeFileSuccess = true;
-    appenFileSuccess = false;
+    appendFileSuccess = false;
     await writeRootToken(MOCK_GITHUB_TOKEN);
   });
   it('should called writeRootToken and failed called readdir function', async () => {
     readdirSuccess = false;
     writeFileSuccess = false;
-    appenFileSuccess = true;
+    appendFileSuccess = true;
     await writeRootToken(MOCK_GITHUB_TOKEN);
   });
   it('should called writeRootToken and successfully called writeFile function', async () => {
     readdirSuccess = true;
     writeFileSuccess = true;
-    appenFileSuccess = false;
+    appendFileSuccess = false;
     await writeRootToken(MOCK_GITHUB_TOKEN);
   });
   it('should called writeRootToken and failed called writeFile function', async () => {
     readdirSuccess = true;
     writeFileSuccess = false;
-    appenFileSuccess = false;
+    appendFileSuccess = false;
     await writeRootToken(MOCK_GITHUB_TOKEN);
   });
   it('should called writeRootToken and successfully called appendFile function', async () => {
     readdirSuccess = false;
     writeFileSuccess = false;
-    appenFileSuccess = true;
+    appendFileSuccess = true;
     await writeRootToken(MOCK_GITHUB_TOKEN);
   });
   it('should called writeRootToken and failed called appendFile function', async () => {
     readdirSuccess = false;
     writeFileSuccess = false;
-    appenFileSuccess = false;
+    appendFileSuccess = false;
     await writeRootToken(MOCK_GITHUB_TOKEN);
   });
 });
