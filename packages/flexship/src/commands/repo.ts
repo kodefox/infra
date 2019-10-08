@@ -4,7 +4,7 @@ import { createRepoGithub, promptCLI, getRootToken } from '../helpers';
 export let command = 'create-repo';
 export let desc = 'Create a new repo in github';
 
-export let handlerCreateRepo = async (token: string, mockFetch?: Fetch) => {
+export let handlerCreateRepo = async (token: string) => {
   let parsedRepoName: string = '';
   let parsedGithubToken: string = '';
 
@@ -28,7 +28,7 @@ export let handlerCreateRepo = async (token: string, mockFetch?: Fetch) => {
   parsedRepoName = repoName.trim();
 
   try {
-    await createRepoGithub(parsedRepoName, parsedGithubToken, mockFetch);
+    await createRepoGithub(parsedRepoName, parsedGithubToken);
     console.log('Finished creating a new repo 👌');
   } catch (error) {
     if (error.message === 'Bad credentials') {

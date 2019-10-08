@@ -44,7 +44,7 @@ describe('repo', () => {
     try {
       await handler();
     } catch (error) {
-      expect(error.message).toBe('Error: Bad credentials');
+      expect(error.message).toBe('Bad credentials');
     }
   });
 
@@ -53,7 +53,7 @@ describe('repo', () => {
     try {
       await handler();
     } catch (error) {
-      expect(error.message).toBe('Error: Unexpected error');
+      expect(error.message).toBe('Unexpected error');
     }
   });
 
