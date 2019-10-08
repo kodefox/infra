@@ -73,21 +73,21 @@ export default function TimePicker(props: Props) {
     <View style={{ flexDirection: 'row' }}>
       <TimePickerInput
         format={format}
-        label="Hours"
+        label="Hrs"
         value={hour}
         onChangeText={changeHour}
         onBlur={checkHour}
       />
       <TimePickerInput
         format={format}
-        label="Minutes"
+        label="Mins"
         value={minute}
         onChangeText={changeMinute}
         onBlur={checkMinute}
       />
       <TimePickerInput
         format={format}
-        label="Seconds"
+        label="Secs"
         value={second}
         onChangeText={changeSecond}
         onBlur={checkSecond}
@@ -95,7 +95,7 @@ export default function TimePicker(props: Props) {
       {format === '12' && (
         <TimePickerInput
           format={format}
-          label="Midnight"
+          label="Mid"
           value={midnight}
           onChangeText={changeMidnight}
           onBlur={checkMidnight}
@@ -106,7 +106,7 @@ export default function TimePicker(props: Props) {
 }
 
 export type TimePickerInputProps = {
-  readonly label: 'Hours' | 'Minutes' | 'Seconds' | 'Midnight';
+  readonly label: 'Hrs' | 'Mins' | 'Secs' | 'Mid';
   readonly value: string;
   readonly format: HourFormat;
   readonly onChangeText?: (text: string) => void;
@@ -126,13 +126,13 @@ export function TimePickerInput(props: TimePickerInputProps) {
 
   let pressUp = useCallback(() => {
     let { label, value, onChangeText } = otherProps;
-    if (label === 'Midnight') {
+    if (label === 'Mid') {
       toggleMidnight();
       return;
     }
     let newValue = ~~value + 1;
     switch (label) {
-      case 'Hours':
+      case 'Hrs':
         if (format === '12' && newValue > 12) {
           newValue = newValue - 12;
         } else if (format === '24' && newValue > 23) {
@@ -151,13 +151,13 @@ export function TimePickerInput(props: TimePickerInputProps) {
 
   let pressDown = useCallback(() => {
     let { label, value, onChangeText } = otherProps;
-    if (label === 'Midnight') {
+    if (label === 'Mid') {
       toggleMidnight();
       return;
     }
     let newValue = ~~value - 1;
     switch (label) {
-      case 'Hours':
+      case 'Hrs':
         if (format === '12' && newValue < 1) {
           newValue = newValue + 12;
         } else if (format === '24' && newValue < 0) {
@@ -181,7 +181,7 @@ export function TimePickerInput(props: TimePickerInputProps) {
         {
           borderColor: colors.border,
           borderRadius: roundness,
-          marginLeft: otherProps.label === 'Hours' ? 0 : 10,
+          marginLeft: otherProps.label === 'Hrs' ? 0 : 10,
         },
       ]}
     >
@@ -189,7 +189,10 @@ export function TimePickerInput(props: TimePickerInputProps) {
         mode="outlined"
         maxLength={2}
         containerStyle={{ borderWidth: 0 }}
-        style={{ width: 50 }}
+        style={{ width: 20 }}
+        // NOTE: We are using `phone-pad` because either `numeric`, `number-pad`, or `decimal-pad`
+        // is changing the TextInput into <input type="number" />
+        keyboardType={otherProps.label === 'Mid' ? 'default' : 'phone-pad'}
         {...otherProps}
       />
       <View style={[styles.arrowWrapper, { borderColor: colors.border }]}>
