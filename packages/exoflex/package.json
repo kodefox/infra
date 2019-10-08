@@ -28,6 +28,7 @@
   "dependencies": {
     "deepmerge": "^4.0.0",
     "react-native-animation-hooks": "^1.0.1",
+    "react-native-calendars": "^1.212.0",
     "react-native-collapsible": "^1.5.1",
     "react-native-multi-slider": "npm:@ptomasroos/react-native-multi-slider",
     "react-native-paper": "^2.16.0"
@@ -39,6 +40,7 @@
     "@types/jest-in-case": "^1.0.1",
     "@types/react": "^16.9.1",
     "@types/react-native": "^0.60.4",
+    "@types/react-native-calendars": "^1.20.7",
     "@types/react-test-renderer": "^16.9.0",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
