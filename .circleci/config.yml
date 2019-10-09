@@ -34,7 +34,7 @@ jobs:
                 if [ ${orbname} != "naviflex" ]; then
                   cd packages/${orbname}
                   yarn install --frozen-lockfile
-                  yarn test
+                  yarn test -w 1
                   cd ../..
                 else
                   echo "no need to test this project"
