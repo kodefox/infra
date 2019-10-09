@@ -134,15 +134,16 @@ function TimePickerArrow(props: TimePickerArrowProps) {
   );
 }
 
-// NOTE: React.memo needed to boost performance on mobile web
-const MemoizedArrowUp = React.memo(function ArrowUp() {
+function ArrowUp() {
   return <IconButton icon="keyboard-arrow-up" style={styles.arrow} />;
-});
+}
+function ArrowDown() {
+  return <IconButton icon="keyboard-arrow-down" style={styles.arrow} />;
+}
 
 // NOTE: React.memo needed to boost performance on mobile web
-const MemoizedArrowDown = React.memo(function ArrowDown() {
-  return <IconButton icon="keyboard-arrow-down" style={styles.arrow} />;
-});
+const MemoizedArrowUp = React.memo(ArrowUp);
+const MemoizedArrowDown = React.memo(ArrowDown);
 
 const styles = StyleSheet.create({
   container: {
