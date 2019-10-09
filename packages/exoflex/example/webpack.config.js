@@ -44,6 +44,9 @@ module.exports = async function(env, argv) {
   config.resolve.alias['@expo/vector-icons'] = path.resolve(
     './node_modules/@expo/vector-icons',
   );
+  config.resolve.alias['react-native-calendars'] = path.resolve(
+    './node_modules/react-native-calendars',
+  );
 
   // Add rule to transform exoflex files before loading it.
   config.module.rules = [
