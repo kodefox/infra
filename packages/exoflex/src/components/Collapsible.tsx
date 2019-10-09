@@ -6,6 +6,7 @@ import {
   StyleProp,
   ViewStyle,
   TextStyle,
+  Platform,
 } from 'react-native';
 import CollapsibleBase from 'react-native-collapsible';
 import { IconButton } from 'react-native-paper';
@@ -99,19 +100,26 @@ function Collapsible({
 
 let styles = StyleSheet.create({
   root: {
+    width: '100%',
     borderWidth: 1,
   },
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 16,
+    ...Platform.select({
+      web: { paddingHorizontal: 16 },
+      default: { padding: 16 },
+    }),
   },
   title: {
+    flex: 1,
     marginRight: 24,
   },
   icon: {
-    position: 'absolute',
-    right: 0,
+    ...Platform.select({
+      web: {},
+      default: { position: 'absolute', right: 0, alignSelf: 'center' },
+    }),
   },
   contentContainer: {
     padding: 16,
