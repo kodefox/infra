@@ -124,18 +124,10 @@ function TimePickerArrow(props: TimePickerArrowProps) {
 
   return (
     <View style={[styles.arrowWrapper, { borderColor: colors.border }]}>
-      <TouchableOpacity
-        onPress={onPressUp}
-        testID={`arrowUp${label}`}
-        data-testid={`arrowUp${label}`}
-      >
+      <TouchableOpacity onPress={onPressUp} data-testid={`arrowUp${label}`}>
         <MemoizedArrowUp />
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={onPressDown}
-        testID={`arrowDown${label}`}
-        data-testid={`arrowDown${label}`}
-      >
+      <TouchableOpacity onPress={onPressDown} data-testid={`arrowDown${label}`}>
         <MemoizedArrowDown />
       </TouchableOpacity>
     </View>
