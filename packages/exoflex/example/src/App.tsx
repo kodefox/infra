@@ -185,13 +185,7 @@ export default function App() {
             />
             <IconButton icon="camera" />
             <IconButton icon="settings" onPress={() => {}} color="red" />
-            <TimePicker
-              onChangeTime={(date) => {
-                console.log('>>local date', new Date(date));
-                console.log('>>utc date', date);
-              }}
-            />
-            {/* <TimePicker format="24" /> */}
+            <TimePicker />
             <Button
               preset="primary"
               onPress={() => alert('Primary Button pressed')}
