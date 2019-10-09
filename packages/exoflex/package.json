@@ -30,6 +30,7 @@
     "react-native-animation-hooks": "^1.0.1",
     "react-native-calendars": "^1.212.0",
     "react-native-collapsible": "^1.5.1",
+    "react-native-modal-datetime-picker": "^7.6.0",
     "react-native-multi-slider": "npm:@ptomasroos/react-native-multi-slider",
     "react-native-paper": "^2.16.0"
   },
