@@ -9,22 +9,8 @@ import {
   HourFormat,
   Midnight,
 } from '../../helpers/timeChecker';
+import convertTimeToDate from '../../helpers/convertTimeToDate';
 import { TimePickerProps } from './types';
-
-export function convertTimeToDate(
-  hour: string,
-  minute: string,
-  second: string,
-  midnight?: Midnight,
-): string {
-  let hourBasedOnMidnight = ~~hour;
-  if (midnight === 'pm') {
-    hourBasedOnMidnight = hourBasedOnMidnight + 12;
-  }
-  return new Date(
-    new Date().setHours(hourBasedOnMidnight, ~~minute, ~~second),
-  ).toISOString();
-}
 
 export default function TimePicker(props: TimePickerProps) {
   let { format = '12' as HourFormat, onChangeTime } = props;
