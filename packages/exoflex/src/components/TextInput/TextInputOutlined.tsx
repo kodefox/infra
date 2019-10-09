@@ -26,7 +26,7 @@ function TextInputOutlined(
 ) {
   let { colors, roundness } = useTheme();
 
-  let isError = errorMessage != null;
+  let isError = !!errorMessage;
 
   return (
     <View
