@@ -1,107 +1,88 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { View } from 'react-native';
-import TimePickerInput from './TimePickerInput';
+import React, { useState, useMemo } from 'react';
+import { TouchableOpacity, StyleSheet } from 'react-native';
+import DateTimePicker from 'react-native-modal-datetime-picker';
+import TextInput from '../TextInput/TextInput';
 
-import {
-  checkHourFormat,
-  checkMinuteFormat,
-  checkSecondFormat,
-  HourFormat,
-  Midnight,
-} from '../../helpers/timeChecker';
+import { HourFormat } from '../../helpers/timeChecker';
+import useTheme from '../../helpers/useTheme';
+import { TimePickerProps } from './types';
 
-export function convertTimeToDate(
-  hour: string,
-  minute: string,
-  second: string,
-  midnight?: Midnight,
-): string {
-  let hourBasedOnMidnight = ~~hour;
-  if (midnight === 'pm') {
-    hourBasedOnMidnight = hourBasedOnMidnight + 12;
-  }
-  return new Date(
-    new Date().setHours(hourBasedOnMidnight, ~~minute, ~~second),
-  ).toISOString();
-}
+export default function TimePicker(props: TimePickerProps) {
+  let { format = '12' as HourFormat, onChangeTime, style } = props;
+  let { colors } = useTheme();
 
-export type Props = {
-  readonly format?: HourFormat;
-  readonly onChangeTime?: (utcString: string) => void;
-};
+  let [visible, setVisible] = useState(false);
+  let [date, setDate] = useState('');
 
-export default function TimePicker(props: Props) {
-  let { format = '12' as HourFormat, onChangeTime } = props;
+  let is24Hour = format === '24';
 
-  let [hour, setHour] = useState('12');
-  let [minute, setMinute] = useState('00');
-  let [second, setSecond] = useState('00');
-  let [midnight, setMidnight] = useState<Midnight>('am');
-
-  useEffect(() => {
-    let utcString = convertTimeToDate(hour, minute, second, midnight);
-    onChangeTime && onChangeTime(utcString);
-  }, [hour, minute, second, midnight]);
-
-  let changeHour = useCallback((newHour: string) => setHour(newHour), []);
-  let changeMinute = useCallback(
-    (newMinute: string) => setMinute(newMinute),
-    [],
-  );
-  let changeSecond = useCallback(
-    (newSecond: string) => setSecond(newSecond),
-    [],
-  );
-  let changeMidnight = useCallback(
-    (newMidnight: string) => setMidnight(newMidnight as Midnight),
-    [],
-  );
-
-  let checkHour = () => {
-    !checkHourFormat(hour, format) && setHour('12');
+  let toggleModal = () => setVisible(!visible);
+  let changeDate = (newDate: Date) => {
+    setDate(newDate.toISOString());
+    onChangeTime && onChangeTime(date);
+    toggleModal();
   };
-  let checkMinute = () => {
-    !checkMinuteFormat(minute) && setMinute('00');
-  };
-  let checkSecond = () => {
-    !checkSecondFormat(second) && setSecond('00');
-  };
-  let checkMidnight = () => {
-    !(midnight === 'am' || midnight === 'pm') && setMidnight('am');
-  };
+  let displayTime = useMemo(() => {
+    if (date === '') {
+      return date;
+    }
+    let d = new Date(date);
+    let hour = d
+      .getHours()
+      .toString()
+      .padStart(2, '0');
+    let mins = d
+      .getMinutes()
+      .toString()
+      .padStart(2, '0');
+    let secs = d
+      .getSeconds()
+      .toString()
+      .padStart(2, '0');
+    if (format === '12') {
+      let newHour = ~~hour - 12;
+      let midnight = ~~hour > 12 ? 'AM' : 'PM';
+      return `${newHour}:${mins}:${secs} ${midnight}`;
+    }
+    return `${hour}:${mins}:${secs}`;
+  }, [date]);
 
   return (
-    <View style={{ flexDirection: 'row' }}>
-      <TimePickerInput
-        format={format}
-        label="Hrs"
-        value={hour}
-        onChangeText={changeHour}
-        onBlur={checkHour}
-      />
-      <TimePickerInput
-        format={format}
-        label="Mins"
-        value={minute}
-        onChangeText={changeMinute}
-        onBlur={checkMinute}
-      />
-      <TimePickerInput
-        format={format}
-        label="Secs"
-        value={second}
-        onChangeText={changeSecond}
-        onBlur={checkSecond}
-      />
-      {format === '12' && (
-        <TimePickerInput
-          format={format}
-          label="Mid"
-          value={midnight}
-          onChangeText={changeMidnight}
-          onBlur={checkMidnight}
+    <>
+      <TouchableOpacity activeOpacity={0.7} onPress={toggleModal}>
+        <TextInput
+          disabled
+          mode="outlined"
+          label="Time"
+          value={displayTime}
+          placeholder="Select the time"
+          pointerEvents="none"
+          containerStyle={[
+            styles.bgColor,
+            {
+              borderColor: colors.border,
+            },
+          ]}
+          style={[styles.bgColor, style]}
         />
-      )}
-    </View>
+      </TouchableOpacity>
+      <DateTimePicker
+        titleIOS="Select the time"
+        // NOTE: Android only
+        is24Hour={is24Hour}
+        // NOTE: For determining 12h or 24h in iOS
+        locale={is24Hour ? 'id-ID' : 'en-US'}
+        isVisible={visible}
+        mode="time"
+        onConfirm={changeDate}
+        onCancel={toggleModal}
+      />
+    </>
   );
 }
+
+const styles = StyleSheet.create({
+  bgColor: {
+    backgroundColor: 'white',
+  },
+});
