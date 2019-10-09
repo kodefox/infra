@@ -4,7 +4,7 @@ import {
   fireEvent as fireEventWeb,
   cleanup,
 } from '@testing-library/react';
-import { render, fireEvent } from 'react-native-testing-library';
+import { render } from 'react-native-testing-library';
 import { withPlatform } from 'jest-with-platform';
 import cases from 'jest-in-case';
 import TimePicker, { convertTimeToDate } from '../TimePicker/TimePicker';
@@ -53,11 +53,7 @@ describe('TimePicker', () => {
         expect(getByDisplayValue('am')).toBeTruthy();
       });
     },
-    [
-      { name: 'on web', platform: 'web' },
-      { name: 'on ios', platform: 'ios' },
-      { name: 'on android', platform: 'android' },
-    ],
+    [{ name: 'on web', platform: 'web' }],
   );
 
   cases(
@@ -74,11 +70,7 @@ describe('TimePicker', () => {
         expect(queryByDisplayValue('am')).toBeFalsy();
       });
     },
-    [
-      { name: 'on web', platform: 'web' },
-      { name: 'on ios', platform: 'ios' },
-      { name: 'on android', platform: 'android' },
-    ],
+    [{ name: 'on web', platform: 'web' }],
   );
 
   cases(
@@ -105,28 +97,10 @@ describe('TimePicker', () => {
           expect(getAllByDisplayValue('59').length).toBe(2);
           expect(getByDisplayValue('pm')).toBeTruthy();
           expect(mockOnChangeTime).toHaveBeenCalled();
-        } else {
-          let { getByDisplayValue, getAllByDisplayValue } = render(
-            <TimePicker onChangeTime={mockOnChangeTime} />,
-          );
-          fireEvent.changeText(getByDisplayValue('12'), '10');
-          let minsSecs = getAllByDisplayValue('00');
-          minsSecs.forEach((element) => {
-            fireEvent.changeText(element, '59');
-          });
-          fireEvent.changeText(getByDisplayValue('am'), 'pm');
-          expect(getByDisplayValue('10')).toBeTruthy();
-          expect(getAllByDisplayValue('59').length).toBe(2);
-          expect(getByDisplayValue('pm')).toBeTruthy();
-          expect(mockOnChangeTime).toHaveBeenCalled();
         }
       });
     },
-    [
-      { name: 'on web', platform: 'web' },
-      { name: 'on ios', platform: 'ios' },
-      { name: 'on android', platform: 'android' },
-    ],
+    [{ name: 'on web', platform: 'web' }],
   );
 
   cases(
@@ -158,95 +132,5 @@ describe('TimePicker', () => {
       });
     },
     [{ name: 'on web', platform: 'web' }],
-  );
-
-  cases(
-    'should increase time and midnight when arrow up pressed',
-    (opts) => {
-      let platform = opts.platform as Platforms;
-      withPlatform(platform, () => {
-        if (platform === 'web') {
-          let {
-            getByTestId,
-            getByDisplayValue,
-            getAllByDisplayValue,
-          } = renderWeb(<TimePicker />);
-          fireEventWeb.mouseDown(getByTestId('arrowUpHours'));
-          fireEventWeb.mouseUp(getByTestId('arrowUpHours'));
-
-          fireEventWeb.mouseDown(getByTestId('arrowUpMinutes'));
-          fireEventWeb.mouseUp(getByTestId('arrowUpMinutes'));
-
-          fireEventWeb.mouseDown(getByTestId('arrowUpSeconds'));
-          fireEventWeb.mouseUp(getByTestId('arrowUpSeconds'));
-
-          fireEventWeb.mouseDown(getByTestId('arrowUpMidnight'));
-          fireEventWeb.mouseUp(getByTestId('arrowUpMidnight'));
-          expect(getAllByDisplayValue('01').length).toBe(3);
-          expect(getByDisplayValue('pm')).toBeTruthy();
-        } else {
-          let { getByTestId, getByDisplayValue, getAllByDisplayValue } = render(
-            <TimePicker />,
-          );
-          fireEvent.press(getByTestId('arrowUpHours'));
-          fireEvent.press(getByTestId('arrowUpMinutes'));
-          fireEvent.press(getByTestId('arrowUpSeconds'));
-          fireEvent.press(getByTestId('arrowUpMidnight'));
-          expect(getAllByDisplayValue('01').length).toBe(3);
-          expect(getByDisplayValue('pm')).toBeTruthy();
-        }
-      });
-    },
-    [
-      { name: 'on web', platform: 'web' },
-      { name: 'on ios', platform: 'ios' },
-      { name: 'on android', platform: 'android' },
-    ],
-  );
-
-  cases(
-    'should decrease time and midnight when arrow down pressed',
-    (opts) => {
-      let platform = opts.platform as Platforms;
-      withPlatform(platform, () => {
-        if (platform === 'web') {
-          let {
-            getByTestId,
-            getByDisplayValue,
-            getAllByDisplayValue,
-          } = renderWeb(<TimePicker />);
-          fireEventWeb.mouseDown(getByTestId('arrowDownHours'));
-          fireEventWeb.mouseUp(getByTestId('arrowDownHours'));
-
-          fireEventWeb.mouseDown(getByTestId('arrowDownMinutes'));
-          fireEventWeb.mouseUp(getByTestId('arrowDownMinutes'));
-
-          fireEventWeb.mouseDown(getByTestId('arrowDownSeconds'));
-          fireEventWeb.mouseUp(getByTestId('arrowDownSeconds'));
-
-          fireEventWeb.mouseDown(getByTestId('arrowDownMidnight'));
-          fireEventWeb.mouseUp(getByTestId('arrowDownMidnight'));
-          expect(getByDisplayValue('11')).toBeTruthy();
-          expect(getAllByDisplayValue('59').length).toBe(2);
-          expect(getByDisplayValue('pm')).toBeTruthy();
-        } else {
-          let { getByTestId, getByDisplayValue, getAllByDisplayValue } = render(
-            <TimePicker />,
-          );
-          fireEvent.press(getByTestId('arrowDownHours'));
-          fireEvent.press(getByTestId('arrowDownMinutes'));
-          fireEvent.press(getByTestId('arrowDownSeconds'));
-          fireEvent.press(getByTestId('arrowDownMidnight'));
-          expect(getByDisplayValue('11')).toBeTruthy();
-          expect(getAllByDisplayValue('59').length).toBe(2);
-          expect(getByDisplayValue('pm')).toBeTruthy();
-        }
-      });
-    },
-    [
-      { name: 'on web', platform: 'web' },
-      { name: 'on ios', platform: 'ios' },
-      { name: 'on android', platform: 'android' },
-    ],
   );
 });
