@@ -7,7 +7,7 @@ import {
 import { render, fireEvent } from 'react-native-testing-library';
 import { withPlatform } from 'jest-with-platform';
 import cases from 'jest-in-case';
-import TimePicker, { convertTimeToDate } from '../TimePicker';
+import TimePicker, { convertTimeToDate } from '../TimePicker/TimePicker';
 
 describe('convertTimeToDate', () => {
   it('should return valid date from 24h format', () => {
