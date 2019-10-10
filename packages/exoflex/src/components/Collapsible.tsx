@@ -6,6 +6,7 @@ import {
   StyleProp,
   ViewStyle,
   TextStyle,
+  Platform,
 } from 'react-native';
 import CollapsibleBase from 'react-native-collapsible';
 import { IconButton } from 'react-native-paper';
@@ -21,6 +22,8 @@ type Props = {
   titleStyle?: StyleProp<TextStyle>;
   contentContainerStyle?: StyleProp<ViewStyle>;
   iconStyle?: StyleProp<ViewStyle>;
+  renderIconLeft?: (animatedValue: Animated.Value) => ReactNode;
+  renderIconRight?: (animatedValue: Animated.Value) => ReactNode;
 };
 
 let AnimatedIconButton: typeof IconButton = Animated.createAnimatedComponent(
@@ -33,6 +36,8 @@ function Collapsible({
   titleStyle,
   contentContainerStyle,
   iconStyle,
+  renderIconLeft,
+  renderIconRight,
   ...otherProps
 }: Props) {
   let { colors } = useTheme();
@@ -42,7 +47,7 @@ function Collapsible({
     setCollapsed((c) => !c);
   }, []);
 
-  let arrowRotation = useAnimation({
+  let animatedValue = useAnimation({
     type: 'timing',
     initialValue: -0.5,
     toValue: isCollapsed ? -0.5 : 0.5,
@@ -65,28 +70,31 @@ function Collapsible({
         onPress={toggleCollapsible}
         style={styles.titleContainer}
       >
-        <Text numberOfLines={1} style={[styles.title, titleStyle]}>
-          {title}
-        </Text>
-        <AnimatedIconButton
-          icon="chevron-right"
-          style={
-            [
-              styles.icon,
-              {
-                transform: [
-                  {
-                    rotate: arrowRotation.interpolate({
-                      inputRange: [-0.5, 0.5],
-                      outputRange: ['-90deg', '90deg'],
-                    }),
-                  },
-                ],
-              },
-              iconStyle,
-            ] as StyleProp<ViewStyle>
-          }
-        />
+        {!!renderIconLeft ? renderIconLeft(animatedValue) : null}
+        <Text style={[styles.title, titleStyle]}>{title}</Text>
+        {renderIconRight === null ? null : !!renderIconRight ? (
+          renderIconRight(animatedValue)
+        ) : (
+          <AnimatedIconButton
+            icon="chevron-right"
+            style={
+              [
+                styles.icon,
+                {
+                  transform: [
+                    {
+                      rotate: animatedValue.interpolate({
+                        inputRange: [-0.5, 0.5],
+                        outputRange: ['-90deg', '90deg'],
+                      }),
+                    },
+                  ],
+                },
+                iconStyle,
+              ] as StyleProp<ViewStyle>
+            }
+          />
+        )}
       </TouchableOpacity>
       <CollapsibleBase
         collapsed={isCollapsed}
@@ -104,14 +112,19 @@ let styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 16,
+    paddingHorizontal: 16,
+    height: 48,
   },
   title: {
     marginRight: 24,
+    flexWrap: 'wrap',
   },
   icon: {
-    position: 'absolute',
-    right: 0,
+    margin: 0,
+    ...Platform.select({
+      web: {},
+      default: { position: 'absolute', right: 5, alignSelf: 'center' },
+    }),
   },
   contentContainer: {
     padding: 16,
