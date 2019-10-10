@@ -85,7 +85,7 @@ function Collapsible({
                     {
                       rotate: animatedValue.interpolate({
                         inputRange: [-0.5, 0.5],
-                        outputRange: ['-90deg', '90deg'],
+                        outputRange: ['90deg', '-90deg'],
                       }),
                     },
                   ],
