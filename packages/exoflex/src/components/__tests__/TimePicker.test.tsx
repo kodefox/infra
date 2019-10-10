@@ -9,6 +9,8 @@ import { withPlatform } from 'jest-with-platform';
 import cases from 'jest-in-case';
 import TimePicker from '../TimePicker/TimePicker.web';
 
+const date = '2019-10-10T11:03:11.044Z';
+
 type Platforms = 'web' | 'ios' | 'android';
 
 describe('TimePicker', () => {
@@ -23,8 +25,8 @@ describe('TimePicker', () => {
       withPlatform(platform, () => {
         let { getByDisplayValue, getAllByDisplayValue } =
           platform === 'web'
-            ? renderWeb(<TimePicker />)
-            : render(<TimePicker />);
+            ? renderWeb(<TimePicker date={date} />)
+            : render(<TimePicker date={date} />);
         expect(getByDisplayValue('12')).toBeTruthy();
         expect(getAllByDisplayValue('00').length).toBe(2);
         expect(getByDisplayValue('am')).toBeTruthy();
@@ -40,8 +42,8 @@ describe('TimePicker', () => {
       withPlatform(platform, () => {
         let { getByDisplayValue, getAllByDisplayValue, queryByDisplayValue } =
           platform === 'web'
-            ? renderWeb(<TimePicker format="24" />)
-            : render(<TimePicker format="24" />);
+            ? renderWeb(<TimePicker date={date} format="24" />)
+            : render(<TimePicker date={date} format="24" />);
         expect(getByDisplayValue('12')).toBeTruthy();
         expect(getAllByDisplayValue('00').length).toBe(2);
         expect(queryByDisplayValue('am')).toBeFalsy();
@@ -58,7 +60,7 @@ describe('TimePicker', () => {
       withPlatform(platform, () => {
         if (platform === 'web') {
           let { getByDisplayValue, getAllByDisplayValue } = renderWeb(
-            <TimePicker onChangeTime={mockOnChangeTime} />,
+            <TimePicker date={date} onChangeTime={mockOnChangeTime} />,
           );
           fireEventWeb.change(getByDisplayValue('12'), {
             target: { value: '10' },
@@ -87,7 +89,7 @@ describe('TimePicker', () => {
       withPlatform(platform, () => {
         if (platform === 'web') {
           let { getByDisplayValue, getAllByDisplayValue } = renderWeb(
-            <TimePicker />,
+            <TimePicker date={date} />,
           );
           fireEventWeb.change(getByDisplayValue('12'), {
             target: { value: '36' },
