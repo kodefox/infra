@@ -185,7 +185,7 @@ export default function App() {
             />
             <IconButton icon="camera" />
             <IconButton icon="settings" onPress={() => {}} color="red" />
-            <TimePicker />
+            <TimePicker date={new Date().toISOString()} />
             <Button
               preset="primary"
               onPress={() => alert('Primary Button pressed')}
