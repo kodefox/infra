@@ -1,7 +1,6 @@
 # Text
 
 Text with preconfigured font family when used inside the Provider.
-The default theme use "Rubik" font family.
 
 ### Props
 
