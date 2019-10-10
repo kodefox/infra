@@ -1,4 +1,4 @@
-import React, { useState, ReactNode, useCallback } from 'react';
+import React, { useState, ReactNode, useCallback, useEffect } from 'react';
 import {
   Animated,
   TouchableOpacity,
@@ -18,6 +18,7 @@ import useTheme from '../helpers/useTheme';
 type Props = {
   title: string;
   children: ReactNode;
+  isCollapsed?: boolean;
   style?: StyleProp<ViewStyle>;
   titleStyle?: StyleProp<TextStyle>;
   contentContainerStyle?: StyleProp<ViewStyle>;
@@ -41,7 +42,11 @@ function Collapsible({
   ...otherProps
 }: Props) {
   let { colors } = useTheme();
-  let [isCollapsed, setCollapsed] = useState(true);
+  let [isCollapsed, setCollapsed] = useState(!!otherProps.isCollapsed);
+
+  useEffect(() => {
+    setCollapsed(!!otherProps.isCollapsed);
+  }, [otherProps.isCollapsed]);
 
   let toggleCollapsible = useCallback(() => {
     setCollapsed((c) => !c);
