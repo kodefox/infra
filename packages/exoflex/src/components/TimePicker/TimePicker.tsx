@@ -8,11 +8,16 @@ import useTheme from '../../helpers/useTheme';
 import { TimePickerProps } from './types';
 
 export default function TimePicker(props: TimePickerProps) {
-  let { format = '12' as HourFormat, onChangeTime, style } = props;
+  let {
+    format = '12' as HourFormat,
+    date: initialDate,
+    onChangeTime,
+    style,
+  } = props;
   let { colors } = useTheme();
 
   let [visible, setVisible] = useState(false);
-  let [date, setDate] = useState('');
+  let [date, setDate] = useState(initialDate);
 
   let is24Hour = format === '24';
 
@@ -23,9 +28,6 @@ export default function TimePicker(props: TimePickerProps) {
     toggleModal();
   };
   let displayTime = useMemo(() => {
-    if (date === '') {
-      return date;
-    }
     let d = new Date(date);
     let hour = d
       .getHours()
@@ -67,6 +69,7 @@ export default function TimePicker(props: TimePickerProps) {
         />
       </TouchableOpacity>
       <DateTimePicker
+        date={new Date(initialDate)}
         titleIOS="Select the time"
         // NOTE: Android only
         is24Hour={is24Hour}
