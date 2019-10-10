@@ -33,7 +33,7 @@ jobs:
                 echo "testing ${orbname}"
                 if [ ${orbname} != "naviflex" ]; then
                   cd packages/${orbname}
-                  yarn install
+                  yarn install --frozen-lockfile
                   yarn test
                   cd ../..
                 else
