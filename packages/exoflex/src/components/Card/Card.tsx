@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { View, ViewProps } from 'react-native';
 
+import CardActions from './CardActions';
 import CardContent from './CardContent';
 import CardCover from './CardCover';
 import CardTitle from './CardTitle';
@@ -12,7 +13,7 @@ type Props = ViewProps & {
   rounded?: boolean;
 };
 
-function Card({ style = {}, rounded = false, ...otherProps }: Props) {
+function Card({ style, rounded = false, ...otherProps }: Props) {
   let { colors, roundness } = useTheme();
 
   return (
@@ -33,6 +34,7 @@ function Card({ style = {}, rounded = false, ...otherProps }: Props) {
   );
 }
 
+Card.Actions = CardActions;
 Card.Content = CardContent;
 Card.Cover = CardCover;
 Card.Title = CardTitle;
