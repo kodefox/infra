@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, StyleSheet, StyleProp, TextStyle } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
 
 import Label from '../Label';
 import Text from '../Text';
@@ -9,6 +15,7 @@ type Props = {
   titleStyle?: StyleProp<TextStyle>;
   subtitle?: string;
   subtitleStyle?: StyleProp<TextStyle>;
+  style?: StyleProp<ViewStyle>;
 };
 
 function CardTitle({
@@ -16,14 +23,13 @@ function CardTitle({
   title,
   subtitle,
   subtitleStyle,
+  style,
   ...otherProps
 }: Props) {
   return (
-    <View {...otherProps} style={[styles.root]}>
+    <View {...otherProps} style={[styles.root, style]}>
       <View style={styles.titles}>
-        {!!title && (
-          <BukanTitle style={[styles.title, titleStyle]}>{title}</BukanTitle>
-        )}
+        {!!title && <Title style={titleStyle}>{title}</Title>}
         {!!subtitle && (
           <Label style={[styles.subtitle, subtitleStyle]}>{subtitle}</Label>
         )}
@@ -32,12 +38,15 @@ function CardTitle({
   );
 }
 
-type BukanTitleProps = {
+CardTitle.displayName = 'Card.Title';
+
+type TitleProps = {
   children: string;
   style?: StyleProp<TextStyle>;
 };
 
-let BukanTitle = ({ ...otherProps }: BukanTitleProps) => (
+// TODO: Discuss Typograhpy with designer
+let Title = ({ ...otherProps }: TitleProps) => (
   <Text weight="500" numberOfLines={1} {...otherProps} />
 );
 
@@ -48,13 +57,7 @@ let styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 12,
   },
-  titles: {
-    // flex: 1,
-    // flexDirection: 'column',
-    // justifyContent: 'center',
-    // height: 50,
-  },
-  title: {},
+  titles: {},
   subtitle: { marginTop: 2 },
 });
 
