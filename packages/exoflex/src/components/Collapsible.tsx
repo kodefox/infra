@@ -27,6 +27,7 @@ type Props = {
   iconStyle?: StyleProp<ViewStyle>;
   renderIconLeft?: null | ((animatedValue: Animated.Value) => ReactNode);
   renderIconRight?: null | ((animatedValue: Animated.Value) => ReactNode);
+  disabled?: boolean;
 };
 
 let AnimatedIconButton: typeof IconButton = Animated.createAnimatedComponent(
@@ -42,6 +43,7 @@ function Collapsible({
   iconStyle,
   renderIconLeft,
   renderIconRight,
+  disabled,
   ...otherProps
 }: Props) {
   let { colors } = useTheme();
@@ -77,6 +79,7 @@ function Collapsible({
         activeOpacity={0.9}
         onPress={toggleCollapsible}
         style={[styles.titleContainer, titleContainerStyle]}
+        disabled={disabled}
       >
         {!!renderIconLeft ? renderIconLeft(animatedValue) : null}
         <Text style={[styles.title, titleStyle]}>{title}</Text>
