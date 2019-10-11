@@ -21,6 +21,7 @@ type Props = {
   isCollapsed?: boolean;
   style?: StyleProp<ViewStyle>;
   titleStyle?: StyleProp<TextStyle>;
+  titleContainerStyle?: StyleProp<ViewStyle>;
   contentContainerStyle?: StyleProp<ViewStyle>;
   iconStyle?: StyleProp<ViewStyle>;
   renderIconLeft?: (animatedValue: Animated.Value) => ReactNode;
@@ -35,6 +36,7 @@ function Collapsible({
   title,
   style,
   titleStyle,
+  titleContainerStyle,
   contentContainerStyle,
   iconStyle,
   renderIconLeft,
@@ -73,7 +75,7 @@ function Collapsible({
       <TouchableOpacity
         activeOpacity={0.9}
         onPress={toggleCollapsible}
-        style={styles.titleContainer}
+        style={[styles.titleContainer, titleContainerStyle]}
       >
         {!!renderIconLeft ? renderIconLeft(animatedValue) : null}
         <Text style={[styles.title, titleStyle]}>{title}</Text>
