@@ -7,7 +7,7 @@ import {
   isMinutesFormatValid,
   isSecondsFormatValid,
   HourFormat,
-  Midnight,
+  Meridiem,
 } from '../../helpers/timeChecker';
 import convertTimeToDate from '../../helpers/convertTimeToDate';
 import { TimePickerProps } from './types';
@@ -18,7 +18,7 @@ export default function TimePicker(props: TimePickerProps) {
   let [hour, setHour] = useState('12');
   let [minute, setMinute] = useState('00');
   let [second, setSecond] = useState('00');
-  let [midnight, setMidnight] = useState<Midnight>('AM');
+  let [meridiem, setMeridiem] = useState<Meridiem>('AM');
 
   useEffect(() => {
     let utcString = convertTimeToDate(
@@ -26,10 +26,10 @@ export default function TimePicker(props: TimePickerProps) {
       hour,
       minute,
       second,
-      midnight,
+      meridiem,
     );
     onChangeTime && onChangeTime(utcString);
-  }, [hour, minute, second, midnight]);
+  }, [hour, minute, second, meridiem]);
 
   let changeHour = useCallback((newHour: string) => setHour(newHour), []);
   let changeMinute = useCallback(
@@ -40,8 +40,8 @@ export default function TimePicker(props: TimePickerProps) {
     (newSecond: string) => setSecond(newSecond),
     [],
   );
-  let changeMidnight = useCallback(
-    (newMidnight: string) => setMidnight(newMidnight as Midnight),
+  let changeMeridiem = useCallback(
+    (newMeridiem: string) => setMeridiem(newMeridiem as Meridiem),
     [],
   );
 
@@ -54,8 +54,8 @@ export default function TimePicker(props: TimePickerProps) {
   let checkSecond = () => {
     !isSecondsFormatValid(second) && setSecond('00');
   };
-  let checkMidnight = () => {
-    !(midnight === 'AM' || midnight === 'PM') && setMidnight('AM');
+  let checkMeridiem = () => {
+    !(meridiem === 'AM' || meridiem === 'PM') && setMeridiem('AM');
   };
 
   return (
@@ -85,9 +85,9 @@ export default function TimePicker(props: TimePickerProps) {
         <TimePickerInput
           format={format}
           label="Mid"
-          value={midnight}
-          onChangeText={changeMidnight}
-          onBlur={checkMidnight}
+          value={meridiem}
+          onChangeText={changeMeridiem}
+          onBlur={checkMeridiem}
         />
       )}
     </View>

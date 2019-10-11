@@ -16,7 +16,7 @@ describe('TimePickerInput', () => {
   });
 
   cases(
-    'should increase time and midnight when arrow up pressed',
+    'should increase time and meridiem when arrow up pressed',
     (opts) => {
       let platform = opts.platform as Platforms;
       withPlatform(platform, () => {
@@ -25,7 +25,7 @@ describe('TimePickerInput', () => {
           let mockHours24 = '23';
           let mockMinutes = '00';
           let mockSeconds = '59';
-          let mockMidnight = 'AM';
+          let mockMeridiem = 'AM';
           let { getByTestId, getAllByTestId } = renderWeb(
             <>
               <TimePickerInput
@@ -54,9 +54,9 @@ describe('TimePickerInput', () => {
               />
               <TimePickerInput
                 label="Mid"
-                value={mockMidnight}
+                value={mockMeridiem}
                 format="12"
-                onChangeText={(mid) => (mockMidnight = mid)}
+                onChangeText={(mid) => (mockMeridiem = mid)}
               />
             </>,
           );
@@ -77,7 +77,7 @@ describe('TimePickerInput', () => {
           expect(mockHours).toBe('01');
           expect(mockMinutes).toBe('01');
           expect(mockSeconds).toBe('00');
-          expect(mockMidnight).toBe('PM');
+          expect(mockMeridiem).toBe('PM');
         }
       });
     },
@@ -85,7 +85,7 @@ describe('TimePickerInput', () => {
   );
 
   cases(
-    'should increase time and midnight when arrow down pressed',
+    'should increase time and meridiem when arrow down pressed',
     (opts) => {
       let platform = opts.platform as Platforms;
       withPlatform(platform, () => {
@@ -93,7 +93,7 @@ describe('TimePickerInput', () => {
           let mockHours = '12';
           let mockMinutes = '00';
           let mockSeconds = '20';
-          let mockMidnight = 'AM';
+          let mockMeridiem = 'AM';
           let { getByTestId } = renderWeb(
             <>
               <TimePickerInput
@@ -116,9 +116,9 @@ describe('TimePickerInput', () => {
               />
               <TimePickerInput
                 label="Mid"
-                value={mockMidnight}
+                value={mockMeridiem}
                 format="12"
-                onChangeText={(mid) => (mockMidnight = mid)}
+                onChangeText={(mid) => (mockMeridiem = mid)}
               />
             </>,
           );
@@ -136,7 +136,7 @@ describe('TimePickerInput', () => {
           expect(mockHours).toBe('11');
           expect(mockMinutes).toBe('59');
           expect(mockSeconds).toBe('19');
-          expect(mockMidnight).toBe('PM');
+          expect(mockMeridiem).toBe('PM');
         }
       });
     },

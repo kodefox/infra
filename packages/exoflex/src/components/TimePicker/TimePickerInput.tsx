@@ -26,7 +26,7 @@ export default function TimePickerInput(props: TimePickerInputProps) {
   let { colors, roundness } = useTheme();
   let { format, ...otherProps } = props;
 
-  let toggleMidnight = () => {
+  let toggleMeridiem = () => {
     let { value, onChangeText } = otherProps;
     onChangeText && onChangeText(value === 'AM' ? 'PM' : 'AM');
   };
@@ -34,7 +34,7 @@ export default function TimePickerInput(props: TimePickerInputProps) {
   let pressUp = useCallback(() => {
     let { label, value, onChangeText } = otherProps;
     if (label === 'Mid') {
-      toggleMidnight();
+      toggleMeridiem();
       return;
     }
     let newValue = ~~value + 1;
@@ -59,7 +59,7 @@ export default function TimePickerInput(props: TimePickerInputProps) {
   let pressDown = useCallback(() => {
     let { label, value, onChangeText } = otherProps;
     if (label === 'Mid') {
-      toggleMidnight();
+      toggleMeridiem();
       return;
     }
     let newValue = ~~value - 1;

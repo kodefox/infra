@@ -44,8 +44,8 @@ export default function TimePicker(props: TimePickerProps) {
       .padStart(2, '0');
     if (format === '12') {
       let newHour = ~~hour - 12;
-      let midnight = ~~hour > 12 ? 'AM' : 'PM';
-      return `${newHour}:${mins}:${secs} ${midnight}`;
+      let meridiem = ~~hour > 12 ? 'AM' : 'PM';
+      return `${newHour}:${mins}:${secs} ${meridiem}`;
     }
     return `${hour}:${mins}:${secs}`;
   }, [date]);

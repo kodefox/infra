@@ -53,7 +53,7 @@ describe('TimePicker', () => {
   );
 
   cases(
-    'should be able to change time and midnight via textinput',
+    'should be able to change time and meridiem via textinput',
     (opts) => {
       let platform = opts.platform as Platforms;
       let mockOnChangeTime = jest.fn();

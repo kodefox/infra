@@ -1,17 +1,17 @@
-import { Midnight } from './timeChecker';
+import { Meridiem } from './timeChecker';
 
 export default function convertTimeToDate(
   initialDate: string,
   hour: string,
   minute: string,
   second: string,
-  midnight?: Midnight,
+  meridiem?: Meridiem,
 ): string {
-  let hourBasedOnMidnight = ~~hour;
-  if (midnight === 'PM') {
-    hourBasedOnMidnight = hourBasedOnMidnight + 12;
+  let hourBasedOnMeridiem = ~~hour;
+  if (meridiem === 'PM') {
+    hourBasedOnMeridiem = hourBasedOnMeridiem + 12;
   }
   return new Date(
-    new Date(initialDate).setHours(hourBasedOnMidnight, ~~minute, ~~second),
+    new Date(initialDate).setHours(hourBasedOnMeridiem, ~~minute, ~~second),
   ).toISOString();
 }

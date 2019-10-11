@@ -4,7 +4,7 @@ const MINUTE_FORMAT = /^([0-5][0-9])$/;
 const SECOND_FORMAT = /^([0-5][0-9])$/;
 
 export type HourFormat = '12' | '24';
-export type Midnight = 'AM' | 'PM';
+export type Meridiem = 'AM' | 'PM';
 
 export function isHourFormatValid(hour: string, format: HourFormat = '12') {
   return format === '12'
