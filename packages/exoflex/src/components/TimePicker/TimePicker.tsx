@@ -5,6 +5,7 @@ import TextInput from '../TextInput/TextInput';
 
 import { HourFormat } from '../../helpers/timeChecker';
 import useTheme from '../../helpers/useTheme';
+import { createTimeForDisplay } from '../../helpers/displayTime';
 import { TimePickerProps } from './types';
 
 export default function TimePicker(props: TimePickerProps) {
@@ -28,27 +29,7 @@ export default function TimePicker(props: TimePickerProps) {
     onChangeTime && onChangeTime(newDate);
     toggleModal();
   };
-  let displayTime = useMemo(() => {
-    let d = new Date(date);
-    let hour = d
-      .getHours()
-      .toString()
-      .padStart(2, '0');
-    let mins = d
-      .getMinutes()
-      .toString()
-      .padStart(2, '0');
-    let secs = d
-      .getSeconds()
-      .toString()
-      .padStart(2, '0');
-    if (format === '12') {
-      let newHour = ~~hour - 12;
-      let meridiem = ~~hour > 12 ? 'AM' : 'PM';
-      return `${newHour}:${mins}:${secs} ${meridiem}`;
-    }
-    return `${hour}:${mins}:${secs}`;
-  }, [date]);
+  let displayTime = useMemo(() => createTimeForDisplay(date, format), [date]);
 
   return (
     <>
