@@ -10,6 +10,7 @@ export {
   ActivityIndicator,
   Button,
   Calendar,
+  Card,
   Checkbox,
   Chip,
   Collapsible,

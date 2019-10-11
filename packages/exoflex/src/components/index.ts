@@ -2,6 +2,7 @@ import * as Drawer from './Drawer';
 
 export { default as ActivityIndicator } from './ActivityIndicator';
 export { default as Button } from './Button';
+export { default as Card } from './Card';
 export { default as Checkbox } from './Checkbox';
 export { default as Chip } from './Chip';
 export { default as Collapsible } from './Collapsible';
