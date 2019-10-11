@@ -7,6 +7,7 @@ import {
   ViewStyle,
   TextStyle,
   Platform,
+  View,
 } from 'react-native';
 import CollapsibleBase from 'react-native-collapsible';
 import { IconButton } from 'react-native-paper';
@@ -21,10 +22,11 @@ type Props = {
   isCollapsed?: boolean;
   style?: StyleProp<ViewStyle>;
   titleStyle?: StyleProp<TextStyle>;
+  titleContainerStyle?: StyleProp<ViewStyle>;
   contentContainerStyle?: StyleProp<ViewStyle>;
   iconStyle?: StyleProp<ViewStyle>;
-  renderIconLeft?: (animatedValue: Animated.Value) => ReactNode;
-  renderIconRight?: (animatedValue: Animated.Value) => ReactNode;
+  renderIconLeft?: null | ((animatedValue: Animated.Value) => ReactNode);
+  renderIconRight?: null | ((animatedValue: Animated.Value) => ReactNode);
 };
 
 let AnimatedIconButton: typeof IconButton = Animated.createAnimatedComponent(
@@ -35,6 +37,7 @@ function Collapsible({
   title,
   style,
   titleStyle,
+  titleContainerStyle,
   contentContainerStyle,
   iconStyle,
   renderIconLeft,
@@ -60,7 +63,7 @@ function Collapsible({
   });
 
   return (
-    <Animated.View
+    <View
       style={[
         styles.root,
         {
@@ -73,7 +76,7 @@ function Collapsible({
       <TouchableOpacity
         activeOpacity={0.9}
         onPress={toggleCollapsible}
-        style={styles.titleContainer}
+        style={[styles.titleContainer, titleContainerStyle]}
       >
         {!!renderIconLeft ? renderIconLeft(animatedValue) : null}
         <Text style={[styles.title, titleStyle]}>{title}</Text>
@@ -106,13 +109,14 @@ function Collapsible({
         style={[styles.contentContainer, contentContainerStyle]}
         {...otherProps}
       />
-    </Animated.View>
+    </View>
   );
 }
 
 let styles = StyleSheet.create({
   root: {
     borderWidth: 1,
+    width: '100%',
   },
   titleContainer: {
     flexDirection: 'row',
@@ -122,6 +126,7 @@ let styles = StyleSheet.create({
   },
   title: {
     marginRight: 24,
+    flex: 1,
     flexWrap: 'wrap',
   },
   icon: {
