@@ -5,6 +5,7 @@ import {
   ScrollView,
   SafeAreaView,
   TouchableOpacity,
+  View,
 } from 'react-native';
 import {
   Text,
@@ -18,6 +19,7 @@ import {
   TextInput,
   IconButton,
   Calendar,
+  ProgressBar,
 } from 'exoflex';
 import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 
@@ -95,6 +97,12 @@ export default function App() {
             >
               Exoflex
             </Text>
+
+            <View style={{ marginVertical: 10 }}>
+              <Text>Progress Bar</Text>
+              <ProgressBar progress={0.4} />
+            </View>
+            <ProgressBar progress={0.8} color="tomato" style={{ height: 16 }} />
             <Collapsible title="Press Me">
               <Text fontStyle="italic" onPress={() => setVisible(!visible)}>
                 Hello!
@@ -213,7 +221,6 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: '#ffffff',
-    alignItems: 'center',
     justifyContent: 'center',
   },
 });

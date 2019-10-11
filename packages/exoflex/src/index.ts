@@ -15,6 +15,7 @@ export {
   Collapsible,
   Drawer,
   IconButton,
+  ProgressBar,
   Provider,
   RadioButton,
   Slider,
