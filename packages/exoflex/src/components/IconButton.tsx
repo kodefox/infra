@@ -1,3 +1,11 @@
-import { IconButton as PaperIconButton } from 'react-native-paper';
+import React from 'react';
+import {
+  IconButton as PaperIconButton,
+  IconButtonProps,
+} from 'react-native-paper';
 
-export default PaperIconButton;
+type Props = Omit<IconButtonProps, 'theme'>;
+
+export default function IconButton(props: Props) {
+  return <PaperIconButton {...props} />;
+}
