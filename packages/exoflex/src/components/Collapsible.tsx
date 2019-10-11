@@ -24,8 +24,8 @@ type Props = {
   titleContainerStyle?: StyleProp<ViewStyle>;
   contentContainerStyle?: StyleProp<ViewStyle>;
   iconStyle?: StyleProp<ViewStyle>;
-  renderIconLeft?: (animatedValue: Animated.Value) => ReactNode;
-  renderIconRight?: (animatedValue: Animated.Value) => ReactNode;
+  renderIconLeft?: null | ((animatedValue: Animated.Value) => ReactNode);
+  renderIconRight?: null | ((animatedValue: Animated.Value) => ReactNode);
 };
 
 let AnimatedIconButton: typeof IconButton = Animated.createAnimatedComponent(
