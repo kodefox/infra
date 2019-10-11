@@ -7,6 +7,7 @@ import {
   ViewStyle,
   TextStyle,
   Platform,
+  View,
 } from 'react-native';
 import CollapsibleBase from 'react-native-collapsible';
 import { IconButton } from 'react-native-paper';
@@ -62,7 +63,7 @@ function Collapsible({
   });
 
   return (
-    <Animated.View
+    <View
       style={[
         styles.root,
         {
@@ -108,13 +109,14 @@ function Collapsible({
         style={[styles.contentContainer, contentContainerStyle]}
         {...otherProps}
       />
-    </Animated.View>
+    </View>
   );
 }
 
 let styles = StyleSheet.create({
   root: {
     borderWidth: 1,
+    width: '100%',
   },
   titleContainer: {
     flexDirection: 'row',
@@ -124,6 +126,7 @@ let styles = StyleSheet.create({
   },
   title: {
     marginRight: 24,
+    flex: 1,
     flexWrap: 'wrap',
   },
   icon: {
