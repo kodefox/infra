@@ -31,19 +31,11 @@ export default function TimePicker(props: TimePickerProps) {
     onChangeTime && onChangeTime(utcString);
   }, [hour, minute, second, meridiem]);
 
-  let changeHour = useCallback((newHour: string) => setHour(newHour), []);
-  let changeMinute = useCallback(
-    (newMinute: string) => setMinute(newMinute),
-    [],
-  );
-  let changeSecond = useCallback(
-    (newSecond: string) => setSecond(newSecond),
-    [],
-  );
-  let changeMeridiem = useCallback(
-    (newMeridiem: string) => setMeridiem(newMeridiem as Meridiem),
-    [],
-  );
+  let changeHour = (newHour: string) => setHour(newHour);
+  let changeMinute = (newMinute: string) => setMinute(newMinute);
+  let changeSecond = (newSecond: string) => setSecond(newSecond);
+  let changeMeridiem = (newMeridiem: string) =>
+    setMeridiem(newMeridiem as Meridiem);
 
   let checkHour = () => {
     !isHourFormatValid(hour, format) && setHour('12');
