@@ -22,6 +22,8 @@ function CardCover({ style, ...otherProps }: Props) {
   );
 }
 
+CardCover.displayName = 'Card.Cover';
+
 let styles = StyleSheet.create({
   root: {
     height: 160,

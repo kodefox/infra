@@ -9,6 +9,8 @@ function CardContent({ style, ...otherProps }: Props) {
   return <View {...otherProps} style={[styles.root, style]} />;
 }
 
+CardContent.displayName = 'Card.Content';
+
 let styles = StyleSheet.create({
   root: {
     padding: 12,
