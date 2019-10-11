@@ -27,16 +27,16 @@ describe('convertTimeToDate', () => {
 
   it('should return valid date from 12h format', () => {
     expect(
-      convertTimeToDate(initialDate, '11', '59', '01', 'pm').split('.')[0],
+      convertTimeToDate(initialDate, '11', '59', '01', 'PM').split('.')[0],
     ).toBe(new Date(date.setHours(23, 59, 1)).toISOString().split('.')[0]);
     expect(
-      convertTimeToDate(initialDate, '11', '59', '01', 'am').split('.')[0],
+      convertTimeToDate(initialDate, '11', '59', '01', 'AM').split('.')[0],
     ).toBe(new Date(date.setHours(11, 59, 1)).toISOString().split('.')[0]);
     expect(
-      convertTimeToDate(initialDate, '11', '59', '01', 'pm').split('T')[0],
+      convertTimeToDate(initialDate, '11', '59', '01', 'PM').split('T')[0],
     ).toBe(new Date(date.setHours(23, 59, 1)).toISOString().split('T')[0]);
     expect(
-      convertTimeToDate(initialDate, '11', '59', '01', 'am').split('T')[0],
+      convertTimeToDate(initialDate, '11', '59', '01', 'AM').split('T')[0],
     ).toBe(new Date(date.setHours(11, 59, 1)).toISOString().split('T')[0]);
   });
 });

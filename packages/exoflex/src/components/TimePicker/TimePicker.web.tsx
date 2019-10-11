@@ -3,9 +3,9 @@ import { View } from 'react-native';
 import TimePickerInput from './TimePickerInput';
 
 import {
-  checkHourFormat,
-  checkMinuteFormat,
-  checkSecondFormat,
+  isHourFormatValid,
+  isMinutesFormatValid,
+  isSecondsFormatValid,
   HourFormat,
   Midnight,
 } from '../../helpers/timeChecker';
@@ -18,7 +18,7 @@ export default function TimePicker(props: TimePickerProps) {
   let [hour, setHour] = useState('12');
   let [minute, setMinute] = useState('00');
   let [second, setSecond] = useState('00');
-  let [midnight, setMidnight] = useState<Midnight>('am');
+  let [midnight, setMidnight] = useState<Midnight>('AM');
 
   useEffect(() => {
     let utcString = convertTimeToDate(
@@ -46,16 +46,16 @@ export default function TimePicker(props: TimePickerProps) {
   );
 
   let checkHour = () => {
-    !checkHourFormat(hour, format) && setHour('12');
+    !isHourFormatValid(hour, format) && setHour('12');
   };
   let checkMinute = () => {
-    !checkMinuteFormat(minute) && setMinute('00');
+    !isMinutesFormatValid(minute) && setMinute('00');
   };
   let checkSecond = () => {
-    !checkSecondFormat(second) && setSecond('00');
+    !isSecondsFormatValid(second) && setSecond('00');
   };
   let checkMidnight = () => {
-    !(midnight === 'am' || midnight === 'pm') && setMidnight('am');
+    !(midnight === 'AM' || midnight === 'PM') && setMidnight('AM');
   };
 
   return (

@@ -28,7 +28,7 @@ export default function TimePickerInput(props: TimePickerInputProps) {
 
   let toggleMidnight = () => {
     let { value, onChangeText } = otherProps;
-    onChangeText && onChangeText(value === 'am' ? 'pm' : 'am');
+    onChangeText && onChangeText(value === 'AM' ? 'PM' : 'AM');
   };
 
   let pressUp = useCallback(() => {

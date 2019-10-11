@@ -8,7 +8,7 @@ export default function convertTimeToDate(
   midnight?: Midnight,
 ): string {
   let hourBasedOnMidnight = ~~hour;
-  if (midnight === 'pm') {
+  if (midnight === 'PM') {
     hourBasedOnMidnight = hourBasedOnMidnight + 12;
   }
   return new Date(

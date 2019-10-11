@@ -29,7 +29,7 @@ describe('TimePicker', () => {
             : render(<TimePicker date={date} />);
         expect(getByDisplayValue('12')).toBeTruthy();
         expect(getAllByDisplayValue('00').length).toBe(2);
-        expect(getByDisplayValue('am')).toBeTruthy();
+        expect(getByDisplayValue('AM')).toBeTruthy();
       });
     },
     [{ name: 'on web', platform: 'web' }],
@@ -46,7 +46,7 @@ describe('TimePicker', () => {
             : render(<TimePicker date={date} format="24" />);
         expect(getByDisplayValue('12')).toBeTruthy();
         expect(getAllByDisplayValue('00').length).toBe(2);
-        expect(queryByDisplayValue('am')).toBeFalsy();
+        expect(queryByDisplayValue('AM')).toBeFalsy();
       });
     },
     [{ name: 'on web', platform: 'web' }],
@@ -69,7 +69,7 @@ describe('TimePicker', () => {
           minsSecs.forEach((element) => {
             fireEventWeb.change(element, { target: { value: '59' } });
           });
-          fireEventWeb.change(getByDisplayValue('am'), {
+          fireEventWeb.change(getByDisplayValue('AM'), {
             target: { value: 'pm' },
           });
           expect(getByDisplayValue('10')).toBeTruthy();
@@ -100,13 +100,13 @@ describe('TimePicker', () => {
             fireEventWeb.change(element, { target: { value: '99' } });
             fireEventWeb.blur(getByDisplayValue('99'));
           });
-          fireEventWeb.change(getByDisplayValue('am'), {
+          fireEventWeb.change(getByDisplayValue('AM'), {
             target: { value: 'ok' },
           });
           fireEventWeb.blur(getByDisplayValue('ok'));
           expect(getByDisplayValue('12')).toBeTruthy();
           expect(getAllByDisplayValue('00').length).toBe(2);
-          expect(getByDisplayValue('am')).toBeTruthy();
+          expect(getByDisplayValue('AM')).toBeTruthy();
         }
       });
     },

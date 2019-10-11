@@ -25,7 +25,7 @@ describe('TimePickerInput', () => {
           let mockHours24 = '23';
           let mockMinutes = '00';
           let mockSeconds = '59';
-          let mockMidnight = 'am';
+          let mockMidnight = 'AM';
           let { getByTestId, getAllByTestId } = renderWeb(
             <>
               <TimePickerInput
@@ -77,7 +77,7 @@ describe('TimePickerInput', () => {
           expect(mockHours).toBe('01');
           expect(mockMinutes).toBe('01');
           expect(mockSeconds).toBe('00');
-          expect(mockMidnight).toBe('pm');
+          expect(mockMidnight).toBe('PM');
         }
       });
     },
@@ -93,7 +93,7 @@ describe('TimePickerInput', () => {
           let mockHours = '12';
           let mockMinutes = '00';
           let mockSeconds = '20';
-          let mockMidnight = 'am';
+          let mockMidnight = 'AM';
           let { getByTestId } = renderWeb(
             <>
               <TimePickerInput
@@ -136,7 +136,7 @@ describe('TimePickerInput', () => {
           expect(mockHours).toBe('11');
           expect(mockMinutes).toBe('59');
           expect(mockSeconds).toBe('19');
-          expect(mockMidnight).toBe('pm');
+          expect(mockMidnight).toBe('PM');
         }
       });
     },

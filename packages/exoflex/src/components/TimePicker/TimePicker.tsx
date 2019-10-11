@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { TouchableOpacity, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import TextInput from '../TextInput/TextInput';
 
@@ -22,9 +22,10 @@ export default function TimePicker(props: TimePickerProps) {
   let is24Hour = format === '24';
 
   let toggleModal = () => setVisible(!visible);
-  let changeDate = (newDate: Date) => {
-    setDate(newDate.toISOString());
-    onChangeTime && onChangeTime(date);
+  let changeDate = (d: Date) => {
+    let newDate = d.toISOString();
+    setDate(newDate);
+    onChangeTime && onChangeTime(newDate);
     toggleModal();
   };
   let displayTime = useMemo(() => {
@@ -59,13 +60,11 @@ export default function TimePicker(props: TimePickerProps) {
           value={displayTime}
           placeholder="Select the time"
           pointerEvents="none"
-          containerStyle={[
-            styles.bgColor,
-            {
-              borderColor: colors.border,
-            },
-          ]}
-          style={[styles.bgColor, style]}
+          containerStyle={{
+            borderColor: colors.border,
+            backgroundColor: colors.surface,
+          }}
+          style={[{ backgroundColor: colors.surface }, style]}
         />
       </TouchableOpacity>
       <DateTimePicker
@@ -83,9 +82,3 @@ export default function TimePicker(props: TimePickerProps) {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  bgColor: {
-    backgroundColor: 'white',
-  },
-});
