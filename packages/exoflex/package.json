@@ -17,7 +17,7 @@
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --max-warnings 0 \"src/**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit -p .",
-    "jest": "jest --coverage --passWithNoTests",
+    "jest": "jest --coverage --passWithNoTests --maxWorkers=3",
     "test": "yarn format:check && yarn lint && yarn typecheck && yarn jest"
   },
   "peerDependencies": {
@@ -47,6 +47,7 @@
     "@types/react-test-renderer": "^16.9.0",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
+    "chalk": "^2.4.2",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
@@ -61,6 +62,7 @@
     "react-native": "^0.60.5",
     "react-native-svg": ">=7.0.0",
     "react-native-testing-library": "^1.11.1",
+    "react-native-vector-icons": "^6.6.0",
     "react-native-web": "^0.11.6",
     "react-test-renderer": "^16.9.0",
     "release-it": "^12.3.6",
