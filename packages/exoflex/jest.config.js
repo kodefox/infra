@@ -2,7 +2,6 @@ const { defaults: tsjPreset } = require('ts-jest/presets');
 
 module.exports = {
   ...tsjPreset,
-  ...universal,
   setupFiles: ['<rootDir>/test/modules-mock'],
   preset: './jestPresets/jest-preset',
   transform: {
