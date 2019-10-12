@@ -49,7 +49,7 @@ export default function TimePicker(props: TimePickerProps) {
         />
       </TouchableOpacity>
       <DateTimePicker
-        date={new Date(initialDate)}
+        date={new Date(date)}
         titleIOS="Select the time"
         // NOTE: Android only
         is24Hour={is24Hour}
