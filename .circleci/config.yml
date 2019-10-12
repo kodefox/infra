@@ -35,7 +35,7 @@ jobs:
                   cd packages/${orbname}
                   yarn install --frozen-lockfile
                   # NOTE: set workers to 1 for fixing circleci not enough memory
-                  yarn test --maxWorkers=1
+                  yarn test --silent --maxWorkers=1
                   cd ../..
                 else
                   echo "no need to test this project"
