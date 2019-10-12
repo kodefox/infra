@@ -12,6 +12,8 @@ export default function TimePicker(props: TimePickerProps) {
   let {
     format = '12' as HourFormat,
     date: initialDate,
+    nativePlaceholder = 'Select the time',
+    titleIOS = 'Select the time',
     onChangeTime,
     style,
   } = props;
@@ -39,7 +41,7 @@ export default function TimePicker(props: TimePickerProps) {
           mode="outlined"
           label="Time"
           value={displayTime}
-          placeholder="Select the time"
+          placeholder={nativePlaceholder}
           pointerEvents="none"
           containerStyle={{
             borderColor: colors.border,
@@ -50,7 +52,7 @@ export default function TimePicker(props: TimePickerProps) {
       </TouchableOpacity>
       <DateTimePicker
         date={new Date(date)}
-        titleIOS="Select the time"
+        titleIOS={titleIOS}
         // NOTE: Android only
         is24Hour={is24Hour}
         // NOTE: For determining 12h or 24h in iOS
