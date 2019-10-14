@@ -31,6 +31,7 @@ You can find all available components from links below:
 
 - [ActivityIndicator](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/ActivityIndicator.md)
 - [Button](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Button.md)
+- [Calendar](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Calendar.md)
 - [Checkbox](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Checkbox.md)
 - [Chip](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Chip.md)
 - [Collapsible](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Collapsible.md)
