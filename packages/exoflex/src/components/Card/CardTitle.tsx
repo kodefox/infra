@@ -28,7 +28,7 @@ function CardTitle({
 }: Props) {
   return (
     <View {...otherProps} style={[styles.root, style]}>
-      <View style={styles.titles}>
+      <View>
         {!!title && <Title style={titleStyle}>{title}</Title>}
         {!!subtitle && (
           <Label style={[styles.subtitle, subtitleStyle]}>{subtitle}</Label>
@@ -57,7 +57,6 @@ let styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 12,
   },
-  titles: {},
   subtitle: { marginTop: 2 },
 });
 
