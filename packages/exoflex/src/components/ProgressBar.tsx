@@ -47,7 +47,7 @@ export default function ProgressBar(props: Props) {
             backgroundColor: color || colors.primary,
             width: animatedValue.interpolate({
               inputRange: [0, 1],
-              outputRange: ['0%', progress * 100 + '%'],
+              outputRange: ['0%', `${progress * 100}%`],
             }),
           },
         ]}
