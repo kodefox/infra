@@ -4,7 +4,7 @@ import { HourFormat } from '../../helpers/timeChecker';
 export type TimePickerProps = {
   readonly date: string;
   readonly format?: HourFormat;
-  readonly nativePlaceholder?: string;
+  readonly placeholder?: string;
   readonly titleIOS?: string;
   readonly onChangeTime?: (utcString: string) => void;
   readonly style?: StyleProp<TextStyle>;

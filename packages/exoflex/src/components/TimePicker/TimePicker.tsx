@@ -12,7 +12,7 @@ export default function TimePicker(props: TimePickerProps) {
   let {
     format = '12' as HourFormat,
     date: initialDate,
-    nativePlaceholder = 'Select the time',
+    placeholder = 'Select the time',
     titleIOS = 'Select the time',
     onChangeTime,
     style,
@@ -44,7 +44,7 @@ export default function TimePicker(props: TimePickerProps) {
           mode="outlined"
           label="Time"
           value={displayTime}
-          placeholder={nativePlaceholder}
+          placeholder={placeholder}
           pointerEvents="none"
           containerStyle={{
             borderColor: colors.border,
