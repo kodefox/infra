@@ -16,21 +16,7 @@ A component used to show an action item with an icon and a label in a navigation
 ### Example
 
 ```tsx
-<Drawer.Section
-  headerMode="full"
-  headerSource={{ uri: 'https://picsum.photos/300' }}
->
-  <Drawer.Item
-    label="First Item"
-    icon="home"
-    active={true}
-    onPress={() => {}}
-  />
-  <Drawer.Item
-    label="Second Item"
-    icon="settings"
-    active={false}
-    onPress={() => {}}
-  />
-</Drawer.Section>
+const MyComponent = () => {
+  return <Drawer.Item label="First Item" onPress={() => {}} />;
+};
 ```
