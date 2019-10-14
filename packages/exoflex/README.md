@@ -34,6 +34,7 @@ You can find all available components from links below:
 - [Checkbox](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Checkbox.md)
 - [Chip](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Chip.md)
 - [Collapsible](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Collapsible.md)
+- [Drawer.Item](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/DrawerItem.md)
 - [Provider](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Provider.md)
 - [RadioButton](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/RadioButton.md)
 - [RadioButtonGroup](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/RadioButtonGroup.md)
