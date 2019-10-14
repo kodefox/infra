@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {
+  Card,
   Text,
   Provider,
   Slider,
@@ -23,7 +24,7 @@ import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 
 import drawerImage from '../assets/drawer_header.png';
 
-const createDate = (increaseDays: number = 0) => {
+const createDate = (increaseDays = 0) => {
   let date = new Date();
   let result = date.setDate(date.getDate() + increaseDays);
   return new Date(result).toISOString().split('T')[0];
@@ -105,6 +106,59 @@ export default function App() {
               // Collection of dates that have to be marked. Default = {}
               markedDates={MARKED_DATES}
             />
+            <Card
+              style={{
+                borderRadius: 14,
+                marginVertical: 16,
+                backgroundColor: '#efefef',
+              }}
+            >
+              <Card.Title
+                title="PIZZA4LYFE"
+                style={{ justifyContent: 'center' }}
+                titleStyle={{
+                  color: '#33bdd6',
+                  fontWeight: '700',
+                }}
+              />
+              <Card.Cover
+                source={{
+                  uri: 'https://media.giphy.com/media/4ayiIWaq2VULC/source.gif',
+                }}
+                style={{ height: 150 }}
+              />
+              <Card.Content>
+                <Card style={{ borderRadius: 10 }}>
+                  <Card.Content>
+                    <Text>
+                      This is the description or content that you want to show
+                      in this card component. This is the description or content
+                      that you want to show in this card component.
+                    </Text>
+                  </Card.Content>
+                </Card>
+              </Card.Content>
+              <Card.Actions>
+                <Button
+                  preset="invisible"
+                  onPress={() => {}}
+                  contentStyle={{
+                    minWidth: 50,
+                  }}
+                >
+                  Tekan 1
+                </Button>
+                <Button
+                  preset="invisible"
+                  onPress={() => {}}
+                  contentStyle={{
+                    minWidth: 50,
+                  }}
+                >
+                  Tekan 2
+                </Button>
+              </Card.Actions>
+            </Card>
             <Slider values={[3, 9]} />
             <TouchableOpacity onPress={() => drawer.current.openDrawer()}>
               <Text>Open drawer</Text>
@@ -213,7 +267,7 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: '#ffffff',
-    alignItems: 'center',
     justifyContent: 'center',
+    paddingHorizontal: 16,
   },
 });
