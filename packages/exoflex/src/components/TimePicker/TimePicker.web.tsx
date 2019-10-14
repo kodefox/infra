@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import TimePickerInput from './TimePickerInput';
 
 import {
-  isHourFormatValid,
+  isHoursFormatValid,
   isMinutesFormatValid,
   isSecondsFormatValid,
   HourFormat,
@@ -38,7 +38,7 @@ export default function TimePicker(props: TimePickerProps) {
     setMeridiem(newMeridiem as Meridiem);
 
   let checkHour = () => {
-    !isHourFormatValid(hour, format) && setHour('12');
+    !isHoursFormatValid(hour, format) && setHour('12');
   };
   let checkMinute = () => {
     !isMinutesFormatValid(minute) && setMinute('00');

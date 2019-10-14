@@ -6,7 +6,7 @@ const SECOND_FORMAT = /^([0-5][0-9])$/;
 export type HourFormat = '12' | '24';
 export type Meridiem = 'AM' | 'PM';
 
-export function isHourFormatValid(hour: string, format: HourFormat = '12') {
+export function isHoursFormatValid(hour: string, format: HourFormat = '12') {
   return format === '12'
     ? HOUR_FORMAT_12.test(hour)
     : HOUR_FORMAT_24.test(hour);
