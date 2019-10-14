@@ -22,7 +22,7 @@ function useLoadFonts(
         setFontsLoaded(true);
       }
     }
-  }, [shouldLoadFonts]);
+  }, [fonts, shouldLoadFonts]);
 
   return areFontsLoaded;
 }
