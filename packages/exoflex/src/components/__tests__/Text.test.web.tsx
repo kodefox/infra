@@ -1,12 +1,22 @@
 import React from 'react';
-import { render } from 'react-native-testing-library';
-import { withPlatform } from 'jest-with-platform';
-import { render as renderWeb } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import Provider from '../Provider';
 import Text from '../Text';
 
+const warningSpy = jest
+  .spyOn(console, 'warn')
+  .mockImplementation((message: string) => {
+    let blacklistedMessage =
+      'Warning: componentWillReceiveProps has been renamed';
+    return message.startsWith(blacklistedMessage) ? '' : message;
+  });
+
 describe('Text', () => {
+  afterAll(() => {
+    warningSpy.mockClear();
+  });
+
   it('should render text when not wrapped with provider', () => {
     let App = () => (
       <>
@@ -15,19 +25,8 @@ describe('Text', () => {
     );
     let { getByText } = render(<App />);
     expect(getByText('Foobar 3000')).toBeTruthy();
-
-    withPlatform('web', () => {
-      let { getByText } = renderWeb(<App />);
-      expect(getByText('Foobar 3000')).toBeTruthy();
-    });
   });
 
-  /**
-   * BUG: This web test case must be executed first before the native one.
-   *
-   * The error thrown when `renderWeb` is called.
-   * Error thrown: Error: Uncaught [TypeError: Array.prototype.slice called on null or undefined]
-   */
   it('should render text when wrapped with provider on the web', () => {
     let App = () => (
       <Provider skipFontsLoading>
@@ -35,10 +34,8 @@ describe('Text', () => {
       </Provider>
     );
 
-    withPlatform('web', () => {
-      let { getByText } = renderWeb(<App />);
-      expect(getByText('Foobar 3000')).toBeTruthy();
-    });
+    let { getByText } = render(<App />);
+    expect(getByText('Foobar 3000')).toBeTruthy();
   });
 
   it('should render text when wrapped with provider', () => {
