@@ -38,6 +38,7 @@ function getPlatformPreset(displayOptions, extensions) {
     displayName: displayOptions,
     testMatch,
     moduleFileExtensions,
+    // TODO: create snapshotResolver in case we want to use snapshot
     // snapshotResolver: require.resolve(
     //   `../src/snapshot/resolver.${extensions[0]}.js`,
     // ),
