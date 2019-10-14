@@ -46,7 +46,7 @@ function ToastContainer() {
       timerID.current = window.setTimeout(hideToast, config.duration);
     }
     return () => clearTimeout(timerID.current);
-  }, [visible]);
+  }, [visible, config.duration]);
 
   useEffect(() => {
     ToastEmitter.on('showToast', onShowToast);
@@ -55,7 +55,7 @@ function ToastContainer() {
       ToastEmitter.remove('showToast', onShowToast);
       ToastEmitter.remove('hideToast', onHideToast);
     };
-  }, []);
+  }, [onShowToast, onHideToast]);
 
   return (
     <Toast visible={visible} mode={config.mode}>

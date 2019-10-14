@@ -55,7 +55,7 @@ export default function Switch(props: Props) {
       toValue: value ? 1 : 0,
       duration: 300,
     }).start();
-  }, [value]);
+  }, [value, xValue]);
 
   return (
     <TouchableOpacity
