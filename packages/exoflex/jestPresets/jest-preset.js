@@ -1,10 +1,9 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { withWatchPlugins } = require('./config/withWatchPlugins');
 const {
   getWebPreset,
   getIOSPreset,
   getAndroidPreset,
-} = require('./config/getPlatformPreset'); // eslint-disable-line @typescript-eslint/no-var-requires
+} = require('./config/getPlatformPreset');
 
 module.exports = withWatchPlugins({
   projects: [
