@@ -20,7 +20,13 @@ export default function ProgressBar(props: Props) {
     duration: 500,
   });
 
-  return visible ? (
+  let height = (style && style.height) || 8;
+
+  if (!visible) {
+    return <View style={{ height }} />;
+  }
+
+  return (
     <View
       style={[
         styles.container,
@@ -36,7 +42,7 @@ export default function ProgressBar(props: Props) {
         style={[
           styles.bar,
           {
-            height: (style && style.height) || 8,
+            height,
             borderRadius: roundness,
             backgroundColor: color || colors.primary,
             width: animatedValue.interpolate({
@@ -47,7 +53,7 @@ export default function ProgressBar(props: Props) {
         ]}
       />
     </View>
-  ) : null;
+  );
 }
 
 ProgressBar.defaultProps = {
