@@ -17,7 +17,7 @@
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --max-warnings 0 \"src/**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit -p .",
-    "jest": "jest --coverage --passWithNoTests --maxWorkers=3",
+    "jest": "jest --coverage --passWithNoTests",
     "test": "yarn format:check && yarn lint && yarn typecheck && yarn jest"
   },
   "peerDependencies": {
