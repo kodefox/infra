@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import '../../../test/customFireEvent.web';
 import Checkbox from '../Checkbox';
 
 describe('Checkbox', () => {
@@ -11,9 +12,7 @@ describe('Checkbox', () => {
   it('should handle callback properly', () => {
     const onPressMock = jest.fn();
     let { getByText } = render(<Checkbox label="bar" onPress={onPressMock} />);
-    let element = getByText('bar');
-    fireEvent.mouseDown(element);
-    fireEvent.mouseUp(element);
+    fireEvent.click(getByText('bar'));
     expect(onPressMock).toBeCalledTimes(1);
   });
 });

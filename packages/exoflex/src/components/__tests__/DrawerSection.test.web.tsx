@@ -1,6 +1,7 @@
 import React from 'react';
 import Provider from '../Provider';
 import { render, fireEvent } from '@testing-library/react';
+import '../../../test/customFireEvent.web';
 import DrawerSection from '../Drawer/DrawerSection';
 import DrawerItem from '../Drawer/DrawerItem';
 
@@ -49,8 +50,7 @@ describe('DrawerSection', () => {
     expect(getByText('First menu')).toBeTruthy();
     expect(footerElement).toBeTruthy();
     expect(getByTestId('drawerHeaderFullImage')).toBeTruthy();
-    fireEvent.mouseDown(footerElement);
-    fireEvent.mouseUp(footerElement);
+    fireEvent.click(footerElement);
   });
 
   it('should render normally with footer menu and provided footerOnPress', () => {
@@ -70,8 +70,7 @@ describe('DrawerSection', () => {
     expect(getByText('First menu')).toBeTruthy();
     expect(footerElement).toBeTruthy();
     expect(getByTestId('drawerHeaderFullImage')).toBeTruthy();
-    fireEvent.mouseDown(footerElement);
-    fireEvent.mouseUp(footerElement);
+    fireEvent.click(footerElement);
     expect(mockPress).toHaveBeenCalledTimes(1);
   });
 });

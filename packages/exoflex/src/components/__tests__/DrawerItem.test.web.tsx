@@ -1,6 +1,7 @@
 import React from 'react';
 import Provider from '../Provider';
 import { render, fireEvent } from '@testing-library/react';
+import '../../../test/customFireEvent.web';
 import DrawerItem from '../Drawer/DrawerItem';
 
 const emptyFn = () => {};
@@ -31,9 +32,7 @@ describe('DrawerItem', () => {
         <DrawerItem label="First menu" icon="home" onPress={mockPress} />
       </Provider>,
     );
-    let element = getByText('First menu');
-    fireEvent.mouseDown(element);
-    fireEvent.mouseUp(element);
+    fireEvent.click(getByText('First menu'));
     expect(mockPress).toBeCalledTimes(1);
   });
 });

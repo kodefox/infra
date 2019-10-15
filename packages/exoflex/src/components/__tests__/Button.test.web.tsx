@@ -1,6 +1,7 @@
 import React from 'react';
 import Provider from '../Provider';
 import { render, fireEvent } from '@testing-library/react';
+import '../../../test/customFireEvent.web';
 import Button from '../Button';
 
 describe('Button', () => {
@@ -35,8 +36,7 @@ describe('Button', () => {
         </Button>
       </Provider>,
     );
-    fireEvent.mouseDown(getByText('PRESS ME!'));
-    fireEvent.mouseUp(getByText('PRESS ME!'));
+    fireEvent.click(getByText('PRESS ME!'));
     expect(mockPress).toBeCalledTimes(1);
   });
 
@@ -50,8 +50,7 @@ describe('Button', () => {
       </Provider>,
     );
     let element = getByText('PRESS ME!');
-    fireEvent.mouseDown(element);
-    fireEvent.mouseUp(element);
+    fireEvent.click(element);
     expect(element).toBeTruthy();
     expect(mockPress).toBeCalledTimes(0);
   });
