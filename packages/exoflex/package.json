@@ -1,6 +1,6 @@
 {
   "name": "exoflex",
-  "version": "2.0.2",
+  "version": "2.6.0",
   "description": "",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.ts",
