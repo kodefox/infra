@@ -1,11 +1,11 @@
 import { TextStyle, StyleProp } from 'react-native';
 import { HourFormat } from '../../helpers/timeChecker';
 
-export type TimePickerProps = {
-  readonly date: string;
-  readonly format?: HourFormat;
-  readonly placeholder?: string;
-  readonly titleIOS?: string;
-  readonly onChangeTime?: (utcString: string) => void;
-  readonly style?: StyleProp<TextStyle>;
-};
+export type TimePickerProps = Readonly<{
+  date: string;
+  format?: HourFormat;
+  placeholder?: string;
+  titleIOS?: string;
+  onChangeTime?: (utcString: string) => void;
+  style?: StyleProp<TextStyle>;
+}>;
