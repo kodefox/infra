@@ -9,14 +9,14 @@ A component to group content inside a navigation drawer.
 
 ### Props
 
-| Name            |        Type         | Default  | Description                               |
-| --------------- | :-----------------: | :------: | ----------------------------------------- |
-| `headerMode*`   | `'full' | 'circle'` | `'full'` | The mode of header image.                 |
-| `headerSource*` |  `ImageURISource`   |          | Image to display for the header.          |
-| `children*`     |     `ReactNode`     |          | Content of the Drawer.Section.            |
-| `footerLabel`   |      `string`       |          | The label text of footer item.            |
-| `footerIcon`    |      `string`       |          | Icon to display for the footer item.      |
-| `footerOnPress` |    `() => void`     |          | Function to execute footer item on press. |
+| Name            |        Type         | Default  | Description                                                       |
+| --------------- | :-----------------: | :------: | ----------------------------------------------------------------- |
+| `headerMode*`   | `'full' | 'circle'` | `'full'` | The mode of header image.                                         |
+| `headerSource*` |  `ImageURISource`   |          | Image to display for the header.                                  |
+| `children*`     |     `ReactNode`     |          | Content of the Drawer.Section.                                    |
+| `footerLabel`   |      `string`       |          | The label text of footer item. Only `MaterialIcons` is available. |
+| `footerIcon`    |      `string`       |          | Icon to display for the footer item.                              |
+| `footerOnPress` |    `() => void`     |          | Function to execute footer item on press.                         |
 
 ### Example
 
