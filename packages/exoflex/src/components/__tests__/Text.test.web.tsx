@@ -4,19 +4,7 @@ import { render } from '@testing-library/react';
 import Provider from '../Provider';
 import Text from '../Text';
 
-const warningSpy = jest
-  .spyOn(console, 'warn')
-  .mockImplementation((message: string) => {
-    let blacklistedMessage =
-      'Warning: componentWillReceiveProps has been renamed';
-    return message.startsWith(blacklistedMessage) ? '' : message;
-  });
-
 describe('Text', () => {
-  afterAll(() => {
-    warningSpy.mockClear();
-  });
-
   it('should render text when not wrapped with provider', () => {
     let App = () => (
       <>

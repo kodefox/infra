@@ -4,21 +4,9 @@ import { render, fireEvent } from '@testing-library/react';
 import DrawerSection from '../Drawer/DrawerSection';
 import DrawerItem from '../Drawer/DrawerItem';
 
-const warningSpy = jest
-  .spyOn(console, 'warn')
-  .mockImplementation((message: string) => {
-    let blacklistedMessage =
-      'Warning: componentWillReceiveProps has been renamed';
-    return message.startsWith(blacklistedMessage) ? '' : message;
-  });
-
 const emptyFn = () => {};
 
 describe('DrawerSection', () => {
-  afterAll(() => {
-    warningSpy.mockClear();
-  });
-
   it('should render normally with full image header', () => {
     let { getByText, getByTestId } = render(
       <Provider>

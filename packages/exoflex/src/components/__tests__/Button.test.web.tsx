@@ -3,19 +3,7 @@ import Provider from '../Provider';
 import { render, fireEvent } from '@testing-library/react';
 import Button from '../Button';
 
-const warningSpy = jest
-  .spyOn(console, 'warn')
-  .mockImplementation((message: string) => {
-    let blacklistedMessage =
-      'Warning: componentWillReceiveProps has been renamed';
-    return message.startsWith(blacklistedMessage) ? '' : message;
-  });
-
 describe('Button', () => {
-  afterAll(() => {
-    warningSpy.mockClear();
-  });
-
   it('should render normally', () => {
     let { getByText } = render(
       <Provider>

@@ -2,19 +2,7 @@ import React from 'react';
 import { render } from 'react-native-testing-library';
 import { Calendar } from '../Calendar';
 
-const warningSpy = jest
-  .spyOn(console, 'warn')
-  .mockImplementation((message: string) => {
-    let blacklistedMessage =
-      'Warning: componentWillReceiveProps has been renamed';
-    return message.startsWith(blacklistedMessage) ? '' : message;
-  });
-
 describe('Calendar', () => {
-  afterAll(() => {
-    warningSpy.mockClear();
-  });
-
   it('should render normally', () => {
     let { getByText } = render(<Calendar />);
     expect(getByText('Sun')).toBeTruthy();
