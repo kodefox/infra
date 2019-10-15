@@ -7,6 +7,7 @@ export { default as Checkbox } from './Checkbox';
 export { default as Chip } from './Chip';
 export { default as Collapsible } from './Collapsible';
 export { default as IconButton } from './IconButton';
+export { default as ProgressBar } from './ProgressBar';
 export { default as Provider } from './Provider';
 export { default as RadioButton } from './RadioButton';
 export { default as Slider } from './Slider';
