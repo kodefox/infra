@@ -29,7 +29,7 @@ export default function TimePicker(props: TimePickerProps) {
       meridiem,
     );
     onChangeTime && onChangeTime(utcString);
-  }, [hour, minute, second, meridiem]);
+  }, [hour, minute, second, meridiem, initialDate, onChangeTime]);
 
   let changeHour = (newHour: string) => setHour(newHour);
   let changeMinute = (newMinute: string) => setMinute(newMinute);
