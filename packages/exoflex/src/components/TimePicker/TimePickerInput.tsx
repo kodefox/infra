@@ -12,15 +12,15 @@ import IconButton from '../IconButton';
 import { HourFormat } from '../../helpers/timeChecker';
 import useTheme from '../../helpers/useTheme';
 
-export type TimePickerInputProps = {
-  readonly label: 'Hrs' | 'Mins' | 'Secs' | 'Mid';
-  readonly value: string;
-  readonly format: HourFormat;
-  readonly onChangeText?: (text: string) => void;
-  readonly onBlur?: (
+export type TimePickerInputProps = Readonly<{
+  label: 'Hrs' | 'Mins' | 'Secs' | 'Mid';
+  value: string;
+  format: HourFormat;
+  onChangeText?: (text: string) => void;
+  onBlur?: (
     event: NativeSyntheticEvent<TextInputFocusEventData>,
   ) => void | undefined;
-};
+}>;
 
 export default function TimePickerInput(props: TimePickerInputProps) {
   let { colors, roundness } = useTheme();
