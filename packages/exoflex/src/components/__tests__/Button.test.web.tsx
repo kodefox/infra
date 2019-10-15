@@ -50,7 +50,6 @@ describe('Button', () => {
       </Provider>,
     );
     let element = getByText('PRESS ME!');
-    // NOTE: Disable this as this is still an issue (https://github.com/callstack/react-native-testing-library/issues/28)
     fireEvent.mouseDown(element);
     fireEvent.mouseUp(element);
     expect(element).toBeTruthy();
