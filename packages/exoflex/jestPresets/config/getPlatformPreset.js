@@ -1,8 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const rnPreset = require('react-native/jest-preset');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { withWatchPlugins } = require('./withWatchPlugins');
-// eslint-disable-next-line
 const { preset, ...jestConfig } = require('../../jest.config');
 
 function getModuleFileExtensions(...platforms) {
@@ -82,7 +79,6 @@ module.exports = {
       { name: 'Web', color: 'magenta' },
       ['web'],
     );
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [rnSetupFile, ...platformSetupFiles] = platformPreset.setupFiles;
     let webPreset = {
       ...baseWebPreset,
