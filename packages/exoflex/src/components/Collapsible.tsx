@@ -57,7 +57,7 @@ function Collapsible({
 
   let toggleCollapsible = useCallback(() => {
     !disabled && setCollapsed((c) => !c);
-  }, []);
+  }, [disabled]);
 
   let animatedValue = useAnimation({
     type: 'timing',
