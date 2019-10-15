@@ -38,7 +38,7 @@ You can find all available components from links below:
 - [IconButton](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/IconButton.md)
 - [Provider](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Provider.md)
 - [RadioButton](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/RadioButton.md)
-- [RadioButtonGroup](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/RadioButtonGroup.md)
+ - [RadioButton.Group](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/RadioButtonGroup.md)
 - [Slider](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Slider.md)
 - [Switch](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Switch.md)
 - [Text](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Text.md)
