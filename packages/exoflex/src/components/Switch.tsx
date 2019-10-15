@@ -37,7 +37,6 @@ export default function Switch(props: Props) {
       margin: MARGIN,
       alignItems: 'center',
       justifyContent: 'center',
-      position: 'absolute',
       backgroundColor: colors.background,
       width: thumbSize,
       height: thumbSize,
