@@ -11,6 +11,7 @@
   "author": "KodeFox",
   "license": "MIT",
   "scripts": {
+    "prepare": "yarn build",
     "build": "yarn bob build",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
