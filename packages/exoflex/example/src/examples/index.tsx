@@ -5,6 +5,7 @@ import ButtonExample from './ButtonExample';
 import CardExample from './CardExample';
 import CalendarExample from './CalendarExample';
 import CheckboxExample from './CheckboxExample';
+import SliderExample from './SliderExample';
 import IconButtonExample from './IconButtonExample';
 import TextInputExample from './TextInputExample';
 
@@ -16,6 +17,7 @@ export let EXAMPLES = {
   calendar: CalendarExample,
   checkbox: CheckboxExample,
   iconbutton: IconButtonExample,
+  slider: SliderExample,
   textinput: TextInputExample,
 };
 
