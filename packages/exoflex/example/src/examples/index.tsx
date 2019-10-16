@@ -9,6 +9,7 @@ import CollapsibleExample from './CollapsibleExample';
 import SliderExample from './SliderExample';
 import IconButtonExample from './IconButtonExample';
 import TextInputExample from './TextInputExample';
+import ToastExample from './ToastExample';
 
 import Welcome from '../Welcome';
 
@@ -21,6 +22,7 @@ export let EXAMPLES = {
   iconbutton: IconButtonExample,
   slider: SliderExample,
   textinput: TextInputExample,
+  toast: ToastExample,
 };
 
 export let ROUTES = Object.entries(EXAMPLES).reduce(
