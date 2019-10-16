@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import { Calendar } from 'exoflex';
+import { Calendar, Text } from 'exoflex';
 
 const createDate = (increaseDays = 0) => {
   let date = new Date();
@@ -24,6 +24,7 @@ const MARKED_DATES = {
 function CalendarExample() {
   return (
     <ScrollView contentContainerStyle={styles.root}>
+      <Text>Default calendar</Text>
       <Calendar
         // Collection of dates that have to be marked. Default = {}
         markedDates={MARKED_DATES}
