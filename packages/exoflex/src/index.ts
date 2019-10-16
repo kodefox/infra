@@ -23,6 +23,7 @@ export {
   Switch,
   Text,
   TextInput,
+  TimePicker,
   Toast,
   ToastContainer,
 } from './components';

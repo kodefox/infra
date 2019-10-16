@@ -21,6 +21,7 @@ import {
   IconButton,
   Calendar,
   ProgressBar,
+  TimePicker,
 } from 'exoflex';
 import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 
@@ -184,6 +185,7 @@ export default function App() {
             />
             <IconButton icon="camera" />
             <IconButton icon="settings" onPress={() => {}} color="red" />
+            <TimePicker date={new Date().toISOString()} />
             <Button
               preset="primary"
               onPress={() => alert('Primary Button pressed')}

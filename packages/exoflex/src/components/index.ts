@@ -14,6 +14,7 @@ export { default as Slider } from './Slider';
 export { default as Switch } from './Switch';
 export { default as Text } from './Text';
 export { default as TextInput } from './TextInput';
+export { default as TimePicker } from './TimePicker/TimePicker';
 export { default as Toast } from './Toast';
 export { default as ToastContainer } from './ToastContainer';
 
