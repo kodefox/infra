@@ -5,6 +5,7 @@ import ButtonExample from './ButtonExample';
 import CardExample from './CardExample';
 import CalendarExample from './CalendarExample';
 import CheckboxExample from './CheckboxExample';
+import TextInputExample from './TextInputExample';
 
 import Welcome from '../Welcome';
 
@@ -13,6 +14,7 @@ export let EXAMPLES = {
   card: CardExample,
   calendar: CalendarExample,
   checkbox: CheckboxExample,
+  textinput: TextInputExample,
 };
 
 export let ROUTES = Object.entries(EXAMPLES).reduce(
