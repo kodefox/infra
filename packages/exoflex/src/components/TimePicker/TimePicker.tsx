@@ -11,7 +11,7 @@ import { TimePickerProps } from './types';
 export default function TimePicker(props: TimePickerProps) {
   let {
     format = '12' as HourFormat,
-    date: initialDate,
+    date,
     placeholder = '',
     title = '',
     onChangeTime,
@@ -20,14 +20,12 @@ export default function TimePicker(props: TimePickerProps) {
   let { colors } = useTheme();
 
   let [visible, setVisible] = useState(false);
-  let [date, setDate] = useState(initialDate);
 
   let is24Hour = format === '24';
 
   let toggleModal = () => setVisible(!visible);
   let changeDate = (d: Date) => {
     let newDate = d.toISOString();
-    setDate(newDate);
     onChangeTime && onChangeTime(newDate);
     toggleModal();
   };
