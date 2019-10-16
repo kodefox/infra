@@ -24,15 +24,13 @@ export type TimePickerInputProps = Readonly<{
 
 export default function TimePickerInput(props: TimePickerInputProps) {
   let { colors, roundness } = useTheme();
-  let { format, ...otherProps } = props;
+  let { format, value, label, onChangeText, ...otherProps } = props;
 
   let toggleMeridiem = useCallback(() => {
-    let { value, onChangeText } = otherProps;
     onChangeText && onChangeText(value === 'AM' ? 'PM' : 'AM');
-  }, [otherProps]);
+  }, [value, onChangeText]);
 
   let pressUp = useCallback(() => {
-    let { label, value, onChangeText } = otherProps;
     if (label === 'Mid') {
       toggleMeridiem();
       return;
@@ -54,10 +52,9 @@ export default function TimePickerInput(props: TimePickerInputProps) {
         break;
     }
     onChangeText && onChangeText(newValue.toString().padStart(2, '0'));
-  }, [otherProps, format, toggleMeridiem]);
+  }, [value, label, onChangeText, format, toggleMeridiem]);
 
   let pressDown = useCallback(() => {
-    let { label, value, onChangeText } = otherProps;
     if (label === 'Mid') {
       toggleMeridiem();
       return;
@@ -79,7 +76,7 @@ export default function TimePickerInput(props: TimePickerInputProps) {
         break;
     }
     onChangeText && onChangeText(newValue.toString().padStart(2, '0'));
-  }, [otherProps, format, toggleMeridiem]);
+  }, [value, label, onChangeText, format, toggleMeridiem]);
 
   return (
     <View
@@ -88,23 +85,24 @@ export default function TimePickerInput(props: TimePickerInputProps) {
         {
           borderColor: colors.border,
           borderRadius: roundness,
-          marginLeft: otherProps.label === 'Hrs' ? 0 : 10,
+          marginLeft: label === 'Hrs' ? 0 : 10,
         },
       ]}
     >
       <TextInput
         mode="outlined"
         maxLength={2}
+        label={label}
         containerStyle={{ borderWidth: 0 }}
         style={{ width: 20 }}
         // NOTE: We are using `phone-pad` because either `numeric`, `number-pad`, or `decimal-pad`
         // is changing the TextInput into <input type="number" />
-        keyboardType={otherProps.label === 'Mid' ? 'default' : 'phone-pad'}
-        value={otherProps.value}
+        keyboardType={label === 'Mid' ? 'default' : 'phone-pad'}
+        value={value}
         {...otherProps}
       />
       <TimePickerArrow
-        label={otherProps.label}
+        label={label}
         onPressUp={pressUp}
         onPressDown={pressDown}
       />
