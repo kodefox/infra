@@ -5,6 +5,7 @@ import ButtonExample from './ButtonExample';
 import CardExample from './CardExample';
 import CalendarExample from './CalendarExample';
 import CheckboxExample from './CheckboxExample';
+import CollapsibleExample from './CollapsibleExample';
 import SliderExample from './SliderExample';
 import IconButtonExample from './IconButtonExample';
 import TextInputExample from './TextInputExample';
@@ -16,6 +17,7 @@ export let EXAMPLES = {
   card: CardExample,
   calendar: CalendarExample,
   checkbox: CheckboxExample,
+  collapsible: CollapsibleExample,
   iconbutton: IconButtonExample,
   slider: SliderExample,
   textinput: TextInputExample,
