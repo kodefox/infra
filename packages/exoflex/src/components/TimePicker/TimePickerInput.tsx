@@ -99,6 +99,7 @@ export default function TimePickerInput(props: TimePickerInputProps) {
         // is changing the TextInput into <input type="number" />
         keyboardType={label === 'Mid' ? 'default' : 'phone-pad'}
         value={value}
+        onChangeText={onChangeText}
         {...otherProps}
       />
       <TimePickerArrow
