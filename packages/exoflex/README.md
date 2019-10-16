@@ -37,6 +37,7 @@ You can find all available components from links below:
 - [Drawer](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/DrawerSection.md)
 - [Drawer.Item](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/DrawerItem.md)
 - [IconButton](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/IconButton.md)
+- [ProgressBar](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/ProgressBar.md)
 - [Provider](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Provider.md)
 - [RadioButton](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/RadioButton.md)
 - [RadioButton.Group](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/RadioButtonGroup.md)
