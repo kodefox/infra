@@ -2,15 +2,17 @@
 import React from 'react';
 
 import ButtonExample from './ButtonExample';
-import CheckboxExample from './CheckboxExample';
 import CardExample from './CardExample';
+import CalendarExample from './CalendarExample';
+import CheckboxExample from './CheckboxExample';
 
 import Welcome from '../Welcome';
 
 export let EXAMPLES = {
   button: ButtonExample,
-  checkbox: CheckboxExample,
   card: CardExample,
+  calendar: CalendarExample,
+  checkbox: CheckboxExample,
 };
 
 export let ROUTES = Object.entries(EXAMPLES).reduce(
