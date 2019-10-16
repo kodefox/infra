@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { View } from 'react-native';
-import { useRoutes } from 'hookrouter';
+import { useRoutes, usePath } from 'hookrouter';
 import { Text } from 'exoflex';
 import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 
@@ -10,6 +10,7 @@ import renderExample from './renderExample';
 
 function RootNavigator() {
   let match = useRoutes({ ...ROUTES });
+  let path: string = usePath();
   let drawer = useRef<DrawerLayout>(null);
 
   return (
@@ -17,7 +18,10 @@ function RootNavigator() {
       ref={drawer}
       drawerBackgroundColor="#ddd"
       renderNavigationView={() => (
-        <ExampleList closeDrawer={() => drawer.current.closeDrawer()} />
+        <ExampleList
+          activeExample={path.slice(1)}
+          closeDrawer={() => drawer.current.closeDrawer()}
+        />
       )}
     >
       {match ? (

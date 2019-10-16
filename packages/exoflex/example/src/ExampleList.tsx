@@ -6,10 +6,11 @@ import { Drawer } from 'exoflex';
 import { EXAMPLES } from './examples';
 
 type Props = {
+  activeExample: string;
   closeDrawer: () => void;
 };
 
-function ExampleList({ closeDrawer }: Props) {
+function ExampleList({ activeExample, closeDrawer }: Props) {
   let { navigate } = useNavigation();
 
   return (
@@ -19,6 +20,7 @@ function ExampleList({ closeDrawer }: Props) {
         keyExtractor={(_, i) => i.toString()}
         renderItem={({ item }) => (
           <Drawer.Item
+            active={activeExample === item.title.toLowerCase()}
             label={item.title}
             onPress={() => {
               navigate(item.title.toLowerCase());

@@ -23,8 +23,12 @@ const AppNavigator = createDrawerNavigator(
   },
   {
     // eslint-disable-next-line react/display-name
-    contentComponent: ({ navigation }: DrawerContentComponentProps) => (
+    contentComponent: ({
+      navigation,
+      activeItemKey,
+    }: DrawerContentComponentProps) => (
       <ExampleList
+        activeExample={activeItemKey}
         closeDrawer={() =>
           navigation.dispatch({ type: DrawerActions.CLOSE_DRAWER })
         }
