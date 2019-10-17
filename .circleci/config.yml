@@ -17,10 +17,25 @@ jobs:
 
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "packages/naviflex/package.json" }}
-            - v1-dependencies-{{ checksum "packages/exoflex/package.json" }}
-            - v1-dependencies-{{ checksum "packages/miflex/package.json" }}
-            - v1-dependencies-{{ checksum "packages/flexship/package.json" }}
+            - v1-dependencies-{{ checksum "packages/naviflex/yarn.lock" }}
+            # fallback to use the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "packages/exoflex/yarn.lock" }}
+            # fallback to use the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "packages/miflex/yarn.lock" }}
+            # fallback to use the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "packages/flexship/yarn.lock" }}
             # fallback to use the latest cache if no exact match is found
             - v1-dependencies-
 
@@ -34,8 +49,7 @@ jobs:
                 if [ ${orbname} != "naviflex" ]; then
                   cd packages/${orbname}
                   yarn install --frozen-lockfile
-                  # NOTE: set workers to 1 for fixing circleci not enough memory
-                  yarn test --maxWorkers=1
+                  yarn test --silent --maxWorkers=4
                   cd ../..
                 else
                   echo "no need to test this project"
@@ -48,22 +62,22 @@ jobs:
       - save_cache:
           paths:
             - packages/naviflex/node_modules
-          key: v1-dependencies-{{ checksum "packages/naviflex/package.json" }}
+          key: v1-dependencies-{{ checksum "packages/naviflex/yarn.lock" }}
 
       - save_cache:
           paths:
             - packages/exoflex/node_modules
-          key: v1-dependencies-{{ checksum "packages/exoflex/package.json" }}
+          key: v1-dependencies-{{ checksum "packages/exoflex/yarn.lock" }}
 
       - save_cache:
           paths:
             - packages/miflex/node_modules
-          key: v1-dependencies-{{ checksum "packages/miflex/package.json" }}
+          key: v1-dependencies-{{ checksum "packages/miflex/yarn.lock" }}
 
       - save_cache:
           paths:
             - packages/flexship/node_modules
-          key: v1-dependencies-{{ checksum "packages/flexship/package.json" }}
+          key: v1-dependencies-{{ checksum "packages/flexship/yarn.lock" }}
 
 workflows:
   main:
