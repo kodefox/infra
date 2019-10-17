@@ -9,27 +9,29 @@ import {
   HourFormat,
   Meridiem,
 } from '../../helpers/timeChecker';
-import convertTimeToDate from '../../helpers/convertTimeToDate';
+import {
+  convertTimeToDate,
+  convertDateToLocalTime,
+} from '../../helpers/resolveTime';
 import { TimePickerProps } from './types';
 
 export default function TimePicker(props: TimePickerProps) {
-  let { format = '12' as HourFormat, date: initialDate, onChangeTime } = props;
+  let { format = '12' as HourFormat, date, onChangeTime } = props;
+  let [h, m, s, mer] = convertDateToLocalTime(date, format);
+  let isDateEmpty = date === '';
 
-  let [hour, setHour] = useState('12');
-  let [minute, setMinute] = useState('00');
-  let [second, setSecond] = useState('00');
-  let [meridiem, setMeridiem] = useState<Meridiem>('AM');
+  let [hour, setHour] = useState(isDateEmpty ? '12' : h);
+  let [minute, setMinute] = useState(isDateEmpty ? '00' : m);
+  let [second, setSecond] = useState(isDateEmpty ? '00' : s);
+  let [meridiem, setMeridiem] = useState<Meridiem>(
+    isDateEmpty ? 'AM' : (mer as Meridiem),
+  );
 
   useEffect(() => {
-    let utcString = convertTimeToDate(
-      initialDate,
-      hour,
-      minute,
-      second,
-      meridiem,
-    );
+    let utcString = convertTimeToDate(date, hour, minute, second, meridiem);
     onChangeTime && onChangeTime(utcString);
-  }, [hour, minute, second, meridiem, initialDate, onChangeTime]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hour, minute, second, meridiem]);
 
   let changeHour = (newHour: string) => setHour(newHour);
   let changeMinute = (newMinute: string) => setMinute(newMinute);

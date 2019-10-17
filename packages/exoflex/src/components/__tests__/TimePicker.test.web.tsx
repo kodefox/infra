@@ -1,8 +1,9 @@
 import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import TimePicker from '../TimePicker/TimePicker.web';
+import { padTime } from '../../helpers/displayTime';
 
-const date = '2019-10-10T11:03:11.044Z';
+const date = '2019-10-10T11:03:21.044Z';
 
 describe('TimePicker', () => {
   afterAll(() => {
@@ -11,7 +12,7 @@ describe('TimePicker', () => {
 
   it('should render normally with format 12h', () => {
     let { getByDisplayValue, getAllByDisplayValue } = render(
-      <TimePicker date={date} />,
+      <TimePicker date="" />,
     );
     expect(getByDisplayValue('12')).toBeTruthy();
     expect(getAllByDisplayValue('00').length).toBe(2);
@@ -19,13 +20,13 @@ describe('TimePicker', () => {
   });
 
   it('should render normally with format 24h', () => {
-    let {
-      getByDisplayValue,
-      getAllByDisplayValue,
-      queryByDisplayValue,
-    } = render(<TimePicker date={date} format="24" />);
-    expect(getByDisplayValue('12')).toBeTruthy();
-    expect(getAllByDisplayValue('00').length).toBe(2);
+    let { getByDisplayValue, queryByDisplayValue } = render(
+      <TimePicker date={date} format="24" />,
+    );
+    let d = new Date(date);
+    expect(getByDisplayValue(padTime(d.getHours()))).toBeTruthy();
+    expect(getByDisplayValue('03')).toBeTruthy();
+    expect(getByDisplayValue('21')).toBeTruthy();
     expect(queryByDisplayValue('AM')).toBeFalsy();
   });
 
@@ -34,14 +35,20 @@ describe('TimePicker', () => {
     let { getByDisplayValue, getAllByDisplayValue } = render(
       <TimePicker date={date} onChangeTime={mockOnChangeTime} />,
     );
-    fireEvent.change(getByDisplayValue('12'), {
+    const [time, meridiem] = new Date(date)
+      .toLocaleTimeString('en-US')
+      .split(' ');
+    const [h, m, s] = time.split(':');
+    fireEvent.change(getByDisplayValue(padTime(h)), {
       target: { value: '10' },
     });
-    let minsSecs = getAllByDisplayValue('00');
-    minsSecs.forEach((element) => {
-      fireEvent.change(element, { target: { value: '59' } });
+    fireEvent.change(getByDisplayValue(m), {
+      target: { value: '59' },
     });
-    fireEvent.change(getByDisplayValue('AM'), {
+    fireEvent.change(getByDisplayValue(s), {
+      target: { value: '59' },
+    });
+    fireEvent.change(getByDisplayValue(meridiem), {
       target: { value: 'pm' },
     });
     expect(getByDisplayValue('10')).toBeTruthy();
@@ -54,16 +61,19 @@ describe('TimePicker', () => {
     let { getByDisplayValue, getAllByDisplayValue } = render(
       <TimePicker date={date} />,
     );
-    fireEvent.change(getByDisplayValue('12'), {
+    const [time, meridiem] = new Date(date)
+      .toLocaleTimeString('en-US')
+      .split(' ');
+    const [h, m, s] = time.split(':');
+    fireEvent.change(getByDisplayValue(padTime(h)), {
       target: { value: '36' },
     });
     fireEvent.blur(getByDisplayValue('36'));
-    let minsSecs = getAllByDisplayValue('00');
-    minsSecs.forEach((element) => {
-      fireEvent.change(element, { target: { value: '99' } });
-      fireEvent.blur(getByDisplayValue('99'));
-    });
-    fireEvent.change(getByDisplayValue('AM'), {
+    fireEvent.change(getByDisplayValue(m), { target: { value: '99' } });
+    fireEvent.blur(getByDisplayValue('99'));
+    fireEvent.change(getByDisplayValue(s), { target: { value: '99' } });
+    fireEvent.blur(getByDisplayValue('99'));
+    fireEvent.change(getByDisplayValue(meridiem), {
       target: { value: 'ok' },
     });
     fireEvent.blur(getByDisplayValue('ok'));
