@@ -7,11 +7,12 @@ export default function convertTimeToDate(
   second: string,
   meridiem?: Meridiem,
 ): string {
+  let date = initialDate.trim() === '' ? new Date() : new Date(initialDate);
   let hourBasedOnMeridiem = ~~hour;
   if (meridiem === 'PM') {
     hourBasedOnMeridiem = hourBasedOnMeridiem + 12;
   }
   return new Date(
-    new Date(initialDate).setHours(hourBasedOnMeridiem, ~~minute, ~~second),
+    date.setHours(hourBasedOnMeridiem, ~~minute, ~~second),
   ).toISOString();
 }

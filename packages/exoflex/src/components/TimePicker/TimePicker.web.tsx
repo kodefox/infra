@@ -13,7 +13,7 @@ import convertTimeToDate from '../../helpers/convertTimeToDate';
 import { TimePickerProps } from './types';
 
 export default function TimePicker(props: TimePickerProps) {
-  let { format = '12' as HourFormat, date: initialDate, onChangeTime } = props;
+  let { format = '12' as HourFormat, date, onChangeTime } = props;
 
   let [hour, setHour] = useState('12');
   let [minute, setMinute] = useState('00');
@@ -21,15 +21,9 @@ export default function TimePicker(props: TimePickerProps) {
   let [meridiem, setMeridiem] = useState<Meridiem>('AM');
 
   useEffect(() => {
-    let utcString = convertTimeToDate(
-      initialDate,
-      hour,
-      minute,
-      second,
-      meridiem,
-    );
+    let utcString = convertTimeToDate(date, hour, minute, second, meridiem);
     onChangeTime && onChangeTime(utcString);
-  }, [hour, minute, second, meridiem, initialDate, onChangeTime]);
+  }, [hour, minute, second, meridiem, date, onChangeTime]);
 
   let changeHour = (newHour: string) => setHour(newHour);
   let changeMinute = (newMinute: string) => setMinute(newMinute);
