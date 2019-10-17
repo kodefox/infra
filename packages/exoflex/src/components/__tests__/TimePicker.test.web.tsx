@@ -3,7 +3,7 @@ import { render, fireEvent, cleanup } from '@testing-library/react';
 import TimePicker from '../TimePicker/TimePicker.web';
 import { padTime } from '../../helpers/displayTime';
 
-const date = '2019-10-10T11:03:11.044Z';
+const date = '2019-10-10T11:03:21.044Z';
 
 describe('TimePicker', () => {
   afterAll(() => {
@@ -26,7 +26,7 @@ describe('TimePicker', () => {
     let d = new Date(date);
     expect(getByDisplayValue(padTime(d.getHours()))).toBeTruthy();
     expect(getByDisplayValue('03')).toBeTruthy();
-    expect(getByDisplayValue('11')).toBeTruthy();
+    expect(getByDisplayValue('21')).toBeTruthy();
     expect(queryByDisplayValue('AM')).toBeFalsy();
   });
 
