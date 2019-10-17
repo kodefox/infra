@@ -1,5 +1,6 @@
 import * as Drawer from './Drawer';
 
+export { default as Accordion } from './Accordion';
 export { default as ActivityIndicator } from './ActivityIndicator';
 export { default as Button } from './Button';
 export { default as Card } from './Card';
