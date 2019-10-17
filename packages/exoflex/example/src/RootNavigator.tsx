@@ -22,6 +22,7 @@ const AppNavigator = createDrawerNavigator(
     }, {}),
   },
   {
+    drawerWidth: 200,
     // eslint-disable-next-line react/display-name
     contentComponent: ({
       navigation,
