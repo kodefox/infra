@@ -8,6 +8,7 @@ import CheckboxExample from './CheckboxExample';
 import CollapsibleExample from './CollapsibleExample';
 import SliderExample from './SliderExample';
 import IconButtonExample from './IconButtonExample';
+import ProgressBarExample from './ProgressBarExample';
 import TextInputExample from './TextInputExample';
 import ToastExample from './ToastExample';
 
@@ -20,6 +21,7 @@ export let EXAMPLES = {
   checkbox: CheckboxExample,
   collapsible: CollapsibleExample,
   iconbutton: IconButtonExample,
+  progressbar: ProgressBarExample,
   slider: SliderExample,
   textinput: TextInputExample,
   toast: ToastExample,
