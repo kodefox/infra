@@ -26,6 +26,7 @@ function ExampleList({ activeExample, closeDrawer }: Props) {
               navigate(item.title.toLowerCase());
               closeDrawer();
             }}
+            style={{ height: 40, paddingVertical: 0 }}
           />
         )}
       />
