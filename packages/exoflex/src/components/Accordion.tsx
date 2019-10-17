@@ -36,7 +36,7 @@ type Props<T> = Omit<AccordionProps<T>, 'renderHeader'> &
       content: T,
       index: number,
       isActive: boolean,
-      sections: T[],
+      sections: Array<T>,
     ) => React.ReactElement<{}>;
   };
 
@@ -81,9 +81,9 @@ export default function Accordion<T extends Title>(props: Props<T>) {
   return (
     <BaseAccordion
       activeSections={activeSections}
-      renderHeader={renderHeader}
       onChange={onChange}
       touchableComponent={TouchableOpacity}
+      renderHeader={renderHeaderProps || renderHeader}
       sectionContainerStyle={[
         styles.root,
         {
