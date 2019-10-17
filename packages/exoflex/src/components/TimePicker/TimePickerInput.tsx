@@ -10,6 +10,7 @@ import TextInput from '../TextInput/TextInput';
 import IconButton from '../IconButton';
 
 import { HourFormat } from '../../helpers/timeChecker';
+import { padTime } from '../../helpers/displayTime';
 import useTheme from '../../helpers/useTheme';
 
 export type TimePickerInputProps = Readonly<{
@@ -51,7 +52,7 @@ export default function TimePickerInput(props: TimePickerInputProps) {
         }
         break;
     }
-    onChangeText && onChangeText(newValue.toString().padStart(2, '0'));
+    onChangeText && onChangeText(padTime(newValue));
   }, [value, label, onChangeText, format, toggleMeridiem]);
 
   let pressDown = useCallback(() => {
@@ -75,7 +76,7 @@ export default function TimePickerInput(props: TimePickerInputProps) {
         }
         break;
     }
-    onChangeText && onChangeText(newValue.toString().padStart(2, '0'));
+    onChangeText && onChangeText(padTime(newValue));
   }, [value, label, onChangeText, format, toggleMeridiem]);
 
   return (

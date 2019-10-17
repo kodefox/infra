@@ -1,4 +1,4 @@
-import { createTimeForDisplay } from '../displayTime';
+import { createTimeForDisplay, padTime } from '../displayTime';
 
 const initialDate = '2019-10-10T11:03:11.044Z';
 const initialDate2 = '2019-10-10T21:03:11.044Z';
@@ -41,5 +41,21 @@ describe('createTimeForDisplay', () => {
 
     expect(createTimeForDisplay(initialDate, '24')).toBe(`${hours}:03:11`);
     expect(createTimeForDisplay(initialDate2, '24')).toBe(`${hours2}:03:11`);
+  });
+});
+
+describe('padTime', () => {
+  it('should put `0` on the front when value < 10', () => {
+    expect(padTime(0)).toBe('00');
+    expect(padTime(4)).toBe('04');
+    expect(padTime(9)).toBe('09');
+    expect(padTime('6')).toBe('06');
+  });
+
+  it('should not put `0` on the front when value >= 10', () => {
+    expect(padTime(10)).toBe('10');
+    expect(padTime(39)).toBe('39');
+    expect(padTime(59)).toBe('59');
+    expect(padTime('29')).toBe('29');
   });
 });
