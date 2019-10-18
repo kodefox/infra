@@ -24,6 +24,7 @@ module.exports = {
       '@babel/runtime',
       'react-native-svg',
       'expo-font',
+      'react-native-modal-datetime-picker',
       ...dependencies,
     ],
   },
