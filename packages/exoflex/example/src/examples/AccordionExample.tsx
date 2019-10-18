@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, ScrollView, StyleSheet, Image } from 'react-native';
-import { Accordion, Text } from 'exoflex';
+import { Accordion, Text, TextInput, Button } from 'exoflex';
 import drawerImage from '../../assets/drawer_header.png';
 import useTheme from '../../../src/helpers/useTheme';
 
@@ -33,20 +33,36 @@ function AccordionExample() {
           },
         ]}
         titleStyle={styles.title}
-        renderContent={(content) => (
-          <View
-            style={[
-              styles.contentContainer,
-              {
-                borderRadius: roundness,
-              },
-            ]}
-          >
-            <Image
-              source={content.image}
-              style={{ width: 50, height: 50, marginRight: 5 }}
-            />
-            <Text>{content.text}</Text>
+        renderContent={(content, index) => (
+          <View style={{ padding: 16 }}>
+            <View
+              style={[
+                styles.contentContainer,
+                {
+                  borderRadius: roundness,
+                },
+              ]}
+            >
+              <Image source={content.image} style={styles.image} />
+              <Text style={styles.flex}>{content.text}</Text>
+            </View>
+            {index === 0 && (
+              <>
+                <TextInput
+                  label="First Name"
+                  containerStyle={{ marginVertical: 10 }}
+                />
+                <TextInput
+                  label="Last Name"
+                  containerStyle={{ marginVertical: 10 }}
+                />
+                <TextInput
+                  label="Address"
+                  containerStyle={{ marginVertical: 10 }}
+                />
+                <Button onPress={() => setActiveSections([1])}>next</Button>
+              </>
+            )}
           </View>
         )}
         sectionContainerStyle={[
@@ -78,6 +94,8 @@ let styles = StyleSheet.create({
     borderColor: '#454545',
     marginVertical: 5,
   },
+  image: { width: 50, height: 50, marginRight: 5 },
+  flex: { flex: 1 },
 });
 
 export default AccordionExample;
