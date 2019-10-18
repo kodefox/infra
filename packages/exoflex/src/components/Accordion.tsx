@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentClass } from 'react';
 import {
   View,
   StyleSheet,
@@ -7,12 +7,11 @@ import {
   Animated,
   ViewStyle,
   TextStyle,
-  TouchableOpacity,
 } from 'react-native';
 import BaseAccordion, {
   AccordionProps,
 } from 'react-native-collapsible/Accordion';
-import { IconButton } from 'react-native-paper';
+import { IconButton, TouchableRipple } from 'react-native-paper';
 import { useAnimation } from 'react-native-animation-hooks';
 
 import useTheme from '../helpers/useTheme';
@@ -82,7 +81,7 @@ export default function Accordion<T extends Title>(props: Props<T>) {
     <BaseAccordion
       activeSections={activeSections}
       onChange={onChange}
-      touchableComponent={TouchableOpacity}
+      touchableComponent={(TouchableRipple as unknown) as ComponentClass}
       renderHeader={renderHeaderProps || renderHeader}
       sectionContainerStyle={[
         styles.root,
@@ -140,7 +139,7 @@ function Header<T extends Title>({
 
   return (
     <View style={[styles.titleContainer, titleContainerStyle]}>
-      {!!renderIconLeft ? renderIconLeft(animatedValue) : null}
+      {!!renderIconLeft && renderIconLeft(animatedValue)}
       <Text style={[styles.title, titleStyle]}>{content && content.title}</Text>
       {renderIconRight === null
         ? null
