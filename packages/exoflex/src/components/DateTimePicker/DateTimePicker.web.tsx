@@ -78,9 +78,6 @@ export function DatePicker(props: PickerProps) {
 
   return (
     <>
-      <Text weight="bold" style={{ textAlign: 'center' }}>
-        Select a date
-      </Text>
       <Calendar
         markedDates={{ [selectedDate.split('T')[0]]: { selected: true } }}
         onDayPress={changeDate}
@@ -108,10 +105,7 @@ export function TimePickerContainer(props: PickerProps) {
 
   return (
     <>
-      <Text weight="bold" style={{ textAlign: 'center' }}>
-        Select a time
-      </Text>
-      <View style={{ alignItems: 'center' }}>
+      <View style={{ alignItems: 'center', marginTop: 12 }}>
         <TimePicker date={selectedDateTime} onChangeTime={changeTime} />
       </View>
       <View style={styles.touchableActionWrapper}>
