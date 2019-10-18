@@ -19,7 +19,6 @@ import useTheme from '../helpers/useTheme';
 type Props = {
   title: string;
   children: ReactNode;
-  isCollapsed?: boolean;
   style?: StyleProp<ViewStyle>;
   titleStyle?: StyleProp<TextStyle>;
   titleContainerStyle?: StyleProp<ViewStyle>;
@@ -47,11 +46,7 @@ function Collapsible({
   ...otherProps
 }: Props) {
   let { colors } = useTheme();
-  let [isCollapsed, setCollapsed] = useState(!!otherProps.isCollapsed);
-
-  useEffect(() => {
-    setCollapsed(!!otherProps.isCollapsed);
-  }, [otherProps.isCollapsed]);
+  let [isCollapsed, setCollapsed] = useState(true);
 
   let toggleCollapsible = useCallback(() => {
     setCollapsed((c) => !c);
@@ -63,6 +58,12 @@ function Collapsible({
     toValue: isCollapsed ? -0.5 : 0.5,
     duration: 300,
   });
+
+  if (otherProps.hasOwnProperty('isCollapsed')) {
+    console.warn(
+      '`isCollapsed` props is deprecated. To control the Collapsible, please use Accordion component instead.',
+    );
+  }
 
   return (
     <View
