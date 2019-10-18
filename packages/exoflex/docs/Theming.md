@@ -42,6 +42,8 @@ import OpenSansRegular from './OpenSans-Regular.ttf';
 
 // Create an object to list all the custom fonts to be loaded.
 // The key in the object will be the fontFamily to use when styling the text.
+// Internally, this object will be passed to `Font.loadAsync`
+// @see https://docs.expo.io/versions/latest/sdk/font/#arguments
 let customFonts = {
   // Here, the key is 'OpenSans-Regular', when we style the text,
   // we will use fontFamily: 'OpenSans-Regular'.
