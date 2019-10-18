@@ -59,11 +59,11 @@ export default function DateTimePicker(props: DateTimePickerProps) {
   );
 }
 
-export type PickerProps = {
-  readonly date: string;
-  readonly onCancel: () => void;
-  readonly onConfirm: (date: string) => void;
-};
+export type PickerProps = Readonly<{
+  date: string;
+  onCancel: () => void;
+  onConfirm: (date: string) => void;
+}>;
 
 export function DatePicker(props: PickerProps) {
   let { date, onCancel, onConfirm } = props;

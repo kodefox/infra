@@ -2,12 +2,11 @@ import { DateTimePickerProps as RNDateTimePickerProps } from 'react-native-modal
 
 export type DateTimePickerMode = 'date' | 'time' | 'datetime';
 
-export type DateTimePickerProps = Omit<
-  RNDateTimePickerProps,
-  'onCancel' | 'onConfirm' | 'date' | 'mode'
-> & {
-  readonly mode?: DateTimePickerMode;
-  readonly date?: string;
-  readonly onCancel: () => void;
-  readonly onConfirm: (date: string) => void;
-};
+export type DateTimePickerProps = Readonly<
+  Omit<RNDateTimePickerProps, 'onCancel' | 'onConfirm' | 'date' | 'mode'> & {
+    mode?: DateTimePickerMode;
+    date?: string;
+    onCancel: () => void;
+    onConfirm: (date: string) => void;
+  }
+>;
