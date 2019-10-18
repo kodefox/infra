@@ -1,4 +1,4 @@
-import React, { useState, ReactNode, useCallback, useEffect } from 'react';
+import React, { useState, ReactNode, useCallback } from 'react';
 import {
   Animated,
   TouchableOpacity,
