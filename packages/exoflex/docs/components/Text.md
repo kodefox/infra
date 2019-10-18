@@ -2,6 +2,8 @@
 
 Text with preconfigured font family when used inside the Provider.
 
+For using custom font families, please refer to [theming docs](../Theming.md).
+
 ### Props
 
 | Name                                                                      |                                      Type                                       |   Default   | Description                                                 |
@@ -19,33 +21,16 @@ Notes:
 ### Example
 
 ```tsx
-<Provider
-  theme={{
-    ...DefaultTheme,
-    fonts: {
-      ...DefaultTheme.fonts,
-      code: {
-        light: {
-          name: 'Fira Code',
-          weight: '300',
-        },
-        normal: {
-          name: 'Consola',
-          weight: '400',
-        },
-        medium: {
-          name: 'Fantasque Sans Mono',
-          weight: '500',
-        },
-        bold: {
-          name: 'Fantasque Sans Mono Bold',
-          weight: '700',
-        },
-      },
-    },
-  }}
->
+<Provider>
   <Text>Hello, I'm Rubik</Text>
+
+  // Equivalent to:
+  // <Text style={{ fontWeight: '500' }}>
+  //   My weight is 500.
+  // </Text>
+  <Text weight="500">
+    My weight is 500.
+  </Text>
 
   <Text weight="700" fontStyle="italic">
     I'm bold and italic.
