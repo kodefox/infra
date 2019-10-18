@@ -17,7 +17,7 @@
     "watch-ts": "tsc -w",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
-    "lint": "eslint \"./src/*.ts\" --max-warnings 0",
+    "lint": "eslint \"./src/**/*.ts\" --max-warnings 0",
     "typecheck": "tsc --noEmit -p .",
     "jest": "jest --coverage --passWithNoTests",
     "test": "yarn lint && yarn typecheck && yarn format:check && yarn jest"

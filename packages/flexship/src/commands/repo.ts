@@ -1,12 +1,11 @@
-import { Fetch } from '../type';
 import { createRepoGithub, promptCLI, getRootToken } from '../helpers';
 
 export let command = 'create-repo';
 export let desc = 'Create a new repo in github';
 
 export let handlerCreateRepo = async (token: string) => {
-  let parsedRepoName: string = '';
-  let parsedGithubToken: string = '';
+  let parsedRepoName = '';
+  let parsedGithubToken = '';
 
   let { repoName } = await promptCLI<'repoName'>(
     'repoName',
@@ -33,7 +32,7 @@ export let handlerCreateRepo = async (token: string) => {
   } catch (error) {
     if (error.message === 'Bad credentials') {
       console.error('Bad credentials, please input the right token');
-      throw new Error(error.message);
+      return;
     }
     throw new Error(error.message);
   }

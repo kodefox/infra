@@ -40,7 +40,6 @@ export default async function createRepoGithub(
       await setLabelRepo(repoName, githubToken);
     }
   } catch (error) {
-    console.error('Bad credentials, please input the right token');
     throw new Error(error.message);
   }
 }
