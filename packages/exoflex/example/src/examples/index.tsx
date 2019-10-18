@@ -1,6 +1,7 @@
 /* eslint-disable react/display-name */
 import React from 'react';
 
+import AccordionExample from './AccordionExample';
 import ActivityIndicatorExample from './ActivityIndicatorExample';
 import ButtonExample from './ButtonExample';
 import CardExample from './CardExample';
@@ -19,6 +20,7 @@ import ToastExample from './ToastExample';
 import Welcome from '../Welcome';
 
 export let EXAMPLES = {
+  accordion: AccordionExample,
   activityindicator: ActivityIndicatorExample,
   button: ButtonExample,
   card: CardExample,
