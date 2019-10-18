@@ -111,7 +111,9 @@ export function TimePickerContainer(props: PickerProps) {
       <Text weight="bold" style={{ textAlign: 'center' }}>
         Select a time
       </Text>
-      <TimePicker date={selectedDateTime} onChangeTime={changeTime} />
+      <View style={{ alignItems: 'center' }}>
+        <TimePicker date={selectedDateTime} onChangeTime={changeTime} />
+      </View>
       <View style={styles.touchableActionWrapper}>
         <TouchableRipple onPress={onCancel} style={styles.touchableAction}>
           <Text>CANCEL</Text>
@@ -128,9 +130,8 @@ const styles = StyleSheet.create({
   modalContainer: {
     backgroundColor: 'white',
     margin: 12,
-    paddingHorizontal: 16,
     paddingVertical: 12,
-    width: 275,
+    width: 360,
     alignSelf: 'center',
   },
   touchableAction: {
