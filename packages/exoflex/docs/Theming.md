@@ -113,5 +113,5 @@ module.exports = {
 
 ### Using the custom fonts
 
-WIP
+Under dicussion.
 
