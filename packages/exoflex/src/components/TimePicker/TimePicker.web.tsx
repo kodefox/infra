@@ -58,6 +58,7 @@ export default function TimePicker(props: TimePickerProps) {
         format={format}
         label="Hrs"
         value={hour}
+        placeholder="hh"
         onChangeText={changeHour}
         onBlur={checkHour}
       />
@@ -65,6 +66,7 @@ export default function TimePicker(props: TimePickerProps) {
         format={format}
         label="Mins"
         value={minute}
+        placeholder="mm"
         onChangeText={changeMinute}
         onBlur={checkMinute}
       />
@@ -72,6 +74,7 @@ export default function TimePicker(props: TimePickerProps) {
         format={format}
         label="Secs"
         value={second}
+        placeholder="ss"
         onChangeText={changeSecond}
         onBlur={checkSecond}
       />
