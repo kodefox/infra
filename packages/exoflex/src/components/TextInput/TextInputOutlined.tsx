@@ -77,7 +77,11 @@ function TextInputOutlined(
 
 function ErrorIcon(props: { color: string }) {
   return (
-    <IconButton icon="error-outline" style={styles.errorIcon} {...props} />
+    <IconButton
+      icon="alert-circle-outline"
+      style={styles.errorIcon}
+      {...props}
+    />
   );
 }
 
