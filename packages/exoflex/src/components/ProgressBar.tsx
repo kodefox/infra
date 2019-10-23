@@ -1,8 +1,10 @@
-import React from 'react';
-import { StyleSheet, View, Animated, ViewStyle } from 'react-native';
-import { ProgressBarProps } from 'react-native-paper';
+import React, { ComponentProps } from 'react';
+import { StyleSheet, View, Animated } from 'react-native';
+import { ProgressBar } from 'react-native-paper';
 import { useAnimation } from 'react-native-animation-hooks';
 import useTheme from '../helpers/useTheme';
+
+type ProgressBarProps = ComponentProps<typeof ProgressBar>;
 
 // TODO: allow `indeterminate` prop after upgrading to RNP 3
 type Props = Omit<ProgressBarProps, 'indeterminate' | 'animating' | 'theme'> & {
