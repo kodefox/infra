@@ -10,9 +10,9 @@ import {
   View,
 } from 'react-native';
 import CollapsibleBase from 'react-native-collapsible';
-import { IconButton } from 'react-native-paper';
 import { useAnimation } from 'react-native-animation-hooks';
 
+import AnimatedIcon from './AnimatedIcon';
 import Text from './Text';
 import useTheme from '../helpers/useTheme';
 
@@ -29,10 +29,6 @@ type Props = {
   renderIconRight?: null | ((animatedValue: Animated.Value) => ReactNode);
   disabled?: boolean;
 };
-
-let AnimatedIconButton: typeof IconButton = Animated.createAnimatedComponent(
-  IconButton,
-);
 
 function Collapsible({
   title,
@@ -86,7 +82,7 @@ function Collapsible({
         {renderIconRight === null ? null : !!renderIconRight ? (
           renderIconRight(animatedValue)
         ) : (
-          <AnimatedIconButton
+          <AnimatedIcon
             icon="chevron-right"
             style={
               [
