@@ -1,18 +1,16 @@
 import React, { ComponentProps } from 'react';
-import { StyleSheet, View, Animated } from 'react-native';
-import { ProgressBar } from 'react-native-paper';
+import { View, Animated, StyleSheet } from 'react-native';
+import { ProgressBar as PaperProgressBar } from 'react-native-paper';
 import { useAnimation } from 'react-native-animation-hooks';
+
 import useTheme from '../helpers/useTheme';
 
-type ProgressBarProps = ComponentProps<typeof ProgressBar>;
+type PaperProgressBarProps = ComponentProps<typeof PaperProgressBar>;
 
-// TODO: allow `indeterminate` prop after upgrading to RNP 3
-type Props = Omit<ProgressBarProps, 'indeterminate' | 'animating' | 'theme'> & {
-  visible?: boolean;
-};
+type Props = Omit<PaperProgressBarProps, 'theme'>;
 
 export default function ProgressBar(props: Props) {
-  let { progress, color, visible, style } = props;
+  let { progress = 0, color, visible, style = {} } = props;
   let { colors, roundness } = useTheme();
 
   let animatedValue = useAnimation({
@@ -22,7 +20,7 @@ export default function ProgressBar(props: Props) {
     duration: 500,
   });
 
-  let flattenedStyle = StyleSheet.flatten<ViewStyle>(style) || {};
+  let flattenedStyle = StyleSheet.flatten(style || {});
   let height = flattenedStyle.height || 8;
   let borderRadius = flattenedStyle.borderRadius || roundness;
 
