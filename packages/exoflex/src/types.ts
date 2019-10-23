@@ -1,5 +1,10 @@
-import { DeepPartial } from 'react-native-paper';
-
+export type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends Array<infer U>
+    ? Array<DeepPartial<U>>
+    : T[P] extends ReadonlyArray<infer U>
+    ? ReadonlyArray<DeepPartial<U>>
+    : DeepPartial<T[P]>;
+};
 export type Theme = {
   fonts: Fonts;
   colors: Colors;
