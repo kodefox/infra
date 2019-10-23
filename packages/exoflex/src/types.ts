@@ -10,6 +10,9 @@ export type Theme = {
   colors: Colors;
   dark: boolean;
   roundness: number;
+  animation: {
+    scale: number;
+  };
 };
 
 export type ThemeShape = DeepPartial<Theme>;
@@ -68,6 +71,9 @@ export type Colors = {
   border: string;
   placeholder: string;
   backdrop: string;
+  onSurface: string;
+  onBackground: string;
+  notification: string;
 };
 
 export type FontSource = string | number;
