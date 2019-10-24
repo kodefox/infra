@@ -5,8 +5,5 @@ Reusable solutions to common problems we encounter as we build projects (both we
 ## Available Products
 
 - [exoflex](https://github.com/kodefox/infra/tree/master/packages/exoflex)
+- [flexship](https://github.com/kodefox/infra/tree/master/packages/flexship)
 - [naviflex](https://github.com/kodefox/infra/tree/master/packages/naviflex)
-
-## Good First Issue
-
-- [ ] Upgrade react-navigation-hooks (#37)
