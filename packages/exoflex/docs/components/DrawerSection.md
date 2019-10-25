@@ -4,8 +4,10 @@ A component to group content inside a navigation drawer.
 
 ### Preview
 
-<img src="../assets/drawer_full_preview.png" width="320">
-<img src="../assets/drawer_circle_preview.png" width="320">
+<p>
+  <img src="../assets/drawer_full_preview.png" width="320">
+  <img src="../assets/drawer_circle_preview.png" width="320">
+</p>
 
 ### Props
 
