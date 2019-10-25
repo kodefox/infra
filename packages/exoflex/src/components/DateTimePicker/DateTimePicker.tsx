@@ -15,7 +15,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
   return (
     <RNDateTimePicker
       mode={mode}
-      date={new Date(date)}
+      date={date.trim() === '' ? new Date() : new Date(date)}
       onCancel={() => onCancel()}
       onConfirm={(date) => onConfirm(date.toISOString())}
       {...otherProps}
