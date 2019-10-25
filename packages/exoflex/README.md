@@ -13,6 +13,8 @@ This library also required you to use `react-native-svg` >= `9.3.3`. But if you 
 
 If you are not using `Expo`, you should install it by following [this step](https://github.com/react-native-community/react-native-svg/#installation).
 
+Exoflex includes automatic fonts loading using `expo-font`. If you want to opt-out and handle the font loading manually, use [babel-plugin-optional-require](https://github.com/satya164/babel-plugin-optional-require).
+
 ## Installation
 
 To install this library, you could use npm or yarn:
