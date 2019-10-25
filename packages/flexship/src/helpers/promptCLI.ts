@@ -12,6 +12,7 @@ export default async function promptCLI<N = string>(
   type: string,
   message: string,
 ) {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore : Type 'N' does not satisfy the constraint 'string'.
   let result: Record<N, string> = await inquirer.prompt([
     {
