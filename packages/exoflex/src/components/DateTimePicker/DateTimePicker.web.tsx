@@ -19,6 +19,8 @@ export default function DateTimePicker(props: DateTimePickerProps) {
     onConfirm,
   } = props;
 
+  let { colors } = useTheme();
+
   let {
     dateTime,
     activePicker,
@@ -32,7 +34,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
     onCancel();
   };
 
-  let renderPicker =
+  let picker =
     activePicker === 'date' ? (
       <DatePicker date={dateTime} onCancel={cancel} onConfirm={confirmDate} />
     ) : (
@@ -51,9 +53,12 @@ export default function DateTimePicker(props: DateTimePickerProps) {
       <Modal
         visible={isVisible}
         onDismiss={cancel}
-        contentContainerStyle={styles.modalContainer}
+        contentContainerStyle={[
+          styles.modalContainer,
+          { backgroundColor: colors.background },
+        ]}
       >
-        {renderPicker}
+        {picker}
       </Modal>
     </Portal>
   );
@@ -122,7 +127,6 @@ export function TimePickerContainer(props: PickerProps) {
 
 const styles = StyleSheet.create({
   modalContainer: {
-    backgroundColor: 'white',
     margin: 12,
     paddingVertical: 12,
     width: 360,
