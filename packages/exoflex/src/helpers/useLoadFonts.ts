@@ -14,7 +14,7 @@ function useLoadFonts(
     if (shouldLoadFonts) {
       try {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
-        let { loadAsync } = require('expo-font');
+        let loadAsync = require('expo-font').loadAsync;
         loadAsync(fonts).then(() => {
           setFontsLoaded(true);
         });
