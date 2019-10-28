@@ -39,8 +39,10 @@ type Font = {
   weight: FullFontWeight;
   style?: FontStyle;
   size?: number;
+  source?: FontSource;
 };
 
+// TODO: Add support for all font weights in theme.
 export type FontPreset = {
   light: Font;
   normal: Font;

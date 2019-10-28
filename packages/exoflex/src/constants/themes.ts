@@ -1,6 +1,7 @@
 import { Platform } from 'react-native';
 import { DefaultTheme as PaperDefaultTheme } from 'react-native-paper';
 
+import { BuiltInFonts } from './fonts';
 import { Theme } from '../types';
 
 export const DefaultTheme: Theme = {
@@ -56,42 +57,50 @@ export const DefaultTheme: Theme = {
       light: {
         name: 'RubikLight',
         weight: '300',
+        source: BuiltInFonts.RubikLight,
       },
       normal: {
         name: 'RubikRegular',
         weight: '400',
+        source: BuiltInFonts.RubikRegular,
       },
       medium: {
         name: 'RubikMedium',
         weight: '500',
+        source: BuiltInFonts.RubikMedium,
       },
       bold: {
         name: 'RubikBold',
         weight: '700',
+        source: BuiltInFonts.RubikBold,
       },
     },
     italic: {
       light: {
         name: 'RubikLightItalic',
         weight: '300',
+        source: BuiltInFonts.RubikLightItalic,
       },
       normal: {
         name: 'RubikRegularItalic',
         weight: '400',
+        source: BuiltInFonts.RubikRegularItalic,
       },
       medium: {
         name: 'RubikMediumItalic',
         weight: '500',
+        source: BuiltInFonts.RubikMediumItalic,
       },
       bold: {
         name: 'RubikBoldItalic',
         weight: '700',
+        source: BuiltInFonts.RubikBoldItalic,
       },
     },
   },
 };
 
-export const SystemFontsTheme: Partial<Theme> = {
+export const SystemFontsTheme: Pick<Theme, 'fonts'> = {
   fonts: Platform.select({
     web: {
       default: {
