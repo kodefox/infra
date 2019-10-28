@@ -33,6 +33,7 @@
     "@types/react-native": "^0.57.65",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-expo": "^6.0.0",
+    "lodash.mergewith": "^4.6.2",
     "react-native-animation-hooks": "^1.0.1",
     "react-native-calendars": "^1.212.0",
     "react-native-collapsible": "^1.5.1",
