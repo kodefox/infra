@@ -4,9 +4,9 @@ import deepmerge from 'deepmerge';
 
 import DefaultLoadingPlaceholder from './LoadingPlaceholder';
 import ToastContainer from './ToastContainer';
+import getFontsSource from '../helpers/getFontsSource';
 import useLoadFonts from '../helpers/useLoadFonts';
 import { ThemeContext } from '../helpers/useTheme';
-import { BuiltInFonts } from '../constants/fonts';
 import { DefaultTheme, SystemFontsTheme } from '../constants/themes';
 import { Theme, ThemeShape, FontSource } from '../types';
 
@@ -14,6 +14,7 @@ type Props = {
   children: ReactNode;
   theme?: ThemeShape;
   /**
+   * @deprecated specify font source on the theme instead.
    * Record of fonts to load.
    * Will be loaded only when `expo-font` module is available.
    * Defaults to the Rubik font families.
@@ -42,22 +43,31 @@ function Provider({
   theme = {},
   children,
   useSystemFonts = true,
-  fonts = BuiltInFonts,
+  fonts,
   skipFontsLoading = false,
   LoadingPlaceholder = DefaultLoadingPlaceholder,
   ...otherProps
 }: Props) {
-  let isFontLoaded = useLoadFonts(fonts, useSystemFonts || skipFontsLoading);
+  let { mergedTheme, fontsSource } = useMemo(() => {
+    let mergedTheme = deepmerge.all([
+      DefaultTheme,
+      useSystemFonts ? SystemFontsTheme : {},
+      theme,
+    ]) as Theme;
+    return { mergedTheme, fontsSource: getFontsSource(mergedTheme.fonts) };
+  }, [theme, useSystemFonts]);
 
-  let mergedTheme = useMemo(
-    () =>
-      deepmerge.all([
-        DefaultTheme,
-        useSystemFonts ? SystemFontsTheme : {},
-        theme,
-      ]),
-    [theme, useSystemFonts],
-  ) as Theme;
+  let isFontLoaded = useLoadFonts(
+    fontsSource,
+    useSystemFonts || skipFontsLoading,
+  );
+
+  if (fonts) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Using `fonts` for loading fonts is no longer supported, please specify the font source on the theme instead.',
+    );
+  }
 
   if (!isFontLoaded) {
     return <LoadingPlaceholder theme={mergedTheme} />;
