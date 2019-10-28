@@ -1,10 +1,10 @@
 import React, { ReactNode, useMemo, ComponentType } from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
-import deepmerge from 'deepmerge';
 
 import DefaultLoadingPlaceholder from './LoadingPlaceholder';
 import ToastContainer from './ToastContainer';
 import getFontsSource from '../helpers/getFontsSource';
+import mergeTheme from '../helpers/mergeTheme';
 import useLoadFonts from '../helpers/useLoadFonts';
 import { ThemeContext } from '../helpers/useTheme';
 import { DefaultTheme, SystemFontsTheme } from '../constants/themes';
@@ -49,11 +49,12 @@ function Provider({
   ...otherProps
 }: Props) {
   let { mergedTheme, fontsSource } = useMemo(() => {
-    let mergedTheme = deepmerge.all([
+    let mergedTheme = mergeTheme(
       DefaultTheme,
       useSystemFonts ? SystemFontsTheme : {},
       theme,
-    ]) as Theme;
+    );
+
     return { mergedTheme, fontsSource: getFontsSource(mergedTheme.fonts) };
   }, [theme, useSystemFonts]);
 
