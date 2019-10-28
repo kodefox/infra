@@ -34,7 +34,7 @@ export type FontWeight =
 
 export type FontStyle = 'normal' | 'italic';
 
-type Font = {
+export type Font = {
   name: string;
   weight: FullFontWeight;
   style?: FontStyle;
