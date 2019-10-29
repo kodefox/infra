@@ -152,10 +152,10 @@ function TimePickerArrow(props: TimePickerArrowProps) {
 }
 
 function ArrowUp() {
-  return <IconButton icon="keyboard-arrow-up" style={styles.arrow} />;
+  return <IconButton icon="chevron-up" style={styles.arrow} />;
 }
 function ArrowDown() {
-  return <IconButton icon="keyboard-arrow-down" style={styles.arrow} />;
+  return <IconButton icon="chevron-down" style={styles.arrow} />;
 }
 
 // NOTE: React.memo needed to boost performance on mobile web
