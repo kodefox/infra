@@ -1,5 +1,5 @@
 import React, { ComponentProps } from 'react';
-import { View, Animated, StyleSheet } from 'react-native';
+import { StyleSheet, View, Animated } from 'react-native';
 import { ProgressBar as PaperProgressBar } from 'react-native-paper';
 import { useAnimation } from 'react-native-animation-hooks';
 
@@ -7,10 +7,12 @@ import useTheme from '../helpers/useTheme';
 
 type PaperProgressBarProps = ComponentProps<typeof PaperProgressBar>;
 
-type Props = Omit<PaperProgressBarProps, 'theme'>;
+type Props = Omit<PaperProgressBarProps, 'animating' | 'theme'> & {
+  visible?: boolean;
+};
 
 export default function ProgressBar(props: Props) {
-  let { progress = 0, color, visible, style = {} } = props;
+  let { progress = 0, color, visible, style } = props;
   let { colors, roundness } = useTheme();
 
   let animatedValue = useAnimation({
@@ -20,7 +22,7 @@ export default function ProgressBar(props: Props) {
     duration: 500,
   });
 
-  let flattenedStyle = StyleSheet.flatten(style || {});
+  let flattenedStyle = StyleSheet.flatten(style) || {};
   let height = flattenedStyle.height || 8;
   let borderRadius = flattenedStyle.borderRadius || roundness;
 
