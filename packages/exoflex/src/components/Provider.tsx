@@ -58,10 +58,7 @@ function Provider({
     return { mergedTheme, fontsSource: getFontsSource(mergedTheme.fonts) };
   }, [theme, useSystemFonts]);
 
-  let isFontLoaded = useLoadFonts(
-    fontsSource,
-    useSystemFonts || skipFontsLoading,
-  );
+  let isFontLoaded = useLoadFonts(fontsSource, skipFontsLoading);
 
   if (fonts) {
     // eslint-disable-next-line no-console
