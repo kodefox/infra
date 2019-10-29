@@ -7330,10 +7330,10 @@ react-native-modal@^11.0.2:
   resolved "https://registry.yarnpkg.com/@ptomasroos/react-native-multi-slider/-/react-native-multi-slider-1.0.0.tgz#a4ea27b1320b93a1db9f696c24789695df6c9f30"
   integrity sha512-NpX22rQLArg9widwMzGf7XsInTDf6mfY/D1XaDVjglNkVphj3NSN37+nF6MofArCxC++1P+jHv0SGWbmJQwy4g==
 
-react-native-paper@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-3.0.0.tgz#b7d667dcb38f5e69552db140c398f50ea46ee98e"
-  integrity sha512-cKnSAS3OsTf/vkb/HooPV+Cc4fCqxoB+Iael80+rvIZ28T5ARtI0HjFXKiTOsliGJPQsu9xaX8wdEg0F2nF6qA==
+react-native-paper@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-3.1.1.tgz#971f3097eecb4c061bf10768182b8985442a45ab"
+  integrity sha512-GHJ/2z/1Nzm4Y1g22Znu09BV7SV4tsR7h/9HrXuj3kFrsJo7zt5e+t/ELLLvycGEo4z1vhV6MtjtIk/PSaKoDA==
   dependencies:
     "@callstack/react-theme-provider" "^3.0.5"
     color "^3.1.2"
