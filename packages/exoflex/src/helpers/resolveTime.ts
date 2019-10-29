@@ -10,8 +10,10 @@ export function convertTimeToDate(
 ): string {
   let date = initialDate.trim() === '' ? new Date() : new Date(initialDate);
   let hourBasedOnMeridiem = ~~hour;
-  if (meridiem === 'PM') {
+  if (meridiem === 'PM' && hourBasedOnMeridiem < 12) {
     hourBasedOnMeridiem = hourBasedOnMeridiem + 12;
+  } else if (meridiem === 'AM' && hourBasedOnMeridiem >= 12) {
+    hourBasedOnMeridiem = hourBasedOnMeridiem - 12;
   }
   return new Date(
     date.setHours(hourBasedOnMeridiem, ~~minute, ~~second),

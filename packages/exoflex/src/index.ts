@@ -15,6 +15,7 @@ export {
   Checkbox,
   Chip,
   Collapsible,
+  DateTimePicker,
   Drawer,
   IconButton,
   ProgressBar,
