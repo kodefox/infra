@@ -1,11 +1,15 @@
 import React from 'react';
-import { Provider } from 'exoflex';
+import { Provider, RubikFonts } from 'exoflex';
 
 import RootNavigator from './RootNavigator';
 
+let customTheme = {
+  fonts: RubikFonts,
+};
+
 function App() {
   return (
-    <Provider useSystemFonts={false}>
+    <Provider theme={customTheme}>
       <RootNavigator />
     </Provider>
   );
