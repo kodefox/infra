@@ -31,7 +31,6 @@ let styles = StyleSheet.create({
   root: {
     padding: 16,
     backgroundColor: '#eeeeee',
-    alignItems: 'center',
   },
 });
 
