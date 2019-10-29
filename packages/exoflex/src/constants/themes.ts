@@ -92,41 +92,41 @@ export const SystemFonts: Fonts = Platform.select({
   default: {
     default: {
       light: {
-        name: 'sans-serif-light',
-        weight: 'normal',
+        name: 'sans-serif',
+        weight: '300',
       },
       normal: {
         name: 'sans-serif',
-        weight: 'normal',
+        weight: '400',
       },
       medium: {
-        name: 'sans-serif-medium',
-        weight: 'normal',
+        name: 'sans-serif',
+        weight: '500',
       },
       bold: {
-        name: 'sans-serif-condensed',
-        weight: 'normal',
+        name: 'sans-serif',
+        weight: '700',
       },
     },
     italic: {
       light: {
-        name: 'sans-serif-light',
-        weight: 'normal',
+        name: 'sans-serif',
+        weight: '300',
         fontStyle: 'italic',
       },
       normal: {
         name: 'sans-serif',
-        weight: 'normal',
+        weight: '400',
         fontStyle: 'italic',
       },
       medium: {
-        name: 'sans-serif-medium',
-        weight: 'normal',
+        name: 'sans-serif',
+        weight: '500',
         fontStyle: 'italic',
       },
       bold: {
-        name: 'sans-serif-condensed',
-        weight: 'normal',
+        name: 'sans-serif',
+        weight: '700',
         fontStyle: 'italic',
       },
     },
