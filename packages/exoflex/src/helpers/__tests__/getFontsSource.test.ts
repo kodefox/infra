@@ -1,13 +1,13 @@
 import getFontsSource from '../getFontsSource';
-import { DefaultTheme, SystemFonts } from '../../constants/themes';
-import { BuiltInFonts } from '../../constants/fonts';
+import { SystemFonts, RubikFonts } from '../../constants/themes';
+import { RubikSourcesMap } from '../../constants/fonts';
 
 describe('getFontsSource', () => {
   it('should return empty object when using system fonts', () => {
     expect(getFontsSource(SystemFonts)).toEqual({});
   });
   it('should return fonts source properly', () => {
-    expect(getFontsSource(DefaultTheme.fonts)).toEqual(BuiltInFonts);
+    expect(getFontsSource(RubikFonts)).toEqual(RubikSourcesMap);
     expect(
       getFontsSource({
         default: {
@@ -18,7 +18,7 @@ describe('getFontsSource', () => {
           normal: {
             name: 'RubikRegular',
             weight: '400',
-            source: BuiltInFonts.RubikRegular,
+            source: RubikSourcesMap.RubikRegular,
           },
           medium: {
             name: 'RubikMedium',
@@ -27,7 +27,7 @@ describe('getFontsSource', () => {
           bold: {
             name: 'RubikBold',
             weight: '700',
-            source: BuiltInFonts.RubikBold,
+            source: RubikSourcesMap.RubikBold,
           },
         },
         mypreset: {
@@ -53,8 +53,8 @@ describe('getFontsSource', () => {
         },
       }),
     ).toEqual({
-      RubikRegular: BuiltInFonts.RubikRegular,
-      RubikBold: BuiltInFonts.RubikBold,
+      RubikRegular: RubikSourcesMap.RubikRegular,
+      RubikBold: RubikSourcesMap.RubikBold,
       MyFontRegular: 'foo.ttf',
       MyFontMedium: 7,
       MyFontBold: 'bar.ttf',

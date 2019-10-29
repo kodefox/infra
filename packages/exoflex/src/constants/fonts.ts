@@ -20,7 +20,10 @@ export const FontWeights: Record<FontWeight, keyof FontPreset> = {
   '700': 'bold',
 };
 
-export const BuiltInFonts = {
+/**
+ * Font sources map to load before using Rubik font family.
+ */
+export const RubikSourcesMap = {
   RubikBold,
   RubikBoldItalic,
   RubikLight,

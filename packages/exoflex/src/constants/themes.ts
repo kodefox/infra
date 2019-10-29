@@ -1,7 +1,7 @@
 import { Platform } from 'react-native';
 import { DefaultTheme as PaperDefaultTheme } from 'react-native-paper';
 
-import { BuiltInFonts } from './fonts';
+import { RubikSourcesMap } from './fonts';
 import { Theme, Fonts } from '../types';
 
 export const SystemFonts: Fonts = Platform.select({
@@ -184,49 +184,52 @@ export const DefaultTheme: Theme = {
   fonts: SystemFonts,
 };
 
-export const RubikFonts = {
+/**
+ * Preconfigured theme.fonts for Rubik font families
+ */
+export const RubikFonts: Fonts = {
   default: {
     light: {
       name: 'RubikLight',
       weight: '300',
-      source: BuiltInFonts.RubikLight,
+      source: RubikSourcesMap.RubikLight,
     },
     normal: {
       name: 'RubikRegular',
       weight: '400',
-      source: BuiltInFonts.RubikRegular,
+      source: RubikSourcesMap.RubikRegular,
     },
     medium: {
       name: 'RubikMedium',
       weight: '500',
-      source: BuiltInFonts.RubikMedium,
+      source: RubikSourcesMap.RubikMedium,
     },
     bold: {
       name: 'RubikBold',
       weight: '700',
-      source: BuiltInFonts.RubikBold,
+      source: RubikSourcesMap.RubikBold,
     },
   },
   italic: {
     light: {
       name: 'RubikLightItalic',
       weight: '300',
-      source: BuiltInFonts.RubikLightItalic,
+      source: RubikSourcesMap.RubikLightItalic,
     },
     normal: {
       name: 'RubikRegularItalic',
       weight: '400',
-      source: BuiltInFonts.RubikRegularItalic,
+      source: RubikSourcesMap.RubikRegularItalic,
     },
     medium: {
       name: 'RubikMediumItalic',
       weight: '500',
-      source: BuiltInFonts.RubikMediumItalic,
+      source: RubikSourcesMap.RubikMediumItalic,
     },
     bold: {
       name: 'RubikBoldItalic',
       weight: '700',
-      source: BuiltInFonts.RubikBoldItalic,
+      source: RubikSourcesMap.RubikBoldItalic,
     },
   },
 };
