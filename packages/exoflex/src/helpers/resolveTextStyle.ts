@@ -14,6 +14,7 @@ export default function resolveTextStyle(
   let fontPreset = availableFonts[useItalicPreset ? 'italic' : fontPresetName];
 
   if (!fontPreset) {
+    // eslint-disable-next-line no-console
     console.warn(`Font preset "${fontPresetName}" not found`);
     return;
   }

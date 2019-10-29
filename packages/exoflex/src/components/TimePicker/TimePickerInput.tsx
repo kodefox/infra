@@ -16,6 +16,7 @@ import useTheme from '../../helpers/useTheme';
 export type TimePickerInputProps = Readonly<{
   label: 'Hrs' | 'Mins' | 'Secs' | 'Mid';
   value: string;
+  placeholder?: string;
   format: HourFormat;
   onChangeText?: (text: string) => void;
   onBlur?: (
@@ -25,7 +26,14 @@ export type TimePickerInputProps = Readonly<{
 
 export default function TimePickerInput(props: TimePickerInputProps) {
   let { colors, roundness } = useTheme();
-  let { format, value, label, onChangeText, ...otherProps } = props;
+  let {
+    format,
+    value,
+    label,
+    onChangeText,
+    placeholder = '',
+    ...otherProps
+  } = props;
 
   let toggleMeridiem = useCallback(() => {
     onChangeText && onChangeText(value === 'AM' ? 'PM' : 'AM');
@@ -100,6 +108,7 @@ export default function TimePickerInput(props: TimePickerInputProps) {
         // is changing the TextInput into <input type="number" />
         keyboardType={label === 'Mid' ? 'default' : 'phone-pad'}
         value={value}
+        placeholder={placeholder}
         onChangeText={onChangeText}
         {...otherProps}
       />

@@ -17,6 +17,7 @@ module.exports = {
   rules: {
     indent: 'off',
     'prefer-const': 'off',
+    'no-console': 1,
     '@typescript-eslint/prefer-interface': 0,
     '@typescript-eslint/explicit-member-accessibility': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
