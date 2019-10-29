@@ -22,6 +22,7 @@ export default function ProgressBar(props: Props) {
   });
 
   let height = (style && style.height) || 8;
+  let borderRadius = (style && style.borderRadius) || roundness;
 
   let onLayout = (event: LayoutChangeEvent) =>
     setWidth(event.nativeEvent.layout.width);
@@ -38,9 +39,9 @@ export default function ProgressBar(props: Props) {
           {
             width,
             height,
+            borderRadius,
             borderColor: colors.border,
             backgroundColor: colors.surface,
-            borderRadius: roundness,
           },
           style,
         ]}
@@ -49,7 +50,7 @@ export default function ProgressBar(props: Props) {
           style={[
             styles.bar,
             {
-              borderRadius: roundness,
+              borderRadius,
               backgroundColor: color || colors.primary,
               width: animatedValue.interpolate({
                 inputRange: [0, 1],
