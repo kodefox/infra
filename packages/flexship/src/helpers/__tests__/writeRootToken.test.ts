@@ -22,7 +22,7 @@ jest.mock('fs', () => ({
   writeFile: jest.fn(
     (
       path: PathLike,
-      data: any,
+      data: string,
       options: WriteFileOptions,
       callback: (err?: NodeJS.ErrnoException) => void,
     ) => {
@@ -33,7 +33,7 @@ jest.mock('fs', () => ({
   appendFile: jest.fn(
     (
       file: PathLike,
-      data: any,
+      data: string,
       options: WriteFileOptions,
       callback: (err?: NodeJS.ErrnoException) => void,
     ) => {
