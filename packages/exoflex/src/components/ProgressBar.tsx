@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, View, Animated } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Animated, LayoutChangeEvent } from 'react-native';
 import { ProgressBarProps } from 'react-native-paper';
 import { useAnimation } from 'react-native-animation-hooks';
 import useTheme from '../helpers/useTheme';
@@ -12,6 +12,7 @@ type Props = Omit<ProgressBarProps, 'indeterminate' | 'animating' | 'theme'> & {
 export default function ProgressBar(props: Props) {
   let { progress, color, visible, style } = props;
   let { colors, roundness } = useTheme();
+  let [width, setWidth] = useState(0);
 
   let animatedValue = useAnimation({
     type: 'timing',
@@ -22,36 +23,42 @@ export default function ProgressBar(props: Props) {
 
   let height = (style && style.height) || 8;
 
+  let onLayout = (event: LayoutChangeEvent) =>
+    setWidth(event.nativeEvent.layout.width);
+
   if (!visible) {
     return <View style={{ height }} />;
   }
 
   return (
-    <View
-      style={[
-        styles.container,
-        {
-          borderColor: colors.border,
-          backgroundColor: colors.surface,
-          borderRadius: roundness,
-        },
-        style,
-      ]}
-    >
-      <Animated.View
+    <View onLayout={onLayout}>
+      <View
         style={[
-          styles.bar,
+          styles.container,
           {
+            width,
             height,
+            borderColor: colors.border,
+            backgroundColor: colors.surface,
             borderRadius: roundness,
-            backgroundColor: color || colors.primary,
-            width: animatedValue.interpolate({
-              inputRange: [0, 1],
-              outputRange: ['0%', `${progress * 100}%`],
-            }),
           },
+          style,
         ]}
-      />
+      >
+        <Animated.View
+          style={[
+            styles.bar,
+            {
+              borderRadius: roundness,
+              backgroundColor: color || colors.primary,
+              width: animatedValue.interpolate({
+                inputRange: [0, 1],
+                outputRange: [0, progress * width],
+              }),
+            },
+          ]}
+        />
+      </View>
     </View>
   );
 }
@@ -62,13 +69,11 @@ ProgressBar.defaultProps = {
 
 const styles = StyleSheet.create({
   bar: {
-    justifyContent: 'center',
-    position: 'absolute',
+    flex: 1,
   },
   container: {
+    overflow: 'hidden',
     height: 8,
-    justifyContent: 'center',
-    width: '100%',
     borderWidth: 1,
   },
 });
