@@ -7,7 +7,7 @@ import getFontsSource from '../helpers/getFontsSource';
 import mergeTheme from '../helpers/mergeTheme';
 import useLoadFonts from '../helpers/useLoadFonts';
 import { ThemeContext } from '../helpers/useTheme';
-import { DefaultTheme, SystemFontsTheme } from '../constants/themes';
+import { DefaultTheme } from '../constants/themes';
 import { Theme, ThemeShape, FontSource } from '../types';
 
 type Props = {
@@ -21,6 +21,7 @@ type Props = {
    */
   fonts?: Record<string, FontSource>;
   /**
+   * @deprecated
    * Set to true to use fonts available in the system instead of loading
    * custom fonts.
    * Implies `skipFontsLoading` set to true.
@@ -42,23 +43,26 @@ type Props = {
 function Provider({
   theme = {},
   children,
-  useSystemFonts = true,
+  useSystemFonts,
   fonts,
   skipFontsLoading = false,
   LoadingPlaceholder = DefaultLoadingPlaceholder,
   ...otherProps
 }: Props) {
   let { mergedTheme, fontsSource } = useMemo(() => {
-    let mergedTheme = mergeTheme(
-      DefaultTheme,
-      useSystemFonts ? SystemFontsTheme : {},
-      theme,
-    );
+    let mergedTheme = mergeTheme(DefaultTheme, theme);
 
     return { mergedTheme, fontsSource: getFontsSource(mergedTheme.fonts) };
-  }, [theme, useSystemFonts]);
+  }, [theme]);
 
   let isFontLoaded = useLoadFonts(fontsSource, skipFontsLoading);
+
+  if (useSystemFonts != null) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Using `useSystemFonts` is no longer supported, now exoflex use system fonts by default.',
+    );
+  }
 
   if (fonts) {
     // eslint-disable-next-line no-console

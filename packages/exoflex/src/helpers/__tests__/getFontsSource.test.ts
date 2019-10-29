@@ -1,10 +1,10 @@
 import getFontsSource from '../getFontsSource';
-import { SystemFontsTheme, DefaultTheme } from '../../constants/themes';
+import { DefaultTheme, SystemFonts } from '../../constants/themes';
 import { BuiltInFonts } from '../../constants/fonts';
 
 describe('getFontsSource', () => {
   it('should return empty object when using system fonts', () => {
-    expect(getFontsSource(SystemFontsTheme.fonts)).toEqual({});
+    expect(getFontsSource(SystemFonts)).toEqual({});
   });
   it('should return fonts source properly', () => {
     expect(getFontsSource(DefaultTheme.fonts)).toEqual(BuiltInFonts);
