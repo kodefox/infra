@@ -22,5 +22,9 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': ['error', { variables: false }],
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/array-type': ['error', { default: 'generic' }],
+    '@typescript-eslint/camelcase': [
+      'error',
+      { allow: ['allow_merge_commit', 'allow_rebase_merge'] },
+    ],
   },
 };

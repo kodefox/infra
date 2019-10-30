@@ -17,7 +17,7 @@
     "watch-ts": "tsc -w",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
-    "lint": "eslint \"./src/*.ts\" --max-warnings 0",
+    "lint": "eslint \"./src/**/*.ts\" --max-warnings 0",
     "typecheck": "tsc --noEmit -p .",
     "jest": "jest --coverage --passWithNoTests",
     "test": "yarn lint && yarn typecheck && yarn format:check && yarn jest"
@@ -25,12 +25,14 @@
   "dependencies": {
     "inquirer": "^7.0.0",
     "load-json-file": "^6.2.0",
+    "node-fetch": "^2.6.0",
     "write-json-file": "^4.2.0",
     "yargs": "^14.0.0"
   },
   "devDependencies": {
     "@types/inquirer": "^6.5.0",
     "@types/jest": "^24.0.18",
+    "@types/node-fetch": "^2.5.2",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
     "eslint": "^6.2.1",
