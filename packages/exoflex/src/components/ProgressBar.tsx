@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Animated, LayoutChangeEvent } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Animated, ViewStyle } from 'react-native';
 import { ProgressBarProps } from 'react-native-paper';
 import { useAnimation } from 'react-native-animation-hooks';
 import useTheme from '../helpers/useTheme';
@@ -12,7 +12,6 @@ type Props = Omit<ProgressBarProps, 'indeterminate' | 'animating' | 'theme'> & {
 export default function ProgressBar(props: Props) {
   let { progress, color, visible, style } = props;
   let { colors, roundness } = useTheme();
-  let [width, setWidth] = useState(0);
 
   let animatedValue = useAnimation({
     type: 'timing',
@@ -24,42 +23,36 @@ export default function ProgressBar(props: Props) {
   let height = (style && style.height) || 8;
   let borderRadius = (style && style.borderRadius) || roundness;
 
-  let onLayout = (event: LayoutChangeEvent) =>
-    setWidth(event.nativeEvent.layout.width);
-
   if (!visible) {
     return <View style={{ height }} />;
   }
 
   return (
-    <View onLayout={onLayout}>
-      <View
+    <View
+      style={[
+        styles.container,
+        {
+          height,
+          borderRadius,
+          borderColor: colors.border,
+          backgroundColor: colors.surface,
+        },
+        style,
+      ]}
+    >
+      <Animated.View
         style={[
-          styles.container,
+          styles.bar,
           {
-            width,
-            height,
             borderRadius,
-            borderColor: colors.border,
-            backgroundColor: colors.surface,
+            backgroundColor: color || colors.primary,
+            width: animatedValue.interpolate({
+              inputRange: [0, 1],
+              outputRange: ['0%', `${progress * 100}%`],
+            }),
           },
-          style,
         ]}
-      >
-        <Animated.View
-          style={[
-            styles.bar,
-            {
-              borderRadius,
-              backgroundColor: color || colors.primary,
-              width: animatedValue.interpolate({
-                inputRange: [0, 1],
-                outputRange: [0, progress * width],
-              }),
-            },
-          ]}
-        />
-      </View>
+      />
     </View>
   );
 }
@@ -74,6 +67,7 @@ const styles = StyleSheet.create({
   },
   container: {
     overflow: 'hidden',
+    width: '100%',
     height: 8,
     borderWidth: 1,
   },
