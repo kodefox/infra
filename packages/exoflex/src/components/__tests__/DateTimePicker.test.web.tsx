@@ -21,7 +21,7 @@ describe('DateTimePicker', () => {
       date = newDate;
     });
     let onCancel = jest.fn();
-    let selectedDate = new Date(new Date(date).setDate(27));
+    let selectedDate = new Date(new Date(date).setDate(9));
 
     const App = () => {
       let [isVisible, setVisible] = useState(false);
@@ -43,9 +43,9 @@ describe('DateTimePicker', () => {
     act(() => {
       fireEvent.click(getByText('OPEN'));
     });
-    await wait(() => getByText('27'));
+    await wait(() => getByText('CONFIRM'));
 
-    fireEvent.click(getByText('27'));
+    fireEvent.click(getByText('9'));
     fireEvent.click(getByText('CONFIRM'));
     expect(onConfirm).toHaveBeenCalled();
     expect(date).toBe(new Date(selectedDate).toISOString());
@@ -97,7 +97,7 @@ describe('DateTimePicker', () => {
     });
     let onCancel = jest.fn();
     let selectedDate = new Date(
-      new Date(new Date(date).setMinutes(27)).setDate(27),
+      new Date(new Date(date).setMinutes(27)).setDate(9),
     );
 
     const App = () => {
@@ -121,7 +121,7 @@ describe('DateTimePicker', () => {
     });
     await wait(() => getByText('CONFIRM'));
 
-    fireEvent.click(getByText('27'));
+    fireEvent.click(getByText('9'));
     fireEvent.click(getByText('CONFIRM'));
     await wait(() => getByText('Hrs'));
 
