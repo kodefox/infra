@@ -42,11 +42,12 @@ function TextInputOutlined(
             ? colors.accent
             : colors.border,
           backgroundColor: disabled ? colors.disabled : colors.surface,
+          justifyContent: !!label ? 'space-between' : 'center',
         },
         containerStyle,
       ]}
     >
-      <Label style={labelStyle}>{label}</Label>
+      {!!label && <Label style={labelStyle}>{label}</Label>}
       <TextInput
         ref={ref}
         editable={!disabled && editable}
@@ -86,7 +87,6 @@ let styles = StyleSheet.create({
     height: 60,
     padding: 12,
     paddingVertical: 10,
-    justifyContent: 'space-between',
   },
   errorIcon: {
     position: 'absolute',
