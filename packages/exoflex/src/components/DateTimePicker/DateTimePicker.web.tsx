@@ -84,6 +84,7 @@ export function DatePicker(props: PickerProps) {
   return (
     <>
       <Calendar
+        current={selectedDate}
         markedDates={{ [selectedDate.split('T')[0]]: { selected: true } }}
         onDayPress={changeDate}
       />
