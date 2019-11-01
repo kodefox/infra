@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Animated } from 'react-native';
+import { StyleSheet, View, Animated, ViewStyle } from 'react-native';
 import { ProgressBarProps } from 'react-native-paper';
 import { useAnimation } from 'react-native-animation-hooks';
 import useTheme from '../helpers/useTheme';
@@ -20,7 +20,9 @@ export default function ProgressBar(props: Props) {
     duration: 500,
   });
 
-  let height = (style && style.height) || 8;
+  let flattenedStyle = StyleSheet.flatten<ViewStyle>(style) || {};
+  let height = flattenedStyle.height || 8;
+  let borderRadius = flattenedStyle.borderRadius || roundness;
 
   if (!visible) {
     return <View style={{ height }} />;
@@ -31,9 +33,10 @@ export default function ProgressBar(props: Props) {
       style={[
         styles.container,
         {
+          height,
+          borderRadius,
           borderColor: colors.border,
           backgroundColor: colors.surface,
-          borderRadius: roundness,
         },
         style,
       ]}
@@ -42,8 +45,7 @@ export default function ProgressBar(props: Props) {
         style={[
           styles.bar,
           {
-            height,
-            borderRadius: roundness,
+            borderRadius,
             backgroundColor: color || colors.primary,
             width: animatedValue.interpolate({
               inputRange: [0, 1],
@@ -62,13 +64,12 @@ ProgressBar.defaultProps = {
 
 const styles = StyleSheet.create({
   bar: {
-    justifyContent: 'center',
-    position: 'absolute',
+    flex: 1,
   },
   container: {
-    height: 8,
-    justifyContent: 'center',
+    overflow: 'hidden',
     width: '100%',
+    height: 8,
     borderWidth: 1,
   },
 });
