@@ -20,10 +20,9 @@ export default function ProgressBar(props: Props) {
     duration: 500,
   });
 
-  let flattenedStyle = StyleSheet.flatten<ViewStyle>(style);
-  let height = (flattenedStyle && flattenedStyle.height) || 8;
-  let borderRadius =
-    (flattenedStyle && flattenedStyle.borderRadius) || roundness;
+  let flattenedStyle = StyleSheet.flatten<ViewStyle>(style) || {};
+  let height = flattenedStyle.height || 8;
+  let borderRadius = flattenedStyle.borderRadius || roundness;
 
   if (!visible) {
     return <View style={{ height }} />;
