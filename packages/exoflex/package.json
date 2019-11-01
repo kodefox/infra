@@ -18,7 +18,8 @@
     "lint": "eslint --max-warnings 0 \"src/**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit -p .",
     "jest": "jest --coverage --passWithNoTests",
-    "test": "yarn format:check && yarn lint && yarn typecheck && yarn jest"
+    "test": "yarn format:check && yarn lint && yarn typecheck && yarn jest",
+    "postinstall": "patch-package"
   },
   "peerDependencies": {
     "expo-font": "*",
@@ -36,6 +37,7 @@
     "react-native-paper": "^2.16.0"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.6.0",
     "@react-native-community/bob": "^0.6.1",
     "@testing-library/react": "^9.1.1",
     "@testing-library/react-hooks": "^2.0.3",
@@ -59,6 +61,8 @@
     "jest-watch-select-projects": "^1.0.0",
     "jest-watch-typeahead": "^0.4.0",
     "jest-with-platform": "^0.0.3",
+    "patch-package": "^6.2.0",
+    "postinstall-postinstall": "^2.0.0",
     "prettier": "^1.18.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -70,7 +74,6 @@
     "react-test-renderer": "^16.9.0",
     "regenerator-runtime": "^0.13.3",
     "release-it": "^12.3.6",
-    "ts-jest": "^24.0.2",
     "typescript": "^3.5.3"
   },
   "@react-native-community/bob": {
