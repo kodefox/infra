@@ -11,6 +11,10 @@ function TextInputExample() {
         containerStyle={{ marginVertical: 10 }}
       />
       <TextInput
+        placeholder="Type here..."
+        containerStyle={{ marginVertical: 10 }}
+      />
+      <TextInput
         label="Input Label (Disabled)"
         value="Input Text"
         disabled={true}
