@@ -18,7 +18,7 @@ export type TextInputProps = BaseTextInputProps & {
   /**
    * Label for the text input
    */
-  label: string;
+  label?: string;
   /**
    * When set to true, will disable all interaction with the text input
    * Defaults to 'false'.
