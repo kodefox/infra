@@ -9,7 +9,7 @@ This library uses `hooks` so you need to use at least:
 - `react` version >= `16.8.0`
 - `react-native` version >= `0.59.0`
 
-This library also required you to use `react-native-svg` >= `9.3.3`. But if you use `Expo` you could skip this step and jump ahead to [Installation](#installation).
+This library also required you to use `react-native-svg` >= `9.3.3`. But if you use `Expo` you could install it by running `expo install react-native-svg`.
 
 If you are not using `Expo`, you should install it by following [this step](https://github.com/react-native-community/react-native-svg/#installation).
 
