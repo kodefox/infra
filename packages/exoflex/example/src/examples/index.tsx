@@ -11,6 +11,7 @@ import CollapsibleExample from './CollapsibleExample';
 import DateTimePickerExample from './DateTimePickerExample';
 import SliderExample from './SliderExample';
 import IconButtonExample from './IconButtonExample';
+import ModalExample from './ModalExample';
 import PortalExample from './PortalExample';
 import ProgressBarExample from './ProgressBarExample';
 import RadioButtonExample from './RadioButtonExample';
@@ -31,6 +32,7 @@ export let EXAMPLES = {
   collapsible: CollapsibleExample,
   datetimepicker: DateTimePickerExample,
   iconbutton: IconButtonExample,
+  modal: ModalExample,
   portal: PortalExample,
   progressbar: ProgressBarExample,
   radiobutton: RadioButtonExample,
