@@ -29,6 +29,7 @@ To use this library, it's really advised that you use the `Provider` component t
 
 You can find all available components from links below:
 
+- [Accordion](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Accordion.md)
 - [ActivityIndicator](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/ActivityIndicator.md)
 - [Button](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Button.md)
 - [Calendar](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Calendar.md)
