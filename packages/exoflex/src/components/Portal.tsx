@@ -1,3 +1,10 @@
-import { Portal as PaperPortal } from 'react-native-paper';
+import React from 'react';
+import { Portal as PaperPortal, PortalProps } from 'react-native-paper';
 
-export default PaperPortal;
+type Props = Omit<PortalProps, 'theme'>;
+
+function Portal(props: Props) {
+  return <PaperPortal {...props} />;
+}
+
+export default Portal;
