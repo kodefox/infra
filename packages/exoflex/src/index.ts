@@ -28,4 +28,16 @@ export {
   TimePicker,
   Toast,
   ToastContainer,
+  Typography,
 } from './components';
+
+export {
+  Heading,
+  Subheading,
+  LargeTitle,
+  Title,
+  Subtitle,
+  Body,
+  SecondaryBody,
+  Caption,
+} from './components/Typography';
