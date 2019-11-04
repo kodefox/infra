@@ -46,4 +46,5 @@ You can find all available components from links below:
 - [Switch](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Switch.md)
 - [Text](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Text.md)
 - [TextInput](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/TextInput.md)
+- [TimePicker](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/TimePicker.md)
 - [Toast](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Toast.md)
