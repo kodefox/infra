@@ -23,10 +23,7 @@ export default function ProgressBar(props: Props) {
   let { colors, roundness } = useTheme();
 
   useEffect(() => {
-    startAnimation();
-  }, [progress]);
-
-  let startAnimation = () => {
+    // start animation
     if (indeterminate) {
       let indeterminateAnimation = Animated.timing(animatedValue, {
         duration: 1000,
@@ -44,7 +41,7 @@ export default function ProgressBar(props: Props) {
         isInteraction: false,
       }).start();
     }
-  };
+  }, [progress, indeterminate, animatedValue]);
 
   let flattenedStyle = StyleSheet.flatten<ViewStyle>(style) || {};
   let height = flattenedStyle.height || 8;
