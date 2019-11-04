@@ -18,6 +18,7 @@ export {
   DateTimePicker,
   Drawer,
   IconButton,
+  Modal,
   Portal,
   ProgressBar,
   Provider,
