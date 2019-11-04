@@ -7,8 +7,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import Label from '../Label';
-import Text from '../Text';
+import { SecondaryBody, Body } from '../Typography';
 
 type Props = {
   title: string;
@@ -29,9 +28,15 @@ function CardTitle({
   return (
     <View {...otherProps} style={[styles.root, style]}>
       <View>
-        {!!title && <Title style={titleStyle}>{title}</Title>}
+        {!!title && (
+          <Body weight="500" numberOfLines={1} style={titleStyle}>
+            {title}
+          </Body>
+        )}
         {!!subtitle && (
-          <Label style={[styles.subtitle, subtitleStyle]}>{subtitle}</Label>
+          <SecondaryBody style={[styles.subtitle, subtitleStyle]}>
+            {subtitle}
+          </SecondaryBody>
         )}
       </View>
     </View>
@@ -40,16 +45,6 @@ function CardTitle({
 
 CardTitle.displayName = 'Card.Title';
 
-type TitleProps = {
-  children: string;
-  style?: StyleProp<TextStyle>;
-};
-
-// TODO: Discuss Typograhpy with designer
-let Title = ({ ...otherProps }: TitleProps) => (
-  <Text weight="500" numberOfLines={1} {...otherProps} />
-);
-
 let styles = StyleSheet.create({
   root: {
     flexDirection: 'row',
@@ -57,7 +52,11 @@ let styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 12,
   },
-  subtitle: { marginTop: 2 },
+  subtitle: {
+    marginTop: 2,
+    // TODO: This color should use colors.text with 0.6 opacity.
+    color: '#757575',
+  },
 });
 
 export default CardTitle;

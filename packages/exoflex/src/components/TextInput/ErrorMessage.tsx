@@ -1,13 +1,17 @@
 import React, { ComponentProps } from 'react';
 import { StyleSheet } from 'react-native';
 
-import Label from '../Label';
+import { SecondaryBody } from '../Typography';
 
-type Props = ComponentProps<Label>;
+type Props = ComponentProps<SecondaryBody>;
 
 function ErrorMessage({ style, ...otherProps }: Props) {
   return (
-    <Label numberOfLines={1} {...otherProps} style={[styles.root, style]} />
+    <SecondaryBody
+      numberOfLines={1}
+      {...otherProps}
+      style={[styles.root, style]}
+    />
   );
 }
 
