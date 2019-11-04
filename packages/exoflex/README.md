@@ -9,7 +9,7 @@ This library uses `hooks` so you need to use at least:
 - `react` version >= `16.8.0`
 - `react-native` version >= `0.59.0`
 
-This library also required you to use `react-native-svg` >= `9.3.3`. But if you use `Expo` you could skip this step and jump ahead to [Installation](#installation).
+This library also required you to use `react-native-svg` >= `9.3.3`. But if you use `Expo` you could install it by running `expo install react-native-svg`.
 
 If you are not using `Expo`, you should install it by following [this step](https://github.com/react-native-community/react-native-svg/#installation).
 
@@ -29,6 +29,7 @@ To use this library, it's really advised that you use the `Provider` component t
 
 You can find all available components from links below:
 
+- [Accordion](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Accordion.md)
 - [ActivityIndicator](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/ActivityIndicator.md)
 - [Button](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Button.md)
 - [Calendar](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Calendar.md)
