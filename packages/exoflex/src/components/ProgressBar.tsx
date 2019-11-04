@@ -122,6 +122,7 @@ export default function ProgressBar(props: Props) {
 ProgressBar.defaultProps = {
   visible: true,
   progress: 0,
+  indeterminate: false,
 };
 
 const styles = StyleSheet.create({
