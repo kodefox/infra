@@ -13,6 +13,7 @@ type ButtonPresets = {
 
 type Props = Omit<ButtonProps, 'theme' | 'mode'> & {
   preset: keyof ButtonPresets;
+  textPreset?: string;
   labelStyle?: StyleProp<TextStyle>;
 };
 
@@ -26,6 +27,7 @@ export default function Button(props: Props) {
   let {
     preset,
     children,
+    textPreset,
     uppercase,
     contentStyle,
     style,
@@ -54,7 +56,7 @@ export default function Button(props: Props) {
       {...buttonProps}
     >
       {typeof children === 'string' ? (
-        <Text weight="500" style={labelStyle}>
+        <Text preset={textPreset} weight="500" style={labelStyle}>
           {uppercase ? children.toUpperCase() : children}
         </Text>
       ) : (
