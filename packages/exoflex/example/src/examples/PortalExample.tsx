@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Portal, Text } from '../../../src/components';
+import { Portal, Text } from 'exoflex';
 
 function PortalExample() {
   return (
