@@ -12,25 +12,6 @@ type AvatarTextProps = Omit<PaperAvatarTextProps, 'theme'> & {
   labelStyle?: StyleProp<TextStyle>;
 };
 
-/**
- * Avatars can be used to represent people in a graphical way.
- *
- * <div class="screenshots">
- *   <figure>
- *     <img class="medium" src="screenshots/avatar-text.png" />
- *   </figure>
- * </div>
- *
- * ## Usage
- * ```js
- * import * as React from 'react';
- * import { Avatar } from 'react-native-paper';
- *
- * const MyComponent = () => (
- *   <Avatar.Text size={24} label="XD" />
- * );
- * ```
- */
 export default function AvatarText(props: AvatarTextProps) {
   let { label, size = DEFAULT_SIZE, style, labelStyle } = props;
 
