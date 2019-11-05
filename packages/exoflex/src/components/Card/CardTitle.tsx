@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { Label, Body } from '../Typography';
+import { Label, Paragraph } from '../Typography';
 
 type Props = {
   title: string;
@@ -29,9 +29,9 @@ function CardTitle({
     <View {...otherProps} style={[styles.root, style]}>
       <View>
         {!!title && (
-          <Body weight="500" numberOfLines={1} style={titleStyle}>
+          <Paragraph weight="500" numberOfLines={1} style={titleStyle}>
             {title}
-          </Body>
+          </Paragraph>
         )}
         {!!subtitle && (
           <Label style={[styles.subtitle, subtitleStyle]}>{subtitle}</Label>

@@ -8,7 +8,7 @@ let {
   LargeTitle,
   Title,
   Subtitle,
-  Body,
+  Paragraph,
   Label,
   Caption,
 } = Typography;
@@ -21,7 +21,7 @@ function TypographyExample() {
       <LargeTitle style={styles.spacing}>LargeTitle</LargeTitle>
       <Title style={styles.spacing}>Title</Title>
       <Subtitle style={styles.spacing}>Subtitle</Subtitle>
-      <Body style={styles.spacing}>Body</Body>
+      <Paragraph style={styles.spacing}>Paragraph</Paragraph>
       <Label style={styles.spacing}>Label</Label>
       <Caption style={styles.spacing}>Caption</Caption>
       <Heading style={styles.spacing} weight="medium">
@@ -39,9 +39,9 @@ function TypographyExample() {
       <Subtitle style={styles.spacing} weight="medium">
         Medium Subtitle
       </Subtitle>
-      <Body style={styles.spacing} weight="medium">
-        Medium Body
-      </Body>
+      <Paragraph style={styles.spacing} weight="medium">
+        Medium Paragraph
+      </Paragraph>
       <Label style={styles.spacing} weight="medium">
         Medium Label
       </Label>

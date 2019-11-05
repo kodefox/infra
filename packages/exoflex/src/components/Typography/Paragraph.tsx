@@ -5,11 +5,11 @@ import Text, { Props as TextProps } from '../Text';
 
 type Props = TextProps;
 
-function Body({ style, ...otherProps }: Props) {
+function Paragraph({ style, ...otherProps }: Props) {
   return <Text {...otherProps} style={[styles.root, style]} />;
 }
 
-Body.defaultProps = Text.defaultProps;
+Paragraph.defaultProps = Text.defaultProps;
 
 let styles = StyleSheet.create({
   root: {
@@ -17,4 +17,4 @@ let styles = StyleSheet.create({
   },
 });
 
-export default Body;
+export default Paragraph;

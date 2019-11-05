@@ -37,7 +37,7 @@ export {
   LargeTitle,
   Title,
   Subtitle,
-  Body,
+  Paragraph,
   Label,
   Caption,
 } from './components/Typography';
