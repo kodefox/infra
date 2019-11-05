@@ -9,7 +9,7 @@ const DEFAULT_SIZE = 64;
 
 type PaperAvatarTextProps = ComponentProps<typeof PaperAvatar.Text>;
 type AvatarTextProps = Readonly<
-  Omit<PaperAvatarTextProps, 'theme'> & {
+  Omit<PaperAvatarTextProps, 'theme' | 'color'> & {
     labelStyle?: StyleProp<TextStyle>;
     textPreset?: string;
   }
