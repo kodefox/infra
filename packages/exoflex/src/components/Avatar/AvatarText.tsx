@@ -8,12 +8,15 @@ import useTheme from '../../helpers/useTheme';
 const DEFAULT_SIZE = 64;
 
 type PaperAvatarTextProps = ComponentProps<typeof PaperAvatar.Text>;
-type AvatarTextProps = Omit<PaperAvatarTextProps, 'theme'> & {
-  labelStyle?: StyleProp<TextStyle>;
-};
+type AvatarTextProps = Readonly<
+  Omit<PaperAvatarTextProps, 'theme'> & {
+    labelStyle?: StyleProp<TextStyle>;
+    textPreset?: string;
+  }
+>;
 
 export default function AvatarText(props: AvatarTextProps) {
-  let { label, size = DEFAULT_SIZE, style, labelStyle } = props;
+  let { label, size = DEFAULT_SIZE, style, labelStyle, textPreset } = props;
 
   let { colors } = useTheme();
 
@@ -34,6 +37,7 @@ export default function AvatarText(props: AvatarTextProps) {
       ]}
     >
       <Text
+        preset={textPreset}
         style={[
           styles.text,
           {
