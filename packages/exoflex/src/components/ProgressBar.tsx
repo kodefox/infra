@@ -4,7 +4,6 @@ import {
   View,
   Animated,
   ViewStyle,
-  Platform,
   LayoutChangeEvent,
 } from 'react-native';
 import { ProgressBarProps } from 'react-native-paper';
@@ -30,8 +29,6 @@ export default function ProgressBar(props: Props) {
       let indeterminateAnimation = Animated.timing(animatedValue, {
         duration: 1000,
         toValue: 1,
-        // Animated.loop does not work if useNativeDriver is true on web
-        useNativeDriver: Platform.OS !== 'web',
         isInteraction: false,
       });
       Animated.loop(indeterminateAnimation).start();
@@ -94,7 +91,7 @@ export default function ProgressBar(props: Props) {
               },
               {
                 /**
-                 * From RNP code: Workaround for workaround for https://github.com/facebook/react-native/issues/6278
+                 * From RNP code: Workaround for https://github.com/facebook/react-native/issues/6278
                  *
                  * I tried putting 0 instead 0.0001, it works on ios, android, and web. But perhaps this workaround will help on other case, I leave it as it is.
                  */

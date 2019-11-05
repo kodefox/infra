@@ -24,7 +24,7 @@ function ProgressBarExample() {
         progress={progress}
         style={{ marginBottom: 16, marginTop: 8 }}
       />
-      <Button onPress={() => setProgress(Math.random() * 1)}>
+      <Button onPress={() => setProgress(Math.random())}>
         RANDOMIZE PROGRESS
       </Button>
     </ScrollView>
