@@ -7,4 +7,6 @@ function Portal(props: Props) {
   return <PaperPortal {...props} />;
 }
 
+Portal.Host = PaperPortal.Host;
+
 export default Portal;
