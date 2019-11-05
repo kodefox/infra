@@ -9,7 +9,7 @@ let {
   Title,
   Subtitle,
   Body,
-  SecondaryBody,
+  Label,
   Caption,
 } = Typography;
 
@@ -22,7 +22,7 @@ function TypographyExample() {
       <Title style={styles.spacing}>Title</Title>
       <Subtitle style={styles.spacing}>Subtitle</Subtitle>
       <Body style={styles.spacing}>Body</Body>
-      <SecondaryBody style={styles.spacing}>SecondaryBody</SecondaryBody>
+      <Label style={styles.spacing}>Label</Label>
       <Caption style={styles.spacing}>Caption</Caption>
       <Heading style={styles.spacing} weight="medium">
         Medium Heading
@@ -42,9 +42,9 @@ function TypographyExample() {
       <Body style={styles.spacing} weight="medium">
         Medium Body
       </Body>
-      <SecondaryBody style={styles.spacing} weight="medium">
-        Medium SecondaryBody
-      </SecondaryBody>
+      <Label style={styles.spacing} weight="medium">
+        Medium Label
+      </Label>
       <Caption style={styles.spacing} weight="medium">
         Medium Caption
       </Caption>

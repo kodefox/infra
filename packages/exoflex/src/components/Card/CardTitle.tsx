@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { SecondaryBody, Body } from '../Typography';
+import { Label, Body } from '../Typography';
 
 type Props = {
   title: string;
@@ -34,9 +34,7 @@ function CardTitle({
           </Body>
         )}
         {!!subtitle && (
-          <SecondaryBody style={[styles.subtitle, subtitleStyle]}>
-            {subtitle}
-          </SecondaryBody>
+          <Label style={[styles.subtitle, subtitleStyle]}>{subtitle}</Label>
         )}
       </View>
     </View>

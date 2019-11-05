@@ -3,7 +3,7 @@ import { View, TextInput, StyleSheet } from 'react-native';
 import { IconButton } from 'react-native-paper';
 
 import ErrorMessage from './ErrorMessage';
-import { SecondaryBody } from '../Typography';
+import { Label } from '../Typography';
 import useTheme from '../../helpers/useTheme';
 import { ChildTextInputProps } from './types';
 
@@ -47,11 +47,7 @@ function TextInputOutlined(
         containerStyle,
       ]}
     >
-      {!!label && (
-        <SecondaryBody style={[styles.label, labelStyle]}>
-          {label}
-        </SecondaryBody>
-      )}
+      {!!label && <Label style={[styles.label, labelStyle]}>{label}</Label>}
       <TextInput
         ref={ref}
         editable={!disabled && editable}

@@ -38,6 +38,6 @@ export {
   Title,
   Subtitle,
   Body,
-  SecondaryBody,
+  Label,
   Caption,
 } from './components/Typography';
