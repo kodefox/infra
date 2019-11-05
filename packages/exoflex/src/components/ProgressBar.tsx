@@ -5,6 +5,7 @@ import {
   Animated,
   ViewStyle,
   LayoutChangeEvent,
+  Platform,
 } from 'react-native';
 import { ProgressBarProps } from 'react-native-paper';
 import useTheme from '../helpers/useTheme';
@@ -29,6 +30,7 @@ export default function ProgressBar(props: Props) {
       let indeterminateAnimation = Animated.timing(animatedValue, {
         duration: 1000,
         toValue: 1,
+        useNativeDriver: Platform.OS !== 'web',
         isInteraction: false,
       });
       Animated.loop(indeterminateAnimation).start();
