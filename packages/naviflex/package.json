@@ -22,7 +22,7 @@
     "react-navigation": "^3.0.0"
   },
   "dependencies": {
-    "react-navigation-hooks": "^1.0.2-alpha.0"
+    "react-navigation-hooks": "^1.1.0"
   },
   "devDependencies": {
     "@react-native-community/bob": "^0.6.1",
