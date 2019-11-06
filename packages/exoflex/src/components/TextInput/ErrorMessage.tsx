@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react';
 import { StyleSheet } from 'react-native';
 
-import Label from '../Label';
+import { Label } from '../Typography';
 
 type Props = ComponentProps<Label>;
 
