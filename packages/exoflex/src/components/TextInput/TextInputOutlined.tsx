@@ -3,7 +3,7 @@ import { View, TextInput, StyleSheet } from 'react-native';
 import { IconButton } from 'react-native-paper';
 
 import ErrorMessage from './ErrorMessage';
-import Label from '../Label';
+import { Label } from '../Typography';
 import useTheme from '../../helpers/useTheme';
 import { ChildTextInputProps } from './types';
 
@@ -47,7 +47,7 @@ function TextInputOutlined(
         containerStyle,
       ]}
     >
-      {!!label && <Label style={labelStyle}>{label}</Label>}
+      {!!label && <Label style={[styles.label, labelStyle]}>{label}</Label>}
       <TextInput
         ref={ref}
         editable={!disabled && editable}
@@ -98,6 +98,10 @@ let styles = StyleSheet.create({
   errorMessage: {
     position: 'absolute',
     bottom: -18,
+  },
+  label: {
+    // TODO: This color should use colors.text with 0.6 opacity.
+    color: '#757575',
   },
 });
 
