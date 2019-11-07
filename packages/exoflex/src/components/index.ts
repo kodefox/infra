@@ -14,6 +14,7 @@ export { default as Portal } from './Portal';
 export { default as ProgressBar } from './ProgressBar';
 export { default as Provider } from './Provider';
 export { default as RadioButton } from './RadioButton';
+export { default as SegmentedControl } from './SegmentedControl';
 export { default as Slider } from './Slider';
 export { default as Switch } from './Switch';
 export { default as Text } from './Text';
