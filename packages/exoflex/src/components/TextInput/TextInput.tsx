@@ -24,7 +24,7 @@ function TextInput(
 ) {
   let [isFocused, setIsFocused] = useState(false);
 
-  let _onFocus = useCallback(
+  let handleFocus = useCallback(
     (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
       if (disabled || !editable) {
         return;
@@ -35,7 +35,7 @@ function TextInput(
     },
     [onFocus, disabled, editable],
   );
-  let _onBlur = useCallback(
+  let handleBlur = useCallback(
     (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
       if (disabled || !editable) {
         return;
@@ -47,7 +47,7 @@ function TextInput(
     [onBlur, disabled, editable],
   );
 
-  let _onChangeText = useCallback(
+  let handleChangeText = useCallback(
     (text: string) => {
       if (disabled || !editable) {
         return;
@@ -65,9 +65,9 @@ function TextInput(
       autoCorrect={autoCorrect}
       disabled={disabled}
       editable={editable}
-      onFocus={_onFocus}
-      onBlur={_onBlur}
-      onChangeText={_onChangeText}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onChangeText={handleChangeText}
       isFocused={isFocused}
     />
   ) : (
