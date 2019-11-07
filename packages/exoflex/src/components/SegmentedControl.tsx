@@ -23,6 +23,7 @@ type Props = {
   style?: StyleProp<ViewStyle>;
   hasBorder: boolean;
   borderColor?: string;
+  disabled: boolean;
 };
 
 export default function SegmentedControl(props: Props) {
@@ -37,6 +38,7 @@ export default function SegmentedControl(props: Props) {
     style,
     hasBorder,
     borderColor,
+    disabled,
   } = props;
   let [tabWidth, setTabWidth] = useState(0);
   let { colors } = useTheme();
@@ -68,7 +70,12 @@ export default function SegmentedControl(props: Props) {
       <View key={index} style={styles.tabContainer}>
         {hasBorder && index !== 0 && divider}
         <TouchableOpacity
-          style={[styles.tab, tabStyle]}
+          style={[
+            styles.tab,
+            tabStyle,
+            // TODO: change disabled color
+          ]}
+          disabled={disabled}
           onPress={() => {
             onIndexChange && onIndexChange(index);
           }}
@@ -120,6 +127,7 @@ export default function SegmentedControl(props: Props) {
 SegmentedControl.defaultProps = {
   hasBorder: false,
   borderWidth: 1,
+  disabled: false,
 };
 
 let styles = StyleSheet.create({
