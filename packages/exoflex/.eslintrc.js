@@ -36,6 +36,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
 
     // Other
+    'array-callback-return': 'warn',
     // Disabling "camelcase" in favor of "@typescript-eslint/camelcase"
     camelcase: 'off',
     // Disabling "indent" because it gets confused with JSX in some cases.
