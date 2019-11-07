@@ -17,7 +17,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
       mode={mode}
       date={date.trim() === '' ? new Date() : new Date(date)}
       onCancel={() => onCancel()}
-      onConfirm={(date) => onConfirm(date.toISOString())}
+      onConfirm={(newDate) => onConfirm(newDate.toISOString())}
       {...otherProps}
     />
   );
