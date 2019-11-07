@@ -52,6 +52,7 @@ module.exports = {
     'no-new': 'warn',
     'no-proto': 'warn',
     'no-return-assign': 'warn',
+    'no-unneeded-ternary': 'warn',
     'one-var': ['warn', 'never'],
     'prefer-arrow-callback': 'warn',
     radix: 'warn',
