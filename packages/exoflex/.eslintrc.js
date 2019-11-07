@@ -39,6 +39,7 @@ module.exports = {
     'array-callback-return': 'warn',
     // Disabling "camelcase" in favor of "@typescript-eslint/camelcase"
     camelcase: 'off',
+    eqeqeq: ['error', 'always', { null: 'ignore' }],
     // Disabling "indent" because it gets confused with JSX in some cases.
     indent: 'off',
     'prefer-const': 'off',
