@@ -50,6 +50,11 @@ function Toast({ mode, visible, style, children, colors, textStyle }: Props) {
     useNativeDriver: Platform.OS !== 'web',
   });
 
+  if (!visible) {
+    // TODO: Reimplement Toast animation when entering and leaving.
+    return null;
+  }
+
   return (
     <SafeAreaView pointerEvents="box-none" style={styles.wrapper}>
       <Surface
