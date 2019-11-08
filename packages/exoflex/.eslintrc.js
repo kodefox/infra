@@ -12,7 +12,6 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
-    'plugin:react/recommended',
   ],
   rules: {
     // TypeScript (@typescript-eslint/eslint-plugin)
@@ -28,8 +27,17 @@ module.exports = {
     'eslint-comments/no-unused-disable': 'warn',
 
     // React (eslint-plugin-react)
+    'react/jsx-key': 'warn',
+    'react/jsx-no-comment-textnodes': 'warn',
+    'react/jsx-no-duplicate-props': 'warn',
+    'react/jsx-no-target-blank': 'warn',
+    'react/jsx-no-undef': 'warn',
+    'react/jsx-uses-react': 'warn',
+    'react/jsx-uses-vars': 'warn',
+    'react/no-unescaped-entities': 'warn',
     'react/no-unknown-property': 'warn',
-    'react/prop-types': 'warn',
+    'react/react-in-jsx-scope': 'error',
+    'react/require-render-return': 'warn',
 
     // React (eslint-plugin-react-hooks)
     'react-hooks/rules-of-hooks': 'error',
