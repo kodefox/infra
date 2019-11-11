@@ -83,7 +83,7 @@ function Collapsible({
       >
         {!!renderIconLeft ? renderIconLeft(animatedValue) : null}
         <Text style={[styles.title, titleStyle]}>{title}</Text>
-        {renderIconRight === null ? null : !!renderIconRight ? (
+        {Object.is(renderIconRight, null) ? null : !!renderIconRight ? (
           renderIconRight(animatedValue)
         ) : (
           <AnimatedIconButton
