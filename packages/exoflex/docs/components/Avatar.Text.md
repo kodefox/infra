@@ -22,7 +22,7 @@ Props marked with \* are required.
 
 ```tsx
 <Provider>
-  <Avatar.Text source={avatarImage} />
-  <Avatar.Text source={avatarImage} size={56} />
+  <Avatar.Text label="KF" />
+  <Avatar.Text label="KF" size={56} />
 </Provider>
 ```
