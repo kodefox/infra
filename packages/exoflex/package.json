@@ -61,7 +61,6 @@
     "jest-watch-select-projects": "^1.0.0",
     "jest-watch-typeahead": "^0.4.0",
     "jest-with-platform": "^0.0.3",
-    "patch-package": "^6.2.0",
     "postinstall-postinstall": "^2.0.0",
     "prettier": "^1.18.2",
     "react": "^16.9.0",
@@ -75,6 +74,9 @@
     "regenerator-runtime": "^0.13.3",
     "release-it": "^12.3.6",
     "typescript": "^3.5.3"
+  },
+  "optionalDependencies": {
+    "patch-package": "^6.2.0"
   },
   "@react-native-community/bob": {
     "source": "src",
