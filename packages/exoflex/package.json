@@ -47,11 +47,11 @@
     "@types/react-native": "^0.60.4",
     "@types/react-native-calendars": "^1.20.7",
     "@types/react-test-renderer": "^16.9.0",
-    "@typescript-eslint/eslint-plugin": "^2.0.0",
-    "@typescript-eslint/parser": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
+    "@typescript-eslint/parser": "^2.6.1",
     "chalk": "^2.4.2",
     "core-js": "^3.3.2",
-    "eslint": "^6.1.0",
+    "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
@@ -63,7 +63,7 @@
     "jest-with-platform": "^0.0.3",
     "patch-package": "^6.2.0",
     "postinstall-postinstall": "^2.0.0",
-    "prettier": "^1.18.2",
+    "prettier": "^1.19.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-native": "^0.60.5",
@@ -74,7 +74,7 @@
     "react-test-renderer": "^16.9.0",
     "regenerator-runtime": "^0.13.3",
     "release-it": "^12.3.6",
-    "typescript": "^3.5.3"
+    "typescript": "^3.7.2"
   },
   "@react-native-community/bob": {
     "source": "src",
