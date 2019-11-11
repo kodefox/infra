@@ -9,6 +9,7 @@ export { DefaultTheme } from './constants/themes';
 export {
   Accordion,
   ActivityIndicator,
+  Avatar,
   Button,
   Calendar,
   Card,
