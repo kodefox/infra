@@ -54,7 +54,6 @@ module.exports = {
     'no-new': 'warn',
     'no-proto': 'warn',
     'no-return-assign': 'warn',
-    'no-shadow': ['warn', { builtinGlobals: true }],
     'no-underscore-dangle': ['warn', { allowAfterThis: true }],
     'no-unneeded-ternary': 'warn',
     'one-var': ['warn', 'never'],
