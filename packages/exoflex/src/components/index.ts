@@ -1,3 +1,4 @@
+import * as Avatar from './Avatar';
 import * as Drawer from './Drawer';
 
 export { default as Accordion } from './Accordion';
@@ -22,5 +23,5 @@ export { default as TimePicker } from './TimePicker/TimePicker';
 export { default as Toast } from './Toast';
 export { default as ToastContainer } from './ToastContainer';
 
-export { Drawer };
+export { Avatar, Drawer };
 export { Calendar } from './Calendar';

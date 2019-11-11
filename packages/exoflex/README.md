@@ -31,6 +31,9 @@ You can find all available components from links below:
 
 - [Accordion](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Accordion.md)
 - [ActivityIndicator](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/ActivityIndicator.md)
+- [Avatar.Icon](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Avatar.Icon.md)
+- [Avatar.Image](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Avatar.Image.md)
+- [Avatar.Text](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Avatar.Text.md)
 - [Button](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Button.md)
 - [Calendar](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Calendar.md)
 - [Checkbox](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Checkbox.md)
