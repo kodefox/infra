@@ -10,9 +10,11 @@ import {
 import useTheme from '../../helpers/useTheme';
 import Indicator from './Indicator';
 import Tabs from './Tabs';
+import { SegmentedControlMode } from './types';
+import { MODE } from './constants';
 
 type Props = {
-  mode: 'default' | 'border' | 'ios-13';
+  mode: SegmentedControlMode;
   values: Array<string>;
   activeIndex: number;
   onIndexChange?: (selectedIndex: number) => void;
@@ -44,10 +46,10 @@ export default function SegmentedControl(props: Props) {
 
   let onLayout = (e: LayoutChangeEvent) => {
     let segmentWidth =
-      mode === 'border'
-        ? (e.nativeEvent.layout.width - values.length - 1) / values.length + 1 // NOTE: -1 because of the borderWidth, should we add prop borderWidth?
-        : mode === 'ios-13'
-        ? (e.nativeEvent.layout.width - 4) / values.length + values.length + 1
+      mode === MODE.BORDER
+        ? (e.nativeEvent.layout.width - values.length - 1) / values.length + 1 // NOTE: - 1 because of the borderWidth. + 1 to cover the border TODO: add prop borderWidth?
+        : mode === MODE.IOS13
+        ? (e.nativeEvent.layout.width - 4) / values.length + 1 // NOTE: - 4 since the borderWidth is 2 * 2, + 1 to cover the border
         : e.nativeEvent.layout.width / values.length;
 
     setTabWidth(segmentWidth);
@@ -55,15 +57,15 @@ export default function SegmentedControl(props: Props) {
 
   let containerStyle = {};
   switch (mode) {
-    case 'ios-13': {
+    case MODE.IOS13: {
       containerStyle = {
         height: 30,
         borderRadius: 4,
         borderWidth: 2,
-        borderColor: '#ECEBEB',
+        borderColor: colors.border,
         overflow: 'visible',
         alignItems: 'center',
-        backgroundColor: '#ECEBEB',
+        backgroundColor: colors.border,
       };
       break;
     }
@@ -83,7 +85,6 @@ export default function SegmentedControl(props: Props) {
         mode={mode}
         width={tabWidth}
         activeIndex={activeIndex}
-        size={values.length}
         style={indicatorStyle}
       />
       <Tabs
@@ -102,7 +103,6 @@ export default function SegmentedControl(props: Props) {
 }
 
 SegmentedControl.defaultProps = {
-  hasBorder: false,
   borderWidth: 1,
   disabled: false,
   mode: 'default',
@@ -116,7 +116,6 @@ let styles = StyleSheet.create({
     height: 36,
     overflow: 'hidden',
   },
-
   tabContainer: {
     flex: 1,
     alignItems: 'stretch',

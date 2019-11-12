@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import useTheme from '../../helpers/useTheme';
 import { SegmentedControlMode } from './types';
+import { MODE } from './constants';
 
 type Props = {
   mode: SegmentedControlMode;
@@ -41,7 +42,6 @@ export default function Tabs(props: Props) {
     <>
       {values.map((item, index) => {
         let isSelected = activeIndex === index;
-        let divider;
         // TODO: replace with Exoflex's divider
         let defaultDivider = (
           <View
@@ -54,6 +54,7 @@ export default function Tabs(props: Props) {
             ]}
           />
         );
+
         let transparentDivider = (
           <View
             style={[
@@ -64,11 +65,14 @@ export default function Tabs(props: Props) {
             ]}
           />
         );
-        if (mode === 'border') {
+
+        let divider;
+
+        if (mode === MODE.BORDER) {
           if (index !== 0) {
             divider = defaultDivider;
           }
-        } else if (mode === 'ios-13') {
+        } else if (mode === MODE.IOS13) {
           if (
             index !== 0 &&
             index !== activeIndex &&
@@ -79,6 +83,7 @@ export default function Tabs(props: Props) {
             divider = transparentDivider;
           }
         }
+
         return (
           <View key={index} style={styles.tabContainer}>
             {divider}
@@ -98,7 +103,7 @@ export default function Tabs(props: Props) {
               <Text
                 style={[
                   textStyle,
-                  mode === 'ios-13'
+                  mode === MODE.IOS13
                     ? isSelected && [{ color: colors.text }, activeTextStyle]
                     : isSelected && [
                         { color: colors.surface },
