@@ -25,7 +25,7 @@ type Props = {
   style?: StyleProp<ViewStyle>;
   dividerColor?: string;
   disabled: boolean;
-  divider?: ReactElement;
+  dividerWidth?: number;
 };
 
 export default function SegmentedControl(props: Props) {
@@ -41,32 +41,48 @@ export default function SegmentedControl(props: Props) {
     style,
     dividerColor,
     disabled,
-    divider,
+    dividerWidth: dividerWidthProp,
   } = props;
   let [tabWidth, setTabWidth] = useState(0);
   let { colors } = useTheme();
-
+  let dividerWidth = dividerWidthProp
+    ? dividerWidthProp
+    : mode === MODE.DEFAULT
+    ? 0
+    : 1;
   let onLayout = (e: LayoutChangeEvent) => {
     let flattenedStyle =
-      StyleSheet.flatten([{ ...styles.container }, style]) || {};
+      StyleSheet.flatten([{ ...styles.container }, containerStyle, style]) ||
+      {};
 
     let outerBorder = 0;
     if (flattenedStyle.borderWidth) {
       outerBorder = flattenedStyle.borderWidth * 2;
-    } else if (flattenedStyle.borderLeftWidth) {
-      outerBorder = flattenedStyle.borderLeftWidth;
-    } else if (flattenedStyle.borderRightWidth) {
-      outerBorder = flattenedStyle.borderRightWidth;
+    } else if (
+      flattenedStyle.borderLeftWidth ||
+      flattenedStyle.borderRightWidth
+    ) {
+      if (flattenedStyle.borderLeftWidth && flattenedStyle.borderRightWidth) {
+        outerBorder =
+          flattenedStyle.borderLeftWidth + flattenedStyle.borderRightWidth;
+      } else {
+        outerBorder =
+          flattenedStyle.borderLeftWidth ||
+          flattenedStyle.borderRightWidth ||
+          0;
+      }
     }
 
     let segmentWidth =
-      mode === MODE.BORDER
-        ? (e.nativeEvent.layout.width - values.length - outerBorder) /
-            values.length +
-          1
-        : mode === MODE.IOS13
-        ? (e.nativeEvent.layout.width - 4) / values.length + 1 // NOTE: - 4 since the borderWidth is 2 * 2, + 1 to cover the border
-        : e.nativeEvent.layout.width / values.length;
+      mode === MODE.IOS13
+        ? (e.nativeEvent.layout.width -
+            outerBorder -
+            (values.length - 1) * dividerWidth) /
+          values.length
+        : (e.nativeEvent.layout.width -
+            outerBorder -
+            (values.length - 1) * dividerWidth) /
+          values.length;
 
     setTabWidth(segmentWidth);
   };
@@ -102,6 +118,7 @@ export default function SegmentedControl(props: Props) {
         width={tabWidth}
         activeIndex={activeIndex}
         style={indicatorStyle}
+        dividerWidth={dividerWidth}
       />
       <Tabs
         mode={mode}
@@ -113,7 +130,9 @@ export default function SegmentedControl(props: Props) {
         textStyle={textStyle}
         activeTextStyle={activeTextStyle}
         dividerColor={dividerColor}
-        divider={divider}
+        // divider={divider}
+        width={tabWidth}
+        dividerWidth={dividerWidth}
       />
     </View>
   );
@@ -133,12 +152,4 @@ let styles = StyleSheet.create({
     height: 36,
     overflow: 'hidden',
   },
-  tabContainer: {
-    flex: 1,
-    alignItems: 'stretch',
-    flexDirection: 'row',
-    zIndex: 3,
-  },
-  tab: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  divider: { borderRightWidth: 1 },
 });

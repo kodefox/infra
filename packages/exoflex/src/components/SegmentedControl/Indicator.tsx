@@ -9,9 +9,10 @@ type Props = {
   width: number;
   activeIndex: number;
   style?: StyleProp<ViewStyle>;
+  dividerWidth: number;
 };
 export default function Indicator(props: Props) {
-  let { mode, width, activeIndex, style } = props;
+  let { mode, width, dividerWidth, activeIndex, style } = props;
 
   let { colors } = useTheme();
   let indicatorStyle;
@@ -26,25 +27,28 @@ export default function Indicator(props: Props) {
       break;
     }
     case MODE.BORDER: {
-      indicatorStyle = { height: 34, width, backgroundColor: colors.primary };
+      indicatorStyle = {
+        height: 34,
+        width: width + dividerWidth * 2, // * 2 to cover border left and right
+        backgroundColor: colors.primary,
+      };
       break;
     }
     case MODE.IOS13: {
       indicatorStyle = {
         width,
         height: 26,
-        alignSelf: 'center',
         borderRadius: 4,
-        backgroundColor: 'white',
+        backgroundColor: colors.surface,
         shadowOffset: {
           width: 1,
           height: 0,
         },
-        shadowColor: 'grey',
+        shadowColor: '#BDC3C7',
         shadowRadius: 1,
-        shadowOpacity: 0.7,
+        shadowOpacity: 0.8,
         overflow: 'visible',
-        elevation: 5,
+        elevation: 2,
       };
       break;
     }
@@ -63,9 +67,9 @@ export default function Indicator(props: Props) {
           transform: [
             {
               translateX:
-                mode === MODE.IOS13
-                  ? activeIndex * width - activeIndex
-                  : activeIndex * width, // TODO: animate the X
+                mode === MODE.BORDER
+                  ? activeIndex * (width + dividerWidth) - dividerWidth
+                  : activeIndex * (width + dividerWidth), // TODO: animate the X
             },
           ],
         },

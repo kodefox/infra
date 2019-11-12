@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -22,7 +22,8 @@ type Props = {
   activeTextStyle?: StyleProp<TextStyle>;
   onIndexChange?: (newIndex: number) => void;
   dividerColor?: string;
-  divider?: ReactElement;
+  width: number;
+  dividerWidth: number;
 };
 
 export default function Tabs(props: Props) {
@@ -36,7 +37,8 @@ export default function Tabs(props: Props) {
     textStyle,
     onIndexChange,
     dividerColor,
-    divider: dividerComponent,
+    width,
+    dividerWidth,
   } = props;
   let { colors } = useTheme();
 
@@ -45,24 +47,25 @@ export default function Tabs(props: Props) {
       {values.map((item, index) => {
         let isSelected = activeIndex === index;
         // TODO: replace with Exoflex's divider
-        let defaultDivider = (
+        let defaultDivider = (width: number) => (
           <View
             style={[
               styles.divider,
               {
-                borderColor: dividerColor || colors.primary,
-                // which one should be the default color? colors.border / colors.primary? For now, I choose the primary color since the basic IOS segmented control uses the primary color
+                width,
+                backgroundColor: dividerColor || colors.primary,
               },
             ]}
           />
         );
 
-        let transparentDivider = (
+        let transparentDivider = (width: number) => (
           <View
             style={[
               styles.divider,
               {
-                borderColor: 'transparent',
+                width,
+                backgroundColor: 'transparent',
               },
             ]}
           />
@@ -70,9 +73,9 @@ export default function Tabs(props: Props) {
 
         let divider;
 
-        if (mode === MODE.BORDER) {
+        if (mode === MODE.BORDER || mode === MODE.DEFAULT) {
           if (index !== 0) {
-            divider = dividerComponent || defaultDivider;
+            divider = defaultDivider(dividerWidth);
           }
         } else if (mode === MODE.IOS13) {
           if (
@@ -80,12 +83,12 @@ export default function Tabs(props: Props) {
             index !== activeIndex &&
             index !== activeIndex + 1
           ) {
-            divider = dividerComponent || defaultDivider;
+            divider = defaultDivider(dividerWidth);
           } else if (
             (index === activeIndex || index === activeIndex + 1) &&
             index !== 0
           ) {
-            divider = transparentDivider;
+            divider = transparentDivider(dividerWidth);
           }
         }
 
@@ -95,6 +98,7 @@ export default function Tabs(props: Props) {
             <TouchableOpacity
               style={[
                 styles.tab,
+                { width },
                 style,
                 // TODO: change disabled color
               ]}
@@ -128,11 +132,16 @@ export default function Tabs(props: Props) {
 
 let styles = StyleSheet.create({
   tabContainer: {
-    flex: 1,
-    alignItems: 'stretch',
     flexDirection: 'row',
     zIndex: 5,
+    justifyContent: 'center',
   },
-  tab: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  divider: { borderRightWidth: 1 },
+  tab: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  divider: {
+    width: 1,
+    alignSelf: 'stretch',
+  },
 });
