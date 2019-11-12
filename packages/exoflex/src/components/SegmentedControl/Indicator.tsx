@@ -2,24 +2,21 @@ import React from 'react';
 import { Animated, StyleProp, ViewStyle, StyleSheet } from 'react-native';
 import { SegmentedControlMode } from './types';
 import useTheme from '../../helpers/useTheme';
+import { MODE } from './constants';
 
 type Props = {
   mode: SegmentedControlMode;
   width: number;
-  size: number;
   activeIndex: number;
   style?: StyleProp<ViewStyle>;
 };
-
 export default function Indicator(props: Props) {
-  let { mode, width, size, activeIndex, style } = props;
+  let { mode, width, activeIndex, style } = props;
 
   let { colors } = useTheme();
-
   let indicatorStyle;
-
   switch (mode) {
-    case 'default': {
+    case MODE.DEFAULT: {
       indicatorStyle = {
         height: 34,
         borderRadius: 17,
@@ -28,13 +25,13 @@ export default function Indicator(props: Props) {
       };
       break;
     }
-    case 'border': {
+    case MODE.BORDER: {
       indicatorStyle = { height: 34, width, backgroundColor: colors.primary };
       break;
     }
-    case 'ios-13': {
+    case MODE.IOS13: {
       indicatorStyle = {
-        width: width - size,
+        width,
         height: 26,
         alignSelf: 'center',
         borderRadius: 4,
@@ -66,8 +63,8 @@ export default function Indicator(props: Props) {
           transform: [
             {
               translateX:
-                mode === 'ios-13'
-                  ? activeIndex * width - (size + 1) * activeIndex
+                mode === MODE.IOS13
+                  ? activeIndex * width - activeIndex
                   : activeIndex * width, // TODO: animate the X
             },
           ],
@@ -81,6 +78,6 @@ export default function Indicator(props: Props) {
 const styles = StyleSheet.create({
   indicator: {
     position: 'absolute',
-    zIndex: 2,
+    zIndex: 3,
   },
 });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -21,7 +21,8 @@ type Props = {
   textStyle?: StyleProp<TextStyle>;
   activeTextStyle?: StyleProp<TextStyle>;
   onIndexChange?: (newIndex: number) => void;
-  borderColor?: string;
+  dividerColor?: string;
+  divider?: ReactElement;
 };
 
 export default function Tabs(props: Props) {
@@ -34,7 +35,8 @@ export default function Tabs(props: Props) {
     style,
     textStyle,
     onIndexChange,
-    borderColor,
+    dividerColor,
+    divider: dividerComponent,
   } = props;
   let { colors } = useTheme();
 
@@ -48,7 +50,7 @@ export default function Tabs(props: Props) {
             style={[
               styles.divider,
               {
-                borderColor: borderColor || colors.primary,
+                borderColor: dividerColor || colors.primary,
                 // which one should be the default color? colors.border / colors.primary? For now, I choose the primary color since the basic IOS segmented control uses the primary color
               },
             ]}
@@ -70,7 +72,7 @@ export default function Tabs(props: Props) {
 
         if (mode === MODE.BORDER) {
           if (index !== 0) {
-            divider = defaultDivider;
+            divider = dividerComponent || defaultDivider;
           }
         } else if (mode === MODE.IOS13) {
           if (
@@ -78,8 +80,11 @@ export default function Tabs(props: Props) {
             index !== activeIndex &&
             index !== activeIndex + 1
           ) {
-            divider = defaultDivider;
-          } else {
+            divider = dividerComponent || defaultDivider;
+          } else if (
+            (index === activeIndex || index === activeIndex + 1) &&
+            index !== 0
+          ) {
             divider = transparentDivider;
           }
         }
@@ -126,7 +131,7 @@ let styles = StyleSheet.create({
     flex: 1,
     alignItems: 'stretch',
     flexDirection: 'row',
-    zIndex: 3,
+    zIndex: 5,
   },
   tab: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   divider: { borderRightWidth: 1 },
