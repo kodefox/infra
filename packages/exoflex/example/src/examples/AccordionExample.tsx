@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { View, ScrollView, StyleSheet, Image } from 'react-native';
 import { Accordion, Text, TextInput, Button } from 'exoflex';
 import drawerImage from '../../assets/drawer_header.png';
-import useTheme from '../../../src/helpers/useTheme';
 
 function AccordionExample() {
   let SECTIONS = [
@@ -18,7 +17,6 @@ function AccordionExample() {
     },
   ];
   let [activeSections, setActiveSections] = useState([]);
-  let { roundness } = useTheme();
 
   return (
     <ScrollView contentContainerStyle={styles.root}>
@@ -29,7 +27,7 @@ function AccordionExample() {
         titleContainerStyle={[
           styles.titleContainer,
           {
-            borderRadius: roundness,
+            borderRadius: 4,
           },
         ]}
         titleStyle={styles.title}
@@ -39,7 +37,7 @@ function AccordionExample() {
               style={[
                 styles.contentContainer,
                 {
-                  borderRadius: roundness,
+                  borderRadius: 4,
                 },
               ]}
             >
@@ -65,10 +63,7 @@ function AccordionExample() {
             )}
           </View>
         )}
-        sectionContainerStyle={[
-          styles.sectionContainer,
-          { borderRadius: roundness },
-        ]}
+        sectionContainerStyle={[styles.sectionContainer, { borderRadius: 4 }]}
       />
     </ScrollView>
   );
