@@ -54,8 +54,7 @@ export default function SegmentedControl(props: Props) {
 
   let onLayout = (e: LayoutChangeEvent) => {
     let flattenedStyle =
-      StyleSheet.flatten([{ ...styles.container }, containerStyle, style]) ||
-      {};
+      StyleSheet.flatten([styles.container, containerStyle, style]) || {};
 
     let outerBorder = 0;
     if (flattenedStyle.borderWidth) {

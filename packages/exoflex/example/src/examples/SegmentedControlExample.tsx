@@ -12,6 +12,7 @@ function SegmentedControlExample() {
   return (
     <ScrollView contentContainerStyle={styles.root}>
       <Text>Default</Text>
+      {spacing}
       <SegmentedControl
         activeIndex={selectedIndexA}
         values={['One', 'Two']}
@@ -50,6 +51,7 @@ function SegmentedControlExample() {
       />
       {spacing}
       <Text>Border</Text>
+      {spacing}
       <SegmentedControl
         mode="border"
         activeIndex={selectedIndexA}
@@ -89,6 +91,7 @@ function SegmentedControlExample() {
       />
       {spacing}
       <Text>IOS 13</Text>
+      {spacing}
       <SegmentedControl
         mode="ios-13"
         activeIndex={selectedIndexA}
