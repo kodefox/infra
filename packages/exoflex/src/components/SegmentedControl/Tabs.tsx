@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
   ViewStyle,
+  Platform,
 } from 'react-native';
 import useTheme from '../../helpers/useTheme';
 import { SegmentedControlMode } from './types';
@@ -128,6 +129,11 @@ let styles = StyleSheet.create({
     flexDirection: 'row',
     zIndex: 5,
     justifyContent: 'center',
+    ...Platform.select({
+      android: {
+        elevation: 6, // giving a bigger elevation than the indicator so the indicator won't cover the text
+      },
+    }),
   },
   tab: {
     flex: 1,

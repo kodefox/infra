@@ -1,5 +1,11 @@
 import React from 'react';
-import { Animated, StyleProp, ViewStyle, StyleSheet } from 'react-native';
+import {
+  Animated,
+  StyleProp,
+  ViewStyle,
+  StyleSheet,
+  Platform,
+} from 'react-native';
 import { SegmentedControlMode } from './types';
 import useTheme from '../../helpers/useTheme';
 import { MODE } from './constants';
@@ -40,15 +46,19 @@ export default function Indicator(props: Props) {
         height: 26,
         borderRadius: 4,
         backgroundColor: colors.surface,
-        shadowOffset: {
-          width: 1,
-          height: 0,
-        },
-        shadowColor: '#BDC3C7',
-        shadowRadius: 1,
-        shadowOpacity: 0.8,
         overflow: 'visible',
-        elevation: 2,
+        ...Platform.select({
+          android: { elevation: 4 },
+          default: {
+            shadowOffset: {
+              width: 1,
+              height: 0,
+            },
+            shadowColor: '#BDC3C7',
+            shadowRadius: 1,
+            shadowOpacity: 0.8,
+          },
+        }),
       };
       break;
     }
@@ -80,5 +90,6 @@ const styles = StyleSheet.create({
   indicator: {
     position: 'absolute',
     zIndex: 3,
+    alignSelf: 'center',
   },
 });
