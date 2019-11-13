@@ -1,7 +1,7 @@
 import React from 'react';
 import Provider from '../Provider';
 import { render, fireEvent } from 'react-native-testing-library';
-import SegmentedControl from '../SegmentedControl';
+import SegmentedControl from '../SegmentedControl/SegmentedControl';
 
 describe('SegmentedControl', () => {
   it('should render default Segmented Control', () => {

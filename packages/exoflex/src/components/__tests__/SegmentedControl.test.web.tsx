@@ -1,7 +1,7 @@
 import React from 'react';
 import Provider from '../Provider';
 import { render, fireEvent } from '@testing-library/react';
-import SegmentedControl from '../SegmentedControl';
+import SegmentedControl from '../SegmentedControl/SegmentedControl';
 import '../../../test/customFireEvent.web';
 
 describe('SegmentedControl', () => {

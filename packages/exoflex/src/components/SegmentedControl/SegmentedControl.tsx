@@ -76,15 +76,10 @@ export default function SegmentedControl(props: Props) {
     }
 
     let segmentWidth =
-      mode === MODE.IOS13
-        ? (e.nativeEvent.layout.width -
-            outerBorder -
-            (values.length - 1) * dividerWidth) /
-          values.length
-        : (e.nativeEvent.layout.width -
-            outerBorder -
-            (values.length - 1) * dividerWidth) /
-          values.length;
+      (e.nativeEvent.layout.width -
+        outerBorder -
+        (values.length - 1) * dividerWidth) /
+      values.length;
 
     setTabWidth(segmentWidth);
   };

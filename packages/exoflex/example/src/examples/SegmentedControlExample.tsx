@@ -6,7 +6,6 @@ function SegmentedControlExample() {
   let [selectedIndexA, setSelectedIndexA] = useState(0);
   let [selectedIndexB, setSelectedIndexB] = useState(0);
   let [selectedIndexC, setSelectedIndexC] = useState(0);
-  let [selectedIndexD, setSelectedIndexD] = useState(0);
 
   let spacing = <View style={{ height: 10 }} />;
 
@@ -27,8 +26,10 @@ function SegmentedControlExample() {
         onIndexChange={(selectedIndex: number) =>
           setSelectedIndexB(selectedIndex)
         }
-        indicatorStyle={{ backgroundColor: 'tomato' }}
+        style={{ borderWidth: 0, borderRadius: 0 }}
+        indicatorStyle={{ backgroundColor: 'tomato', height: 2, bottom: 0 }}
         textStyle={{ color: 'tomato' }}
+        activeTextStyle={{ color: 'tomato' }}
       />
       {spacing}
       <SegmentedControl
@@ -42,7 +43,9 @@ function SegmentedControlExample() {
           borderWidth: 1,
           height: 30,
           borderRadius: 4,
+          backgroundColor: 'tomato',
         }}
+        textStyle={{ color: 'tomato' }}
         style={{ height: 32, borderRadius: 4 }}
       />
       {spacing}
@@ -131,6 +134,7 @@ let styles = StyleSheet.create({
   root: {
     padding: 16,
     backgroundColor: 'white',
+    flex: 1,
   },
 });
 

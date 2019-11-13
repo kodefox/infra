@@ -66,10 +66,7 @@ export default function Indicator(props: Props) {
         {
           transform: [
             {
-              translateX:
-                mode === MODE.BORDER
-                  ? activeIndex * (width + dividerWidth)
-                  : activeIndex * (width + dividerWidth), // TODO: animate the X
+              translateX: activeIndex * (width + dividerWidth), // TODO: animate the X
             },
           ],
         },

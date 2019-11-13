@@ -71,7 +71,7 @@ export default function Tabs(props: Props) {
 
         let divider;
 
-        if (mode === MODE.BORDER || mode === MODE.DEFAULT) {
+        if (mode === MODE.BORDER) {
           if (index !== 0) {
             divider = defaultDivider(dividerWidth);
           }
@@ -109,12 +109,7 @@ export default function Tabs(props: Props) {
               <Text
                 style={[
                   textStyle,
-                  mode === MODE.IOS13
-                    ? isSelected && [{ color: colors.text }, activeTextStyle]
-                    : isSelected && [
-                        { color: colors.surface },
-                        activeTextStyle,
-                      ],
+                  isSelected && [{ color: colors.text }, activeTextStyle],
                 ]}
               >
                 {item}
