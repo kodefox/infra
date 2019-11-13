@@ -20,7 +20,7 @@ type Props = {
   onIndexChange?: (selectedIndex: number) => void;
   activeTextStyle?: StyleProp<TextStyle>;
   indicatorStyle?: StyleProp<ViewStyle>;
-  tabStyle?: StyleProp<ViewStyle>;
+  segmentStyle?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   style?: StyleProp<ViewStyle>;
   dividerColor?: string;
@@ -36,14 +36,14 @@ export default function SegmentedControl(props: Props) {
     activeIndex,
     activeTextStyle,
     indicatorStyle,
-    tabStyle,
+    segmentStyle,
     textStyle,
     style,
     dividerColor,
     disabled,
     dividerWidth: dividerWidthProp,
   } = props;
-  let [tabWidth, setTabWidth] = useState(0);
+  let [segmentWidth, setSegmentWidth] = useState(0);
   let { colors } = useTheme();
 
   let dividerWidth = dividerWidthProp
@@ -74,13 +74,13 @@ export default function SegmentedControl(props: Props) {
       }
     }
 
-    let segmentWidth =
+    let width =
       (e.nativeEvent.layout.width -
         outerBorder -
         (values.length - 1) * dividerWidth) /
       values.length;
 
-    setTabWidth(segmentWidth);
+    setSegmentWidth(width);
   };
 
   let containerStyle = {};
@@ -111,7 +111,7 @@ export default function SegmentedControl(props: Props) {
     >
       <Indicator
         mode={mode}
-        width={tabWidth}
+        width={segmentWidth}
         activeIndex={activeIndex}
         style={indicatorStyle}
         dividerWidth={dividerWidth}
@@ -122,7 +122,7 @@ export default function SegmentedControl(props: Props) {
         activeIndex={activeIndex}
         disabled={disabled}
         onIndexChange={onIndexChange}
-        style={tabStyle}
+        style={segmentStyle}
         textStyle={textStyle}
         activeTextStyle={activeTextStyle}
         dividerColor={dividerColor}
