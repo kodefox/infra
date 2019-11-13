@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View, Text } from 'react-native';
 import { SegmentedControl, DefaultTheme } from 'exoflex';
 
 function SegmentedControlExample() {
@@ -8,62 +8,118 @@ function SegmentedControlExample() {
   let [selectedIndexC, setSelectedIndexC] = useState(0);
   let [selectedIndexD, setSelectedIndexD] = useState(0);
 
+  let spacing = <View style={{ height: 10 }} />;
+
   return (
     <ScrollView contentContainerStyle={styles.root}>
+      <Text>Default</Text>
       <SegmentedControl
         activeIndex={selectedIndexA}
-        values={['One', 'Two', 'Three']}
+        values={['One', 'Two']}
         onIndexChange={(selectedIndex: number) =>
           setSelectedIndexA(selectedIndex)
         }
       />
-      <View style={{ height: 20 }} />
+      {spacing}
       <SegmentedControl
         activeIndex={selectedIndexB}
+        values={['One', 'Two', 'Three']}
+        onIndexChange={(selectedIndex: number) =>
+          setSelectedIndexB(selectedIndex)
+        }
+        indicatorStyle={{ backgroundColor: 'tomato' }}
+        textStyle={{ color: 'tomato' }}
+      />
+      {spacing}
+      <SegmentedControl
+        activeIndex={selectedIndexC}
         values={['One', 'Two', 'Three', 'Four']}
+        onIndexChange={(selectedIndex: number) =>
+          setSelectedIndexC(selectedIndex)
+        }
+        indicatorStyle={{
+          borderColor: 'tomato',
+          borderWidth: 1,
+          height: 30,
+          borderRadius: 4,
+        }}
+        style={{ height: 32, borderRadius: 4 }}
+      />
+      {spacing}
+      <Text>Border</Text>
+      <SegmentedControl
+        mode="border"
+        activeIndex={selectedIndexA}
+        values={['One', 'Two']}
+        onIndexChange={(selectedIndex: number) =>
+          setSelectedIndexA(selectedIndex)
+        }
+      />
+      {spacing}
+      <SegmentedControl
+        mode="border"
+        activeIndex={selectedIndexB}
+        values={['One', 'Two', 'Three']}
         onIndexChange={(selectedIndex: number) =>
           setSelectedIndexB(selectedIndex)
         }
         style={{
           height: 30,
-          borderRadius: 2,
-          borderWidth: 1,
-          borderColor: DefaultTheme.colors.primary,
+          borderRadius: 4,
+          borderColor: '#000',
+          borderWidth: 4,
         }}
-        indicatorStyle={{ height: 30, borderRadius: 0 }}
-        hasBorder={true}
+        indicatorStyle={{ height: 30, backgroundColor: 'tomato' }}
+        dividerWidth={4}
       />
-      <View style={{ height: 20 }} />
+
+      {spacing}
       <SegmentedControl
+        mode="border"
         activeIndex={selectedIndexC}
-        values={['One', 'Two', 'Three', 'Four', 'Five']}
+        values={['One', 'Two', 'Three', 'Four']}
         onIndexChange={(selectedIndex: number) =>
           setSelectedIndexC(selectedIndex)
         }
-        style={{
-          height: 30,
-          borderRadius: 15,
-          borderColor: DefaultTheme.colors.primary,
-        }}
-        indicatorStyle={{ height: 30, borderRadius: 0 }}
-        hasBorder={true}
+        style={{ height: 30, borderRadius: 4, borderColor: 'grey' }}
+        dividerColor="grey"
       />
+      {spacing}
+      <Text>IOS 13</Text>
       <SegmentedControl
-        activeIndex={selectedIndexD}
-        values={['One', 'Two', 'Three', 'Four', 'Five', 'Six']}
+        mode="ios-13"
+        activeIndex={selectedIndexA}
+        values={['One', 'Two']}
         onIndexChange={(selectedIndex: number) =>
-          setSelectedIndexD(selectedIndex)
+          setSelectedIndexA(selectedIndex)
+        }
+      />
+      {spacing}
+      <SegmentedControl
+        mode="ios-13"
+        activeIndex={selectedIndexB}
+        values={['One', 'Two', 'Three']}
+        onIndexChange={(selectedIndex: number) =>
+          setSelectedIndexB(selectedIndex)
         }
         style={{
-          borderWidth: 0,
-          overflow: 'visible',
+          borderWidth: 4,
+          height: 38,
+          backgroundColor: '#34495e',
+          borderColor: '#34495e',
         }}
-        indicatorStyle={{
-          borderRadius: 0,
-          height: 2,
-          bottom: 0,
-        }}
-        activeTextStyle={{ color: 'black' }}
+        textStyle={{ color: '#fff' }}
+        dividerWidth={2}
+      />
+      {spacing}
+      <SegmentedControl
+        mode="ios-13"
+        activeIndex={selectedIndexC}
+        values={['One', 'Two', 'Three', 'Four']}
+        onIndexChange={(selectedIndex: number) =>
+          setSelectedIndexC(selectedIndex)
+        }
+        dividerColor="red"
       />
     </ScrollView>
   );
@@ -73,9 +129,8 @@ SegmentedControlExample.title = 'SegmentedControl';
 
 let styles = StyleSheet.create({
   root: {
-    flex: 1,
     padding: 16,
-    backgroundColor: '#eeeeee',
+    backgroundColor: 'white',
   },
 });
 
