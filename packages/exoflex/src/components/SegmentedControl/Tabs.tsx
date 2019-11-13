@@ -22,7 +22,6 @@ type Props = {
   activeTextStyle?: StyleProp<TextStyle>;
   onIndexChange?: (newIndex: number) => void;
   dividerColor?: string;
-  width: number;
   dividerWidth: number;
 };
 
@@ -37,7 +36,6 @@ export default function Tabs(props: Props) {
     textStyle,
     onIndexChange,
     dividerColor,
-    width,
     dividerWidth,
   } = props;
   let { colors } = useTheme();
@@ -98,7 +96,6 @@ export default function Tabs(props: Props) {
             <TouchableOpacity
               style={[
                 styles.tab,
-                { width },
                 style,
                 // TODO: change disabled color
               ]}
@@ -132,11 +129,13 @@ export default function Tabs(props: Props) {
 
 let styles = StyleSheet.create({
   tabContainer: {
+    flex: 1,
     flexDirection: 'row',
     zIndex: 5,
     justifyContent: 'center',
   },
   tab: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },

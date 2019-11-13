@@ -29,7 +29,7 @@ export default function Indicator(props: Props) {
     case MODE.BORDER: {
       indicatorStyle = {
         height: 34,
-        width: width + dividerWidth * 2, // * 2 to cover border left and right
+        width: width + dividerWidth,
         backgroundColor: colors.primary,
       };
       break;
@@ -68,7 +68,7 @@ export default function Indicator(props: Props) {
             {
               translateX:
                 mode === MODE.BORDER
-                  ? activeIndex * (width + dividerWidth) - dividerWidth
+                  ? activeIndex * (width + dividerWidth)
                   : activeIndex * (width + dividerWidth), // TODO: animate the X
             },
           ],

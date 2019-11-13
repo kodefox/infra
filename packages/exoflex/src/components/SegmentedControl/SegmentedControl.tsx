@@ -45,11 +45,13 @@ export default function SegmentedControl(props: Props) {
   } = props;
   let [tabWidth, setTabWidth] = useState(0);
   let { colors } = useTheme();
+
   let dividerWidth = dividerWidthProp
     ? dividerWidthProp
     : mode === MODE.DEFAULT
     ? 0
     : 1;
+
   let onLayout = (e: LayoutChangeEvent) => {
     let flattenedStyle =
       StyleSheet.flatten([{ ...styles.container }, containerStyle, style]) ||
@@ -130,8 +132,6 @@ export default function SegmentedControl(props: Props) {
         textStyle={textStyle}
         activeTextStyle={activeTextStyle}
         dividerColor={dividerColor}
-        // divider={divider}
-        width={tabWidth}
         dividerWidth={dividerWidth}
       />
     </View>
