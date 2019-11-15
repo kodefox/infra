@@ -13,6 +13,8 @@ This library also required you to use `react-native-svg` >= `9.3.3`. But if you 
 
 If you are not using `Expo`, you should install it by following [this step](https://github.com/react-native-community/react-native-svg/#installation).
 
+Exoflex includes automatic fonts loading using `expo-font`. If you want to opt-out and handle the font loading manually, use [babel-plugin-optional-require](https://github.com/satya164/babel-plugin-optional-require).
+
 ## Installation
 
 To install this library, you could use npm or yarn:
@@ -20,6 +22,8 @@ To install this library, you could use npm or yarn:
 ```
 yarn add exoflex
 ```
+
+For bare React Native project, you also need to install `react-native-vector-icons`. For `react-native<0.60.0`, you need to link the library first.
 
 If you are using TypeScript, naviflex is built using TypeScript and we shipped it along with the `.d.ts` file, so you do not have to install `@types/exoflex`.
 
@@ -39,6 +43,8 @@ You can find all available components from links below:
 - [Drawer](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/DrawerSection.md)
 - [Drawer.Item](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/DrawerItem.md)
 - [IconButton](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/IconButton.md)
+- [Portal](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Portal.md)
+- [Portal.Host](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/PortalHost.md)
 - [ProgressBar](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/ProgressBar.md)
 - [Provider](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Provider.md)
 - [RadioButton](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/RadioButton.md)
@@ -47,4 +53,5 @@ You can find all available components from links below:
 - [Switch](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Switch.md)
 - [Text](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Text.md)
 - [TextInput](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/TextInput.md)
+- [TimePicker](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/TimePicker.md)
 - [Toast](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Toast.md)

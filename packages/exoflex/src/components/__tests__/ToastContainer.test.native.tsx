@@ -1,4 +1,4 @@
-import React, { ComponentType } from 'react';
+import React, { ComponentType, ComponentProps } from 'react';
 import { render } from 'react-native-testing-library';
 
 import ToastContainer from '../ToastContainer';
@@ -10,6 +10,8 @@ describe('ToastContainer', () => {
 
     let { getAllByType } = render(<App />);
 
-    expect(getAllByType(Toast as ComponentType<Toast>).length).toBe(1);
+    expect(
+      getAllByType(Toast as ComponentType<ComponentProps<typeof Toast>>).length,
+    ).toBe(1);
   });
 });

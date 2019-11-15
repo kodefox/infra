@@ -20,6 +20,7 @@ import SegmentedControlExample from './SegmentedControlExample';
 import SwitchExample from './SwitchExample';
 import TextInputExample from './TextInputExample';
 import ToastExample from './ToastExample';
+import TypographyExample from './TypographyExample';
 
 import Welcome from '../Welcome';
 
@@ -43,6 +44,7 @@ export let EXAMPLES = {
   switch: SwitchExample,
   textinput: TextInputExample,
   toast: ToastExample,
+  typography: TypographyExample,
 };
 
 export let ROUTES = Object.entries(EXAMPLES).reduce(

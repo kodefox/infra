@@ -1,15 +1,17 @@
 import React, { ComponentProps } from 'react';
 import { StyleSheet } from 'react-native';
 
-import Label from '../Label';
+import { Label } from '../Typography';
 
-type Props = ComponentProps<Label>;
+type Props = ComponentProps<typeof Label>;
 
 function ErrorMessage({ style, ...otherProps }: Props) {
   return (
     <Label numberOfLines={1} {...otherProps} style={[styles.root, style]} />
   );
 }
+
+ErrorMessage.defaultProps = Label.defaultProps;
 
 let styles = StyleSheet.create({
   root: {

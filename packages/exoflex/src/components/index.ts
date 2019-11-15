@@ -1,4 +1,5 @@
 import * as Drawer from './Drawer';
+import * as Typography from './Typography';
 
 export { default as Accordion } from './Accordion';
 export { default as ActivityIndicator } from './ActivityIndicator';
@@ -25,5 +26,5 @@ export { default as TimePicker } from './TimePicker/TimePicker';
 export { default as Toast } from './Toast';
 export { default as ToastContainer } from './ToastContainer';
 
-export { Drawer };
+export { Drawer, Typography };
 export { Calendar } from './Calendar';
