@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { SegmentedControlMode } from './types';
 import useTheme from '../../helpers/useTheme';
-import { MODE } from './constants';
+import { Mode } from './constants';
 
 type Props = {
   mode: SegmentedControlMode;
@@ -23,7 +23,7 @@ export default function Indicator(props: Props) {
   let { colors } = useTheme();
   let indicatorStyle;
   switch (mode) {
-    case MODE.DEFAULT: {
+    case Mode.default: {
       indicatorStyle = {
         height: 34,
         borderRadius: 17,
@@ -32,7 +32,7 @@ export default function Indicator(props: Props) {
       };
       break;
     }
-    case MODE.BORDER: {
+    case Mode.border: {
       indicatorStyle = {
         height: 34,
         width: width + dividerWidth,
@@ -40,7 +40,7 @@ export default function Indicator(props: Props) {
       };
       break;
     }
-    case MODE.IOS13: {
+    case Mode['ios-13']: {
       indicatorStyle = {
         width,
         height: 26,
