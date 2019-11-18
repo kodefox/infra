@@ -9,9 +9,9 @@ import {
 } from 'react-native';
 import useTheme from '../../helpers/useTheme';
 import Indicator from './Indicator';
-import Tabs from './Tabs';
+import Segments from './Segments';
 import { SegmentedControlMode } from './types';
-import { MODE } from './constants';
+import { Mode } from './constants';
 
 type Props = {
   mode: SegmentedControlMode;
@@ -46,11 +46,7 @@ export default function SegmentedControl(props: Props) {
   let [segmentWidth, setSegmentWidth] = useState(0);
   let { colors } = useTheme();
 
-  let dividerWidth = dividerWidthProp
-    ? dividerWidthProp
-    : mode === MODE.DEFAULT
-    ? 0
-    : 1;
+  let dividerWidth = mode === Mode.default ? 0 : dividerWidthProp || 1;
 
   let onLayout = (e: LayoutChangeEvent) => {
     let flattenedStyle =
@@ -59,25 +55,15 @@ export default function SegmentedControl(props: Props) {
     let outerBorder = 0;
     if (flattenedStyle.borderWidth) {
       outerBorder = flattenedStyle.borderWidth * 2;
-    } else if (
-      flattenedStyle.borderLeftWidth ||
-      flattenedStyle.borderRightWidth
-    ) {
-      if (flattenedStyle.borderLeftWidth && flattenedStyle.borderRightWidth) {
-        outerBorder =
-          flattenedStyle.borderLeftWidth + flattenedStyle.borderRightWidth;
-      } else {
-        outerBorder =
-          flattenedStyle.borderLeftWidth ||
-          flattenedStyle.borderRightWidth ||
-          0;
-      }
+    } else {
+      outerBorder =
+        (flattenedStyle.borderLeftWidth ?? 0) +
+        (flattenedStyle.borderRightWidth ?? 0);
     }
 
+    let totalDividerWidth = (values.length - 1) * dividerWidth;
     let width =
-      (e.nativeEvent.layout.width -
-        outerBorder -
-        (values.length - 1) * dividerWidth) /
+      (e.nativeEvent.layout.width - outerBorder - totalDividerWidth) /
       values.length;
 
     setSegmentWidth(width);
@@ -85,12 +71,11 @@ export default function SegmentedControl(props: Props) {
 
   let containerStyle = {};
   switch (mode) {
-    case MODE.IOS13: {
+    case Mode['ios-13']: {
       containerStyle = {
         height: 30,
         borderRadius: 4,
         borderWidth: 2,
-        borderColor: colors.border,
         overflow: 'visible',
         alignItems: 'center', // to make the divider not scretch from top to bottom
         backgroundColor: colors.border,
@@ -116,7 +101,7 @@ export default function SegmentedControl(props: Props) {
         style={indicatorStyle}
         dividerWidth={dividerWidth}
       />
-      <Tabs
+      <Segments
         mode={mode}
         values={values}
         activeIndex={activeIndex}
