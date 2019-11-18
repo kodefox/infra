@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import useTheme from '../../helpers/useTheme';
 import { SegmentedControlMode } from './types';
-import { MODE } from './constants';
+import { Mode } from './constants';
 
 type Props = {
   mode: SegmentedControlMode;
@@ -26,7 +26,7 @@ type Props = {
   dividerWidth: number;
 };
 
-export default function Tabs(props: Props) {
+export default function Segments(props: Props) {
   let {
     mode,
     values,
@@ -71,23 +71,16 @@ export default function Tabs(props: Props) {
         );
 
         let divider;
-
-        if (mode === MODE.BORDER) {
-          if (index !== 0) {
+        let firstIndex = index === 0;
+        if (!firstIndex) {
+          if (mode === Mode.border) {
             divider = defaultDivider(dividerWidth);
-          }
-        } else if (mode === MODE.IOS13) {
-          if (
-            index !== 0 &&
-            index !== activeIndex &&
-            index !== activeIndex + 1
-          ) {
-            divider = defaultDivider(dividerWidth);
-          } else if (
-            (index === activeIndex || index === activeIndex + 1) &&
-            index !== 0
-          ) {
-            divider = transparentDivider(dividerWidth);
+          } else if (mode === Mode['ios-13']) {
+            if (index !== activeIndex && index !== activeIndex + 1) {
+              divider = defaultDivider(dividerWidth);
+            } else if (index === activeIndex || index === activeIndex + 1) {
+              divider = transparentDivider(dividerWidth);
+            }
           }
         }
 
