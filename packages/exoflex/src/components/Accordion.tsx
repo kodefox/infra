@@ -141,7 +141,7 @@ function Header<T extends Title>({
     <View style={[styles.titleContainer, titleContainerStyle]}>
       {!!renderIconLeft && renderIconLeft(animatedValue)}
       <Text style={[styles.title, titleStyle]}>{content && content.title}</Text>
-      {renderIconRight === null
+      {Object.is(renderIconRight, null)
         ? null
         : !!renderIconRight
         ? renderIconRight(animatedValue)
