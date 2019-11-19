@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 function useFadingAnimation(
   targetVisibility: boolean,
   { toValue, delay, duration, easing }: Partial<Animated.TimingAnimationConfig>,
-): [boolean, Animated.Value] {
+) {
   let [mounted, setMounted] = useState(false);
   let [animatedValue] = useState(new Animated.Value(0));
 
@@ -44,7 +44,7 @@ function useFadingAnimation(
     easing,
   ]);
 
-  return [targetVisibility || mounted, animatedValue];
+  return [targetVisibility || mounted, animatedValue] as const;
 }
 
 export default useFadingAnimation;
