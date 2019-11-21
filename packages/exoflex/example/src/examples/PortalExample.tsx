@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Portal, Text } from 'exoflex';
 
 function PortalExample() {
+  let [showPortal, setShowPortal] = useState(false);
   return (
     <>
-      <Portal>
-        <View style={styles.portalContainer}>
-          <Text style={styles.text}>Hello</Text>
-        </View>
-      </Portal>
+      {showPortal && (
+        <Portal>
+          <View style={styles.portalContainer}>
+            <Text style={styles.text} onPress={() => setShowPortal(false)}>
+              {'Hello from the portal.\nPress me to dismiss.'}
+            </Text>
+          </View>
+        </Portal>
+      )}
       <View style={styles.root}>
-        <Text>This is the scene content</Text>
+        <Text onPress={() => setShowPortal(true)}>
+          Press me to show the portal.
+        </Text>
       </View>
     </>
   );
