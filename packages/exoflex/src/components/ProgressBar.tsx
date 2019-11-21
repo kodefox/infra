@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  StyleSheet,
-  View,
-  Animated,
-  ViewStyle,
-  LayoutChangeEvent,
-  Platform,
-} from 'react-native';
+import { StyleSheet, View, Animated, ViewStyle, Platform } from 'react-native';
 import { ProgressBarProps } from 'react-native-paper';
 import useTheme from '../helpers/useTheme';
 
@@ -14,6 +7,7 @@ type Props = Omit<ProgressBarProps, 'animating' | 'theme'> & {
   visible?: boolean;
 };
 
+let useNativeDriver = Platform.OS !== 'web';
 const INDETERMINATE_MAX_WIDTH = 0.6;
 
 export default function ProgressBar(props: Props) {
@@ -23,25 +17,30 @@ export default function ProgressBar(props: Props) {
   let { colors, roundness } = useTheme();
 
   useEffect(() => {
+    let animation: Animated.CompositeAnimation;
     // start animation
     if (indeterminate) {
-      animatedValue.setValue(0);
-
       let indeterminateAnimation = Animated.timing(animatedValue, {
         duration: 1000,
         toValue: 1,
-        useNativeDriver: Platform.OS !== 'web',
+        useNativeDriver,
         isInteraction: false,
       });
-      Animated.loop(indeterminateAnimation).start();
+      animation = Animated.loop(indeterminateAnimation);
     } else {
-      Animated.timing(animatedValue, {
+      animation = Animated.timing(animatedValue, {
         duration: 500,
         toValue: progress ? progress : 0,
-        useNativeDriver: true,
+        useNativeDriver,
         isInteraction: false,
-      }).start();
+      });
     }
+
+    animation.start();
+
+    return () => {
+      animation.stop();
+    };
   }, [progress, animatedValue, indeterminate]);
 
   let flattenedStyle = StyleSheet.flatten<ViewStyle>(style) || {};
@@ -64,7 +63,7 @@ export default function ProgressBar(props: Props) {
         },
         style,
       ]}
-      onLayout={(e: LayoutChangeEvent) => setWidth(e.nativeEvent.layout.width)}
+      onLayout={(e) => setWidth(e.nativeEvent.layout.width)}
     >
       <Animated.View
         style={[
