@@ -14,6 +14,7 @@ type Props = Omit<ProgressBarProps, 'animating' | 'theme'> & {
   visible?: boolean;
 };
 
+let useNativeDriver = Platform.OS !== 'web';
 const INDETERMINATE_MAX_WIDTH = 0.6;
 
 export default function ProgressBar(props: Props) {
@@ -30,7 +31,7 @@ export default function ProgressBar(props: Props) {
       let indeterminateAnimation = Animated.timing(animatedValue, {
         duration: 1000,
         toValue: 1,
-        useNativeDriver: Platform.OS !== 'web',
+        useNativeDriver,
         isInteraction: false,
       });
       Animated.loop(indeterminateAnimation).start();
@@ -38,7 +39,7 @@ export default function ProgressBar(props: Props) {
       Animated.timing(animatedValue, {
         duration: 500,
         toValue: progress ? progress : 0,
-        useNativeDriver: true,
+        useNativeDriver,
         isInteraction: false,
       }).start();
     }
