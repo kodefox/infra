@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 import { StyleSheet, StyleProp, TextStyle } from 'react-native';
-import { Button as PaperButton, ButtonProps } from 'react-native-paper';
+import { Button as PaperButton } from 'react-native-paper';
 import Text from './Text';
 
 import useTheme from './../helpers/useTheme';
@@ -11,7 +11,9 @@ type ButtonPresets = {
   invisible: 'text';
 };
 
-type Props = Omit<ButtonProps, 'theme' | 'mode'> & {
+type PaperButtonProps = ComponentProps<typeof PaperButton>;
+
+type Props = Omit<PaperButtonProps, 'theme' | 'mode'> & {
   preset: keyof ButtonPresets;
   textPreset?: string;
   labelStyle?: StyleProp<TextStyle>;

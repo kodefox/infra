@@ -1,10 +1,18 @@
-import { DeepPartial } from 'react-native-paper';
-
+export type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends Array<infer U>
+    ? Array<DeepPartial<U>>
+    : T[P] extends ReadonlyArray<infer U>
+    ? ReadonlyArray<DeepPartial<U>>
+    : DeepPartial<T[P]>;
+};
 export type Theme = {
   fonts: Fonts;
   colors: Colors;
   dark: boolean;
   roundness: number;
+  animation: {
+    scale: number;
+  };
 };
 
 export type ThemeShape = DeepPartial<Theme>;
@@ -63,6 +71,9 @@ export type Colors = {
   border: string;
   placeholder: string;
   backdrop: string;
+  onSurface: string;
+  onBackground: string;
+  notification: string;
 };
 
 export type FontSource = string | number;

@@ -11,10 +11,11 @@ import {
 import BaseAccordion, {
   AccordionProps,
 } from 'react-native-collapsible/Accordion';
-import { IconButton, TouchableRipple } from 'react-native-paper';
+import { TouchableRipple } from 'react-native-paper';
 import { useAnimation } from 'react-native-animation-hooks';
 
 import useTheme from '../helpers/useTheme';
+import AnimatedIcon from './AnimatedIcon';
 import Text from './Text';
 
 type AdditionalHeaderProps = {
@@ -95,10 +96,6 @@ export default function Accordion<T extends Title>(props: Props<T>) {
   );
 }
 
-let AnimatedIconButton: typeof IconButton = Animated.createAnimatedComponent(
-  IconButton,
-);
-
 function Header<T extends Title>({
   content,
   isActive,
@@ -116,7 +113,7 @@ function Header<T extends Title>({
   });
 
   let DefaultIcon = (
-    <AnimatedIconButton
+    <AnimatedIcon
       icon="chevron-right"
       style={
         [

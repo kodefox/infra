@@ -4,6 +4,7 @@ import * as Typography from './Typography';
 
 export { default as Accordion } from './Accordion';
 export { default as ActivityIndicator } from './ActivityIndicator';
+export { default as AnimatedIcon } from './AnimatedIcon';
 export { default as Button } from './Button';
 export { default as Card } from './Card';
 export { default as Checkbox } from './Checkbox';

@@ -136,6 +136,7 @@ export const SystemFonts: Fonts = Platform.select({
 export const DefaultTheme: Theme = {
   ...PaperDefaultTheme,
   colors: {
+    ...PaperDefaultTheme.colors,
     /**
      * primary color for your app, usually your brand color.
      */

@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Animated, ViewStyle, Platform } from 'react-native';
-import { ProgressBarProps } from 'react-native-paper';
+import React, { ComponentProps, useState, useEffect } from 'react';
+import { StyleSheet, View, Animated, Platform } from 'react-native';
+import { ProgressBar as PaperProgressBar } from 'react-native-paper';
+
 import useTheme from '../helpers/useTheme';
 
-type Props = Omit<ProgressBarProps, 'animating' | 'theme'> & {
+type PaperProgressBarProps = ComponentProps<typeof PaperProgressBar>;
+
+type Props = Omit<PaperProgressBarProps, 'animating' | 'theme'> & {
   visible?: boolean;
 };
 
@@ -11,7 +14,7 @@ let useNativeDriver = Platform.OS !== 'web';
 const INDETERMINATE_MAX_WIDTH = 0.6;
 
 export default function ProgressBar(props: Props) {
-  let { progress, color, visible, style, indeterminate } = props;
+  let { progress = 0, color, visible, style, indeterminate } = props;
   let [animatedValue] = useState(new Animated.Value(0));
   let [width, setWidth] = useState(0);
   let { colors, roundness } = useTheme();
@@ -43,7 +46,7 @@ export default function ProgressBar(props: Props) {
     };
   }, [progress, animatedValue, indeterminate]);
 
-  let flattenedStyle = StyleSheet.flatten<ViewStyle>(style) || {};
+  let flattenedStyle = StyleSheet.flatten(style) || {};
   let height = flattenedStyle.height || 8;
   let borderRadius = flattenedStyle.borderRadius || roundness;
 
