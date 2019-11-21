@@ -6,15 +6,14 @@ import {
   ViewStyle,
   View,
   TextStyle,
-  Platform,
 } from 'react-native';
 import { Surface, IconButton } from 'react-native-paper';
-import { useAnimation } from 'react-native-animation-hooks';
 
 import Text from './Text';
 import { ToastConfig } from './ToastContainer';
 import useTheme from '../helpers/useTheme';
 import { DefaultTheme } from '../constants/themes';
+import useFadingAnimation from '../helpers/useFadingAnimation';
 
 export type ModeProps = 'info' | 'warning' | 'error' | 'success';
 
@@ -41,14 +40,13 @@ type Props = {
 function Toast({ mode, visible, style, children, colors, textStyle }: Props) {
   let { colors: themeColors } = useTheme();
 
-  let animatedOpacity = useAnimation({
-    type: 'timing',
-    initialValue: visible ? 1 : 0,
-    toValue: visible ? 1 : 0,
+  let [animatedVisibility, animatedValue] = useFadingAnimation(visible, {
     duration: 200,
-    // Native driver is not available on web.
-    useNativeDriver: Platform.OS !== 'web',
   });
+
+  if (!animatedVisibility) {
+    return null;
+  }
 
   return (
     <SafeAreaView pointerEvents="box-none" style={styles.wrapper}>
@@ -60,15 +58,13 @@ function Toast({ mode, visible, style, children, colors, textStyle }: Props) {
             styles.container,
             {
               backgroundColor: colors[mode],
-              opacity: animatedOpacity,
+              opacity: animatedValue,
               transform: [
                 {
-                  scale: visible
-                    ? animatedOpacity.interpolate({
-                        inputRange: [0, 1],
-                        outputRange: [0.9, 1],
-                      })
-                    : 1,
+                  scale: animatedValue.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [0.8, 1],
+                  }),
                 },
               ],
             },
