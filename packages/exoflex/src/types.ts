@@ -34,13 +34,15 @@ export type FontWeight =
 
 export type FontStyle = 'normal' | 'italic';
 
-type Font = {
+export type Font = {
   name: string;
   weight: FullFontWeight;
   style?: FontStyle;
   size?: number;
+  source?: FontSource;
 };
 
+// TODO: Add support for all font weights in theme.
 export type FontPreset = {
   light: Font;
   normal: Font;

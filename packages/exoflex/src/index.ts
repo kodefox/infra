@@ -2,8 +2,8 @@
 export { Theme } from './types';
 
 // Constants
-export { BuiltInFonts } from './constants/fonts';
-export { DefaultTheme } from './constants/themes';
+export { RubikSourcesMap } from './constants/fonts';
+export { DefaultTheme, RubikFonts } from './constants/themes';
 
 // Components
 export {

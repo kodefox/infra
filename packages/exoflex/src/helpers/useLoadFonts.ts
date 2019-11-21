@@ -6,7 +6,7 @@ function useLoadFonts(
   fonts: Record<string, FontSource>,
   skipFontsLoading = false,
 ) {
-  let shouldLoadFonts = !skipFontsLoading;
+  let shouldLoadFonts = !skipFontsLoading && !!Object.keys(fonts).length;
 
   let [areFontsLoaded, setFontsLoaded] = useState(!shouldLoadFonts);
 
