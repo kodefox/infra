@@ -1,8 +1,7 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { Avatar as PaperAvatar } from 'react-native-paper';
 
-type PaperAvatarImageProps = ComponentProps<typeof PaperAvatar.Image>;
-type AvatarImageProps = Readonly<Omit<PaperAvatarImageProps, 'theme'>>;
+type AvatarImageProps = Readonly<OmitPaperTheme<typeof PaperAvatar.Image>>;
 
 export default function AvatarImage(props: AvatarImageProps) {
   return <PaperAvatar.Image {...props} />;
