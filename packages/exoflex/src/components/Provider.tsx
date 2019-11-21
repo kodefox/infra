@@ -4,6 +4,7 @@ import { Provider as PaperProvider } from 'react-native-paper';
 import DefaultLoadingPlaceholder from './LoadingPlaceholder';
 import ToastContainer from './ToastContainer';
 import getFontsSource from '../helpers/getFontsSource';
+import getPaperTheme from '../helpers/getPaperTheme';
 import mergeTheme from '../helpers/mergeTheme';
 import useLoadFonts from '../helpers/useLoadFonts';
 import { ThemeContext } from '../helpers/useTheme';
@@ -49,10 +50,14 @@ function Provider({
   LoadingPlaceholder = DefaultLoadingPlaceholder,
   ...otherProps
 }: Props) {
-  let { mergedTheme, fontsSource } = useMemo(() => {
+  let { mergedTheme, paperTheme, fontsSource } = useMemo(() => {
     let mergedTheme = mergeTheme(DefaultTheme, theme);
 
-    return { mergedTheme, fontsSource: getFontsSource(mergedTheme.fonts) };
+    return {
+      mergedTheme,
+      paperTheme: getPaperTheme(mergedTheme),
+      fontsSource: getFontsSource(mergedTheme.fonts),
+    };
   }, [theme]);
 
   let isFontLoaded = useLoadFonts(fontsSource, skipFontsLoading);
@@ -77,7 +82,7 @@ function Provider({
 
   return (
     <ThemeContext.Provider value={mergedTheme}>
-      <PaperProvider theme={mergedTheme} {...otherProps}>
+      <PaperProvider {...otherProps} theme={paperTheme}>
         {children}
         <ToastContainer />
       </PaperProvider>

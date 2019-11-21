@@ -110,8 +110,8 @@ let ToastIcon = ({ name, color }: { name: string; color: string }) => {
 };
 
 let IconName: Record<ModeProps, string> = {
-  info: 'info',
-  warning: 'info',
+  info: 'information',
+  warning: 'information',
   error: 'close',
   success: 'check',
 };
