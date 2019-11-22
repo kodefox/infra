@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import useTheme from '../../helpers/useTheme';
 import { SegmentedControlMode } from './types';
+import Divider from './Divider';
 import { Mode } from './constants';
 
 type Props = {
@@ -45,41 +46,23 @@ export default function Segments(props: Props) {
     <>
       {values.map((item, index) => {
         let isSelected = activeIndex === index;
-        // TODO: replace with Exoflex's divider
-        let defaultDivider = (width: number) => (
-          <View
-            style={[
-              styles.divider,
-              {
-                width,
-                backgroundColor: dividerColor || colors.primary,
-              },
-            ]}
-          />
-        );
-
-        let transparentDivider = (width: number) => (
-          <View
-            style={[
-              styles.divider,
-              {
-                width,
-                backgroundColor: 'transparent',
-              },
-            ]}
-          />
-        );
 
         let divider;
         let firstIndex = index === 0;
         if (!firstIndex) {
           if (mode === Mode.border) {
-            divider = defaultDivider(dividerWidth);
+            divider = (
+              <Divider color={dividerColor} style={{ width: dividerWidth }} />
+            );
           } else if (mode === Mode['ios-13']) {
             if (index !== activeIndex && index !== activeIndex + 1) {
-              divider = defaultDivider(dividerWidth);
-            } else if (index === activeIndex || index === activeIndex + 1) {
-              divider = transparentDivider(dividerWidth);
+              divider = (
+                <Divider color={dividerColor} style={{ width: dividerWidth }} />
+              );
+            } else {
+              divider = (
+                <Divider color="transparent" style={{ width: dividerWidth }} />
+              );
             }
           }
         }
@@ -132,9 +115,5 @@ let styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  divider: {
-    width: 1,
-    alignSelf: 'stretch',
   },
 });

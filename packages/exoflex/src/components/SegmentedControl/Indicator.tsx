@@ -54,7 +54,7 @@ export default function Indicator(props: Props) {
               width: 1,
               height: 0,
             },
-            shadowColor: '#BDC3C7',
+            shadowColor: colors.backdrop,
             shadowRadius: 1,
             shadowOpacity: 0.8,
           },

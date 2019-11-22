@@ -19,7 +19,7 @@ describe('SegmentedControl', () => {
         />
       </Provider>,
     );
-    expect(getAllByText(/\bTab/)).toBeTruthy();
+    expect(getAllByText(/\bTab/)).toHaveLength(2);
   });
 
   it('should execute on segment change callback', () => {

@@ -10,7 +10,7 @@ describe('SegmentedControl', () => {
         <SegmentedControl activeIndex={0} values={['Tab One', 'Tab Two']} />
       </Provider>,
     );
-    expect(getAllByText(/\bTab/)).toBeTruthy();
+    expect(getAllByText(/\bTab/)).toHaveLength(2);
   });
 
   it('should execute on segment change callback', () => {

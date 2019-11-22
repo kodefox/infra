@@ -13,6 +13,7 @@ import Segments from './Segments';
 import { SegmentedControlMode } from './types';
 import { Mode } from './constants';
 
+// TODO: support icon
 type Props = {
   mode: SegmentedControlMode;
   values: Array<string>;
@@ -49,8 +50,11 @@ export default function SegmentedControl(props: Props) {
   let dividerWidth = mode === Mode.default ? 0 : dividerWidthProp || 1;
 
   let onLayout = (e: LayoutChangeEvent) => {
-    let flattenedStyle =
-      StyleSheet.flatten([styles.container, containerStyle, style]) || {};
+    let flattenedStyle = StyleSheet.flatten([
+      styles.container,
+      containerStyle,
+      style,
+    ]);
 
     let outerBorder = 0;
     if (flattenedStyle.borderWidth) {
