@@ -10,6 +10,7 @@
     "baseUrl": ".",
     "paths": {
       "exoflex": ["../src/index"]
-    }
+    },
+    "types": ["cypress", "@percy/cypress", "@types/testing-library__cypress"]
   }
 }
