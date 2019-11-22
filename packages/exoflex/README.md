@@ -1,4 +1,4 @@
-# exoflex · ![npm](https://img.shields.io/npm/v/exoflex)
+# exoflex · ![npm](https://img.shields.io/npm/v/exoflex) [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/KodeFox/exoflex)
 
 This is a UI component library for React Native and Web (using react-native-web).
 
