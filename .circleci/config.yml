@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   compare-url: oshimayoan/compare-url@1.2.4
+  cypress: cypress-io/cypress@1.13.0
 
 jobs:
   testing:
@@ -83,3 +84,12 @@ workflows:
   main:
     jobs:
       - testing
+      - cypress/run:
+          name: Visual Regression Testing
+          yarn: true
+          start: yarn web
+          command: percy exec -- cypress run
+          working_directory: packages/exoflex/example
+          cache-key: 'yarn-packages-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}'
+          requires:
+            - testing
