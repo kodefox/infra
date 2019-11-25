@@ -87,6 +87,8 @@ workflows:
       - cypress/run:
           name: Visual Regression Testing
           yarn: true
+          post-install:
+            - run: yarn global add expo-cli
           start: yarn web
           command: yarn percy exec -- cypress run
           working_directory: packages/exoflex/example
