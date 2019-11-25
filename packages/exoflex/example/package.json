@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "test:visual": "yarn percy exec -- cypress run"
   },
   "dependencies": {
     "expo": "^34.0.1",
