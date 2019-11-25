@@ -4,6 +4,7 @@ import React from 'react';
 import AccordionExample from './AccordionExample';
 import ActivityIndicatorExample from './ActivityIndicatorExample';
 import AvatarExample from './AvatarExample';
+import BadgeExample from './BadgeExample';
 import ButtonExample from './ButtonExample';
 import CardExample from './CardExample';
 import CalendarExample from './CalendarExample';
@@ -28,6 +29,7 @@ export let EXAMPLES = {
   accordion: AccordionExample,
   activityindicator: ActivityIndicatorExample,
   avatar: AvatarExample,
+  badge: BadgeExample,
   button: ButtonExample,
   card: CardExample,
   calendar: CalendarExample,
