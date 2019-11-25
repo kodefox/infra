@@ -34,6 +34,7 @@ You can find all available components from links below:
 - [Avatar.Icon](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Avatar.Icon.md)
 - [Avatar.Image](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Avatar.Image.md)
 - [Avatar.Text](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Avatar.Text.md)
+- [Badge](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Badge.md)
 - [Button](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Button.md)
 - [Calendar](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Calendar.md)
 - [Checkbox](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Checkbox.md)
