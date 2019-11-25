@@ -8,6 +8,7 @@ import ButtonExample from './ButtonExample';
 import CardExample from './CardExample';
 import CalendarExample from './CalendarExample';
 import CheckboxExample from './CheckboxExample';
+import ChipExample from './ChipExample';
 import CollapsibleExample from './CollapsibleExample';
 import DateTimePickerExample from './DateTimePickerExample';
 import SliderExample from './SliderExample';
@@ -33,6 +34,7 @@ export let EXAMPLES = {
   card: CardExample,
   calendar: CalendarExample,
   checkbox: CheckboxExample,
+  chip: ChipExample,
   collapsible: CollapsibleExample,
   datetimepicker: DateTimePickerExample,
   iconbutton: IconButtonExample,
