@@ -88,10 +88,17 @@ workflows:
           name: Visual Regression Testing
           yarn: true
           post-install:
-            - run: yarn global add expo-cli
+            - run:
+                name: Install exoflex dependencies
+                command: |
+                  cd packages/exoflex
+                  yarn
+            - run:
+                name: Install Expo CLI
+                command: yarn global add expo-cli
           start: yarn web
           command: yarn percy exec -- cypress run
           working_directory: packages/exoflex/example
-          cache-key: 'yarn-packages-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}'
+          cache-key: 'yarn-packages-{{ arch }}-{{ .Branch }}-{{ checksum "packages/exoflex/example/yarn.lock" }}'
           requires:
             - testing
