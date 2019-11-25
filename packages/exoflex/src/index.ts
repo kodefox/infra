@@ -10,6 +10,7 @@ export {
   Accordion,
   ActivityIndicator,
   Avatar,
+  Badge,
   Button,
   Calendar,
   Card,
