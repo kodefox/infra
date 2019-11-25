@@ -88,7 +88,7 @@ workflows:
           name: Visual Regression Testing
           yarn: true
           start: yarn web
-          command: percy exec -- cypress run
+          command: yarn percy exec -- cypress run
           working_directory: packages/exoflex/example
           cache-key: 'yarn-packages-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}'
           requires:
