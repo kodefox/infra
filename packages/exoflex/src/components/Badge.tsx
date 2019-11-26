@@ -6,7 +6,9 @@ import Text from './Text';
 import color from 'color';
 import useTheme from '../helpers/useTheme';
 
-type BadgeProps = OmitPaperTheme<typeof PaperBadge>;
+type BadgeProps = Omit<OmitPaperTheme<typeof PaperBadge>, 'visible'> & {
+  visible?: boolean;
+};
 
 export default function Badge(props: BadgeProps) {
   let { visible = true, children, size = 20, style } = props;
