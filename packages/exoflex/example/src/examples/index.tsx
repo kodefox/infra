@@ -16,6 +16,7 @@ import PortalExample from './PortalExample';
 import ProgressBarExample from './ProgressBarExample';
 import RadioButtonExample from './RadioButtonExample';
 import RadioButtonGroupExample from './RadioButtonGroupExample';
+import SegmentedControlExample from './SegmentedControlExample';
 import SwitchExample from './SwitchExample';
 import TextInputExample from './TextInputExample';
 import ToastExample from './ToastExample';
@@ -38,6 +39,7 @@ export let EXAMPLES = {
   progressbar: ProgressBarExample,
   radiobutton: RadioButtonExample,
   radiobuttongroup: RadioButtonGroupExample,
+  segmentedcontrol: SegmentedControlExample,
   slider: SliderExample,
   switch: SwitchExample,
   textinput: TextInputExample,

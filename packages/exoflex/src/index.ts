@@ -23,6 +23,7 @@ export {
   ProgressBar,
   Provider,
   RadioButton,
+  SegmentedControl,
   Slider,
   Switch,
   Text,
