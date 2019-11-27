@@ -27,7 +27,7 @@
     "load-json-file": "^6.2.0",
     "node-fetch": "^2.6.0",
     "write-json-file": "^4.2.0",
-    "yargs": "^14.0.0"
+    "yargs": "^15.0.0"
   },
   "devDependencies": {
     "@types/inquirer": "^6.5.0",
