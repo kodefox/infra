@@ -12,7 +12,7 @@
     "build": "yarn bob build",
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
-    "lint": "eslint --max-warnings 0 .",
+    "lint": "eslint --max-warnings 0 \"src/**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit -p .",
     "jest": "jest --coverage --passWithNoTests",
     "test": "yarn format:check && yarn lint && yarn typecheck && yarn jest"

@@ -1,5 +1,6 @@
 {
   "extends": ["config:base"],
   "labels": ["dependencies", "ready for review"],
-  "prHourlyLimit": 2
+  "prHourlyLimit": 2,
+  "semanticCommitScope": null
 }
