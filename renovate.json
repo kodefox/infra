@@ -1,0 +1,5 @@
+{
+  "extends": ["config:base"],
+  "labels": ["dependencies", "ready for review"],
+  "prHourlyLimit": 2
+}
