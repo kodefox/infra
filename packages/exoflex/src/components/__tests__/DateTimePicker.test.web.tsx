@@ -75,11 +75,13 @@ describe('DateTimePicker', () => {
       );
     };
 
-    let { getByText, getByDisplayValue } = render(<App />);
+    let { getByText, getByDisplayValue, getByPlaceholderText } = render(
+      <App />,
+    );
     act(() => {
       fireEvent.click(getByText('OPEN'));
     });
-    await wait(() => getByText('Hrs'));
+    await wait(() => getByPlaceholderText('hh'));
 
     let minuteElement = getByDisplayValue('10');
     fireEvent.click(minuteElement);
@@ -115,7 +117,9 @@ describe('DateTimePicker', () => {
       );
     };
 
-    let { getByText, getByDisplayValue } = render(<App />);
+    let { getByText, getByDisplayValue, getByPlaceholderText } = render(
+      <App />,
+    );
     act(() => {
       fireEvent.click(getByText('OPEN'));
     });
@@ -123,7 +127,7 @@ describe('DateTimePicker', () => {
 
     fireEvent.click(getByText('9'));
     fireEvent.click(getByText('CONFIRM'));
-    await wait(() => getByText('Hrs'));
+    await wait(() => getByPlaceholderText('hh'));
 
     let minuteElement = getByDisplayValue('10');
     fireEvent.click(minuteElement);
