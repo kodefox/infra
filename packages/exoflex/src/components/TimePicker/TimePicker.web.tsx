@@ -56,7 +56,6 @@ export default function TimePicker(props: TimePickerProps) {
     <View style={{ flexDirection: 'row' }}>
       <TimePickerInput
         format={format}
-        label="Hrs"
         value={hour}
         placeholder="hh"
         onChangeText={changeHour}
@@ -64,7 +63,6 @@ export default function TimePicker(props: TimePickerProps) {
       />
       <TimePickerInput
         format={format}
-        label="Mins"
         value={minute}
         placeholder="mm"
         onChangeText={changeMinute}
@@ -72,7 +70,6 @@ export default function TimePicker(props: TimePickerProps) {
       />
       <TimePickerInput
         format={format}
-        label="Secs"
         value={second}
         placeholder="ss"
         onChangeText={changeSecond}
@@ -80,8 +77,8 @@ export default function TimePicker(props: TimePickerProps) {
       />
       {format === '12' && (
         <TimePickerInput
+          placeholder="am/pm"
           format={format}
-          label="Mid"
           value={meridiem}
           onChangeText={changeMeridiem}
           onBlur={checkMeridiem}
