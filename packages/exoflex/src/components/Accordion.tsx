@@ -174,7 +174,4 @@ let styles = StyleSheet.create({
       default: { position: 'absolute', right: 5, alignSelf: 'center' },
     }),
   },
-  contentContainer: {
-    padding: 16,
-  },
 });

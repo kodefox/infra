@@ -47,16 +47,10 @@
     "@types/react-native": "^0.60.4",
     "@types/react-native-calendars": "^1.20.7",
     "@types/react-test-renderer": "^16.9.0",
-    "@typescript-eslint/eslint-plugin": "^2.6.1",
-    "@typescript-eslint/parser": "^2.6.1",
     "chalk": "^2.4.2",
     "core-js": "^3.3.2",
     "eslint": "^6.6.0",
-    "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-eslint-comments": "^3.1.2",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-react-hooks": "^2.1.2",
+    "eslint-config-kodefox": "^0.0.2",
     "jest": "^24.9.0",
     "jest-in-case": "^1.0.2",
     "jest-watch-select-projects": "^1.0.0",
@@ -90,6 +84,9 @@
     "files": [
       "src/"
     ]
+  },
+  "eslintConfig": {
+    "extends": "kodefox/react-native"
   },
   "prettier": {
     "bracketSpacing": true,
