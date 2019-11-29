@@ -15,6 +15,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
     mode = 'datetime' as DateTimePickerMode,
     date = new Date().toISOString(),
     isVisible,
+    is24Hour,
     onCancel,
     onConfirm,
     minimumDate,
@@ -48,6 +49,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
     ) : (
       <TimePickerContainer
         date={dateTime}
+        is24Hour={is24Hour}
         onCancel={cancel}
         onConfirm={confirmTime}
       />
@@ -76,6 +78,7 @@ export type PickerProps = Readonly<{
   date: string;
   minDate?: Date;
   maxDate?: Date;
+  is24Hour?: boolean;
   onCancel: () => void;
   onConfirm: (date: string) => void;
 }>;
@@ -113,7 +116,7 @@ export function DatePicker(props: PickerProps) {
 }
 
 export function TimePickerContainer(props: PickerProps) {
-  let { date, onCancel, onConfirm } = props;
+  let { date, is24Hour, onCancel, onConfirm } = props;
   let { colors } = useTheme();
 
   let [selectedDateTime, setSelectedDateTime] = useState(date);
@@ -124,7 +127,12 @@ export function TimePickerContainer(props: PickerProps) {
   return (
     <>
       <View style={{ alignItems: 'center', marginTop: 12 }}>
-        <TimePicker date={selectedDateTime} onChangeTime={changeTime} />
+        {/* TODO: Handle format based on locale too */}
+        <TimePicker
+          date={selectedDateTime}
+          format={is24Hour ? '24' : '12'}
+          onChangeTime={changeTime}
+        />
       </View>
       <View style={styles.touchableActionWrapper}>
         <TouchableRipple onPress={onCancel} style={styles.touchableAction}>

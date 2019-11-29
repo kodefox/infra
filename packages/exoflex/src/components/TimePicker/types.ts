@@ -6,6 +6,7 @@ export type TimePickerProps = Readonly<{
   format?: HourFormat;
   placeholder?: string;
   title?: string;
+  locale?: string;
   onChangeTime?: (utcString: string) => void;
   style?: StyleProp<TextStyle>;
 }>;

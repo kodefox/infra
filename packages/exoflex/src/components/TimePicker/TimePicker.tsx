@@ -14,6 +14,7 @@ export default function TimePicker(props: TimePickerProps) {
     date,
     placeholder = '',
     title = '',
+    locale,
     onChangeTime,
     style,
   } = props;
@@ -56,8 +57,8 @@ export default function TimePicker(props: TimePickerProps) {
         titleIOS={title}
         // NOTE: Android only
         is24Hour={is24Hour}
-        // NOTE: For determining 12h or 24h in iOS
-        locale={is24Hour ? 'id-ID' : 'en-US'}
+        // NOTE: If locale is not provided, use `en-GB` for 12h format
+        locale={locale || is24Hour ? 'en-GB' : 'en-US'}
         isVisible={visible}
         mode="time"
         onConfirm={changeDate}
