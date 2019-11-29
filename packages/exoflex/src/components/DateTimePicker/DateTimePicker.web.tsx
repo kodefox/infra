@@ -17,6 +17,8 @@ export default function DateTimePicker(props: DateTimePickerProps) {
     isVisible,
     onCancel,
     onConfirm,
+    minimumDate,
+    maximumDate,
   } = props;
 
   let { colors } = useTheme();
@@ -36,7 +38,13 @@ export default function DateTimePicker(props: DateTimePickerProps) {
 
   let picker =
     activePicker === 'date' ? (
-      <DatePicker date={dateTime} onCancel={cancel} onConfirm={confirmDate} />
+      <DatePicker
+        date={dateTime}
+        minDate={minimumDate}
+        maxDate={maximumDate}
+        onCancel={cancel}
+        onConfirm={confirmDate}
+      />
     ) : (
       <TimePickerContainer
         date={dateTime}
@@ -66,12 +74,14 @@ export default function DateTimePicker(props: DateTimePickerProps) {
 
 export type PickerProps = Readonly<{
   date: string;
+  minDate?: Date;
+  maxDate?: Date;
   onCancel: () => void;
   onConfirm: (date: string) => void;
 }>;
 
 export function DatePicker(props: PickerProps) {
-  let { date, onCancel, onConfirm } = props;
+  let { date, minDate, maxDate, onCancel, onConfirm } = props;
   let { colors } = useTheme();
 
   let [selectedDate, setSelectedDate] = useState(date);
@@ -86,6 +96,8 @@ export function DatePicker(props: PickerProps) {
       <Calendar
         current={selectedDate}
         markedDates={{ [selectedDate.split('T')[0]]: { selected: true } }}
+        minDate={minDate}
+        maxDate={maxDate}
         onDayPress={changeDate}
       />
       <View style={styles.touchableActionWrapper}>
