@@ -15,6 +15,7 @@ types:
 
 scopes:
   - exoflex
+  - feetch
   - flexship
   - miflex
   - naviflex
