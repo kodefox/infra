@@ -1,10 +1,10 @@
 import React from 'react';
 import { Animated, StyleSheet } from 'react-native';
 import { Badge as PaperBadge } from 'react-native-paper';
-import { useAnimation } from 'react-native-animation-hooks';
-import Text from './Text';
 import color from 'color';
+import Text from './Text';
 import useTheme from '../helpers/useTheme';
+import useFadingAnimation from '../helpers/useFadingAnimation';
 
 type BadgeProps = Omit<OmitPaperTheme<typeof PaperBadge>, 'visible'> & {
   visible?: boolean;
@@ -12,6 +12,9 @@ type BadgeProps = Omit<OmitPaperTheme<typeof PaperBadge>, 'visible'> & {
 
 export default function Badge(props: BadgeProps) {
   let { visible = true, children, size = 20, style } = props;
+  let [animatedVisibility, animatedValue] = useFadingAnimation(visible, {
+    duration: 150,
+  });
   let { colors } = useTheme();
   let { backgroundColor = colors.notification, ...restStyle } =
     StyleSheet.flatten(style) || {};
@@ -20,12 +23,9 @@ export default function Badge(props: BadgeProps) {
     : colors.surface;
   let borderRadius = size / 2;
 
-  let animatedValue = useAnimation({
-    type: 'timing',
-    initialValue: visible ? 0 : 1,
-    toValue: visible ? 1 : 0,
-    duration: 150,
-  });
+  if (!animatedVisibility) {
+    return null;
+  }
 
   return (
     // using Animated.View here so the Text component still inherit exoflex's Text style
