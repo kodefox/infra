@@ -8,10 +8,11 @@ import useFadingAnimation from '../helpers/useFadingAnimation';
 
 type BadgeProps = Omit<OmitPaperTheme<typeof PaperBadge>, 'visible'> & {
   visible?: boolean;
+  textPreset?: string;
 };
 
 export default function Badge(props: BadgeProps) {
-  let { visible = true, children, size = 20, style } = props;
+  let { visible = true, children, size = 20, textPreset, style } = props;
   let [animatedVisibility, animatedValue] = useFadingAnimation(visible, {
     duration: 150,
   });
@@ -45,6 +46,7 @@ export default function Badge(props: BadgeProps) {
             ...restStyle,
           },
         ]}
+        preset={textPreset}
       >
         {children}
       </Text>
