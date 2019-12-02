@@ -6,12 +6,13 @@
 
 ### Props
 
-| Name       |          Type          | Default | Description                                           |
-| ---------- | :--------------------: | :-----: | ----------------------------------------------------- |
-| `children` |   `string | number`    |         | Content of the `Badge`.                               |
-| `visible`  |       `boolean`        | `true`  | Whether the badge is visible.                         |
-| `size`     |        `number`        |  `20`   | Size of the badge.                                    |
-| `style`    | `StyleProp<TextStyle>` |         | Additional style passed to the text inside the Badge. |
+| Name         |          Type          | Default | Description                                                                  |
+| ------------ | :--------------------: | :-----: | ---------------------------------------------------------------------------- |
+| `children`   |   `string \| number`   |         | Content of the `Badge`.                                                      |
+| `visible`    |       `boolean`        | `true`  | Whether the badge is visible.                                                |
+| `size`       |        `number`        |  `20`   | Size of the badge.                                                           |
+| `textPreset` |        `string`        |         | Name of font preset that will be used on `Text` component inside the `Badge` |
+| `style`      | `StyleProp<TextStyle>` |         | Additional style passed to the text inside the Badge.                        |
 
 ### Example
 
