@@ -90,7 +90,7 @@ workflows:
           yarn: true
           no-workspace: true
           working_directory: packages/exoflex/example
-          cache-key: 'v1-dependencies-example-{{ checksum "packages/exoflex/example/yarn.lock" }}'
+          cache-key: 'v1-dependencies-example-{{ checksum "yarn.lock" }}'
           requires:
             - Unit Testing
           post-install:
@@ -104,12 +104,7 @@ workflows:
                 name: Install exoflex dependencies
                 command: |
                   cd packages/exoflex
-                  yarn
-            - save_cache:
-                name: Save exoflex cache
-                paths:
-                  - packages/exoflex/node_modules
-                key: v1-dependencies-{{ checksum "packages/exoflex/yarn.lock" }}
+                  yarn install --frozen-lockfile
             - run:
                 name: Install Expo CLI
                 command: yarn global add expo-cli
