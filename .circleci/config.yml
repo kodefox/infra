@@ -88,6 +88,11 @@ workflows:
       - cypress/run:
           name: Visual Regression Testing
           yarn: true
+          no-workspace: true
+          working_directory: packages/exoflex/example
+          cache-key: 'v1-dependencies-example-{{ checksum "packages/exoflex/example/yarn.lock" }}'
+          requires:
+            - Unit Testing
           post-install:
             - restore_cache:
                 name: Restore exoflex cache
@@ -120,7 +125,3 @@ workflows:
             else
               exit 0
             fi
-          working_directory: packages/exoflex/example
-          cache-key: 'v1-dependencies-{{ checksum "packages/exoflex/example/yarn.lock" }}'
-          requires:
-            - Unit Testing
