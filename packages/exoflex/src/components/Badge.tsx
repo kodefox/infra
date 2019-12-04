@@ -30,7 +30,7 @@ export default function Badge(props: BadgeProps) {
 
   return (
     // using Animated.View here so the Text component still inherit exoflex's Text style
-    <Animated.View style={[{ opacity: animatedValue }]}>
+    <Animated.View style={{ opacity: animatedValue }}>
       <Text
         numberOfLines={1}
         style={[
