@@ -1,20 +1,9 @@
 const SITE = 'http://localhost:19006';
 
 describe('Visual Regression', () => {
-  it('Homepage', () => {
-    // Load the page or perform any other interactions with the app.
-    cy.visit(SITE);
-    cy.contains('Welcome');
-
-    // To wait until icon rendered
-    cy.findAllByRole('img').should('have.length.greaterThan', 0);
-
-    // Take a snapshot for visual diffing
-    cy.percySnapshot();
-  });
-
   it('Accordion (Closed)', () => {
     cy.visit(`${SITE}/accordion`);
+    // To wait until icon rendered
     cy.findAllByRole('img').should('have.length.greaterThan', 2);
     cy.percySnapshot();
   });
