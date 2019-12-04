@@ -114,7 +114,12 @@ workflows:
             else
               exit 0
             fi
-          command: yarn percy exec -- cypress run
+          command: |
+            if [[ $(git diff $COMMIT_RANGE --name-status | grep "exoflex") ]]; then
+              yarn percy exec -- cypress run
+            else
+              exit 0
+            fi
           working_directory: packages/exoflex/example
           cache-key: 'v1-dependencies-{{ checksum "packages/exoflex/example/yarn.lock" }}'
           requires:
