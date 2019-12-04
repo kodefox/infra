@@ -12,8 +12,7 @@ function DividerExample() {
         <Text style={styles.text}>Item 2</Text>
       </View>
       <Text weight="bold">Vertical Divider</Text>
-
-      <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+      <View style={styles.rowedContainer}>
         <Text style={[styles.text]}>Item 1</Text>
         <Divider mode="vertical" />
         <Text style={[styles.text]}>Item 2</Text>
@@ -32,6 +31,7 @@ let styles = StyleSheet.create({
   text: {
     marginVertical: 10,
   },
+  rowedContainer: { flexDirection: 'row', justifyContent: 'space-evenly' },
 });
 
 export default DividerExample;
