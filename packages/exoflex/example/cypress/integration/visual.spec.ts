@@ -34,6 +34,7 @@ describe('Visual Regression', () => {
   it('Calendar', () => {
     cy.visit(`${SITE}/calendar`);
     cy.findAllByRole('img').should('have.length.greaterThan', 0);
+    // wait for the animation
     cy.wait(200);
     cy.percySnapshot();
   });
