@@ -13,6 +13,7 @@ describe('Visual Regression', () => {
     cy.findAllByRole('img').should('have.length.greaterThan', 0);
     cy.queryByText('SECOND SECTION').click();
     cy.findAllByRole('img').should('have.length.greaterThan', 1);
+    // wait for the animation
     cy.wait(300);
     cy.percySnapshot();
   });
@@ -31,10 +32,9 @@ describe('Visual Regression', () => {
   });
 
   // should not test this
-  it('Calendar', () => {
+  xit('Calendar', () => {
     cy.visit(`${SITE}/calendar`);
     cy.findAllByRole('img').should('have.length.greaterThan', 0);
-    // wait for the animation
     cy.wait(200);
     cy.percySnapshot();
   });
@@ -67,7 +67,7 @@ describe('Visual Regression', () => {
   });
 
   // should not test this
-  it('DateTimePicker (Date)', () => {
+  xit('DateTimePicker (Date)', () => {
     cy.visit(`${SITE}/datetimepicker`);
     cy.findAllByRole('img').should('have.length.greaterThan', 0);
     cy.queryByText('OPEN DATEPICKER').click();
