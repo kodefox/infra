@@ -30,6 +30,7 @@ describe('Visual Regression', () => {
     cy.percySnapshot();
   });
 
+  // should not test this
   it('Calendar', () => {
     cy.visit(`${SITE}/calendar`);
     cy.findAllByRole('img').should('have.length.greaterThan', 0);
@@ -64,6 +65,7 @@ describe('Visual Regression', () => {
     cy.percySnapshot();
   });
 
+  // should not test this
   it('DateTimePicker (Date)', () => {
     cy.visit(`${SITE}/datetimepicker`);
     cy.findAllByRole('img').should('have.length.greaterThan', 0);

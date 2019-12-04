@@ -5,7 +5,7 @@ orbs:
   cypress: cypress-io/cypress@1.13.0
 
 jobs:
-  testing:
+  testing:    
     docker:
       - image: circleci/node:8.15.0
 
@@ -83,12 +83,14 @@ jobs:
 workflows:
   main:
     jobs:
-      - testing
+      - testing:
+          name: Unit Testing
       - cypress/run:
           name: Visual Regression Testing
           yarn: true
           post-install:
             - restore_cache:
+                name: Restore exoflex cache
                 keys:
                   - v1-dependencies-{{ checksum "packages/exoflex/yarn.lock" }}
                   # fallback to use the latest cache if no exact match is found
@@ -99,13 +101,19 @@ workflows:
                   cd packages/exoflex
                   yarn
             - save_cache:
+                name: Save exoflex cache
                 paths:
                   - packages/exoflex/node_modules
                 key: v1-dependencies-{{ checksum "packages/exoflex/yarn.lock" }}
             - run:
                 name: Install Expo CLI
                 command: yarn global add expo-cli
-          start: yarn web
+          start: |
+            if [[ $(git diff $COMMIT_RANGE --name-status | grep "exoflex") ]]; then
+              yarn web
+            else
+              exit 0
+            fi
           command: yarn percy exec -- cypress run
           working_directory: packages/exoflex/example
           cache-key: 'v1-dependencies-{{ checksum "packages/exoflex/example/yarn.lock" }}'
