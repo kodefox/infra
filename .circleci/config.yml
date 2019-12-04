@@ -89,11 +89,6 @@ workflows:
           yarn: true
           post-install:
             - run:
-                name: Install exoflex dependencies
-                command: |
-                  cd packages/exoflex
-                  yarn
-            - run:
                 name: Install Expo CLI
                 command: yarn global add expo-cli
           start: yarn web
