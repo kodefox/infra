@@ -103,11 +103,20 @@ workflows:
             - run:
                 name: Install exoflex dependencies
                 command: |
-                  cd packages/exoflex
-                  yarn install --frozen-lockfile
+                  if [[ $(git diff $COMMIT_RANGE --name-status | grep "exoflex") ]]; then
+                    cd packages/exoflex
+                    yarn install --frozen-lockfile
+                  else
+                    exit 0
+                  fi
             - run:
                 name: Install Expo CLI
-                command: yarn global add expo-cli
+                command: |
+                  if [[ $(git diff $COMMIT_RANGE --name-status | grep "exoflex") ]]; then
+                    yarn global add expo-cli
+                  else
+                    exit 0
+                  fi
           start: |
             if [[ $(git diff $COMMIT_RANGE --name-status | grep "exoflex") ]]; then
               yarn web
