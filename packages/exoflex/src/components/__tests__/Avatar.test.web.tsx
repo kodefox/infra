@@ -12,11 +12,10 @@ describe('Avatar', () => {
         <Avatar.Text label="EF" />
       </Provider>,
     );
-    // There are three elements that using role="img"
-    // 1. Toast icon from Provider
-    // 2. Icon from Avatar.Icon
-    // 3. Image from Avatar.Image
-    expect(getAllByRole('img').length).toBe(3);
+    // There are two elements that using role="img"
+    // 1. Icon from Avatar.Icon
+    // 2. Image from Avatar.Image
+    expect(getAllByRole('img').length).toBe(2);
     expect(getByText('EF')).toBeTruthy();
   });
 });
