@@ -90,7 +90,7 @@ workflows:
           yarn: true
           no-workspace: true
           working_directory: packages/exoflex/example
-          cache-key: 'v1-dependencies-example-{{ checksum "yarn.lock" }}'
+          cache-key: 'v1-dependencies-example-{{ checksum "packages/exoflex/example/yarn.lock" }}'
           requires:
             - Unit Testing
           post-install:
