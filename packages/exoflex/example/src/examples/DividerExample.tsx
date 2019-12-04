@@ -10,12 +10,19 @@ function DividerExample() {
         <Text style={styles.text}>Item 1</Text>
         <Divider />
         <Text style={styles.text}>Item 2</Text>
+        <Divider inset={20} style={{ backgroundColor: 'tomato', height: 2 }} />
+        <Text style={styles.text}>Item 3</Text>
       </View>
       <Text weight="bold">Vertical Divider</Text>
       <View style={styles.rowedContainer}>
         <Text style={[styles.text]}>Item 1</Text>
         <Divider mode="vertical" />
         <Text style={[styles.text]}>Item 2</Text>
+        <Divider
+          mode="vertical"
+          style={{ backgroundColor: 'tomato', width: 2 }}
+        />
+        <Text style={styles.text}>Item 3</Text>
       </View>
     </ScrollView>
   );
