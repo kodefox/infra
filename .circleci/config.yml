@@ -118,4 +118,4 @@ workflows:
           working_directory: packages/exoflex/example
           cache-key: 'v1-dependencies-{{ checksum "packages/exoflex/example/yarn.lock" }}'
           requires:
-            - testing
+            - Unit Testing
