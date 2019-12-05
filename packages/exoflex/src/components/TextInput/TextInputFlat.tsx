@@ -1,4 +1,4 @@
-import React, { forwardRef, Ref } from 'react';
+import React, { Ref, forwardRef } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 
 import ErrorMessage from './ErrorMessage';
@@ -11,8 +11,8 @@ import styles from './styles';
 
 export type Props = ChildTextInputProps;
 
-function TextInputOutlined(
-  {
+export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
+  let {
     errorMessage,
     label,
     disabled,
@@ -23,10 +23,9 @@ function TextInputOutlined(
     labelStyle,
     errorMessageStyle,
     ...otherProps
-  }: Props,
-  ref: Ref<TextInput>,
-) {
-  let { colors, roundness } = useTheme();
+  } = props;
+
+  let { colors } = useTheme();
 
   let isError = !!errorMessage;
 
@@ -35,7 +34,6 @@ function TextInputOutlined(
       style={[
         localStyles.root,
         {
-          borderRadius: roundness,
           borderColor: disabled
             ? colors.disabled
             : isError
@@ -43,9 +41,9 @@ function TextInputOutlined(
             : isFocused
             ? colors.accent
             : colors.border,
-          backgroundColor: disabled ? colors.disabled : colors.surface,
-          justifyContent: !!label ? 'space-between' : 'center',
+          justifyContent: !!label ? 'space-between' : 'flex-end',
         },
+        !!label && { height: 60 },
         containerStyle,
       ]}
     >
@@ -77,13 +75,11 @@ function TextInputOutlined(
   );
 }
 
+export default forwardRef(TextInputFlat);
+
 let localStyles = StyleSheet.create({
   root: {
-    borderWidth: 1,
-    height: 60,
-    padding: 12,
+    borderBottomWidth: 1,
     paddingVertical: 10,
   },
 });
-
-export default forwardRef(TextInputOutlined);

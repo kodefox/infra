@@ -5,8 +5,8 @@ import {
   TextInput as NativeTextInput,
 } from 'react-native';
 
-import Text from '../Text';
 import TextInputOutlined from './TextInputOutlined';
+import TextInputFlat from './TextInputFlat';
 import { TextInputProps } from './types';
 
 function TextInput(
@@ -71,7 +71,17 @@ function TextInput(
       isFocused={isFocused}
     />
   ) : (
-    <Text>Flat mode is not yet supported.</Text>
+    <TextInputFlat
+      {...otherProps}
+      ref={ref}
+      autoCorrect={autoCorrect}
+      disabled={disabled}
+      editable={editable}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onChangeText={handleChangeText}
+      isFocused={isFocused}
+    />
   );
 }
 
