@@ -15,9 +15,9 @@ function DividerExample() {
       </View>
       <Text weight="bold">Vertical Divider</Text>
       <View style={styles.rowedContainer}>
-        <Text style={[styles.text]}>Item 1</Text>
+        <Text style={styles.text}>Item 1</Text>
         <Divider mode="vertical" />
-        <Text style={[styles.text]}>Item 2</Text>
+        <Text style={styles.text}>Item 2</Text>
         <Divider
           mode="vertical"
           style={{ backgroundColor: 'tomato', width: 2 }}
