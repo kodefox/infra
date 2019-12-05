@@ -31,51 +31,51 @@ function TextInputOutlined(
   let isError = !!errorMessage;
 
   return (
-    <View
-      style={[
-        localStyles.root,
-        {
-          borderRadius: roundness,
-          borderColor: disabled
-            ? colors.disabled
-            : isError
-            ? colors.error
-            : isFocused
-            ? colors.accent
-            : colors.border,
-          backgroundColor: disabled ? colors.disabled : colors.surface,
-          justifyContent: !!label ? 'space-between' : 'center',
-        },
-        containerStyle,
-      ]}
-    >
-      {!!label && (
-        <Label style={[{ color: colors.placeholder }, labelStyle]}>
-          {label}
-        </Label>
-      )}
-      <TextInput
-        ref={ref}
-        editable={!disabled && editable}
-        underlineColorAndroid="transparent"
-        placeholderTextColor={colors.placeholder}
+    <>
+      <View
         style={[
+          localStyles.root,
           {
-            color: disabled ? colors.placeholder : colors.text,
+            borderRadius: roundness,
+            borderColor: disabled
+              ? colors.disabled
+              : isError
+              ? colors.error
+              : isFocused
+              ? colors.accent
+              : colors.border,
+            backgroundColor: disabled ? colors.disabled : colors.surface,
+            justifyContent: !!label ? 'space-between' : 'center',
           },
-          style,
+          containerStyle,
         ]}
-        {...otherProps}
-      />
+      >
+        {!!label && (
+          <Label style={[{ color: colors.placeholder }, labelStyle]}>
+            {label}
+          </Label>
+        )}
+        <TextInput
+          ref={ref}
+          editable={!disabled && editable}
+          underlineColorAndroid="transparent"
+          placeholderTextColor={colors.placeholder}
+          style={[
+            {
+              color: disabled ? colors.placeholder : colors.text,
+            },
+            style,
+          ]}
+          {...otherProps}
+        />
+        {isError && <ErrorIcon color={colors.error} />}
+      </View>
       {isError && (
-        <>
-          <ErrorIcon color={colors.error} />
-          <ErrorMessage style={[styles.errorMessage, errorMessageStyle]}>
-            {errorMessage}
-          </ErrorMessage>
-        </>
+        <ErrorMessage style={[styles.errorMessage, errorMessageStyle]}>
+          {errorMessage}
+        </ErrorMessage>
       )}
-    </View>
+    </>
   );
 }
 

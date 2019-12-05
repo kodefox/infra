@@ -43,44 +43,50 @@ export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
   );
 
   return (
-    <View
-      style={[
-        localStyles.root,
-        {
-          borderColor: getColor('border'),
-          justifyContent: !!label ? 'space-between' : 'flex-end',
-        },
-        !!label && { height: 60 },
-        containerStyle,
-      ]}
-    >
-      {!!label && (
-        <Label style={[{ color: getColor('label') }, labelStyle]}>
-          {label}
-        </Label>
-      )}
-      <TextInput
-        ref={ref}
-        editable={!disabled && editable}
-        underlineColorAndroid="transparent"
-        placeholderTextColor={colors.placeholder}
+    <>
+      <View
         style={[
+          localStyles.root,
           {
-            color: disabled ? colors.placeholder : colors.text,
+            borderColor: getColor('border'),
+            justifyContent: !!label ? 'space-between' : 'flex-end',
           },
-          style,
+          !!label && { height: 60 },
+          containerStyle,
         ]}
-        {...otherProps}
-      />
+      >
+        {!!label && (
+          <Label style={[{ color: getColor('label') }, labelStyle]}>
+            {label}
+          </Label>
+        )}
+        <TextInput
+          ref={ref}
+          editable={!disabled && editable}
+          underlineColorAndroid="transparent"
+          placeholderTextColor={colors.placeholder}
+          style={[
+            {
+              color: disabled ? colors.placeholder : colors.text,
+            },
+            style,
+          ]}
+          {...otherProps}
+        />
+        {isError && <ErrorIcon color={colors.error} />}
+      </View>
       {isError && (
-        <>
-          <ErrorIcon color={colors.error} />
-          <ErrorMessage style={[styles.errorMessage, errorMessageStyle]}>
-            {errorMessage}
-          </ErrorMessage>
-        </>
+        <ErrorMessage
+          style={[
+            styles.errorMessage,
+            { paddingHorizontal: 0 },
+            errorMessageStyle,
+          ]}
+        >
+          {errorMessage}
+        </ErrorMessage>
       )}
-    </View>
+    </>
   );
 }
 

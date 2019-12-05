@@ -1,15 +1,16 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  errorIcon: {
+  errorIconContainer: {
     position: 'absolute',
-    alignSelf: 'center',
-    right: 4,
-    top: 10,
-    margin: 0,
+    right: 0,
+    bottom: 0,
+    top: 0,
+    justifyContent: 'center',
   },
   errorMessage: {
-    position: 'absolute',
-    bottom: -18,
+    padding: 12,
+    paddingTop: 0,
+    marginTop: -5,
   },
 });

@@ -1,10 +1,18 @@
 import React from 'react';
+import { StyleProp, ViewStyle, View } from 'react-native';
 import { IconButton } from 'react-native-paper';
 
 import styles from './styles';
 
-export default function ErrorIcon(props: { color: string }) {
+type Props = {
+  color: string;
+  style?: StyleProp<ViewStyle>;
+};
+
+export default function ErrorIcon(props: Props) {
   return (
-    <IconButton icon="error-outline" style={styles.errorIcon} {...props} />
+    <View style={styles.errorIconContainer}>
+      <IconButton icon="error-outline" {...props} />
+    </View>
   );
 }
