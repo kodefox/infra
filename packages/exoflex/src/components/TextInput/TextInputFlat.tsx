@@ -1,4 +1,4 @@
-import React, { Ref, forwardRef } from 'react';
+import React, { Ref, forwardRef, useCallback } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 
 import ErrorMessage from './ErrorMessage';
@@ -29,35 +29,44 @@ export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
 
   let isError = !!errorMessage;
 
+  let getColor = useCallback(
+    (target: 'border' | 'label') => {
+      if (isError) {
+        return colors.error;
+      }
+      if (isFocused) {
+        return colors.accent;
+      }
+      return target === 'label' ? colors.placeholder : colors.border;
+    },
+    [isError, isFocused, disabled],
+  );
+
   return (
     <View
       style={[
         localStyles.root,
         {
-          borderColor: disabled
-            ? colors.disabled
-            : isError
-            ? colors.error
-            : isFocused
-            ? colors.accent
-            : colors.border,
+          borderColor: getColor('border'),
           justifyContent: !!label ? 'space-between' : 'flex-end',
         },
         !!label && { height: 60 },
         containerStyle,
       ]}
     >
-      {!!label && <Label style={[styles.label, labelStyle]}>{label}</Label>}
+      {!!label && (
+        <Label style={[{ color: getColor('label') }, labelStyle]}>
+          {label}
+        </Label>
+      )}
       <TextInput
         ref={ref}
         editable={!disabled && editable}
         underlineColorAndroid="transparent"
-        // TODO: This color should use colors.text with 0.6 opacity.
-        placeholderTextColor="#757575"
+        placeholderTextColor={colors.placeholder}
         style={[
           {
-            // TODO: This color should use colors.text with 0.6 opacity when disabled.
-            color: disabled ? '#757575' : colors.text,
+            color: disabled ? colors.placeholder : colors.text,
           },
           style,
         ]}

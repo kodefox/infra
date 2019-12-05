@@ -49,17 +49,19 @@ function TextInputOutlined(
         containerStyle,
       ]}
     >
-      {!!label && <Label style={[styles.label, labelStyle]}>{label}</Label>}
+      {!!label && (
+        <Label style={[{ color: colors.placeholder }, labelStyle]}>
+          {label}
+        </Label>
+      )}
       <TextInput
         ref={ref}
         editable={!disabled && editable}
         underlineColorAndroid="transparent"
-        // TODO: This color should use colors.text with 0.6 opacity.
-        placeholderTextColor="#757575"
+        placeholderTextColor={colors.placeholder}
         style={[
           {
-            // TODO: This color should use colors.text with 0.6 opacity when disabled.
-            color: disabled ? '#757575' : colors.text,
+            color: disabled ? colors.placeholder : colors.text,
           },
           style,
         ]}

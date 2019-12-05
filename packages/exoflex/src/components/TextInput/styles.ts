@@ -12,8 +12,4 @@ export default StyleSheet.create({
     position: 'absolute',
     bottom: -18,
   },
-  label: {
-    // TODO: This color should use colors.text with 0.6 opacity.
-    color: '#757575',
-  },
 });
