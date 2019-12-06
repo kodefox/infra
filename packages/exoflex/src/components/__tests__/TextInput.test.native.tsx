@@ -5,20 +5,92 @@ import TextInput from '../TextInput';
 
 describe('TextInput', () => {
   it('should render the label properly', () => {
-    let App = () => <TextInput label="Label" value="Cool" />;
+    let App = () => (
+      <>
+        <TextInput label="Label for Outlined" value="Cool" />
+        <TextInput mode="flat" label="Label for Flat" value="Cool" />
+      </>
+    );
 
     let { getByText } = render(<App />);
-    expect(getByText('Label')).toBeTruthy();
+    expect(getByText('Label for Outlined')).toBeTruthy();
+    expect(getByText('Label for Flat')).toBeTruthy();
   });
 
-  it('should execute callback properly', () => {
-    let onChangeMock = jest.fn();
+  it('should render the error message', () => {
     let App = () => (
-      <TextInput label="Label" value="Cool" onChangeText={onChangeMock} />
+      <>
+        <TextInput
+          label="Label for Outlined"
+          value="Cool"
+          errorMessage="Something outlined happened"
+        />
+        <TextInput
+          mode="flat"
+          label="Label for Flat"
+          value="Cool"
+          errorMessage="Something flat happened"
+        />
+      </>
+    );
+
+    let { getByText } = render(<App />);
+    expect(getByText('Something outlined happened')).toBeTruthy();
+    expect(getByText('Something flat happened')).toBeTruthy();
+  });
+
+  it('should not render the label', () => {
+    let App = () => (
+      <>
+        <TextInput value="Cool Outlined" />
+        <TextInput mode="flat" value="Cool Flat" />
+      </>
     );
 
     let { getByDisplayValue } = render(<App />);
-    fireEvent(getByDisplayValue('Cool'), 'onChangeText', 'foo');
-    expect(onChangeMock).toHaveBeenCalledWith('foo');
+    expect(getByDisplayValue('Cool Outlined')).toBeTruthy();
+    expect(getByDisplayValue('Cool Flat')).toBeTruthy();
+  });
+
+  it('should execute callback properly', () => {
+    let onChangeOutlinedMock = jest.fn();
+    let onChangeFlatMock = jest.fn();
+    let App = () => (
+      <>
+        <TextInput
+          label="Label"
+          value="Cool Outlined"
+          onChangeText={onChangeOutlinedMock}
+        />
+        <TextInput
+          mode="flat"
+          label="Label"
+          value="Cool Flat"
+          onChangeText={onChangeFlatMock}
+        />
+      </>
+    );
+
+    let { getByDisplayValue } = render(<App />);
+    fireEvent.changeText(getByDisplayValue('Cool Outlined'), 'bar');
+    fireEvent.changeText(getByDisplayValue('Cool Flat'), 'foo');
+
+    expect(onChangeOutlinedMock).toHaveBeenCalledWith('bar');
+    expect(onChangeFlatMock).toHaveBeenCalledWith('foo');
+  });
+
+  it('should handle focus and blur properly', () => {
+    let onFocusMock = jest.fn();
+    let onBlurMock = jest.fn();
+    let App = () => (
+      <TextInput value="Cool" onFocus={onFocusMock} onBlur={onBlurMock} />
+    );
+
+    let { getByDisplayValue } = render(<App />);
+    fireEvent(getByDisplayValue('Cool'), 'focus');
+    fireEvent(getByDisplayValue('Cool'), 'blur');
+
+    expect(onFocusMock).toHaveBeenCalledTimes(1);
+    expect(onBlurMock).toHaveBeenCalledTimes(1);
   });
 });
