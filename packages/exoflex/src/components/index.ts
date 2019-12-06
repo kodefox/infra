@@ -1,8 +1,11 @@
+import * as Avatar from './Avatar';
 import * as Drawer from './Drawer';
 import * as Typography from './Typography';
 
 export { default as Accordion } from './Accordion';
 export { default as ActivityIndicator } from './ActivityIndicator';
+export { default as AnimatedIcon } from './AnimatedIcon';
+export { default as Badge } from './Badge';
 export { default as Button } from './Button';
 export { default as Card } from './Card';
 export { default as Checkbox } from './Checkbox';
@@ -24,5 +27,5 @@ export { default as TimePicker } from './TimePicker/TimePicker';
 export { default as Toast } from './Toast';
 export { default as ToastContainer } from './ToastContainer';
 
-export { Drawer, Typography };
+export { Avatar, Drawer, Typography };
 export { Calendar } from './Calendar';

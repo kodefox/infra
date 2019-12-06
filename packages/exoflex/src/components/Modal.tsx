@@ -1,10 +1,7 @@
 import React from 'react';
-import {
-  Modal as PaperModal,
-  ModalProps as PaperModalProps,
-} from 'react-native-paper';
+import { Modal as PaperModal } from 'react-native-paper';
 
-type ModalProps = Omit<PaperModalProps, 'theme'>;
+type ModalProps = OmitPaperTheme<typeof PaperModal>;
 
 export default function Modal(props: ModalProps) {
   return <PaperModal {...props} />;

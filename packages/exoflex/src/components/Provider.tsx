@@ -1,25 +1,28 @@
 import React, { ReactNode, useMemo, ComponentType } from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
-import deepmerge from 'deepmerge';
 
 import DefaultLoadingPlaceholder from './LoadingPlaceholder';
 import ToastContainer from './ToastContainer';
+import getFontsSource from '../helpers/getFontsSource';
+import getPaperTheme from '../helpers/getPaperTheme';
+import mergeTheme from '../helpers/mergeTheme';
 import useLoadFonts from '../helpers/useLoadFonts';
 import { ThemeContext } from '../helpers/useTheme';
-import { BuiltInFonts } from '../constants/fonts';
-import { DefaultTheme, SystemFontsTheme } from '../constants/themes';
+import { DefaultTheme } from '../constants/themes';
 import { Theme, ThemeShape, FontSource } from '../types';
 
 type Props = {
   children: ReactNode;
   theme?: ThemeShape;
   /**
+   * @deprecated specify font source on the theme instead.
    * Record of fonts to load.
    * Will be loaded only when `expo-font` module is available.
    * Defaults to the Rubik font families.
    */
   fonts?: Record<string, FontSource>;
   /**
+   * @deprecated
    * Set to true to use fonts available in the system instead of loading
    * custom fonts.
    * Implies `skipFontsLoading` set to true.
@@ -41,23 +44,37 @@ type Props = {
 function Provider({
   theme = {},
   children,
-  useSystemFonts = true,
-  fonts = BuiltInFonts,
+  useSystemFonts,
+  fonts,
   skipFontsLoading = false,
   LoadingPlaceholder = DefaultLoadingPlaceholder,
   ...otherProps
 }: Props) {
-  let isFontLoaded = useLoadFonts(fonts, useSystemFonts || skipFontsLoading);
+  let { mergedTheme, paperTheme, fontsSource } = useMemo(() => {
+    let mergedTheme = mergeTheme(DefaultTheme, theme);
 
-  let mergedTheme = useMemo(
-    () =>
-      deepmerge.all([
-        DefaultTheme,
-        useSystemFonts ? SystemFontsTheme : {},
-        theme,
-      ]),
-    [theme, useSystemFonts],
-  ) as Theme;
+    return {
+      mergedTheme,
+      paperTheme: getPaperTheme(mergedTheme),
+      fontsSource: getFontsSource(mergedTheme.fonts),
+    };
+  }, [theme]);
+
+  let isFontLoaded = useLoadFonts(fontsSource, skipFontsLoading);
+
+  if (useSystemFonts != null) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Using `useSystemFonts` is no longer supported, now exoflex use system fonts by default.',
+    );
+  }
+
+  if (fonts) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Using `fonts` for loading fonts is no longer supported, please specify the font source on the theme instead.',
+    );
+  }
 
   if (!isFontLoaded) {
     return <LoadingPlaceholder theme={mergedTheme} />;
@@ -65,7 +82,7 @@ function Provider({
 
   return (
     <ThemeContext.Provider value={mergedTheme}>
-      <PaperProvider theme={mergedTheme} {...otherProps}>
+      <PaperProvider {...otherProps} theme={paperTheme}>
         {children}
         <ToastContainer />
       </PaperProvider>

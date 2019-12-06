@@ -3,10 +3,13 @@ import React from 'react';
 
 import AccordionExample from './AccordionExample';
 import ActivityIndicatorExample from './ActivityIndicatorExample';
+import AvatarExample from './AvatarExample';
+import BadgeExample from './BadgeExample';
 import ButtonExample from './ButtonExample';
 import CardExample from './CardExample';
 import CalendarExample from './CalendarExample';
 import CheckboxExample from './CheckboxExample';
+import ChipExample from './ChipExample';
 import CollapsibleExample from './CollapsibleExample';
 import DateTimePickerExample from './DateTimePickerExample';
 import SliderExample from './SliderExample';
@@ -27,10 +30,13 @@ import Welcome from '../Welcome';
 export let EXAMPLES = {
   accordion: AccordionExample,
   activityindicator: ActivityIndicatorExample,
+  avatar: AvatarExample,
+  badge: BadgeExample,
   button: ButtonExample,
   card: CardExample,
   calendar: CalendarExample,
   checkbox: CheckboxExample,
+  chip: ChipExample,
   collapsible: CollapsibleExample,
   datetimepicker: DateTimePickerExample,
   iconbutton: IconButtonExample,
