@@ -633,7 +633,7 @@
     universal-user-agent "^3.0.0"
     url-template "^2.0.8"
 
-"@react-native-community/bob@^0.6.1":
+"@react-native-community/bob@0.6.1":
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/@react-native-community/bob/-/bob-0.6.1.tgz#dddee0f5d622e2479b2e13a3dd15241c8eaee5c9"
   integrity sha512-DD7zWZVLifUQhbA3H2OAhPqyW3aqZJ15FUqb7ztZfwWyUwbLfz+K4wyUzfLPRG718vyau56lBWa0jsXgpCqF5g==
@@ -696,7 +696,7 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/hookrouter@^2.2.1":
+"@types/hookrouter@2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@types/hookrouter/-/hookrouter-2.2.1.tgz#0c69e671957b48ade9e042612faf3fc833a3fd59"
   integrity sha512-C4Ae6yf8vE4TEKZa0EpP2o85UMVHKsZeJwT0oWiQ1QkNBbkQ8bk5A+qWS25Uect9r1Uivz/dnSg6v4WwzFjgrg==
@@ -1505,7 +1505,7 @@ hoist-non-react-statics@^3.0.1, hoist-non-react-statics@^3.3.0:
   dependencies:
     react-is "^16.7.0"
 
-hookrouter@^1.2.3:
+hookrouter@1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/hookrouter/-/hookrouter-1.2.3.tgz#a65599a1be376b51734caf7c4f7f8aba59bb2c77"
   integrity sha512-n0mqEBGgXIxYRNMHlwCzoyTOk0OB5Es3jwUyA3+2l5nte/52n0CMMj1bmoCabC8K43YTUEr0zzexTBfo//tq2Q==
@@ -2430,7 +2430,7 @@ react-navigation-tabs@~1.1.4:
     react-lifecycles-compat "^3.0.4"
     react-native-tab-view "^1.4.1"
 
-react-navigation@^3.11.1:
+react-navigation@3.11.1:
   version "3.11.1"
   resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-3.11.1.tgz#ba696ad6b512088a97a20cc7e6a250c53dbddd26"
   integrity sha512-n64HxLG5s5ucVFo1Gs+D9ujChhHDd98lpQ1p27wL7gq8V1PaRJMvsBEIsguhtc2rTIL/TWDynOesXQDG+Eg6FQ==
@@ -2522,7 +2522,7 @@ regjsparser@^0.6.0:
   dependencies:
     jsesc "~0.5.0"
 
-release-it@^12.3.5:
+release-it@12.3.5:
   version "12.3.5"
   resolved "https://registry.yarnpkg.com/release-it/-/release-it-12.3.5.tgz#baa729196756461bfc14de85c91ac71b4940bf4e"
   integrity sha512-0SvHN8Yr6FRgTMihRCNXrbFKrx9PFQJ8Lwz+dKF01zUv/3W05JE/+Lbckcbjv7i4wKkSn0ZY2yu3zB8y1OnuTQ==
@@ -2823,7 +2823,7 @@ trim-right@^1.0.1:
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
   integrity sha1-yy4SAwZ+DI3h9hQJS5/kVwTqYAM=
 
-tsconfig-kodefox@^1.0.1:
+tsconfig-kodefox@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/tsconfig-kodefox/-/tsconfig-kodefox-1.0.1.tgz#1228b858925a1679188970bbedc3315396133dda"
   integrity sha512-k/LfwmjxoD9jkRmL7MlAwp5Ryt4O+wcZxZECGZz7o1JDLAV244Nn7N/jHGiruoH63ss7RsVaJBenLcOo+VxaEw==
@@ -2833,7 +2833,7 @@ tslib@^1.9.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
   integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
 
-tslint-config-kodefox@^1.1.1:
+tslint-config-kodefox@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/tslint-config-kodefox/-/tslint-config-kodefox-1.1.1.tgz#dc09278a714c23291558df27f868cbf5d6a968ff"
   integrity sha512-mCMLVtNkPd1j4EvtzNmi2TZtlOq2NJHLSNu2RTAjxNs1HZhlYh/HTPEK46vgg6sdl9bOiVdRON49Tae2438xzQ==
@@ -2843,7 +2843,7 @@ type-fest@^0.3.0:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.3.1.tgz#63d00d204e059474fe5e1b7c011112bbd1dc29e1"
   integrity sha512-cUGJnCdr4STbePCgqNFbpVNCepa+kAVohJs1sLhxzdH+gnEoOd8VhbYa7pD3zZYGiURWM2xzEII3fQcRizDkYQ==
 
-typescript@^3.5.3:
+typescript@3.5.3:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.5.3.tgz#c830f657f93f1ea846819e929092f5fe5983e977"
   integrity sha512-ACzBtm/PhXBDId6a6sDJfroT2pOWt/oOnk4/dElG5G33ZL776N3Y6/6bKZJBFpd+b05F3Ct9qDjMeJmRWtE2/g==
