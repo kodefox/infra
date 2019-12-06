@@ -1,7 +1,6 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { Chip } from 'exoflex';
-import { View } from 'react-native';
 
 let Spacing = () => <View style={styles.spacing} />;
 
