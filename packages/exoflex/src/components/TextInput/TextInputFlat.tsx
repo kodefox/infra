@@ -39,7 +39,14 @@ export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
       }
       return target === 'label' ? colors.placeholder : colors.border;
     },
-    [isError, isFocused, disabled],
+    [
+      isError,
+      isFocused,
+      colors.placeholder,
+      colors.border,
+      colors.error,
+      colors.accent,
+    ],
   );
 
   return (
