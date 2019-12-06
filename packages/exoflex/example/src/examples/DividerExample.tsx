@@ -33,7 +33,8 @@ DividerExample.title = 'Divider';
 let styles = StyleSheet.create({
   root: {
     padding: 16,
-    backgroundColor: '#eeeeee',
+    backgroundColor: '#fff',
+    flex: 1,
   },
   text: {
     marginVertical: 10,
