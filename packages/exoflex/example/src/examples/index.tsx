@@ -12,6 +12,7 @@ import CheckboxExample from './CheckboxExample';
 import ChipExample from './ChipExample';
 import CollapsibleExample from './CollapsibleExample';
 import DateTimePickerExample from './DateTimePickerExample';
+import DividerExample from './DividerExample';
 import SliderExample from './SliderExample';
 import IconButtonExample from './IconButtonExample';
 import ModalExample from './ModalExample';
@@ -39,6 +40,7 @@ export let EXAMPLES = {
   chip: ChipExample,
   collapsible: CollapsibleExample,
   datetimepicker: DateTimePickerExample,
+  divider: DividerExample,
   iconbutton: IconButtonExample,
   modal: ModalExample,
   portal: PortalExample,

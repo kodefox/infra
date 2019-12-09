@@ -18,6 +18,7 @@ export {
   Chip,
   Collapsible,
   DateTimePicker,
+  Divider,
   Drawer,
   IconButton,
   Modal,

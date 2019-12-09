@@ -12,6 +12,7 @@ export { default as Checkbox } from './Checkbox';
 export { default as Chip } from './Chip';
 export { default as Collapsible } from './Collapsible';
 export { default as DateTimePicker } from './DateTimePicker/DateTimePicker';
+export { default as Divider } from './Divider';
 export { default as IconButton } from './IconButton';
 export { default as Modal } from './Modal';
 export { default as Portal } from './Portal';
