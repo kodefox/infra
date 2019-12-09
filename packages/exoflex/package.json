@@ -57,7 +57,7 @@
     "jest": "24.9.0",
     "jest-in-case": "1.0.2",
     "jest-watch-select-projects": "1.0.0",
-    "jest-watch-typeahead": "0.4.0",
+    "jest-watch-typeahead": "0.4.2",
     "jest-with-platform": "0.0.3",
     "postinstall-postinstall": "2.0.0",
     "prettier": "1.19.1",
