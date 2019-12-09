@@ -17,43 +17,43 @@ describe('TimePickerInput', () => {
     let { getByTestId, getAllByTestId } = render(
       <>
         <TimePickerInput
-          label="Hrs"
+          placeholder="hh"
           value={mockHours24}
           format="24"
           onChangeText={(h) => (mockHours24 = h)}
         />
         <TimePickerInput
-          label="Hrs"
+          placeholder="hh"
           value={mockHours}
           format="12"
           onChangeText={(h) => (mockHours = h)}
         />
         <TimePickerInput
-          label="Mins"
+          placeholder="mm"
           value={mockMinutes}
           format="12"
           onChangeText={(m) => (mockMinutes = m)}
         />
         <TimePickerInput
-          label="Secs"
+          placeholder="ss"
           value={mockSeconds}
           format="12"
           onChangeText={(s) => (mockSeconds = s)}
         />
         <TimePickerInput
-          label="Mid"
+          placeholder="am/pm"
           value={mockMeridiem}
           format="12"
           onChangeText={(mid) => (mockMeridiem = mid)}
         />
       </>,
     );
-    getAllByTestId('arrowUpHrs').forEach((element) => {
+    getAllByTestId('arrowUphh').forEach((element) => {
       fireEvent.click(element);
     });
-    fireEvent.click(getByTestId('arrowUpMins'));
-    fireEvent.click(getByTestId('arrowUpSecs'));
-    fireEvent.click(getByTestId('arrowUpMid'));
+    fireEvent.click(getByTestId('arrowUpmm'));
+    fireEvent.click(getByTestId('arrowUpss'));
+    fireEvent.click(getByTestId('arrowUpam/pm'));
     expect(mockHours24).toBe('00');
     expect(mockHours).toBe('01');
     expect(mockMinutes).toBe('01');
@@ -69,35 +69,35 @@ describe('TimePickerInput', () => {
     let { getByTestId } = render(
       <>
         <TimePickerInput
-          label="Hrs"
+          placeholder="hh"
           value={mockHours}
           format="12"
           onChangeText={(h) => (mockHours = h)}
         />
         <TimePickerInput
-          label="Mins"
+          placeholder="mm"
           value={mockMinutes}
           format="12"
           onChangeText={(m) => (mockMinutes = m)}
         />
         <TimePickerInput
-          label="Secs"
+          placeholder="ss"
           value={mockSeconds}
           format="12"
           onChangeText={(s) => (mockSeconds = s)}
         />
         <TimePickerInput
-          label="Mid"
+          placeholder="am/pm"
           value={mockMeridiem}
           format="12"
           onChangeText={(mid) => (mockMeridiem = mid)}
         />
       </>,
     );
-    fireEvent.click(getByTestId('arrowDownHrs'));
-    fireEvent.click(getByTestId('arrowDownMins'));
-    fireEvent.click(getByTestId('arrowDownSecs'));
-    fireEvent.click(getByTestId('arrowDownMid'));
+    fireEvent.click(getByTestId('arrowDownhh'));
+    fireEvent.click(getByTestId('arrowDownmm'));
+    fireEvent.click(getByTestId('arrowDownss'));
+    fireEvent.click(getByTestId('arrowDownam/pm'));
     expect(mockHours).toBe('11');
     expect(mockMinutes).toBe('59');
     expect(mockSeconds).toBe('19');

@@ -14,9 +14,8 @@ import { padTime } from '../../helpers/displayTime';
 import useTheme from '../../helpers/useTheme';
 
 export type TimePickerInputProps = Readonly<{
-  label: 'Hrs' | 'Mins' | 'Secs' | 'Mid';
   value: string;
-  placeholder?: string;
+  placeholder: 'hh' | 'mm' | 'ss' | 'am/pm';
   format: HourFormat;
   onChangeText?: (text: string) => void;
   onBlur?: (
@@ -26,27 +25,20 @@ export type TimePickerInputProps = Readonly<{
 
 export default function TimePickerInput(props: TimePickerInputProps) {
   let { colors, roundness } = useTheme();
-  let {
-    format,
-    value,
-    label,
-    onChangeText,
-    placeholder = '',
-    ...otherProps
-  } = props;
+  let { format, value, onChangeText, placeholder, ...otherProps } = props;
 
   let toggleMeridiem = useCallback(() => {
     onChangeText && onChangeText(value === 'AM' ? 'PM' : 'AM');
   }, [value, onChangeText]);
 
   let pressUp = useCallback(() => {
-    if (label === 'Mid') {
+    if (placeholder === 'am/pm') {
       toggleMeridiem();
       return;
     }
     let newValue = ~~value + 1;
-    switch (label) {
-      case 'Hrs':
+    switch (placeholder) {
+      case 'hh':
         if (format === '12' && newValue > 12) {
           newValue = newValue - 12;
         } else if (format === '24' && newValue > 23) {
@@ -61,16 +53,16 @@ export default function TimePickerInput(props: TimePickerInputProps) {
         break;
     }
     onChangeText && onChangeText(padTime(newValue));
-  }, [value, label, onChangeText, format, toggleMeridiem]);
+  }, [value, placeholder, onChangeText, format, toggleMeridiem]);
 
   let pressDown = useCallback(() => {
-    if (label === 'Mid') {
+    if (placeholder === 'am/pm') {
       toggleMeridiem();
       return;
     }
     let newValue = ~~value - 1;
-    switch (label) {
-      case 'Hrs':
+    switch (placeholder) {
+      case 'hh':
         if (format === '12' && newValue < 1) {
           newValue = newValue + 12;
         } else if (format === '24' && newValue < 0) {
@@ -85,7 +77,7 @@ export default function TimePickerInput(props: TimePickerInputProps) {
         break;
     }
     onChangeText && onChangeText(padTime(newValue));
-  }, [value, label, onChangeText, format, toggleMeridiem]);
+  }, [value, placeholder, onChangeText, format, toggleMeridiem]);
 
   return (
     <View
@@ -94,26 +86,25 @@ export default function TimePickerInput(props: TimePickerInputProps) {
         {
           borderColor: colors.border,
           borderRadius: roundness,
-          marginLeft: label === 'Hrs' ? 0 : 10,
+          marginLeft: placeholder === 'hh' ? 0 : 10,
         },
       ]}
     >
       <TextInput
         mode="outlined"
         maxLength={2}
-        label={label}
         containerStyle={{ borderWidth: 0 }}
         style={{ width: 20 }}
         // NOTE: We are using `phone-pad` because either `numeric`, `number-pad`, or `decimal-pad`
         // is changing the TextInput into <input type="number" />
-        keyboardType={label === 'Mid' ? 'default' : 'phone-pad'}
+        keyboardType={placeholder === 'am/pm' ? 'default' : 'phone-pad'}
         value={value}
         placeholder={placeholder}
         onChangeText={onChangeText}
         {...otherProps}
       />
       <TimePickerArrow
-        label={label}
+        label={placeholder}
         onPressUp={pressUp}
         onPressDown={pressDown}
       />
