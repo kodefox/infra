@@ -2547,7 +2547,7 @@ hoist-non-react-statics@^3.0.1, hoist-non-react-statics@^3.3.0:
   dependencies:
     react-is "^16.7.0"
 
-hookrouter@1.2.3, hookrouter@^1.2.3:
+hookrouter@1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/hookrouter/-/hookrouter-1.2.3.tgz#a65599a1be376b51734caf7c4f7f8aba59bb2c77"
   integrity sha512-n0mqEBGgXIxYRNMHlwCzoyTOk0OB5Es3jwUyA3+2l5nte/52n0CMMj1bmoCabC8K43YTUEr0zzexTBfo//tq2Q==
@@ -3599,12 +3599,11 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-naviflex@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/naviflex/-/naviflex-0.0.1.tgz#1e1daf9935aaf16972d2f2de3cd68d7c378c3e02"
-  integrity sha512-aZAjnyaA8mzoN7Fl2tnZtNE/rMUQVUvgBdu5neMsZRkLcnktOOB9rLJl9Ncugd+LPOrjx1cKb7tB7QwsJWXAzA==
+naviflex@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/naviflex/-/naviflex-0.0.2.tgz#6875c524e73d833ba537f13e618a9c3567051006"
+  integrity sha512-G9vIQdVI7TwWbyQK7mWzUE+QKg0D2yd+rt49mZWaLsdN4Ga3Ch+hnPeS5v4d1JUVAqIRzVoECUYL/qEm+QWXEw==
   dependencies:
-    hookrouter "^1.2.3"
     react-navigation-hooks "^1.0.2-alpha.0"
 
 needle@^2.2.1:
