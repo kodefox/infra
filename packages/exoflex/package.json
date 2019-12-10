@@ -67,7 +67,7 @@
     "react-native-svg": "9.13.3",
     "react-native-testing-library": "1.11.1",
     "react-native-vector-icons": "6.6.0",
-    "react-native-web": "0.11.6",
+    "react-native-web": "0.11.7",
     "react-test-renderer": "16.9.0",
     "regenerator-runtime": "0.13.3",
     "release-it": "12.3.6",
