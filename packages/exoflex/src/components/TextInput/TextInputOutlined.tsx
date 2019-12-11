@@ -46,12 +46,12 @@ function TextInputOutlined(
               ? colors.accent
               : colors.border,
             backgroundColor: disabled ? colors.disabled : colors.surface,
-            justifyContent: !!label ? 'space-between' : 'center',
+            justifyContent: hasLabel ? 'space-between' : 'center',
           },
           containerStyle,
         ]}
       >
-        {!!hasLabel && (
+        {hasLabel && (
           <Label style={[{ color: colors.placeholder }, labelStyle]}>
             {label}
           </Label>

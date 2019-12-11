@@ -47,13 +47,13 @@ export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
           localStyles.root,
           {
             borderColor: getColor('border'),
-            justifyContent: !!label ? 'space-between' : 'flex-end',
+            justifyContent: hasLabel ? 'space-between' : 'flex-end',
           },
-          !!label && { height: 60 },
+          hasLabel && { height: 60 },
           containerStyle,
         ]}
       >
-        {!!hasLabel && (
+        {hasLabel && (
           <Label style={[{ color: getColor('label') }, labelStyle]}>
             {label}
           </Label>
