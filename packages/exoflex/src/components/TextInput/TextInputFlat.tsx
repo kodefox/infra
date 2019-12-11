@@ -1,4 +1,4 @@
-import React, { forwardRef, Ref } from 'react';
+import React, { Ref, forwardRef } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 
 import ErrorMessage from './ErrorMessage';
@@ -11,8 +11,8 @@ import styles from './styles';
 
 export type Props = ChildTextInputProps;
 
-function TextInputOutlined(
-  {
+export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
+  let {
     errorMessage,
     label,
     disabled,
@@ -23,13 +23,22 @@ function TextInputOutlined(
     labelStyle,
     errorMessageStyle,
     ...otherProps
-  }: Props,
-  ref: Ref<TextInput>,
-) {
-  let { colors, roundness } = useTheme();
+  } = props;
+
+  let { colors } = useTheme();
 
   let isError = !!errorMessage;
   let hasLabel = !!label;
+
+  let getColor = (target: 'border' | 'label') => {
+    if (isError) {
+      return colors.error;
+    }
+    if (isFocused) {
+      return colors.accent;
+    }
+    return target === 'label' ? colors.placeholder : colors.border;
+  };
 
   return (
     <>
@@ -37,22 +46,15 @@ function TextInputOutlined(
         style={[
           localStyles.root,
           {
-            borderRadius: roundness,
-            borderColor: disabled
-              ? colors.disabled
-              : isError
-              ? colors.error
-              : isFocused
-              ? colors.accent
-              : colors.border,
-            backgroundColor: disabled ? colors.disabled : colors.surface,
-            justifyContent: hasLabel ? 'space-between' : 'center',
+            borderColor: getColor('border'),
+            justifyContent: hasLabel ? 'space-between' : 'flex-end',
           },
+          hasLabel && { height: 60 },
           containerStyle,
         ]}
       >
         {hasLabel && (
-          <Label style={[{ color: colors.placeholder }, labelStyle]}>
+          <Label style={[{ color: getColor('label') }, labelStyle]}>
             {label}
           </Label>
         )}
@@ -72,7 +74,13 @@ function TextInputOutlined(
         {isError && <ErrorIcon color={colors.error} />}
       </View>
       {isError && (
-        <ErrorMessage style={[styles.errorMessage, errorMessageStyle]}>
+        <ErrorMessage
+          style={[
+            styles.errorMessage,
+            { paddingHorizontal: 0 },
+            errorMessageStyle,
+          ]}
+        >
           {errorMessage}
         </ErrorMessage>
       )}
@@ -80,13 +88,11 @@ function TextInputOutlined(
   );
 }
 
+export default forwardRef(TextInputFlat);
+
 let localStyles = StyleSheet.create({
   root: {
-    borderWidth: 1,
-    height: 60,
-    padding: 12,
+    borderBottomWidth: 1,
     paddingVertical: 10,
   },
 });
-
-export default forwardRef(TextInputOutlined);

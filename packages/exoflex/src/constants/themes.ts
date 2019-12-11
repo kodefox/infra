@@ -168,7 +168,7 @@ export const DefaultTheme: Theme = {
     /**
      * color for placeholder text, such as input placeholder.
      */
-    placeholder: '#2d2d2d',
+    placeholder: 'rgba(45, 45, 45, 0.6)',
     /**
      * color for backdrops of various components such as modals.
      */
