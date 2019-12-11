@@ -29,6 +29,7 @@ function TextInputOutlined(
   let { colors, roundness } = useTheme();
 
   let isError = !!errorMessage;
+  let hasLabel = !!label;
 
   return (
     <>
@@ -50,7 +51,7 @@ function TextInputOutlined(
           containerStyle,
         ]}
       >
-        {!!label && (
+        {!!hasLabel && (
           <Label style={[{ color: colors.placeholder }, labelStyle]}>
             {label}
           </Label>

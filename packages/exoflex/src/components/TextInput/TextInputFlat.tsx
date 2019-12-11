@@ -1,4 +1,4 @@
-import React, { Ref, forwardRef, useCallback } from 'react';
+import React, { Ref, forwardRef } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 
 import ErrorMessage from './ErrorMessage';
@@ -28,26 +28,17 @@ export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
   let { colors } = useTheme();
 
   let isError = !!errorMessage;
+  let hasLabel = !!label;
 
-  let getColor = useCallback(
-    (target: 'border' | 'label') => {
-      if (isError) {
-        return colors.error;
-      }
-      if (isFocused) {
-        return colors.accent;
-      }
-      return target === 'label' ? colors.placeholder : colors.border;
-    },
-    [
-      isError,
-      isFocused,
-      colors.placeholder,
-      colors.border,
-      colors.error,
-      colors.accent,
-    ],
-  );
+  let getColor = (target: 'border' | 'label') => {
+    if (isError) {
+      return colors.error;
+    }
+    if (isFocused) {
+      return colors.accent;
+    }
+    return target === 'label' ? colors.placeholder : colors.border;
+  };
 
   return (
     <>
@@ -62,7 +53,7 @@ export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
           containerStyle,
         ]}
       >
-        {!!label && (
+        {!!hasLabel && (
           <Label style={[{ color: getColor('label') }, labelStyle]}>
             {label}
           </Label>
