@@ -12,7 +12,7 @@ type Props = {
 export default function ErrorIcon(props: Props) {
   return (
     <View style={styles.errorIconContainer}>
-      <IconButton icon="error-outline" {...props} />
+      <IconButton icon="alert-circle-outline" {...props} />
     </View>
   );
 }
