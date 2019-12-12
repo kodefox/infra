@@ -7512,24 +7512,24 @@ react-native-modal@^11.0.2:
   resolved "https://registry.yarnpkg.com/@ptomasroos/react-native-multi-slider/-/react-native-multi-slider-1.0.0.tgz#a4ea27b1320b93a1db9f696c24789695df6c9f30"
   integrity sha512-NpX22rQLArg9widwMzGf7XsInTDf6mfY/D1XaDVjglNkVphj3NSN37+nF6MofArCxC++1P+jHv0SGWbmJQwy4g==
 
-react-native-paper@3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-3.1.1.tgz#971f3097eecb4c061bf10768182b8985442a45ab"
-  integrity sha512-GHJ/2z/1Nzm4Y1g22Znu09BV7SV4tsR7h/9HrXuj3kFrsJo7zt5e+t/ELLLvycGEo4z1vhV6MtjtIk/PSaKoDA==
+react-native-paper@3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-3.3.0.tgz#c2a1e9b793b7063aa1848c1ce7db5719912e215a"
+  integrity sha512-YA3thele/g8uLu19IJuZmr1wC54GTlWkyZj0XHtOs8pEaOnUz6roFlSFIRRIo7MmaaAct7XuM8HTlj/PoLaQ8w==
   dependencies:
     "@callstack/react-theme-provider" "^3.0.5"
     color "^3.1.2"
-    react-native-safe-area-view "^0.12.0"
+    react-native-safe-area-view "^0.13.1"
 
 react-native-reanimated@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.1.0.tgz#ba6864055ec3a206cdd5209a293fe653ce276206"
   integrity sha512-UGDVNfvuIkMqYUx6aytSzihuzv6sWubn0MQi8dRcw7BjgezhjJnVnJ/NSOcpL3cO+Ld7lFcRX6GKcskwkHdPkw==
 
-react-native-safe-area-view@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/react-native-safe-area-view/-/react-native-safe-area-view-0.12.0.tgz#5c312f087300ecf82e8541c3eac25d560e147f22"
-  integrity sha512-UrAXmBC4KNR5K2eczIDZgqceWyKsgG9gmWFerHCvoyApfei8ceBB9u/c//PWCpS5Gt8MRLTmX5jPtzdXo2yNqg==
+react-native-safe-area-view@^0.13.1:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/react-native-safe-area-view/-/react-native-safe-area-view-0.13.2.tgz#fd8245182cfa3240dcc679b010cff43ad32cecb1"
+  integrity sha512-UEeoHi7HXObKd111RKZa6a+aQdxLHlngfaoM3UBgeDDc+7BU7Vd54DSzFFWDL3lwFhieTSvLh6z89jHDypA9KQ==
   dependencies:
     hoist-non-react-statics "^2.3.1"
 
