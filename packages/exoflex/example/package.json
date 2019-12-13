@@ -37,7 +37,7 @@
     "react-native-animation-hooks": "1.0.1",
     "react-native-calendars": "1.212.0",
     "react-native-collapsible": "1.5.1",
-    "react-native-modal-datetime-picker": "7.6.0",
+    "react-native-modal-datetime-picker": "7.6.1",
     "react-native-paper": "3.3.0",
     "typescript": "3.5.3"
   },
