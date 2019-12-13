@@ -7003,10 +7003,10 @@ react-native-safe-area-view@^0.12.0:
   dependencies:
     hoist-non-react-statics "^2.3.1"
 
-react-native-svg@9.13.3:
-  version "9.13.3"
-  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.13.3.tgz#6414b337d55af169ac2487ab70f3108404434446"
-  integrity sha512-H50b2m4jvrQ7KxKs8uYSuWecr6e5XC7BDfS7DaA96+0Owjh0C9DksI5l8SRyHnmE+emiYMPu6Qqfr9dCyKkaJQ==
+react-native-svg@9.13.5:
+  version "9.13.5"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.13.5.tgz#bfa109d72fea909ce0d576e411be2567332c1350"
+  integrity sha512-njtAxJjTihm0qPnRGS3p/IZWkrUGn0aCO7BdcTRmtOw2gxMN3Q0Po5rRjcuihHeA9lJlPBj9MiRCm6jlBTFHcA==
   dependencies:
     css-select "^2.0.2"
     css-tree "^1.0.0-alpha.37"
