@@ -1,6 +1,17 @@
 {
-  "extends": ["config:base"],
-  "labels": ["dependencies", "ready for review"],
+  "extends": [
+    "config:base"
+  ],
+  "labels": [
+    "dependencies",
+    "ready for review"
+  ],
   "prHourlyLimit": 2,
-  "semanticCommitScope": null
+  "semanticCommitScope": null,
+  "ignoreDeps": [
+    "react-native-svg",
+    "react-native-gesture-handler",
+    "react-native-reanimated",
+    "react-native-screens"
+  ]
 }
