@@ -76,7 +76,9 @@ export default function ButtonOpacity(props: ButtonProps) {
             labelStyle,
           ]}
         >
-          {children}
+          {typeof children === 'string' && uppercase
+            ? children.toUpperCase()
+            : children}
         </Text>
       </View>
     </TouchableOpacity>
