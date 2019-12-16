@@ -1,31 +1,14 @@
-import React, { ComponentProps } from 'react';
-import { StyleSheet, StyleProp, TextStyle } from 'react-native';
+import React from 'react';
 import { Button as PaperButton } from 'react-native-paper';
-import Text from './Text';
+import Text from '../Text';
 
-import useTheme from './../helpers/useTheme';
+import useTheme from '../../helpers/useTheme';
 
-type ButtonPresets = {
-  primary: 'contained';
-  secondary: 'outlined';
-  invisible: 'text';
-};
+import { ButtonProps } from './types';
+import { PRESETS } from './presets';
+import { styles } from './styles';
 
-type PaperButtonProps = ComponentProps<typeof PaperButton>;
-
-type Props = Omit<PaperButtonProps, 'theme' | 'mode'> & {
-  preset: keyof ButtonPresets;
-  textPreset?: string;
-  labelStyle?: StyleProp<TextStyle>;
-};
-
-const PRESETS: ButtonPresets = {
-  primary: 'contained',
-  secondary: 'outlined',
-  invisible: 'text',
-};
-
-export default function Button(props: Props) {
+export default function ButtonRipple(props: ButtonProps) {
   let {
     preset,
     children,
@@ -67,15 +50,3 @@ export default function Button(props: Props) {
     </PaperButton>
   );
 }
-
-Button.defaultProps = {
-  preset: 'primary',
-  uppercase: true,
-};
-
-const styles = StyleSheet.create({
-  contentWrapper: {
-    height: 48,
-    minWidth: 158,
-  },
-});
