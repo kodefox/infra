@@ -11,7 +11,8 @@
     "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
     "downlevelIteration": true,
-    "types": ["react", "jest"]
+    "types": ["react", "jest"],
+    "esModuleInterop": true
   },
   "exclude": ["example/", "lib/"]
 }
