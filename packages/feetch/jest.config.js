@@ -1,3 +1,4 @@
 module.exports = {
-  modulePathIgnorePatterns: ['<rootDir>/lib/']
+  preset: 'ts-jest',
+  modulePathIgnorePatterns: ['<rootDir>/lib/'],
 };
