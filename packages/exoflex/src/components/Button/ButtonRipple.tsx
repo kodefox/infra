@@ -2,7 +2,7 @@ import React from 'react';
 import { Button as PaperButton } from 'react-native-paper';
 import Text from '../Text';
 
-import useTheme from '../../helpers/useTheme';
+import { useButtonStyle } from './useButtonStyle';
 
 import { ButtonProps } from './types';
 import { PRESETS } from './presets';
@@ -19,9 +19,15 @@ export default function ButtonRipple(props: ButtonProps) {
     labelStyle,
     disabled,
     onPress,
-    ...buttonProps
+    color: buttonColor,
+    ...otherProps
   } = props;
-  let { colors } = useTheme();
+
+  let { buttonStyle, textStyle, noShadowStyle } = useButtonStyle({
+    preset,
+    disabled,
+    buttonColor,
+  });
   let mode = PRESETS[preset];
 
   return (
@@ -29,19 +35,17 @@ export default function ButtonRipple(props: ButtonProps) {
       mode={mode}
       uppercase={uppercase}
       contentStyle={[styles.contentWrapper, contentStyle]}
-      style={[
-        preset === 'secondary' && {
-          borderWidth: 2,
-          borderColor: colors.primary,
-        },
-        disabled && { opacity: 0.4 },
-        style,
-      ]}
+      style={[buttonStyle, noShadowStyle, style]}
       onPress={!disabled ? onPress : undefined}
-      {...buttonProps}
+      {...otherProps}
     >
       {typeof children === 'string' ? (
-        <Text preset={textPreset} weight="500" style={labelStyle}>
+        <Text
+          preset={textPreset}
+          weight="500"
+          numberOfLines={1}
+          style={[textStyle, labelStyle]}
+        >
           {uppercase ? children.toUpperCase() : children}
         </Text>
       ) : (
