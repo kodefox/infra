@@ -5,7 +5,7 @@ import { Collapsible, Text } from 'exoflex';
 function CollapsibleExample() {
   return (
     <ScrollView contentContainerStyle={styles.root}>
-      <Collapsible title="Press Me" isCollapsed={true}>
+      <Collapsible title="Press Me">
         <Text>Hello!</Text>
       </Collapsible>
     </ScrollView>
