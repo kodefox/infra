@@ -4,7 +4,10 @@ TextInput is used to allow user input using keyboard.
 
 ### Preview
 
-![text_input_preview](../assets/text_input_preview.png)
+<p align="center">
+  <img src="../assets/text_input_outlined_preview.png" width="350">
+  <img src="../assets/text_input_flat_preview.png" width="350">
+</p>
 
 ### Props
 
