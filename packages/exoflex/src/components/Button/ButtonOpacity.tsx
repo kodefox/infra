@@ -64,22 +64,24 @@ export default function ButtonOpacity(props: ButtonProps) {
             style={localStyles.icon}
           />
         )}
-        <Text
-          preset={textPreset}
-          weight="500"
-          numberOfLines={1}
-          style={[
-            localStyles.label,
-            compact && localStyles.compactLabel,
-            uppercase && localStyles.uppercaseLabel,
-            textStyle,
-            labelStyle,
-          ]}
-        >
-          {typeof children === 'string' && uppercase
-            ? children.toUpperCase()
-            : children}
-        </Text>
+        {typeof children === 'string' ? (
+          <Text
+            preset={textPreset}
+            weight="500"
+            numberOfLines={1}
+            style={[
+              localStyles.label,
+              compact && localStyles.compactLabel,
+              uppercase && localStyles.uppercaseLabel,
+              textStyle,
+              labelStyle,
+            ]}
+          >
+            {uppercase ? children.toUpperCase() : children}
+          </Text>
+        ) : (
+          children
+        )}
       </View>
     </TouchableOpacity>
   );
