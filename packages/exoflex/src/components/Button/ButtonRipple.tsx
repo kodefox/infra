@@ -46,7 +46,7 @@ export default function ButtonRipple(props: ButtonProps) {
           numberOfLines={1}
           style={[textStyle, labelStyle]}
         >
-          {uppercase ? children.toUpperCase() : children}
+          {children}
         </Text>
       ) : (
         children

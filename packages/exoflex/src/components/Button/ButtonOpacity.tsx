@@ -77,7 +77,7 @@ export default function ButtonOpacity(props: ButtonProps) {
               labelStyle,
             ]}
           >
-            {uppercase ? children.toUpperCase() : children}
+            {children}
           </Text>
         ) : (
           children
