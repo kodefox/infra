@@ -8,12 +8,18 @@ describe('TextInput', () => {
     let App = () => (
       <>
         <TextInput label="Label for Outlined" value="Cool" />
+        <TextInput
+          label="Label for Outlined (Disabled)"
+          value="Cool"
+          disabled
+        />
         <TextInput mode="flat" label="Label for Flat" value="Cool" />
       </>
     );
 
     let { getByText } = render(<App />);
     expect(getByText('Label for Outlined')).toBeTruthy();
+    expect(getByText('Label for Outlined (Disabled)')).toBeTruthy();
     expect(getByText('Label for Flat')).toBeTruthy();
   });
 
@@ -87,14 +93,24 @@ describe('TextInput', () => {
     let onFocusMock = jest.fn();
     let onBlurMock = jest.fn();
     let App = () => (
-      <TextInput value="Cool" onFocus={onFocusMock} onBlur={onBlurMock} />
+      <>
+        <TextInput value="Cool" onFocus={onFocusMock} onBlur={onBlurMock} />
+        <TextInput
+          mode="flat"
+          value="Cool Flat"
+          onFocus={onFocusMock}
+          onBlur={onBlurMock}
+        />
+      </>
     );
 
     let { getByDisplayValue } = render(<App />);
     fireEvent.focus(getByDisplayValue('Cool'));
     fireEvent.blur(getByDisplayValue('Cool'));
+    fireEvent.focus(getByDisplayValue('Cool Flat'));
+    fireEvent.blur(getByDisplayValue('Cool Flat'));
 
-    expect(onFocusMock).toHaveBeenCalledTimes(1);
-    expect(onBlurMock).toHaveBeenCalledTimes(1);
+    expect(onFocusMock).toHaveBeenCalledTimes(2);
+    expect(onBlurMock).toHaveBeenCalledTimes(2);
   });
 });
