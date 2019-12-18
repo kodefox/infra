@@ -1,5 +1,12 @@
 import React, { Ref, forwardRef } from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
 
 import ErrorMessage from './ErrorMessage';
 import ErrorIcon from './ErrorIcon';
@@ -7,7 +14,9 @@ import { Label } from '../Typography';
 import useTheme from '../../helpers/useTheme';
 import { ChildTextInputProps } from './types';
 
-import styles from './styles';
+import styles, { DEFAULT_HEIGHT, TEXTAREA_NUMBER_OF_LINES } from './styles';
+
+import { IS_WEB } from '../../constants/platforms';
 
 export type Props = ChildTextInputProps;
 
@@ -18,6 +27,7 @@ export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
     disabled,
     editable,
     isFocused,
+    multiline,
     style,
     containerStyle,
     labelStyle,
@@ -40,6 +50,12 @@ export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
     return target === 'label' ? colors.placeholder : colors.border;
   };
 
+  let textAreaStyle = { resize: 'vertical' } as StyleProp<TextStyle>;
+  let multilineStyle = {
+    minHeight: hasLabel ? DEFAULT_HEIGHT : 0,
+    height: 'auto',
+  } as StyleProp<ViewStyle>;
+
   return (
     <>
       <View
@@ -49,7 +65,8 @@ export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
             borderColor: getColor('border'),
             justifyContent: hasLabel ? 'space-between' : 'flex-end',
           },
-          hasLabel && { height: 60 },
+          hasLabel && { height: DEFAULT_HEIGHT },
+          multiline && multilineStyle,
           containerStyle,
         ]}
       >
@@ -60,13 +77,14 @@ export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
         )}
         <TextInput
           ref={ref}
+          multiline={multiline}
+          numberOfLines={multiline && IS_WEB ? TEXTAREA_NUMBER_OF_LINES : 1}
           editable={!disabled && editable}
           underlineColorAndroid="transparent"
           placeholderTextColor={colors.placeholder}
           style={[
-            {
-              color: disabled ? colors.placeholder : colors.text,
-            },
+            { color: disabled ? colors.placeholder : colors.text },
+            multiline && IS_WEB && textAreaStyle,
             style,
           ]}
           {...otherProps}
