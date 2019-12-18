@@ -19,10 +19,10 @@ describe('Button', () => {
         </Button>
       </Provider>,
     );
-    expect(getByText('THIS IS PRIMARY BUTTON')).toBeTruthy();
-    expect(getByText('THIS IS SECONDARY BUTTON')).toBeTruthy();
-    expect(getByText('PRIMARY RIPPLE')).toBeTruthy();
-    expect(getByText('SECONDARY RIPPLE')).toBeTruthy();
+    expect(getByText('This is primary button')).toBeTruthy();
+    expect(getByText('This is secondary button')).toBeTruthy();
+    expect(getByText('Primary ripple')).toBeTruthy();
+    expect(getByText('Secondary ripple')).toBeTruthy();
   });
 
   it('should render normally with icon', () => {
@@ -36,8 +36,8 @@ describe('Button', () => {
         </Button>
       </Provider>,
     );
-    expect(getByText('THIS IS PRIMARY BUTTON WITH ICON')).toBeTruthy();
-    expect(getByText('PRIMARY RIPPLE WITH ICON')).toBeTruthy();
+    expect(getByText('This is primary button with icon')).toBeTruthy();
+    expect(getByText('Primary ripple with icon')).toBeTruthy();
   });
 
   it('should run onPress', () => {
@@ -49,7 +49,7 @@ describe('Button', () => {
         </Button>
       </Provider>,
     );
-    fireEvent.click(getByText('PRESS ME!'));
+    fireEvent.click(getByText('Press me!'));
     expect(mockPress).toBeCalledTimes(1);
   });
 
@@ -65,7 +65,7 @@ describe('Button', () => {
         </Button>
       </Provider>,
     );
-    let element = getByText('PRESS ME!');
+    let element = getByText('Press me!');
     let elementRipple = getByText('Ripple me!');
     fireEvent.click(element);
     fireEvent.click(elementRipple);
