@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import ButtonRipple from './ButtonRipple';
 import ButtonOpacity from './ButtonOpacity';
 
@@ -16,5 +17,5 @@ export default function Button(props: ButtonProps) {
 
 Button.defaultProps = {
   preset: 'primary',
-  uppercase: true,
+  uppercase: Platform.select({ ios: false, default: true }),
 };
