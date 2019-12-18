@@ -56,6 +56,7 @@ function Collapsible({
   });
 
   if (otherProps.hasOwnProperty('isCollapsed')) {
+    // eslint-disable-next-line no-console
     console.warn(
       '`isCollapsed` props is deprecated. To control the Collapsible, please use Accordion component instead.',
     );
