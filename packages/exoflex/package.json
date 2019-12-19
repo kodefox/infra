@@ -38,7 +38,7 @@
     "react-native-paper": "^3.1.1"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "7.7.4",
+    "@babel/preset-typescript": "7.7.7",
     "@react-native-community/bob": "0.6.1",
     "@testing-library/react": "9.4.0",
     "@testing-library/react-hooks": "3.2.1",
