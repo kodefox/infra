@@ -26,11 +26,12 @@ function TextInputOutlined(
     disabled,
     editable,
     isFocused,
+    multiline = false,
+    numberOfLines,
     style,
     containerStyle,
     labelStyle,
     errorMessageStyle,
-    multiline = false,
     ...otherProps
   }: Props,
   ref: Ref<TextInput>,
@@ -71,7 +72,10 @@ function TextInputOutlined(
         <TextInput
           ref={ref}
           multiline={multiline}
-          numberOfLines={multiline && IS_WEB ? TEXTAREA_NUMBER_OF_LINES : 1}
+          numberOfLines={
+            numberOfLines ??
+            (multiline && IS_WEB ? TEXTAREA_NUMBER_OF_LINES : 1)
+          }
           editable={!disabled && editable}
           underlineColorAndroid="transparent"
           placeholderTextColor={colors.placeholder}
