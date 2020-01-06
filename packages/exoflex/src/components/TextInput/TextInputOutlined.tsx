@@ -1,11 +1,5 @@
 import React, { forwardRef, Ref } from 'react';
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  StyleProp,
-  TextStyle,
-} from 'react-native';
+import { View, TextInput, StyleSheet } from 'react-native';
 
 import ErrorMessage from './ErrorMessage';
 import ErrorIcon from './ErrorIcon';
@@ -13,7 +7,11 @@ import { Label } from '../Typography';
 import useTheme from '../../helpers/useTheme';
 import { ChildTextInputProps } from './types';
 
-import styles, { DEFAULT_HEIGHT, TEXTAREA_NUMBER_OF_LINES } from './styles';
+import styles, {
+  DEFAULT_HEIGHT,
+  TEXTAREA_NUMBER_OF_LINES,
+  TEXTAREA_STYLE,
+} from './styles';
 
 import { IS_WEB } from '../../constants/platforms';
 
@@ -40,8 +38,6 @@ function TextInputOutlined(
 
   let isError = !!errorMessage;
   let hasLabel = !!label;
-
-  let textAreaStyle = { resize: 'vertical' } as StyleProp<TextStyle>;
 
   return (
     <>
@@ -81,7 +77,7 @@ function TextInputOutlined(
           placeholderTextColor={colors.placeholder}
           style={[
             { color: disabled ? colors.placeholder : colors.text },
-            multiline && IS_WEB && textAreaStyle,
+            multiline && IS_WEB && TEXTAREA_STYLE,
             style,
           ]}
           {...otherProps}

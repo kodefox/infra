@@ -4,7 +4,6 @@ import {
   TextInput,
   StyleSheet,
   StyleProp,
-  TextStyle,
   ViewStyle,
 } from 'react-native';
 
@@ -14,7 +13,11 @@ import { Label } from '../Typography';
 import useTheme from '../../helpers/useTheme';
 import { ChildTextInputProps } from './types';
 
-import styles, { DEFAULT_HEIGHT, TEXTAREA_NUMBER_OF_LINES } from './styles';
+import styles, {
+  DEFAULT_HEIGHT,
+  TEXTAREA_NUMBER_OF_LINES,
+  TEXTAREA_STYLE,
+} from './styles';
 
 import { IS_WEB } from '../../constants/platforms';
 
@@ -51,7 +54,6 @@ export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
     return target === 'label' ? colors.placeholder : colors.border;
   };
 
-  let textAreaStyle = { resize: 'vertical' } as StyleProp<TextStyle>;
   let multilineStyle = {
     minHeight: hasLabel ? DEFAULT_HEIGHT : 0,
     height: 'auto',
@@ -88,7 +90,7 @@ export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
           placeholderTextColor={colors.placeholder}
           style={[
             { color: disabled ? colors.placeholder : colors.text },
-            multiline && IS_WEB && textAreaStyle,
+            multiline && IS_WEB && TEXTAREA_STYLE,
             style,
           ]}
           {...otherProps}
