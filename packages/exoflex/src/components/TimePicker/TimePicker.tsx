@@ -22,7 +22,7 @@ export default function TimePicker(props: TimePickerProps) {
 
   let [visible, setVisible] = useState(false);
 
-  let is24Hour = format === '24';
+  let use24Hour = format === '24';
 
   let toggleModal = () => setVisible(!visible);
   let changeDate = (d: Date) => {
@@ -56,9 +56,9 @@ export default function TimePicker(props: TimePickerProps) {
         date={new Date(date)}
         titleIOS={title}
         // NOTE: Android only
-        is24Hour={is24Hour}
+        is24Hour={use24Hour}
         // NOTE: If locale is not provided, use `en-GB` for 12h format
-        locale={locale || is24Hour ? 'en-GB' : 'en-US'}
+        locale={locale || use24Hour ? 'en-GB' : 'en-US'}
         isVisible={visible}
         mode="time"
         onConfirm={changeDate}
