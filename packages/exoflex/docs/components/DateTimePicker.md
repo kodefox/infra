@@ -18,7 +18,7 @@
 | `date`                  |                `string`                |                                                       | Current date and time in ISO string format. (Empty string also accepted.)             |
 | `locale`                |                `string`                |                                                       | Set the date picker locale.                                                           |
 | `isVisible`             |               `boolean`                |                                                       | Whether to show the picker or not.                                                    |
-| `is24Hour`              |               `boolean`                |                                                       | Whether to show the time in 24h or 12h format.                                        |
+| `use24Hour`             |               `boolean`                |                                                       | Whether to show the time in 24h or 12h format.                                        |
 | `minimumDate`           |                 `Date`                 |                                                       | Set the minimum date that can be selected.                                            |
 | `maximumDate`           |                 `Date`                 |                                                       | Set the maximum date that can be selected.                                            |
 | `datePickerModeAndroid` | `'spinner' \| 'calendar' \| 'default'` |                      `'default'`                      | Toggles the date mode on Android between spinner and calendar views. (Android only.)  |
