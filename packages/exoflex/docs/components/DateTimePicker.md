@@ -26,7 +26,7 @@
 | `onCancel *`            |              `() => void`              |              | Callback when the cancel button pressed.                                              |
 | `onConfirm *`           |        `(date: string) => void`        |              | Callback when the confirm pressed. It returns the selected date in ISO string format. |
 
-| `format` | `'12' \| '24'` | `'12'` | Format to show the time, between 12 hour and 24 hour. |
+| `format` | `'12' \| '24'` \| `'12'` | Format to show the time, between 12 hour and 24 hour. |
 | `placeholder` | `string` | `''` | Placeholder to show inside the TextInput. (For iOS and Android only) |
 | `title` | `string` | `''` | The title text on iOS. |
 | `onChangeTime` | `(isoString: string) => void` | | Callback when a time is picked. It returns an ISO string. |
