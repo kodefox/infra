@@ -53,6 +53,7 @@ You can find all available components from links below:
 - [Provider](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Provider.md)
 - [RadioButton](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/RadioButton.md)
 - [RadioButton.Group](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/RadioButtonGroup.md)
+- [SegmentedControl](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/SegmentedControl.md)
 - [Slider](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Slider.md)
 - [Switch](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Switch.md)
 - [Text](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Text.md)
