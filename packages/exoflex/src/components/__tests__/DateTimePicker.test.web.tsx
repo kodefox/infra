@@ -41,7 +41,7 @@ describe('DateTimePicker', () => {
 
     let { getByText } = render(<App />);
     act(() => {
-      fireEvent.click(getByText('OPEN'));
+      fireEvent.click(getByText('Open'));
     });
     await wait(() => getByText('CONFIRM'));
 
@@ -79,7 +79,7 @@ describe('DateTimePicker', () => {
       <App />,
     );
     act(() => {
-      fireEvent.click(getByText('OPEN'));
+      fireEvent.click(getByText('Open'));
     });
     await wait(() => getByPlaceholderText('hh'));
 
@@ -121,7 +121,7 @@ describe('DateTimePicker', () => {
       <App />,
     );
     act(() => {
-      fireEvent.click(getByText('OPEN'));
+      fireEvent.click(getByText('Open'));
     });
     await wait(() => getByText('CONFIRM'));
 

@@ -7,6 +7,7 @@ import {
   Animated,
   ViewStyle,
   TextStyle,
+  TouchableOpacity,
 } from 'react-native';
 import BaseAccordion, {
   AccordionProps,
@@ -38,6 +39,7 @@ type Props<T> = Omit<AccordionProps<T>, 'renderHeader'> &
       isActive: boolean,
       sections: Array<T>,
     ) => React.ReactElement<{}>;
+    useRipple?: boolean;
   };
 
 type Header<T extends Title> = AdditionalHeaderProps & {
@@ -61,6 +63,7 @@ export default function Accordion<T extends Title>(props: Props<T>) {
     iconStyle,
     renderHeader: renderHeaderProps,
     onChange,
+    useRipple = false,
     ...otherProps
   } = props;
   let { colors } = useTheme();
@@ -78,11 +81,15 @@ export default function Accordion<T extends Title>(props: Props<T>) {
     />
   );
 
+  let touchableComponent = useRipple
+    ? ((TouchableRipple as unknown) as ComponentClass)
+    : TouchableOpacity;
+
   return (
     <BaseAccordion
       activeSections={activeSections}
       onChange={onChange}
-      touchableComponent={(TouchableRipple as unknown) as ComponentClass}
+      touchableComponent={touchableComponent}
       renderHeader={renderHeaderProps || renderHeader}
       sectionContainerStyle={[
         styles.root,
