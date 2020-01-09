@@ -14,6 +14,7 @@ export type Theme = {
     scale: number;
   };
   uppercase: {
+    button: boolean;
     textinput: boolean;
   };
 };
