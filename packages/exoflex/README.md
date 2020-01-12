@@ -4,34 +4,34 @@ This is a UI component library for React Native and Web (using react-native-web)
 
 ## Pre-requisites
 
-This library uses `hooks` so you need to use at least:
+This library uses `hooks` so you need at least:
 
 - `react` version >= `16.8.0`
 - `react-native` version >= `0.59.0`
 
-This library also required you to use `react-native-svg` >= `9.3.3`. But if you use `Expo` you could install it by running `expo install react-native-svg`.
+This library also requires you to use `react-native-svg` >= `9.3.3`. If you use `Expo` you should install it by running `expo install react-native-svg`.
 
-If you are not using `Expo`, you should install it by following [this step](https://github.com/react-native-community/react-native-svg/#installation).
+If you are not using `Expo`, you should install it by following [these steps](https://github.com/react-native-community/react-native-svg/#installation).
 
-Exoflex includes automatic fonts loading using `expo-font`. If you want to opt-out and handle the font loading manually, use [babel-plugin-optional-require](https://github.com/satya164/babel-plugin-optional-require).
+Exoflex includes automatic font loading using `expo-font`. If you want to opt-out and handle the font loading manually, use [babel-plugin-optional-require](https://github.com/satya164/babel-plugin-optional-require).
 
 ## Installation
 
-To install this library, you could use npm or yarn:
+To install this library, use npm or yarn:
 
 ```
 yarn add exoflex
 ```
 
-For bare React Native project, you also need to install `react-native-vector-icons`. For `react-native<0.60.0`, you need to link the library first.
+For bare React Native project, you also need to install `react-native-vector-icons`. For `react-native < 0.60.0`, you need to link the library.
 
-If you are using TypeScript, naviflex is built using TypeScript and we shipped it along with the `.d.ts` file, so you do not have to install `@types/exoflex`.
+This library is built using TypeScript and ships with `.d.ts` files, so you do not need to install `@types/exoflex`.
 
 ## Available Components
 
-To use this library, it's really advised that you use the `Provider` component to wrap your App.
+To use this library, it's really advised that you wrap your application with the `Provider` component.
 
-You can find all available components from links below:
+You can find all available components as follows:
 
 - [Accordion](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Accordion.md)
 - [ActivityIndicator](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/ActivityIndicator.md)
