@@ -1,6 +1,6 @@
 # Accordion
 
-A component used to display an/multiple expandable list item.
+A component used to display expandable list items.
 
 ### Preview
 
@@ -40,15 +40,15 @@ Props marked with `*` are required.
 ### Example
 
 ```tsx
-let SECTIONS = [
+let sections = [
   {
-    title: 'FIRST SECTION',
-    text: 'This is the first section content',
+    title: 'First Section',
+    text: 'This is the content for the first section',
     image: firstImage,
   },
   {
-    title: 'SECOND SECTION',
-    text: 'This is the second section content',
+    title: 'Second Section',
+    text: 'This is the content for the second section',
     image: secondImage,
   },
 ];
@@ -56,7 +56,7 @@ let [activeSections, setActiveSections] = useState([]);
 
 <Provider>
   <Accordion
-    sections={SECTIONS}
+    sections={sections}
     activeSections={activeSections}
     onChange={(sections) => setActiveSections(sections)}
     renderContent={(content, index) => (
@@ -66,7 +66,7 @@ let [activeSections, setActiveSections] = useState([]);
     )}
   />
   <Accordion
-    sections={SECTIONS}
+    sections={sections}
     activeSections={activeSections}
     onChange={(sections) => setActiveSections(sections)}
     titleContainerStyle={{
