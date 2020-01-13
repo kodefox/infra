@@ -44,6 +44,7 @@ You can find all available components from links below:
 - [Checkbox](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Checkbox.md)
 - [Chip](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Chip.md)
 - [Collapsible](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/Collapsible.md)
+- [DateTimePicker](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/DateTimePicker.md)
 - [Drawer](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/DrawerSection.md)
 - [Drawer.Item](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/DrawerItem.md)
 - [IconButton](https://github.com/kodefox/infra/blob/master/packages/exoflex/docs/components/IconButton.md)
