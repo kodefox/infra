@@ -14,6 +14,7 @@ export { default as Collapsible } from './Collapsible';
 export { default as DateTimePicker } from './DateTimePicker/DateTimePicker';
 export { default as Divider } from './Divider';
 export { default as IconButton } from './IconButton';
+export { default as Menu } from './Menu';
 export { default as Modal } from './Modal';
 export { default as Portal } from './Portal';
 export { default as ProgressBar } from './ProgressBar';
