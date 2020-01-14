@@ -8,8 +8,8 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "34.0.4",
-    "expo-font": "6.0.1",
+    "expo": "36.0.2",
+    "expo-font": "8.0.0",
     "hookrouter": "1.2.3",
     "naviflex": "0.0.2",
     "react": "16.8.3",
@@ -32,7 +32,7 @@
     "@types/react": "16.9.16",
     "@types/react-native": "0.57.65",
     "babel-plugin-module-resolver": "3.2.0",
-    "babel-preset-expo": "6.0.0",
+    "babel-preset-expo": "8.0.0",
     "lodash.mergewith": "4.6.2",
     "react-native-animation-hooks": "1.0.1",
     "react-native-calendars": "1.212.0",
