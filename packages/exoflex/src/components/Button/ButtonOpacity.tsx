@@ -54,7 +54,7 @@ export default function ButtonOpacity(props: ButtonProps) {
       <View style={[localStyles.content, styles.contentWrapper, contentStyle]}>
         {icon && loading !== true && (
           <View style={localStyles.icon}>
-            <IconButton icon="home" size={16} color={textColor} />
+            <IconButton icon={icon} size={16} color={textColor} />
           </View>
         )}
         {loading && (
