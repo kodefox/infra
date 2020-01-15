@@ -25,6 +25,8 @@ function TextInputOutlined(
     editable,
     isFocused,
     multiline = false,
+    uppercase,
+    value,
     numberOfLines,
     style,
     containerStyle,
@@ -68,6 +70,8 @@ function TextInputOutlined(
         <TextInput
           ref={ref}
           multiline={multiline}
+          value={uppercase ? value?.toUpperCase() : value}
+          autoCapitalize={uppercase ? 'characters' : 'sentences'}
           numberOfLines={
             numberOfLines ??
             (multiline && IS_WEB ? TEXTAREA_NUMBER_OF_LINES : 1)

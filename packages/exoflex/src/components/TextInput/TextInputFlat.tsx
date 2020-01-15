@@ -31,6 +31,8 @@ export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
     editable,
     isFocused,
     multiline = false,
+    uppercase,
+    value,
     numberOfLines,
     style,
     containerStyle,
@@ -81,6 +83,8 @@ export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
         <TextInput
           ref={ref}
           multiline={multiline}
+          value={uppercase ? value?.toUpperCase() : value}
+          autoCapitalize={uppercase ? 'characters' : 'sentences'}
           numberOfLines={
             numberOfLines ??
             (multiline && IS_WEB ? TEXTAREA_NUMBER_OF_LINES : 1)

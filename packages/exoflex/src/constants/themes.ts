@@ -183,6 +183,9 @@ export const DefaultTheme: Theme = {
    */
   roundness: 4,
   fonts: SystemFonts,
+  uppercase: {
+    textinput: false,
+  },
 };
 
 /**

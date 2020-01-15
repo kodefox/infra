@@ -7,21 +7,23 @@ import {
 
 import TextInputOutlined from './TextInputOutlined';
 import TextInputFlat from './TextInputFlat';
+import useTheme from '../../helpers/useTheme';
 import { TextInputProps } from './types';
 
-function TextInput(
-  {
+function TextInput(props: TextInputProps, ref: Ref<NativeTextInput>) {
+  let { uppercase: uppercaseTheme } = useTheme();
+  let {
     autoCorrect = false,
     disabled = false,
     editable = true,
     mode = 'outlined',
+    uppercase = uppercaseTheme.textinput,
     onFocus,
     onBlur,
     onChangeText,
     ...otherProps
-  }: TextInputProps,
-  ref: Ref<NativeTextInput>,
-) {
+  } = props;
+
   let [isFocused, setIsFocused] = useState(false);
 
   let handleFocus = useCallback(
@@ -62,6 +64,7 @@ function TextInput(
     <TextInputOutlined
       {...otherProps}
       ref={ref}
+      uppercase={uppercase}
       autoCorrect={autoCorrect}
       disabled={disabled}
       editable={editable}
@@ -74,6 +77,7 @@ function TextInput(
     <TextInputFlat
       {...otherProps}
       ref={ref}
+      uppercase={uppercase}
       autoCorrect={autoCorrect}
       disabled={disabled}
       editable={editable}
