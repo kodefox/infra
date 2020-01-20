@@ -13,6 +13,9 @@ export type Theme = {
   animation: {
     scale: number;
   };
+  uppercase: {
+    textinput: boolean;
+  };
 };
 
 export type ThemeShape = DeepPartial<Theme>;

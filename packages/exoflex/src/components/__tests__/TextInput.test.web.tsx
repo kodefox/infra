@@ -58,6 +58,19 @@ describe('TextInput', () => {
     expect(getByDisplayValue('Cool Flat')).toBeTruthy();
   });
 
+  it('should render with uppercase value', () => {
+    let App = () => (
+      <>
+        <TextInput value="Cool Outlined" uppercase />
+        <TextInput mode="flat" value="Cool Flat" uppercase />
+      </>
+    );
+
+    let { getByDisplayValue } = render(<App />);
+    expect(getByDisplayValue('COOL OUTLINED')).toBeTruthy();
+    expect(getByDisplayValue('COOL FLAT')).toBeTruthy();
+  });
+
   it('should execute callback properly', () => {
     let onChangeOutlinedMock = jest.fn();
     let onChangeFlatMock = jest.fn();

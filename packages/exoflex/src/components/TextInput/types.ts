@@ -30,6 +30,11 @@ export type TextInputProps = BaseTextInputProps & {
    */
   mode?: ModeProps;
   /**
+   * Determine whether the text content is uppercase or not.
+   * Defaults to 'false'.
+   */
+  uppercase?: boolean;
+  /**
    * Additional style passed to the container of the TextInput
    */
   containerStyle?: StyleProp<ViewStyle>;
