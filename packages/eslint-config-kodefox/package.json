@@ -1,7 +1,7 @@
 {
   "name": "eslint-config-kodefox",
   "version": "0.1.0",
-  "repository": "github:kodefox/eslint-config-kodefox",
+  "repository": "github:kodefox/infra",
   "main": "index.js",
   "files": [
     "index.js",
