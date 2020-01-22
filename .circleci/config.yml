@@ -46,7 +46,7 @@ jobs:
               orbname=$(basename $ORB)
               if [[ $(git diff $COMMIT_RANGE --name-status | grep "$orbname") ]]; then
                 echo "testing ${orbname}"
-                if [ ${orbname} != "naviflex" ]; then
+                if [[ ${orbname} != "naviflex" && ${orbname} != "eslint-config-kodefox" ]]; then
                   cd packages/${orbname}
                   yarn install --frozen-lockfile
                   yarn test --silent --maxWorkers=4
