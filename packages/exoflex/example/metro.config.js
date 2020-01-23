@@ -7,6 +7,18 @@ const escape = require('escape-string-regexp');
 
 const dependencies = Object.keys(pak.dependencies);
 
+let extraNodeModules = {};
+[
+  'react-native',
+  'react',
+  'react-native-svg',
+  'expo-font',
+  '@babel/runtime',
+  ...dependencies,
+].forEach((dep) => {
+  extraNodeModules[dep] = path.resolve(__dirname, 'node_modules', dep);
+});
+
 module.exports = {
   projectRoot: __dirname,
   watchFolders: [path.resolve(__dirname, '..')],
@@ -18,13 +30,6 @@ module.exports = {
       ),
     ]),
 
-    providesModuleNodeModules: [
-      'react-native',
-      'react',
-      '@babel/runtime',
-      'react-native-svg',
-      'expo-font',
-      ...dependencies,
-    ],
+    extraNodeModules,
   },
 };
