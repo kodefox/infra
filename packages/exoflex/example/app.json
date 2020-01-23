@@ -3,8 +3,12 @@
     "name": "example",
     "slug": "example",
     "privacy": "unlisted",
-    "sdkVersion": "34.0.0",
-    "platforms": ["ios", "android", "web"],
+    "sdkVersion": "36.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -16,12 +20,16 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "packagerOpts": {
-      "assetExts": ["ttf"],
+      "assetExts": [
+        "ttf"
+      ],
       "config": "./metro.config.js",
       "projectRoots": ""
     }
