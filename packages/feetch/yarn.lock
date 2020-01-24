@@ -1800,10 +1800,10 @@ escodegen@^1.9.1:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-kodefox@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/eslint-config-kodefox/-/eslint-config-kodefox-0.0.2.tgz#80a211c426a8da6b2e100d0532dbd3887cb03da6"
-  integrity sha512-LHa6KL3o+Ln4vV0nxgO0ECgj8YsVHa0TQsESph8MjGGjH++d02/RG1MW2T1wupFmDHuEshkfsbafuF+GQJdcfQ==
+eslint-config-kodefox@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-kodefox/-/eslint-config-kodefox-0.1.0.tgz#47a43b039a0bc51e37487ee9a3e75772fdab3639"
+  integrity sha512-u91DmOpvCmxKkhc5QeHPdQxkLXHl6caJXDAwSW57QvwgCL/UU+Ds5hBCXmikqWC5C50m/ncSWVT48pLLd83QPQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^2.7.0"
     "@typescript-eslint/parser" "^2.7.0"
