@@ -32,7 +32,7 @@
     "release-it": "12.3.5",
     "tsconfig-kodefox": "1.0.1",
     "tslint-config-kodefox": "1.1.1",
-    "typescript": "3.5.3"
+    "typescript": "3.7.5"
   },
   "@react-native-community/bob": {
     "source": "src",
