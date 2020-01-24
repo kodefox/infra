@@ -6,7 +6,7 @@ A component to show a single list item inside a Menu.
 
 | Name         |          Type          | Default | Description                                                                                                               |
 | ------------ | :--------------------: | :-----: | ------------------------------------------------------------------------------------------------------------------------- |
-| `title \*`   |      `ReactNode`       |         | Title text for the MenuItem.                                                                                              |
+| `title *`    |      `ReactNode`       |         | Title text for the MenuItem.                                                                                              |
 | `icon`       |      `IconSource`      |         | Icon to display for the MenuItem.                                                                                         |
 | `disabled`   |       `boolean`        |         | Whether the 'item' is disabled. A disabled 'item' is greyed out and onPress is not called on touch.                       |
 | `textPreset` |        `string`        |         | Name of font preset that will be used on `Text` component inside the `Menu.Item`. This prop won't work with custom title. |
