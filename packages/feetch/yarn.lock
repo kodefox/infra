@@ -2188,11 +2188,6 @@ form-data@~2.3.2:
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
 
-fp-ts@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-2.2.0.tgz#7a442c6389e9b8424a5deb55eb099a8840072f4a"
-  integrity sha512-muJL9NOYluuoRezrvOyQvLAHIXrYg7u/Tc6cu4PP/Ed4TJKrm6BVSX8H1goT/4nhgP/yQ+Z4Xjjt4ijeKFX4Ng==
-
 fragment-cache@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/fragment-cache/-/fragment-cache-0.2.1.tgz#4290fad27f13e89be7f33799c6bc5a0abfff0d19"
@@ -2565,11 +2560,6 @@ invariant@^2.2.4:
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
   dependencies:
     loose-envify "^1.0.0"
-
-io-ts@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-2.0.1.tgz#1261c12f915c2f48d16393a36966636b48a45aa1"
-  integrity sha512-RezD+WcCfW4VkMkEcQWL/Nmy/nqsWTvTYg7oUmTGzglvSSV2P9h2z1PVeREPFf0GWNzruYleAt1XCMQZSg1xxQ==
 
 is-accessor-descriptor@^0.1.6:
   version "0.1.6"
@@ -4521,6 +4511,11 @@ run-async@^2.2.0:
   integrity sha1-A3GrSuC91yDUFm19/aZP96RFpsA=
   dependencies:
     is-promise "^2.1.0"
+
+runtypes@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/runtypes/-/runtypes-4.0.3.tgz#dd32206633c1166a45c22d64abcabeb5c5c790b7"
+  integrity sha512-ss4Smt9GVqz7TP1hPNZ5Kdz0poUVO04IMzSpk4iaKOvFPOpcDleQUb8yGpzdsA2rzwZXy2ztU2PA10qhcNMwZw==
 
 rxjs@^6.4.0:
   version "6.5.3"
