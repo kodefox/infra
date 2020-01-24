@@ -1,11 +1,10 @@
 import { useQuery as useLibraryQuery, Action } from 'react-fetching-library';
 
-import { Type } from 'io-ts';
-import { isLeft } from 'fp-ts/lib/Either';
+import { Runtype } from 'runtypes';
 
 type QueryOption<T> = {
   initFetch?: boolean;
-  schema: Type<T>;
+  schema: Runtype<T>;
 };
 
 type UseQueryResponse<T> = Omit<
@@ -18,20 +17,18 @@ function useQuery<T>(
   option: QueryOption<T>,
 ): UseQueryResponse<T> {
   let { payload, ...queryResult } = useLibraryQuery(action, option.initFetch);
-  //loading
   if (queryResult.loading || queryResult.error) {
     return { ...queryResult };
   }
-  let decodedPayload = option.schema.decode(payload);
-  //if decode result in error
-  if (isLeft(decodedPayload)) {
+  try {
+    option.schema.check(payload);
+  } catch (e) {
     return {
       ...queryResult,
       error: true,
-      errorObject: decodedPayload.left,
+      errorObject: e,
     };
   }
-  //successfull decode
   return {
     ...queryResult,
     payload: payload,

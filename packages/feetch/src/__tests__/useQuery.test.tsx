@@ -1,6 +1,6 @@
 import React, { ReactNode, ComponentType } from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
-import { type, string, number } from 'io-ts';
+import { Record, Number, String } from 'runtypes';
 import fetchMock from 'fetch-mock';
 
 import { createClient, useQuery, ClientContextProvider } from '../index';
@@ -20,9 +20,9 @@ describe('useQuery', () => {
       method: 'GET',
       endpoint: '/users',
     };
-    let User = type({
-      id: number,
-      name: string,
+    let User = Record({
+      id: Number,
+      name: String,
     });
     let mockPayload = {
       id: 1,
@@ -45,9 +45,9 @@ describe('useQuery', () => {
       method: 'GET',
       endpoint: '/users',
     };
-    let User = type({
-      id: number,
-      name: string,
+    let User = Record({
+      id: Number,
+      name: String,
     });
     let mockPayload = {
       id: 1,
@@ -75,9 +75,9 @@ describe('useQuery', () => {
       method: 'GET',
       endpoint: '/users',
     };
-    let User = type({
-      id: number,
-      name: string,
+    let User = Record({
+      id: Number,
+      name: String,
     });
     fetchMock.mock('/users', 404);
     let { result, waitForNextUpdate } = renderHook(
@@ -96,9 +96,9 @@ describe('useQuery', () => {
       method: 'GET',
       endpoint: '/users',
     };
-    let User = type({
-      id: number,
-      name: string,
+    let User = Record({
+      id: Number,
+      name: String,
     });
     let mockPayload = {
       id: '1',
