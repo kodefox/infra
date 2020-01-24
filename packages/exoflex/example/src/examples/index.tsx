@@ -15,6 +15,7 @@ import DateTimePickerExample from './DateTimePickerExample';
 import DividerExample from './DividerExample';
 import SliderExample from './SliderExample';
 import IconButtonExample from './IconButtonExample';
+import MenuExample from './MenuExample';
 import ModalExample from './ModalExample';
 import PortalExample from './PortalExample';
 import ProgressBarExample from './ProgressBarExample';
@@ -42,6 +43,7 @@ export let EXAMPLES = {
   datetimepicker: DateTimePickerExample,
   divider: DividerExample,
   iconbutton: IconButtonExample,
+  menu: MenuExample,
   modal: ModalExample,
   portal: PortalExample,
   progressbar: ProgressBarExample,

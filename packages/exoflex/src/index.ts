@@ -21,6 +21,7 @@ export {
   Divider,
   Drawer,
   IconButton,
+  Menu,
   Modal,
   Portal,
   ProgressBar,
