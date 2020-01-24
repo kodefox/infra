@@ -71,7 +71,7 @@
     "react-test-renderer": "16.9.0",
     "regenerator-runtime": "0.13.3",
     "release-it": "12.3.6",
-    "typescript": "3.7.2"
+    "typescript": "3.7.5"
   },
   "optionalDependencies": {
     "patch-package": "^6.2.0"
