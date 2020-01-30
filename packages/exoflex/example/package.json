@@ -8,7 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "36.0.0",
+    "expo": "36.0.2",
     "expo-font": "8.0.0",
     "hookrouter": "1.2.3",
     "naviflex": "0.0.2",
@@ -28,7 +28,7 @@
     "@babel/plugin-proposal-class-properties": "7.8.3",
     "@babel/plugin-proposal-object-rest-spread": "7.8.3",
     "@babel/preset-typescript": "7.8.3",
-    "@expo/webpack-config": "0.7.4",
+    "@expo/webpack-config": "0.10.11",
     "@react-native-community/datetimepicker": "2.1.0",
     "@types/react": "16.9.19",
     "@types/react-native": "0.60.15",
