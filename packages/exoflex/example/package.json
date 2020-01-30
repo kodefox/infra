@@ -29,6 +29,7 @@
     "@babel/plugin-proposal-object-rest-spread": "7.8.3",
     "@babel/preset-typescript": "7.8.3",
     "@expo/webpack-config": "0.7.4",
+    "@react-native-community/datetimepicker": "2.1.0",
     "@types/react": "16.9.19",
     "@types/react-native": "0.60.15",
     "babel-plugin-module-resolver": "4.0.0",
@@ -37,7 +38,7 @@
     "react-native-animation-hooks": "1.0.1",
     "react-native-calendars": "1.259.0",
     "react-native-collapsible": "1.5.1",
-    "react-native-modal-datetime-picker": "7.6.1",
+    "react-native-modal-datetime-picker": "8.1.1",
     "react-native-paper": "3.4.0",
     "typescript": "3.7.5"
   },

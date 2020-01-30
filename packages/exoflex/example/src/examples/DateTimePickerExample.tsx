@@ -28,8 +28,8 @@ function DateTimePickerExample() {
         mode="date"
         onCancel={() => setDatePickerVisible(false)}
         onConfirm={(date) => {
-          setDate(date);
           setDatePickerVisible(false);
+          setDate(date);
         }}
       />
       <View style={{ height: 20 }} />

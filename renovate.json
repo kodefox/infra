@@ -8,6 +8,8 @@
     "react-native-gesture-handler",
     "react-native-reanimated",
     "react-native-screens",
-    "expo-font"
+    "expo-font",
+    "react-native-modal-datetime-picker",
+    "@react-native-community/datetimepicker"
   ]
 }

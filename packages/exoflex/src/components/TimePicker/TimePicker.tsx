@@ -27,8 +27,8 @@ export default function TimePicker(props: TimePickerProps) {
   let toggleModal = () => setVisible(!visible);
   let changeDate = (d: Date) => {
     let newDate = d.toISOString();
-    onChangeTime && onChangeTime(newDate);
     toggleModal();
+    onChangeTime && onChangeTime(newDate);
   };
   let displayTime = useMemo(() => createTimeForDisplay(date, format), [
     date,
@@ -54,7 +54,7 @@ export default function TimePicker(props: TimePickerProps) {
       </TouchableOpacity>
       <DateTimePicker
         date={new Date(date)}
-        titleIOS={title}
+        headerTextIOS={title}
         // NOTE: Android only
         is24Hour={use24Hour}
         // NOTE: If locale is not provided, use `en-GB` for 12h format
