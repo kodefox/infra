@@ -8140,7 +8140,7 @@ react-native-gesture-handler@1.5.0:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
-react-native-modal-datetime-picker@^8.1.1:
+react-native-modal-datetime-picker@8.1.1:
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/react-native-modal-datetime-picker/-/react-native-modal-datetime-picker-8.1.1.tgz#63609aff50c44cf939ab3024f185a13822b46f76"
   integrity sha512-tZUl/GjuMGSxRNcF84nt7uKoLiyDJztdtTQ9e0dVbDFC0UduZ5bTA5DIzXiCLZCbghZuD6tPLmw5ULPXGiO7Lw==

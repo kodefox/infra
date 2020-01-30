@@ -1203,7 +1203,7 @@
     shell-quote "1.6.1"
     ws "^1.1.0"
 
-"@react-native-community/datetimepicker@^2.1.0":
+"@react-native-community/datetimepicker@2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-2.1.0.tgz#4e3413462cbbe5c48fab6cebd422835031cdf7b9"
   integrity sha512-InktUrx0/4JTy1YsgswljgID7oB3L8wkFobRhnLGWPExSsNHeecGW2/nBP31ZaOPHcjVWhpOQMZt0zDpKfGE/Q==
@@ -6966,7 +6966,7 @@ react-native-collapsible@^1.5.1:
   dependencies:
     prop-types "^15.6.2"
 
-react-native-modal-datetime-picker@^8.0.0:
+react-native-modal-datetime-picker@8.1.1:
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/react-native-modal-datetime-picker/-/react-native-modal-datetime-picker-8.1.1.tgz#63609aff50c44cf939ab3024f185a13822b46f76"
   integrity sha512-tZUl/GjuMGSxRNcF84nt7uKoLiyDJztdtTQ9e0dVbDFC0UduZ5bTA5DIzXiCLZCbghZuD6tPLmw5ULPXGiO7Lw==
