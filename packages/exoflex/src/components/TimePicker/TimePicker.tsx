@@ -27,8 +27,8 @@ export default function TimePicker(props: TimePickerProps) {
   let toggleModal = () => setVisible(!visible);
   let changeDate = (d: Date) => {
     let newDate = d.toISOString();
-    onChangeTime && onChangeTime(newDate);
     toggleModal();
+    onChangeTime && onChangeTime(newDate);
   };
   let displayTime = useMemo(() => createTimeForDisplay(date, format), [
     date,
