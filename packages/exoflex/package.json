@@ -24,7 +24,7 @@
   "peerDependencies": {
     "expo-font": "*",
     "react": "^16.8.0",
-    "react-native": "^0.59.0 || ^0.61.0",
+    "react-native": "^0.59.0 || ^0.60.0 || ^0.61.0",
     "react-native-svg": ">=9.3.3"
   },
   "dependencies": {
