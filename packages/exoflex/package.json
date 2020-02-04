@@ -24,7 +24,7 @@
   "peerDependencies": {
     "expo-font": "*",
     "react": "^16.8.0",
-    "react-native": "^0.59.0",
+    "react-native": "^0.59.0 || ^0.61.0",
     "react-native-svg": ">=9.3.3"
   },
   "dependencies": {
@@ -62,14 +62,14 @@
     "jest-with-platform": "0.0.3",
     "postinstall-postinstall": "2.0.0",
     "prettier": "1.19.1",
-    "react": "16.9.0",
-    "react-dom": "16.9.0",
-    "react-native": "0.60.5",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-native": "0.61.5",
     "react-native-svg": "9.13.5",
     "react-native-testing-library": "1.12.0",
     "react-native-vector-icons": "6.6.0",
     "react-native-web": "0.11.7",
-    "react-test-renderer": "16.9.0",
+    "react-test-renderer": "16.12.0",
     "regenerator-runtime": "0.13.3",
     "release-it": "12.4.3",
     "typescript": "3.7.5"
