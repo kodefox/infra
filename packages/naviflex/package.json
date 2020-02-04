@@ -29,7 +29,7 @@
     "@types/hookrouter": "2.2.1",
     "hookrouter": "1.2.3",
     "react-navigation": "3.13.0",
-    "release-it": "12.3.5",
+    "release-it": "12.4.3",
     "tsconfig-kodefox": "1.0.1",
     "tslint-config-kodefox": "1.1.1",
     "typescript": "3.7.5"
