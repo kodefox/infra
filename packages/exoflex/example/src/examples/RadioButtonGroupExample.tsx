@@ -12,9 +12,17 @@ function RadioButtonGroupExample() {
         value={radioButtonValue}
         onValueChange={(newValue: string) => setRadioButtonValue(newValue)}
       >
-        <RadioButton label="Male" style={styles.verticalMargin} />
-        <RadioButton label="Female" style={styles.verticalMargin} />
-        <RadioButton label="Prefer not to say" style={styles.verticalMargin} />
+        <RadioButton value="male" label="Male" style={styles.verticalMargin} />
+        <RadioButton
+          value="female"
+          label="Female"
+          style={styles.verticalMargin}
+        />
+        <RadioButton
+          value="none"
+          label="Prefer not to say"
+          style={styles.verticalMargin}
+        />
       </RadioButton.Group>
     </ScrollView>
   );
