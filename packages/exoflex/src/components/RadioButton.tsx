@@ -17,6 +17,10 @@ type Props = {
    */
   label: string;
   /**
+   * The value of the radio button
+   */
+  value: string;
+  /**
    * Boolean whether the radio button is checked or not.
    */
   checked: boolean;
@@ -35,7 +39,7 @@ type Props = {
   /**
    * Callback function to be called when radio button is pressed
    */
-  onPress: (isChecked: boolean) => void;
+  onPress: (isChecked: boolean, value: string) => void;
   /**
    * Additional style for the text
    */
@@ -49,6 +53,7 @@ type Props = {
 export default function RadioButton(props: Props) {
   let {
     label,
+    value,
     size,
     checked,
     color,
@@ -64,10 +69,12 @@ export default function RadioButton(props: Props) {
 
   let innerCircleSize = size / 2;
 
-  let isChecked = contextValue === label || checked;
+  let isChecked = contextValue === value || checked;
 
   let handlePress = () =>
-    contextOnValueChange ? contextOnValueChange(label) : onPress(!checked);
+    contextOnValueChange
+      ? contextOnValueChange(value)
+      : onPress(!isChecked, value);
 
   return (
     <TouchableOpacity
