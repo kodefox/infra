@@ -1,4 +1,4 @@
-jest.config.js
+*.js
 node_modules/
 lib/
-jestPresets/
+coverage/
