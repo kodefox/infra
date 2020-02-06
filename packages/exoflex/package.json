@@ -3,7 +3,7 @@
   "version": "2.0.2",
   "description": "",
   "main": "lib/commonjs/index.js",
-  "module": "lib/module/index.ts",
+  "module": "lib/module/index.js",
   "types": "lib/typescript/src/index.d.ts",
   "files": [
     "lib/"
