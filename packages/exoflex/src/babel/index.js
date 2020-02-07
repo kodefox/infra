@@ -4,7 +4,7 @@ module.exports = function rewire(babel, options) {
   const t = babel.types;
 
   const { name, index, mappings } = require(options.mappings ||
-    '../../mappings.json');
+    '../../lib/mappings.json');
 
   return {
     visitor: {
