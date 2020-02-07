@@ -27,6 +27,18 @@ For bare React Native project, you also need to install `react-native-vector-ico
 
 If you are using TypeScript, naviflex is built using TypeScript and we shipped it along with the `.d.ts` file, so you do not have to install `@types/exoflex`.
 
+Exoflex includes a babel plugin to rewrite the import statements to save bundle size.
+To use, add `exoflex/babel` to `plugins` in your babel config.
+
+```json
+{
+  "plugins": [
+    ...,
+    "exoflex/babel"
+  ]
+}
+```
+
 ## Available Components
 
 To use this library, it's really advised that you use the `Provider` component to wrap your App.
