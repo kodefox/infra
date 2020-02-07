@@ -6,7 +6,8 @@
   "module": "lib/module/index.js",
   "types": "lib/typescript/src/index.d.ts",
   "files": [
-    "lib/"
+    "lib/",
+    "babel.js"
   ],
   "author": "KodeFox",
   "license": "MIT",
