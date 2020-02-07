@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, ReactNode, useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Modal, Portal, TouchableRipple } from 'react-native-paper';
 import { DateObject } from 'react-native-calendars';
 import { Calendar } from '../Calendar';
 import TimePicker from '../TimePicker/TimePicker.web';
 import Text from '../Text';
+import IconButton from '../IconButton';
 
 import useTheme from '../../helpers/useTheme';
 import { useDateTimePicker } from './useDateTimePicker';
-import { DateTimePickerProps, DateTimePickerMode } from './types';
+import {
+  DateTimePickerProps,
+  DateTimePickerMode,
+  ArrowDirection,
+} from './types';
 
 export default function DateTimePicker(props: DateTimePickerProps) {
   let {
@@ -20,6 +25,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
     onConfirm,
     minimumDate,
     maximumDate,
+    renderArrowWeb,
   } = props;
 
   let { colors } = useTheme();
@@ -45,6 +51,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
         maxDate={maximumDate}
         onCancel={cancel}
         onConfirm={confirmDate}
+        renderArrow={renderArrowWeb}
       />
     ) : (
       <TimePickerContainer
@@ -81,10 +88,11 @@ export type PickerProps = Readonly<{
   use24Hour?: boolean;
   onCancel: () => void;
   onConfirm: (date: string) => void;
+  renderArrow?: (direction: ArrowDirection) => ReactNode;
 }>;
 
 export function DatePicker(props: PickerProps) {
-  let { date, minDate, maxDate, onCancel, onConfirm } = props;
+  let { date, minDate, maxDate, onCancel, onConfirm, renderArrow } = props;
   let { colors } = useTheme();
 
   let [selectedDate, setSelectedDate] = useState(date);
@@ -94,6 +102,16 @@ export function DatePicker(props: PickerProps) {
   };
   let confirm = () => onConfirm(selectedDate);
 
+  let arrow = useCallback(
+    (direction: ArrowDirection) =>
+      direction === 'left' ? (
+        <IconButton icon="chevron-left" />
+      ) : (
+        <IconButton icon="chevron-right" />
+      ),
+    [],
+  );
+
   return (
     <>
       <Calendar
@@ -102,6 +120,7 @@ export function DatePicker(props: PickerProps) {
         minDate={minDate}
         maxDate={maxDate}
         onDayPress={changeDate}
+        renderArrow={renderArrow ?? arrow}
       />
       <View style={styles.touchableActionWrapper}>
         <TouchableRipple onPress={onCancel} style={styles.touchableAction}>
