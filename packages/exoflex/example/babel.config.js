@@ -13,6 +13,7 @@ module.exports = function(api) {
           },
         },
       ],
+      require.resolve('../src/babel'),
     ],
   };
 };
