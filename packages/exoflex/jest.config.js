@@ -9,4 +9,5 @@ module.exports = {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|css|styl)$':
       '<rootDir>/test/stubs/asset-stub',
   },
+  watchPathIgnorePatterns: ['__fixtures__\\/[^/]+\\/(output|error)\\.js'],
 };
