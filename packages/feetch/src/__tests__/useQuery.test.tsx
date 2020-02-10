@@ -6,6 +6,8 @@ import 'isomorphic-fetch';
 
 import { createClient, useQuery, ClientContextProvider } from '../index';
 
+let client = createClient({});
+
 let clientWithFixtures = createClient({
   fixtures: [
     {
@@ -18,7 +20,15 @@ let clientWithFixtures = createClient({
     },
   ],
 });
+
 let FetchProvider: ComponentType = ({ children }: { children?: ReactNode }) => (
+  <ClientContextProvider client={client}>{children}</ClientContextProvider>
+);
+let FetchProviderWithFixture: ComponentType = ({
+  children,
+}: {
+  children?: ReactNode;
+}) => (
   <ClientContextProvider client={clientWithFixtures}>
     {children}
   </ClientContextProvider>
@@ -140,12 +150,71 @@ describe('useQuery', () => {
     });
     let { result, waitForNextUpdate } = renderHook(
       () => useQuery(fetchUsersList, { schema: User }),
-      { wrapper: FetchProvider },
+      { wrapper: FetchProviderWithFixture },
     );
     expect(result.current.loading).toBeTruthy();
     await waitForNextUpdate();
     expect(result.current.loading).toBeFalsy();
     expect(result.current.status).toBe(200);
     expect(result.current.payload).toEqual({ id: 1, name: 'John Fixture' });
+  });
+  test('should successfuly fetch normally if fixture not found', async () => {
+    const fetchUsersList = {
+      method: 'GET',
+      endpoint: '/users',
+    };
+    let User = Record({
+      id: Number,
+      name: String,
+    });
+    let mockPayload = {
+      id: 1,
+      name: 'John',
+    };
+    fetchMock.mock('/users', mockPayload);
+    let { result, waitForNextUpdate } = renderHook(
+      () => useQuery(fetchUsersList, { schema: User }),
+      { wrapper: FetchProviderWithFixture },
+    );
+    expect(result.current.loading).toBeTruthy();
+    await waitForNextUpdate();
+    expect(result.current.loading).toBeFalsy();
+    expect(result.current.status).toBe(200);
+    expect(result.current.payload).toEqual(mockPayload);
+  });
+  test('should successfuly fetch with custom fetch', async () => {
+    const fetchUsersList = {
+      method: 'GET',
+      endpoint: '/users',
+    };
+    let User = Record({
+      id: Number,
+      name: String,
+    });
+    let mockPayload = {
+      id: 1,
+      name: 'John',
+    };
+    fetchMock.mock('/users', mockPayload);
+    let clientWithCustomFetch = createClient({ fetch });
+
+    let FetchProviderWithCustomFetch: ComponentType = ({
+      children,
+    }: {
+      children?: ReactNode;
+    }) => (
+      <ClientContextProvider client={clientWithCustomFetch}>
+        {children}
+      </ClientContextProvider>
+    );
+    let { result, waitForNextUpdate } = renderHook(
+      () => useQuery(fetchUsersList, { schema: User }),
+      { wrapper: FetchProviderWithCustomFetch },
+    );
+    expect(result.current.loading).toBeTruthy();
+    await waitForNextUpdate();
+    expect(result.current.loading).toBeFalsy();
+    expect(result.current.status).toBe(200);
+    expect(result.current.payload).toEqual(mockPayload);
   });
 });
