@@ -18,17 +18,15 @@
     "release": "release-it"
   },
   "peerDependencies": {
-    "hookrouter": "^1.2.3",
-    "react-navigation": "^3.0.0"
+    "@react-navigation/native": "^5.0.0",
+    "hookrouter": "^1.2.3"
   },
-  "dependencies": {
-    "react-navigation-hooks": "^1.1.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@react-native-community/bob": "0.8.0",
+    "@react-navigation/native": "^5.0.0",
     "@types/hookrouter": "2.2.1",
     "hookrouter": "1.2.3",
-    "react-navigation": "3.13.0",
     "release-it": "12.4.3",
     "tsconfig-kodefox": "1.0.1",
     "tslint-config-kodefox": "1.1.1",
