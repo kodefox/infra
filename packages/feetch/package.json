@@ -22,6 +22,7 @@
     "test": "yarn lint && yarn typecheck && yarn format:check && yarn jest"
   },
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "runtypes": "^4.0.3"
   },
   "peerDependencies": {

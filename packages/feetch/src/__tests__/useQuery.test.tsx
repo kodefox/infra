@@ -2,12 +2,26 @@ import React, { ReactNode, ComponentType } from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { Record, Number, String } from 'runtypes';
 import fetchMock from 'fetch-mock';
+import 'isomorphic-fetch';
 
 import { createClient, useQuery, ClientContextProvider } from '../index';
 
-let client = createClient({});
+let clientWithFixtures = createClient({
+  fixtures: [
+    {
+      method: 'GET',
+      endpoint: '/me',
+      responseBody: {
+        id: 1,
+        name: 'John Fixture',
+      },
+    },
+  ],
+});
 let FetchProvider: ComponentType = ({ children }: { children?: ReactNode }) => (
-  <ClientContextProvider client={client}>{children}</ClientContextProvider>
+  <ClientContextProvider client={clientWithFixtures}>
+    {children}
+  </ClientContextProvider>
 );
 
 describe('useQuery', () => {
@@ -114,5 +128,24 @@ describe('useQuery', () => {
     expect(result.current.loading).toBeFalsy();
     expect(result.current.status).toBe(200);
     expect(result.current.error).toBeTruthy();
+  });
+  test('should successfuly fetch fixture', async () => {
+    const fetchUsersList = {
+      method: 'GET',
+      endpoint: '/me',
+    };
+    let User = Record({
+      id: Number,
+      name: String,
+    });
+    let { result, waitForNextUpdate } = renderHook(
+      () => useQuery(fetchUsersList, { schema: User }),
+      { wrapper: FetchProvider },
+    );
+    expect(result.current.loading).toBeTruthy();
+    await waitForNextUpdate();
+    expect(result.current.loading).toBeFalsy();
+    expect(result.current.status).toBe(200);
+    expect(result.current.payload).toEqual({ id: 1, name: 'John Fixture' });
   });
 });
