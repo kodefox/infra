@@ -7,7 +7,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['eslint-comments', 'prettier'],
+  plugins: ['eslint-comments', 'import', 'prettier'],
   extends: [
     'plugin:@typescript-eslint/recommended',
     'prettier',
