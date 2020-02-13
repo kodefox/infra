@@ -32,3 +32,4 @@ export { default as ToastContainer } from './ToastContainer';
 
 export { Avatar, Drawer, Typography };
 export { Calendar } from './Calendar';
+export { TabBar, TabBarItem, TabView } from './Tab';
