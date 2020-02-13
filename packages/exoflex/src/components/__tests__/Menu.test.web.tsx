@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Provider from '../Provider';
 import { render, fireEvent, act, wait } from '@testing-library/react';
+
+import Provider from '../Provider';
 import '../../../test/customFireEvent.web';
 import Menu from '../Menu';
 import Text from '../Text';

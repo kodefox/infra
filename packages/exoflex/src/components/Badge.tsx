@@ -2,9 +2,11 @@ import React from 'react';
 import { Animated, StyleSheet } from 'react-native';
 import { Badge as PaperBadge } from 'react-native-paper';
 import color from 'color';
-import Text from './Text';
+
 import useTheme from '../helpers/useTheme';
 import useFadingAnimation from '../helpers/useFadingAnimation';
+
+import Text from './Text';
 
 export type BadgeProps = Omit<OmitPaperTheme<typeof PaperBadge>, 'visible'> & {
   visible?: boolean;

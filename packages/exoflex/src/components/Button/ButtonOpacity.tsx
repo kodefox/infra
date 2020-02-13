@@ -1,11 +1,11 @@
 import React from 'react';
 import { TouchableOpacity, View, StyleSheet } from 'react-native';
+
 import Text from '../Text';
 import ActivityIndicator from '../ActivityIndicator';
 import IconButton from '../IconButton';
 
 import { useButtonStyle } from './useButtonStyle';
-
 import { ButtonProps } from './types';
 import { styles } from './styles';
 

@@ -7,9 +7,11 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import Text from './Text';
+
 import { DefaultTheme } from '../constants/themes';
 import useTheme from '../helpers/useTheme';
+
+import Text from './Text';
 import Check from './svg/Check';
 
 export type CheckboxProps = {

@@ -5,9 +5,10 @@ import {
   TextInput as NativeTextInput,
 } from 'react-native';
 
+import useTheme from '../../helpers/useTheme';
+
 import TextInputOutlined from './TextInputOutlined';
 import TextInputFlat from './TextInputFlat';
-import useTheme from '../../helpers/useTheme';
 import { TextInputProps } from './types';
 
 function TextInput(props: TextInputProps, ref: Ref<NativeTextInput>) {

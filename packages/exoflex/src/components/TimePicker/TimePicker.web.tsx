@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
-import TimePickerInput from './TimePickerInput';
 
 import {
   isHoursFormatValid,
@@ -13,6 +12,8 @@ import {
   convertTimeToDate,
   convertDateToLocalTime,
 } from '../../helpers/resolveTime';
+
+import TimePickerInput from './TimePickerInput';
 import { TimePickerProps } from './types';
 
 export default function TimePicker(props: TimePickerProps) {

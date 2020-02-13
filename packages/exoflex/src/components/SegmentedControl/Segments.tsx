@@ -9,7 +9,9 @@ import {
   ViewStyle,
   Platform,
 } from 'react-native';
+
 import useTheme from '../../helpers/useTheme';
+
 import { SegmentedControlMode } from './types';
 import Divider from './Divider';
 import { Mode } from './constants';

@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
+
 import TimePicker from '../TimePicker/TimePicker.web';
 
 const date = '2019-10-10T11:03:21.044Z';

@@ -1,6 +1,7 @@
 import React from 'react';
-import Provider from '../Provider';
 import { render } from '@testing-library/react';
+
+import Provider from '../Provider';
 import Badge from '../Badge';
 
 describe('Badge', () => {

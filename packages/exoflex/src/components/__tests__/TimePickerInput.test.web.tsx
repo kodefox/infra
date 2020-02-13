@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
+
 import '../../../test/customFireEvent.web';
 import TimePickerInput from '../TimePicker/TimePickerInput';
 

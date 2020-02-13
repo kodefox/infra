@@ -1,5 +1,6 @@
 import React from 'react';
 import { Menu as PaperMenu } from 'react-native-paper';
+
 import Text from './Text';
 import useTheme from '../helpers/useTheme';
 

@@ -1,8 +1,9 @@
 import { Platform } from 'react-native';
 import { DefaultTheme as PaperDefaultTheme } from 'react-native-paper';
 
-import { RubikSourcesMap } from './fonts';
 import { Theme, Fonts } from '../types';
+
+import { RubikSourcesMap } from './fonts';
 
 export const SystemFonts: Fonts = Platform.select({
   web: {

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import Provider from '../Provider';
 import {
   render,
   fireEvent,
   act,
   waitForElement,
 } from 'react-native-testing-library';
+
+import Provider from '../Provider';
 import Menu from '../Menu';
 import Text from '../Text';
 import Button from '../Button';

@@ -8,9 +8,10 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import useTheme from '../helpers/useTheme';
+
 import IconButton, { IconButtonProps } from './IconButton';
 import Text from './Text';
-import useTheme from '../helpers/useTheme';
 
 type ModeProps = 'active' | 'inactive';
 type IconSource = IconButtonProps['icon'];

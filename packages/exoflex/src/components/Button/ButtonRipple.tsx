@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button as PaperButton } from 'react-native-paper';
+
 import Text from '../Text';
 
 import { useButtonStyle } from './useButtonStyle';
-
 import { ButtonProps } from './types';
 import { PRESETS } from './presets';
 import { styles } from './styles';

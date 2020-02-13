@@ -1,6 +1,7 @@
 import React from 'react';
-import Provider from '../Provider';
 import { render } from '@testing-library/react';
+
+import Provider from '../Provider';
 import * as Avatar from '../Avatar';
 
 describe('Avatar', () => {

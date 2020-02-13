@@ -1,8 +1,8 @@
 import React, { ComponentProps } from 'react';
 import { View, StyleSheet, TextStyle, StyleProp } from 'react-native';
 import { Avatar as PaperAvatar } from 'react-native-paper';
-import Text from '../Text';
 
+import Text from '../Text';
 import useTheme from '../../helpers/useTheme';
 
 const DEFAULT_SIZE = 64;
