@@ -15,6 +15,9 @@ export default function DateTimePicker(props: DateTimePickerProps) {
   let {
     mode = 'datetime' as DateTimePickerMode,
     date = new Date().toISOString(),
+    title,
+    dateTitle,
+    timeTitle,
     isVisible,
     use24Hour,
     onCancel,
@@ -41,6 +44,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
   let picker =
     activePicker === 'date' ? (
       <DatePicker
+        title={dateTitle || title}
         date={dateTime}
         minDate={minimumDate}
         maxDate={maximumDate}
@@ -49,6 +53,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
       />
     ) : (
       <TimePickerContainer
+        title={timeTitle || title}
         date={dateTime}
         use24Hour={use24Hour}
         onCancel={cancel}
@@ -77,6 +82,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
 
 export type PickerProps = Readonly<{
   date: string;
+  title?: string;
   minDate?: Date;
   maxDate?: Date;
   use24Hour?: boolean;
@@ -85,7 +91,7 @@ export type PickerProps = Readonly<{
 }>;
 
 export function DatePicker(props: PickerProps) {
-  let { date, minDate, maxDate, onCancel, onConfirm } = props;
+  let { date, title, minDate, maxDate, onCancel, onConfirm } = props;
   let { colors } = useTheme();
 
   let [selectedDate, setSelectedDate] = useState(date);
@@ -107,6 +113,11 @@ export function DatePicker(props: PickerProps) {
 
   return (
     <>
+      {title && (
+        <View style={[styles.headerWrapper, { borderColor: '#e8e8e8' }]}>
+          <Text>{title}</Text>
+        </View>
+      )}
       <Calendar
         current={selectedDate}
         markedDates={{ [selectedDate.split('T')[0]]: { selected: true } }}
@@ -128,7 +139,7 @@ export function DatePicker(props: PickerProps) {
 }
 
 export function TimePickerContainer(props: PickerProps) {
-  let { date, use24Hour, onCancel, onConfirm } = props;
+  let { date, title, use24Hour, onCancel, onConfirm } = props;
   let { colors } = useTheme();
 
   let [selectedDateTime, setSelectedDateTime] = useState(date);
@@ -138,13 +149,26 @@ export function TimePickerContainer(props: PickerProps) {
 
   return (
     <>
-      <View style={{ alignItems: 'center', marginTop: 12 }}>
+      <View style={{ marginTop: title ? 6 : 12 }}>
         {/* TODO: Handle format based on locale too */}
-        <TimePicker
-          date={selectedDateTime}
-          format={use24Hour ? '24' : '12'}
-          onChangeTime={changeTime}
-        />
+        {title && (
+          <View
+            style={[
+              styles.headerWrapper,
+              styles.timeHeaderWrapper,
+              { borderColor: '#e8e8e8' },
+            ]}
+          >
+            <Text>{title}</Text>
+          </View>
+        )}
+        <View style={{ alignItems: 'center' }}>
+          <TimePicker
+            date={selectedDateTime}
+            format={use24Hour ? '24' : '12'}
+            onChangeTime={changeTime}
+          />
+        </View>
       </View>
       <View style={styles.touchableActionWrapper}>
         <TouchableRipple onPress={onCancel} style={styles.touchableAction}>
@@ -158,12 +182,24 @@ export function TimePickerContainer(props: PickerProps) {
   );
 }
 
+const HEADER_FONT_SIZE = 16;
+
 const styles = StyleSheet.create({
   modalContainer: {
     margin: 12,
     paddingVertical: 12,
     width: 360,
     alignSelf: 'center',
+  },
+  headerWrapper: {
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    fontSize: HEADER_FONT_SIZE,
+    paddingBottom: 11,
+  },
+  timeHeaderWrapper: {
+    paddingBottom: 17, // NOTE: because of border
+    marginBottom: 18,
   },
   touchableAction: {
     padding: 12,
