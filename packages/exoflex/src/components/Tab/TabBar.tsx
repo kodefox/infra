@@ -6,36 +6,34 @@ import TabIndicator from './TabIndicator';
 import { TabRoute } from './types';
 
 type TabBarProps = {
+  activeIndex: number;
   routes: Array<TabRoute>;
   onTabPress: (index: number) => void;
 };
 
 export default function TabBar(props: TabBarProps) {
-  let { routes, onTabPress } = props;
+  let { activeIndex, routes, onTabPress } = props;
 
   let [width, setWidth] = useState(0);
-  let [indicatorPos, setIndicatorPos] = useState(0);
 
   let indicatorWidth = width / routes.length;
-
-  let changeTab = (index: number) => {
-    let newIndicatorPos = index * indicatorWidth;
-    setIndicatorPos(newIndicatorPos);
-    onTabPress(index);
-  };
 
   return (
     <View
       onLayout={(event) => setWidth(event.nativeEvent.layout.width)}
       style={styles.tabBar}
     >
-      <TabIndicator width={indicatorWidth} position={indicatorPos} />
+      <TabIndicator
+        width={indicatorWidth}
+        activeIndex={activeIndex}
+        maxIndex={routes.length}
+      />
       {routes.map((route, index) => (
         <TabItem
           key={index}
           index={index}
           title={route.title}
-          onPress={() => changeTab(index)}
+          onPress={() => onTabPress(index)}
         />
       ))}
     </View>

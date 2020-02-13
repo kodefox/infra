@@ -23,7 +23,7 @@ export default function TabView(props: TabViewProps) {
 
   return (
     <View style={StyleSheet.flatten([{ flex: 1 }, style])}>
-      <TabBar routes={routes} onTabPress={onIndexChange} />
+      <TabBar activeIndex={index} routes={routes} onTabPress={onIndexChange} />
       {React.createElement(scene)}
     </View>
   );
