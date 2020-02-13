@@ -36,7 +36,7 @@ export type TextInputProps = BaseTextInputProps & {
   uppercase?: boolean;
   /**
    * Determine to use error icon or not.
-   * Defaults to 'false'.
+   * Defaults to 'true'.
    */
   useErrorIcon?: boolean;
   /**
