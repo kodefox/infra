@@ -37,6 +37,13 @@ function TextInputExample() {
           errorMessage="Something Went Wrong"
           containerStyle={{ marginVertical: 10 }}
         />
+        <TextInput
+          useErrorIcon
+          label="Input Label (Error)"
+          value="Input Text"
+          errorMessage="Something Went Wrong"
+          containerStyle={{ marginVertical: 10 }}
+        />
         <View
           style={{ backgroundColor: 'white', marginVertical: 30, padding: 15 }}
         >
@@ -71,6 +78,15 @@ function TextInputExample() {
             mode="flat"
             value="Input Text"
             placeholder="Hint Text"
+            errorMessage="Something Went Wrong"
+            containerStyle={{ marginVertical: 10 }}
+          />
+          <TextInput
+            useErrorIcon
+            label="Expiration Date (MM/YY)"
+            mode="flat"
+            value=""
+            placeholder="MM/YY"
             errorMessage="Something Went Wrong"
             containerStyle={{ marginVertical: 10 }}
           />
