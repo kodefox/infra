@@ -27,7 +27,9 @@
 | `onConfirm *`           |        `(date: string) => void`        |                                                       | Callback when the confirm pressed. It returns the selected date in ISO string format. |
 | `format`                |         `'12' \| '24' \| '12'`         | Format to show the time, between 12 hour and 24 hour. |
 | `placeholder`           |                `string`                |                         `''`                          | Placeholder to show inside the TextInput. (For iOS and Android only)                  |
-| `title`                 |                `string`                |                         `''`                          | The title text on iOS.                                                                |
+| `title`                 |                `string`                |                         `''`                          | The title text on iOS and web.                                                        |
+| `dateTitle`             |                `string`                |                         `''`                          | The title text on web for date picker.                                                |
+| `timeTitle`             |                `string`                |                         `''`                          | The title text on web for time picker.                                                |
 | `onChangeTime`          |     `(isoString: string) => void`      |                                                       | Callback when a time is picked. It returns an ISO string.                             |
 | `style`                 |         `StyleProp<TextStyle>`         |                                                       | Style for the TextInput. (For iOS and Android only)                                   |
 
