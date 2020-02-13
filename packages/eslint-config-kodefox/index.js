@@ -13,6 +13,9 @@ module.exports = {
     'prettier',
     'prettier/@typescript-eslint',
   ],
+  settings: {
+    'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
+  },
   rules: {
     // TypeScript (@typescript-eslint/eslint-plugin)
     '@typescript-eslint/array-type': ['error', { default: 'generic' }],
@@ -43,6 +46,15 @@ module.exports = {
 
     // ESLint (eslint-plugin-eslint-comments)
     'eslint-comments/no-unused-disable': 'warn',
+
+    // Import/export syntax (eslint-plugin-import)
+    'import/no-useless-path-segments': [
+      'error',
+      {
+        noUselessIndex: true,
+      },
+    ],
+    'import/order': ['error', { 'newlines-between': 'always' }],
 
     // Custom
     'array-callback-return': 'warn',
