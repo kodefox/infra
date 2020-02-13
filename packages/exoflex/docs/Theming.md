@@ -8,7 +8,7 @@ To customize the theme used by exoflex, simply pass a custom theme to the provid
 import { Provider } from 'exoflex';
 
 let customTheme = {
-  // You don't have to spread the default theme here.
+  // Notice you don't have to spread the default theme here.
   colors: {
     primary: 'salmon'
   },
@@ -40,24 +40,17 @@ When using Expo, you can let exoflex handle the font loading for you.
 import { Provider } from 'exoflex';
 import OpenSansRegular from './OpenSans-Regular.ttf';
 
-// Create an object to list all the custom fonts to be loaded.
-// The key in the object will be the fontFamily to use when styling the text.
-// Internally, this object will be passed to `Font.loadAsync`
-// @see https://docs.expo.io/versions/latest/sdk/font/#arguments
-let customFonts = {
-  // Here, the key is 'OpenSans-Regular', when we style the text,
-  // we will use fontFamily: 'OpenSans-Regular'.
-  'OpenSans-Regular': OpenSansRegular
-}
-
 // Define the font family to use in the custom theme.
 let customTheme = {
   fonts: {
     default: {
       // Here, we only override the 'normal' font weight from the 'default' preset.
       normal: {
+        // When using the font, refer to the font by the name.
+        // E.g. fontFamily: 'OpenSans-Regular' because the name is 'OpenSans-Regular'
         name: 'OpenSans-Regular',
-        weight: '400'
+        weight: '400',
+        source: OpenSansRegular
       }
     }
   }
@@ -65,21 +58,21 @@ let customTheme = {
 
 // When loading the fonts, Provider will render a placeholder.
 // To override it, pass a component to render to `Provider.LoadingPlaceholder`.
-<Provider useSystemFonts={false} fonts={customFonts} theme={customTheme}>
+<Provider theme={customTheme}>
   <View>
     {/* This text will be using the OpenSans font family. */}
     <Text>Foo</Text>
 
-    {/* But this one still use the Rubik font family because we only override the normal one in the custom theme. */}
+    {/* But this one will use the default font because we only override the normal one in the custom theme. */}
     <Text weight="medium">Bar</Text>
   </View>
 </Provider>
 ```
 
-You can skip the automatic font loading if you want to, but make sure to load the custom fonts first before rendering.
+You can skip the automatic font loading if you want to handle the font loading manually.
 
 ```tsx
-<Provider useSystemFonts={false} skipFontLoading={true}>
+<Provider skipFontLoading={true}>
   <View>
     <Text>Foo</Text>
   </View>
@@ -95,6 +88,7 @@ For `react-native@>=0.60.0`, add your fonts directory path to the `assets` prope
 E.g.:
 
 Your fonts is stored inside `<ROOT>/assets/fonts/`.
+
 1. Open up `react-native.config.js`.
 2. Add your fonts dir path to `assets`.
 
@@ -103,9 +97,7 @@ Your fonts is stored inside `<ROOT>/assets/fonts/`.
 
 module.exports = {
   // ...
-  assets: [
-    ',/assets/fonts/'
-  ],
+  assets: ['./assets/fonts/'],
 };
 ```
 
@@ -114,4 +106,3 @@ module.exports = {
 ### Using the custom fonts
 
 Under dicussion.
-
