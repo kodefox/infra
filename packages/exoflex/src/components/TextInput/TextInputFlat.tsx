@@ -34,6 +34,7 @@ export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
     uppercase,
     value,
     numberOfLines,
+    useErrorIcon,
     style,
     containerStyle,
     labelStyle,
@@ -99,7 +100,7 @@ export function TextInputFlat(props: Props, ref: Ref<TextInput>) {
           ]}
           {...otherProps}
         />
-        {isError && <ErrorIcon color={colors.error} />}
+        {isError && useErrorIcon && <ErrorIcon color={colors.error} />}
       </View>
       {isError && (
         <ErrorMessage

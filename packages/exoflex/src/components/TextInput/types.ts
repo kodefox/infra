@@ -35,6 +35,11 @@ export type TextInputProps = BaseTextInputProps & {
    */
   uppercase?: boolean;
   /**
+   * Determine to use error icon or not.
+   * Defaults to 'true'.
+   */
+  useErrorIcon?: boolean;
+  /**
    * Additional style passed to the container of the TextInput
    */
   containerStyle?: StyleProp<ViewStyle>;

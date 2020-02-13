@@ -28,6 +28,7 @@ function TextInputOutlined(
     uppercase,
     value,
     numberOfLines,
+    useErrorIcon,
     style,
     containerStyle,
     labelStyle,
@@ -86,7 +87,7 @@ function TextInputOutlined(
           ]}
           {...otherProps}
         />
-        {isError && <ErrorIcon color={colors.error} />}
+        {isError && useErrorIcon && <ErrorIcon color={colors.error} />}
       </View>
       {isError && (
         <ErrorMessage style={[styles.errorMessage, errorMessageStyle]}>
