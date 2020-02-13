@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Modal, Portal, TouchableRipple } from 'react-native-paper';
 import { DateObject } from 'react-native-calendars';
 import { Calendar } from '../Calendar';
 import TimePicker from '../TimePicker/TimePicker.web';
 import Text from '../Text';
+import IconButton from '../IconButton';
 
 import useTheme from '../../helpers/useTheme';
 import { useDateTimePicker } from './useDateTimePicker';
@@ -94,6 +95,16 @@ export function DatePicker(props: PickerProps) {
   };
   let confirm = () => onConfirm(selectedDate);
 
+  let arrow = useCallback(
+    (direction: 'left' | 'right') =>
+      direction === 'left' ? (
+        <IconButton icon="chevron-left" />
+      ) : (
+        <IconButton icon="chevron-right" />
+      ),
+    [],
+  );
+
   return (
     <>
       <Calendar
@@ -102,6 +113,7 @@ export function DatePicker(props: PickerProps) {
         minDate={minDate}
         maxDate={maxDate}
         onDayPress={changeDate}
+        renderArrow={arrow}
       />
       <View style={styles.touchableActionWrapper}>
         <TouchableRipple onPress={onCancel} style={styles.touchableAction}>
