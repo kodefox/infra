@@ -32,13 +32,13 @@ function TextInputExample() {
           containerStyle={{ marginVertical: 10 }}
         />
         <TextInput
+          useErrorIcon={false}
           label="Input Label (Error)"
           value="Input Text"
           errorMessage="Something Went Wrong"
           containerStyle={{ marginVertical: 10 }}
         />
         <TextInput
-          useErrorIcon
           label="Input Label (Error)"
           value="Input Text"
           errorMessage="Something Went Wrong"
@@ -74,6 +74,7 @@ function TextInputExample() {
             containerStyle={{ marginVertical: 10 }}
           />
           <TextInput
+            useErrorIcon={false}
             label="Input Label (Error)"
             mode="flat"
             value="Input Text"
@@ -82,7 +83,6 @@ function TextInputExample() {
             containerStyle={{ marginVertical: 10 }}
           />
           <TextInput
-            useErrorIcon
             label="Expiration Date (MM/YY)"
             mode="flat"
             value=""

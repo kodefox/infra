@@ -18,6 +18,7 @@ function TextInput(props: TextInputProps, ref: Ref<NativeTextInput>) {
     editable = true,
     mode = 'outlined',
     uppercase = uppercaseTheme.textinput,
+    useErrorIcon = true,
     onFocus,
     onBlur,
     onChangeText,
@@ -64,6 +65,7 @@ function TextInput(props: TextInputProps, ref: Ref<NativeTextInput>) {
     <TextInputOutlined
       {...otherProps}
       ref={ref}
+      useErrorIcon={useErrorIcon}
       uppercase={uppercase}
       autoCorrect={autoCorrect}
       disabled={disabled}
@@ -77,6 +79,7 @@ function TextInput(props: TextInputProps, ref: Ref<NativeTextInput>) {
     <TextInputFlat
       {...otherProps}
       ref={ref}
+      useErrorIcon={useErrorIcon}
       uppercase={uppercase}
       autoCorrect={autoCorrect}
       disabled={disabled}
