@@ -11,6 +11,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
     mode = 'datetime' as DateTimePickerMode,
     use24Hour = false,
     locale,
+    title,
     ...otherProps
   } = props;
 
@@ -23,6 +24,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
       locale={locale || use24Hour ? 'en-GB' : 'en-US'}
       onCancel={() => onCancel()}
       onConfirm={(newDate) => onConfirm(newDate.toISOString())}
+      headerTextIOS={title}
       {...otherProps}
     />
   );
