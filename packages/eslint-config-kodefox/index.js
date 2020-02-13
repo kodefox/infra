@@ -54,6 +54,7 @@ module.exports = {
         noUselessIndex: true,
       },
     ],
+    'import/order': ['error', { 'newlines-between': 'always' }],
 
     // Custom
     'array-callback-return': 'warn',
