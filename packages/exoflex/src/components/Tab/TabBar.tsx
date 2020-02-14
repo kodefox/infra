@@ -3,20 +3,18 @@ import { View, StyleSheet } from 'react-native';
 import TabItem from './TabBarItem';
 import TabIndicator from './TabIndicator';
 
-import { TabRoute } from './types';
-
 type TabBarProps = {
   activeIndex: number;
-  routes: Array<TabRoute>;
+  titles: Array<string>;
   onTabPress: (index: number) => void;
 };
 
 export default function TabBar(props: TabBarProps) {
-  let { activeIndex, routes, onTabPress } = props;
+  let { activeIndex, titles, onTabPress } = props;
 
   let [width, setWidth] = useState(0);
 
-  let indicatorWidth = width / routes.length;
+  let indicatorWidth = width / titles.length;
 
   return (
     <View
@@ -26,13 +24,13 @@ export default function TabBar(props: TabBarProps) {
       <TabIndicator
         width={indicatorWidth}
         activeIndex={activeIndex}
-        maxIndex={routes.length}
+        maxIndex={titles.length}
       />
-      {routes.map((route, index) => (
+      {titles.map((title, index) => (
         <TabItem
           key={index}
           index={index}
-          title={route.title}
+          title={title}
           onPress={() => onTabPress(index)}
         />
       ))}
