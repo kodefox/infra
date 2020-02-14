@@ -2,29 +2,36 @@ import React, { ComponentType } from 'react';
 import { View, StyleProp, ViewStyle, StyleSheet } from 'react-native';
 import TabBar from './TabBar';
 
-import { TabRoute, NavigationState } from './types';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type TabScene<T = any> = { title: string; scene: ComponentType<T> };
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type TabScenes<T = any> = Array<TabScene<T>>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type TabViewProps<T = any> = {
-  navigationState: NavigationState;
+  activeIndex: number;
+  scenes: TabScenes<T>;
   onIndexChange: (index: number) => void;
-  renderScene: (
-    route: TabRoute,
-    jumpTo?: (key: string) => void,
-  ) => ComponentType<T>;
   style?: StyleProp<ViewStyle>;
 };
 
 export default function TabView(props: TabViewProps) {
-  let { navigationState, onIndexChange, renderScene, style } = props;
-  let { index, routes } = navigationState;
+  let { onIndexChange, activeIndex, scenes, style } = props;
 
-  let scene = renderScene(routes[index]);
+  let { scene } = scenes[activeIndex];
+  let titles = scenes.map(({ title }) => title);
+
+  let changeTabIndex = (index: number) => onIndexChange(index);
 
   return (
     <View style={StyleSheet.flatten([{ flex: 1 }, style])}>
-      <TabBar activeIndex={index} routes={routes} onTabPress={onIndexChange} />
-      {React.createElement(scene)}
+      <TabBar
+        activeIndex={activeIndex}
+        titles={titles}
+        onTabPress={onIndexChange}
+      />
+      {React.createElement(scene, { changeTabIndex })}
     </View>
   );
 }
