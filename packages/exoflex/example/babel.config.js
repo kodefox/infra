@@ -13,7 +13,10 @@ module.exports = function(api) {
           },
         },
       ],
-      require.resolve('../src/babel'),
+      [
+        require.resolve('../src/babel'),
+        { mappings: require.resolve('../lib/mappings.json') },
+      ],
     ],
   };
 };
