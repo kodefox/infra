@@ -28,6 +28,18 @@ function ToastExample() {
       <Toast visible={visible} mode="success">
         Controlled Toast
       </Toast>
+      <Button
+        onPress={() =>
+          Toast.showToast({
+            message: `I don't have an icon`,
+            duration: 1000,
+            mode: 'warning',
+            showIcon: false,
+          })
+        }
+      >
+        SHOW UNCONTROLLED TOAST
+      </Button>
     </View>
   );
 }
