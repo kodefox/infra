@@ -5,16 +5,18 @@ import EventEmitter from '../helpers/EventEmitter';
 
 export type ToastConfig = {
   message: string;
+  showIcon?: boolean;
   mode?: ModeProps;
   duration?: number;
 };
 
 type EmitEvents = { showToast: ToastConfig; hideToast: undefined };
 
-let DefaultToastConfig = {
+let DefaultToastConfig: ToastConfig = {
   message: '',
   mode: 'info' as ModeProps,
   duration: 4000,
+  showIcon: true,
 };
 
 let ToastEmitter = EventEmitter.create<EmitEvents>();
@@ -58,7 +60,7 @@ function ToastContainer() {
   }, [onShowToast, onHideToast]);
 
   return (
-    <Toast visible={visible} mode={config.mode}>
+    <Toast visible={visible} mode={config.mode} showIcon={config.showIcon}>
       {config.message}
     </Toast>
   );

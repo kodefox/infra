@@ -32,12 +32,25 @@ type Props = {
    * Determine the visibility of the Toast.
    */
   visible: boolean;
+  /**
+   * Set to false to hide the icon.
+   * Defaults to true.
+   */
+  showIcon?: boolean;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   children?: string;
 };
 
-function Toast({ mode, visible, style, children, colors, textStyle }: Props) {
+function Toast({
+  mode,
+  visible,
+  style,
+  children,
+  colors,
+  textStyle,
+  showIcon = true,
+}: Props) {
   let { colors: themeColors } = useTheme();
 
   let [animatedVisibility, animatedValue] = useFadingAnimation(visible, {
@@ -56,6 +69,7 @@ function Toast({ mode, visible, style, children, colors, textStyle }: Props) {
         style={
           [
             styles.container,
+            !showIcon && styles.containerNoIcon,
             {
               backgroundColor: colors[mode],
               opacity: animatedValue,
@@ -72,7 +86,7 @@ function Toast({ mode, visible, style, children, colors, textStyle }: Props) {
           ] as StyleProp<ViewStyle>
         }
       >
-        <ToastIcon name={IconName[mode]} color={colors[mode]} />
+        {showIcon && <ToastIcon name={IconName[mode]} color={colors[mode]} />}
         <Text style={[{ color: themeColors.surface }, textStyle]}>
           {children}
         </Text>
@@ -153,6 +167,9 @@ let styles = StyleSheet.create({
     borderRadius: 21,
     padding: 5,
     paddingRight: 16,
+  },
+  containerNoIcon: {
+    paddingLeft: 16,
   },
   iconContainer: {
     width: 32,
