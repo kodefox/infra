@@ -8,6 +8,7 @@ import { TabScenes } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type TabViewProps<T = any> = {
+  lazyLoad?: boolean;
   activeIndex: number;
   scenes: TabScenes<T>;
   onIndexChange: (index: number) => void;
@@ -15,7 +16,7 @@ type TabViewProps<T = any> = {
 };
 
 export default function TabView(props: TabViewProps) {
-  let { onIndexChange, activeIndex, scenes, style } = props;
+  let { onIndexChange, activeIndex, scenes, lazyLoad = true, style } = props;
 
   let titles = scenes.map(({ title }) => title);
 
@@ -32,6 +33,7 @@ export default function TabView(props: TabViewProps) {
           onTabPress={changeTabIndex}
         />
         <TabContent
+          lazyLoad={lazyLoad}
           activeIndex={activeIndex}
           scenes={scenes}
           onIndexChange={changeTabIndex}
