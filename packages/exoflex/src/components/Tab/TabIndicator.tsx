@@ -3,6 +3,7 @@ import { StyleSheet, ViewStyle } from 'react-native';
 import Animated, { Easing } from 'react-native-reanimated';
 
 import useTheme from '../../helpers/useTheme';
+import { useTabSwipe } from './useTabSwipe';
 
 import { IS_WEB } from '../../constants/platforms';
 
@@ -15,6 +16,7 @@ type TabIndicatorProps = {
 export default function TabIndicator(props: TabIndicatorProps) {
   let { width, activeIndex, maxIndex } = props;
   let { colors } = useTheme();
+  let { scrollPercentage } = useTabSwipe();
 
   let [animatedValue] = useState(new Animated.Value(0));
   let [skipFirstRender, setSkipFirstRender] = useState(true);
@@ -25,12 +27,12 @@ export default function TabIndicator(props: TabIndicatorProps) {
       return;
     }
     let animation = Animated.timing(animatedValue, {
-      duration: 150,
-      toValue: activeIndex,
-      easing: Easing.elastic(1),
+      duration: 200,
+      toValue: scrollPercentage,
+      easing: Easing.linear,
     });
     animation.start();
-  }, [activeIndex]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [scrollPercentage]); // eslint-disable-line react-hooks/exhaustive-deps
 
   let { inputRange, outputRange } = useMemo(() => {
     let inputRange = [];
