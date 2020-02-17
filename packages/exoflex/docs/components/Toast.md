@@ -32,6 +32,7 @@ If the root component has already been wrapped by `<Provider />`, then `<ToastCo
 | `message *` |                   `string`                    |          | Text to display in the toast.                  |
 | `mode`      | `'info' \| 'warning' \| 'error' \| 'success'` | `'info'` | Determine the color and icon to display.       |
 | `duration`  |                   `number`                    |  `4000`  | How long the toast stay in the screen (in ms). |
+| `showIcon`  |                   `boolean`                   |  `true`  | Show mode icon in the toast.                   |
 
 - `hideToast()` - dismiss the currently visible toast. Does nothing when there's no visible toast.
 
