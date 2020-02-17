@@ -1,5 +1,12 @@
-import React, { ComponentType } from 'react';
-import { View, StyleProp, ViewStyle, StyleSheet } from 'react-native';
+import React, { ComponentType, useCallback, useRef } from 'react';
+import {
+  View,
+  StyleProp,
+  ViewStyle,
+  StyleSheet,
+  Dimensions,
+  ScrollView,
+} from 'react-native';
 import TabBar from './TabBar';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -19,19 +26,52 @@ type TabViewProps<T = any> = {
 export default function TabView(props: TabViewProps) {
   let { onIndexChange, activeIndex, scenes, style } = props;
 
-  let { scene } = scenes[activeIndex];
   let titles = scenes.map(({ title }) => title);
 
-  let changeTabIndex = (index: number) => onIndexChange(index);
+  let scrollView = useRef<ScrollView>(null);
+
+  let changeTabIndex = useCallback(
+    (index: number) => {
+      let { width: windowWidth } = Dimensions.get('window');
+      onIndexChange(index);
+      scrollView.current?.scrollTo({
+        x: index * windowWidth,
+        animated: false,
+      });
+    },
+    [], // eslint-disable-line react-hooks/exhaustive-deps
+  );
 
   return (
     <View style={StyleSheet.flatten([{ flex: 1 }, style])}>
       <TabBar
         activeIndex={activeIndex}
         titles={titles}
-        onTabPress={onIndexChange}
+        onTabPress={changeTabIndex}
       />
-      {React.createElement(scene, { changeTabIndex })}
+
+      <ScrollView
+        ref={scrollView}
+        horizontal
+        pagingEnabled
+        nestedScrollEnabled
+        removeClippedSubviews={false}
+        showsHorizontalScrollIndicator={false}
+        bounces={false}
+        keyboardDismissMode="on-drag"
+        contentContainerStyle={
+          {
+            width: `${100 * scenes.length}%`,
+          } as ViewStyle
+        }
+      >
+        {scenes.map(({ scene, title }) =>
+          React.createElement(scene, {
+            changeTabIndex,
+            key: title,
+          }),
+        )}
+      </ScrollView>
     </View>
   );
 }
