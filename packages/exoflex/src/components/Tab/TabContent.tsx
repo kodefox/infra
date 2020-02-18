@@ -12,6 +12,7 @@ import {
 
 import { useTab } from './useTab';
 import { DefaultTheme } from '../../constants/themes';
+import { IS_WEB } from '../../constants/platforms';
 import { TabScenes, TabScene } from './types';
 
 const { width: WINDOW_WIDTH } = Dimensions.get('window');
@@ -30,6 +31,8 @@ export default function TabContent(props: TabContentProps) {
 
   let scrollView = useRef<ScrollView>(null);
   let flatList = useRef<FlatList<TabScene>>(null);
+
+  let scrollEnabled = IS_WEB ? false : enableSwipe;
 
   useEffect(() => {
     lazyLoad
@@ -76,7 +79,7 @@ export default function TabContent(props: TabContentProps) {
         horizontal
         pagingEnabled
         nestedScrollEnabled
-        scrollEnabled={enableSwipe}
+        scrollEnabled={scrollEnabled}
         removeClippedSubviews={false}
         showsHorizontalScrollIndicator={false}
         bounces={false}
@@ -123,7 +126,7 @@ export default function TabContent(props: TabContentProps) {
           </View>
         );
       }}
-      scrollEnabled={enableSwipe}
+      scrollEnabled={scrollEnabled}
       removeClippedSubviews={false}
       showsHorizontalScrollIndicator={false}
       bounces={false}
