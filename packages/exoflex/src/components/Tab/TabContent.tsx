@@ -7,9 +7,11 @@ import {
   NativeScrollEvent,
   FlatList,
   View,
+  StyleSheet,
 } from 'react-native';
 
 import { useTabSwipe } from './useTabSwipe';
+import { DefaultTheme } from '../../constants/themes';
 import { TabScenes, TabScene } from './types';
 
 const { width: WINDOW_WIDTH } = Dimensions.get('window');
@@ -29,15 +31,13 @@ export default function TabContent(props: TabContentProps) {
   let flatList = useRef<FlatList<TabScene>>(null);
 
   useEffect(() => {
-    if (lazyLoad) {
-      flatList.current?.scrollToIndex({
-        index: activeIndex,
-      });
-      return;
-    }
-    scrollView.current?.scrollTo({
-      x: activeIndex * WINDOW_WIDTH,
-    });
+    lazyLoad
+      ? flatList.current?.scrollToIndex({
+          index: activeIndex,
+        })
+      : scrollView.current?.scrollTo({
+          x: activeIndex * WINDOW_WIDTH,
+        });
   }, [activeIndex, lazyLoad]);
 
   let onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -66,6 +66,8 @@ export default function TabContent(props: TabContentProps) {
     index,
   });
 
+  let contentContainerStyle = { width: `${100 * scenes.length}%` } as ViewStyle;
+
   if (!lazyLoad) {
     return (
       <ScrollView
@@ -80,11 +82,7 @@ export default function TabContent(props: TabContentProps) {
         scrollEventThrottle={200}
         onScroll={onScroll}
         onMomentumScrollEnd={onMomentumScrollEnd}
-        contentContainerStyle={
-          {
-            width: `${100 * scenes.length}%`,
-          } as ViewStyle
-        }
+        contentContainerStyle={contentContainerStyle}
       >
         {scenes.map(({ scene, title }) =>
           React.createElement(scene, {
@@ -111,12 +109,12 @@ export default function TabContent(props: TabContentProps) {
           return (
             <View
               removeClippedSubviews={false}
-              style={{ width: WINDOW_WIDTH, backgroundColor: 'lightgrey' }}
+              style={[styles.fullWidth, styles.placeholder]}
             />
           );
         }
         return (
-          <View style={{ width: WINDOW_WIDTH }}>
+          <View style={styles.fullWidth}>
             {React.createElement(scene, {
               // NOTE: change to `jumpTo`
               changeTabIndex: onIndexChange,
@@ -134,7 +132,17 @@ export default function TabContent(props: TabContentProps) {
       onScroll={onScroll}
       onMomentumScrollEnd={onMomentumScrollEnd}
       getItemLayout={getItemLayout}
-      contentContainerStyle={{ width: `${100 * scenes.length}%` } as ViewStyle}
+      style={styles.placeholder}
+      contentContainerStyle={contentContainerStyle}
     />
   );
 }
+
+const styles = StyleSheet.create({
+  fullWidth: {
+    width: WINDOW_WIDTH,
+  },
+  placeholder: {
+    backgroundColor: DefaultTheme.colors.border,
+  },
+});
