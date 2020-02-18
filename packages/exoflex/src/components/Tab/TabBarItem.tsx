@@ -4,6 +4,7 @@ import {
   StyleSheet,
   StyleProp,
   TextStyle,
+  ViewStyle,
 } from 'react-native';
 import color from 'color';
 import Text from '../Text';
@@ -14,28 +15,31 @@ type TabBarItemProps = {
   index: number;
   title: string;
   onPress: () => void;
+  style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
 };
 
 export default function TabBarItem(props: TabBarItemProps) {
-  let { onPress, index, title } = props;
+  let { onPress, index, title, style, textStyle } = props;
   let { colors } = useTheme();
 
-  // NOTE: Handle custom background color later
-  let activeOpacity = color(colors.surface).isLight() ? 0.5 : 0.8;
+  let customStyle = StyleSheet.flatten(style);
+  let backgroundColor = customStyle?.backgroundColor || colors.primary;
 
-  let textStyle = {
-    // NOTE: Handle custom background color later
-    color: color(colors.surface).isLight() ? colors.text : colors.surface,
-  } as StyleProp<TextStyle>;
+  let activeOpacity = color(backgroundColor).isLight() ? 0.5 : 0.8;
+
+  let textColorStyle = {
+    color: color(backgroundColor).isLight() ? colors.text : colors.surface,
+  } as TextStyle;
 
   return (
     <TouchableOpacity
       key={index}
       activeOpacity={activeOpacity}
       onPress={onPress}
-      style={styles.item}
+      style={[styles.item, { backgroundColor }, style]}
     >
-      <Text style={textStyle}>{title}</Text>
+      <Text style={[textColorStyle, textStyle]}>{title}</Text>
     </TouchableOpacity>
   );
 }

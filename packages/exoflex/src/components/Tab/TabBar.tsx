@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ViewStyle,
+  StyleProp,
+  TextStyle,
+} from 'react-native';
 import TabItem from './TabBarItem';
 import TabIndicator from './TabIndicator';
 
@@ -7,10 +13,12 @@ type TabBarProps = {
   activeIndex: number;
   titles: Array<string>;
   onTabPress: (index: number) => void;
+  style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
 };
 
 export default function TabBar(props: TabBarProps) {
-  let { activeIndex, titles, onTabPress } = props;
+  let { activeIndex, titles, onTabPress, style, textStyle } = props;
 
   let [width, setWidth] = useState(0);
 
@@ -32,6 +40,8 @@ export default function TabBar(props: TabBarProps) {
           index={index}
           title={title}
           onPress={() => onTabPress(index)}
+          style={style}
+          textStyle={textStyle}
         />
       ))}
     </View>
