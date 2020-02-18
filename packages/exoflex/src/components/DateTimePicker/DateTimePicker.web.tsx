@@ -9,7 +9,7 @@ import IconButton from '../IconButton';
 import useTheme from '../../helpers/useTheme';
 
 import { Calendar } from '../Calendar';
-import { Subheading } from '../Typography';
+import { Subtitle } from '../Typography';
 import { useDateTimePicker } from './useDateTimePicker';
 import { DateTimePickerProps, DateTimePickerMode } from './types';
 
@@ -117,7 +117,7 @@ export function DatePicker(props: PickerProps) {
     <>
       {!!title && (
         <View style={[styles.headerWrapper, { borderColor: colors.border }]}>
-          <Subheading style={styles.headerText}>{title}</Subheading>
+          <Subtitle>{title}</Subtitle>
         </View>
       )}
       <Calendar
@@ -161,7 +161,7 @@ export function TimePickerContainer(props: PickerProps) {
               { borderColor: colors.border },
             ]}
           >
-            <Subheading style={styles.headerText}>{title}</Subheading>
+            <Subtitle>{title}</Subtitle>
           </View>
         )}
         <View style={{ alignItems: 'center' }}>
@@ -184,8 +184,6 @@ export function TimePickerContainer(props: PickerProps) {
   );
 }
 
-const HEADER_FONT_SIZE = 16;
-
 const styles = StyleSheet.create({
   modalContainer: {
     margin: 12,
@@ -197,9 +195,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomWidth: 1,
     paddingBottom: 11,
-  },
-  headerText: {
-    fontSize: HEADER_FONT_SIZE,
   },
   timeHeaderWrapper: {
     paddingBottom: 17, // NOTE: because of border
