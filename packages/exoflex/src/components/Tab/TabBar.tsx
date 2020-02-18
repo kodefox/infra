@@ -34,6 +34,7 @@ export default function TabBar(props: TabBarProps) {
 
   return (
     <View
+      accessibilityRole="tablist"
       onLayout={(event) => setWidth(event.nativeEvent.layout.width)}
       style={styles.tabBar}
     >
