@@ -55,14 +55,24 @@ function useTabDispatch() {
   return context;
 }
 
-function useTabSwipe() {
+function useTab() {
   let { scrollPercentage } = useTabState();
   let dispatch = useTabDispatch();
 
   let changeScrollPercentage = (scrollPercentage: number) =>
     dispatch({ type: 'CHANGE_SCROLL_PERCENTAGE', scrollPercentage });
 
-  return { scrollPercentage, changeScrollPercentage };
+  return {
+    scrollPercentage,
+    changeScrollPercentage,
+  };
 }
 
-export { useTabSwipe, TabProvider };
+export {
+  useTab,
+  TabProvider,
+  useTabState,
+  useTabDispatch,
+  TabStateContext,
+  TabDispatchContext,
+};
