@@ -33,6 +33,10 @@ export default function TabBarItem(props: TabBarItemProps) {
 
   return (
     <TouchableOpacity
+      accessible
+      accessibilityLabel={`Tab ${title}`}
+      accessibilityHint={`Change the screen to ${title}`}
+      accessibilityRole="tab"
       activeOpacity={activeOpacity}
       onPress={onPress}
       style={[styles.item, { backgroundColor }, style]}
