@@ -116,8 +116,7 @@ export default function TabContent(props: TabContentProps) {
         return (
           <View style={styles.fullWidth}>
             {React.createElement(scene, {
-              // NOTE: change to `jumpTo`
-              changeTabIndex: onIndexChange,
+              jumpTo: onIndexChange,
             })}
           </View>
         );
