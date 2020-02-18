@@ -15,7 +15,7 @@ import { DefaultTheme } from '../../constants/themes';
 import { IS_WEB } from '../../constants/platforms';
 import { TabScenes, TabScene } from './types';
 
-const { width: WINDOW_WIDTH } = Dimensions.get('window');
+const { width: WINDOW_WIDTH, height: WINDOW_HEIGHT } = Dimensions.get('window');
 
 type TabContentProps = {
   lazyLoad: boolean;
@@ -89,12 +89,13 @@ export default function TabContent(props: TabContentProps) {
         onMomentumScrollEnd={onMomentumScrollEnd}
         contentContainerStyle={contentContainerStyle}
       >
-        {scenes.map(({ scene, title }) =>
-          React.createElement(scene, {
-            changeTabIndex: onIndexChange,
-            key: title,
-          }),
-        )}
+        {scenes.map(({ scene, title }) => (
+          <View key={title} style={[styles.fullWidth, { flex: 1 }]}>
+            {React.createElement(scene, {
+              jumpTo: onIndexChange,
+            })}
+          </View>
+        ))}
       </ScrollView>
     );
   }
@@ -114,12 +115,12 @@ export default function TabContent(props: TabContentProps) {
           return (
             <View
               removeClippedSubviews={false}
-              style={[styles.fullWidth, styles.placeholder]}
+              style={[styles.fullWidth, styles.fullHeight, styles.placeholder]}
             />
           );
         }
         return (
-          <View style={styles.fullWidth}>
+          <View style={[styles.fullWidth, styles.fullHeight]}>
             {React.createElement(scene, {
               jumpTo: onIndexChange,
             })}
@@ -146,6 +147,9 @@ export default function TabContent(props: TabContentProps) {
 const styles = StyleSheet.create({
   fullWidth: {
     width: WINDOW_WIDTH,
+  },
+  fullHeight: {
+    height: WINDOW_HEIGHT,
   },
   placeholder: {
     backgroundColor: DefaultTheme.colors.border,
