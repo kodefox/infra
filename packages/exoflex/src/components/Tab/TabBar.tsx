@@ -46,7 +46,6 @@ export default function TabBar(props: TabBarProps) {
       {titles.map((title, index) => (
         <TabItem
           key={index}
-          index={index}
           title={title}
           onPress={() => onTabPress(index)}
           style={style}

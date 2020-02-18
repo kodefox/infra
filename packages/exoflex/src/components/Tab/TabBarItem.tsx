@@ -12,7 +12,6 @@ import Text from '../Text';
 import useTheme from '../../helpers/useTheme';
 
 type TabBarItemProps = {
-  index: number;
   title: string;
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
@@ -20,7 +19,7 @@ type TabBarItemProps = {
 };
 
 export default function TabBarItem(props: TabBarItemProps) {
-  let { onPress, index, title, style, textStyle } = props;
+  let { onPress, title, style, textStyle } = props;
   let { colors } = useTheme();
 
   let customStyle = StyleSheet.flatten(style);
@@ -34,7 +33,6 @@ export default function TabBarItem(props: TabBarItemProps) {
 
   return (
     <TouchableOpacity
-      key={index}
       activeOpacity={activeOpacity}
       onPress={onPress}
       style={[styles.item, { backgroundColor }, style]}
