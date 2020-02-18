@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { StyleSheet, ViewStyle } from 'react-native';
+import { StyleSheet, ViewStyle, StyleProp } from 'react-native';
 import Animated, { Easing } from 'react-native-reanimated';
+import color from 'color';
 
 import useTheme from '../../helpers/useTheme';
-import { useTabSwipe } from './useTabSwipe';
+import { useTab } from './useTab';
 
 import { IS_WEB } from '../../constants/platforms';
 
@@ -11,12 +12,13 @@ type TabIndicatorProps = {
   activeIndex: number;
   maxIndex: number;
   width: number;
+  style?: StyleProp<ViewStyle>;
 };
 
 export default function TabIndicator(props: TabIndicatorProps) {
-  let { width, activeIndex, maxIndex } = props;
+  let { width, activeIndex, maxIndex, style } = props;
   let { colors } = useTheme();
-  let { scrollPercentage } = useTabSwipe();
+  let { scrollPercentage } = useTab();
 
   let [animatedValue] = useState(new Animated.Value(0));
   let [skipFirstRender, setSkipFirstRender] = useState(true);
@@ -58,10 +60,12 @@ export default function TabIndicator(props: TabIndicatorProps) {
       };
   let indicatorStyle = {
     width,
-    backgroundColor: colors.text,
+    backgroundColor: color(colors.primary).isLight()
+      ? colors.text
+      : colors.surface,
     ...movement,
   } as ViewStyle;
-  let rootStyle = [styles.indicator, indicatorStyle] as ViewStyle;
+  let rootStyle = [styles.indicator, indicatorStyle, style] as ViewStyle;
 
   return <Animated.View style={rootStyle} />;
 }

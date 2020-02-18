@@ -10,7 +10,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { useTabSwipe } from './useTabSwipe';
+import { useTab } from './useTab';
 import { DefaultTheme } from '../../constants/themes';
 import { TabScenes, TabScene } from './types';
 
@@ -26,7 +26,7 @@ type TabContentProps = {
 
 export default function TabContent(props: TabContentProps) {
   let { lazyLoad, enableSwipe, activeIndex, scenes, onIndexChange } = props;
-  let { changeScrollPercentage } = useTabSwipe();
+  let { changeScrollPercentage } = useTab();
 
   let scrollView = useRef<ScrollView>(null);
   let flatList = useRef<FlatList<TabScene>>(null);

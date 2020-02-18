@@ -1,15 +1,9 @@
 import React, { useCallback } from 'react';
-import {
-  View,
-  StyleProp,
-  ViewStyle,
-  StyleSheet,
-  TextStyle,
-} from 'react-native';
+import { View, StyleProp, ViewStyle, TextStyle } from 'react-native';
 import TabBar from './TabBar';
 import TabContent from './TabContent';
 
-import { TabProvider } from './useTabSwipe';
+import { TabProvider } from './useTab';
 import { TabScenes } from './types';
 import { IS_ANDROID } from '../../constants/platforms';
 
@@ -23,6 +17,7 @@ type TabViewProps<T = any> = {
   style?: StyleProp<ViewStyle>;
   tabItemStyle?: StyleProp<ViewStyle>;
   tabItemTextStyle?: StyleProp<TextStyle>;
+  tabIndicatorStyle?: StyleProp<ViewStyle>;
 };
 
 const DEFAULT_SWIPE = IS_ANDROID;
@@ -37,6 +32,7 @@ export default function TabView(props: TabViewProps) {
     style,
     tabItemStyle,
     tabItemTextStyle,
+    tabIndicatorStyle,
   } = props;
 
   let titles = scenes.map(({ title }) => title);
@@ -54,6 +50,7 @@ export default function TabView(props: TabViewProps) {
           onTabPress={changeTabIndex}
           style={tabItemStyle}
           textStyle={tabItemTextStyle}
+          indicatorStyle={tabIndicatorStyle}
         />
         <TabContent
           lazyLoad={lazyLoad}
