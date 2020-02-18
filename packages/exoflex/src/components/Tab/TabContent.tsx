@@ -18,13 +18,14 @@ const { width: WINDOW_WIDTH } = Dimensions.get('window');
 
 type TabContentProps = {
   lazyLoad: boolean;
+  enableSwipe: boolean;
   activeIndex: number;
   scenes: TabScenes;
   onIndexChange: (index: number) => void;
 };
 
 export default function TabContent(props: TabContentProps) {
-  let { lazyLoad, activeIndex, scenes, onIndexChange } = props;
+  let { lazyLoad, enableSwipe, activeIndex, scenes, onIndexChange } = props;
   let { changeScrollPercentage } = useTabSwipe();
 
   let scrollView = useRef<ScrollView>(null);
@@ -75,6 +76,7 @@ export default function TabContent(props: TabContentProps) {
         horizontal
         pagingEnabled
         nestedScrollEnabled
+        scrollEnabled={enableSwipe}
         removeClippedSubviews={false}
         showsHorizontalScrollIndicator={false}
         bounces={false}
@@ -121,6 +123,7 @@ export default function TabContent(props: TabContentProps) {
           </View>
         );
       }}
+      scrollEnabled={enableSwipe}
       removeClippedSubviews={false}
       showsHorizontalScrollIndicator={false}
       bounces={false}
