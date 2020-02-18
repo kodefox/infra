@@ -8,8 +8,8 @@ export type DateTimePickerProps = Readonly<
     'onCancel' | 'onConfirm' | 'date' | 'mode' | 'is24Hour'
   > & {
     title?: string;
-    dateTitle?: string;
-    timeTitle?: string;
+    dateTitleWeb?: string;
+    timeTitleWeb?: string;
     mode?: DateTimePickerMode;
     date?: string;
     use24Hour?: boolean;

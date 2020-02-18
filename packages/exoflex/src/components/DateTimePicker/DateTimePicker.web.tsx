@@ -16,8 +16,8 @@ export default function DateTimePicker(props: DateTimePickerProps) {
     mode = 'datetime' as DateTimePickerMode,
     date = new Date().toISOString(),
     title,
-    dateTitle,
-    timeTitle,
+    dateTitleWeb,
+    timeTitleWeb,
     isVisible,
     use24Hour,
     onCancel,
@@ -44,7 +44,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
   let picker =
     activePicker === 'date' ? (
       <DatePicker
-        title={dateTitle || title}
+        title={dateTitleWeb || title}
         date={dateTime}
         minDate={minimumDate}
         maxDate={maximumDate}
@@ -53,7 +53,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
       />
     ) : (
       <TimePickerContainer
-        title={timeTitle || title}
+        title={timeTitleWeb || title}
         date={dateTime}
         use24Hour={use24Hour}
         onCancel={cancel}
@@ -113,9 +113,9 @@ export function DatePicker(props: PickerProps) {
 
   return (
     <>
-      {title && (
-        <View style={[styles.headerWrapper, { borderColor: '#e8e8e8' }]}>
-          <Text>{title}</Text>
+      {!!title && (
+        <View style={[styles.headerWrapper, { borderColor: colors.border }]}>
+          <Text style={styles.headerText}>{title}</Text>
         </View>
       )}
       <Calendar
@@ -151,15 +151,15 @@ export function TimePickerContainer(props: PickerProps) {
     <>
       <View style={{ marginTop: title ? 6 : 12 }}>
         {/* TODO: Handle format based on locale too */}
-        {title && (
+        {!!title && (
           <View
             style={[
               styles.headerWrapper,
               styles.timeHeaderWrapper,
-              { borderColor: '#e8e8e8' },
+              { borderColor: colors.border },
             ]}
           >
-            <Text>{title}</Text>
+            <Text style={styles.headerText}>{title}</Text>
           </View>
         )}
         <View style={{ alignItems: 'center' }}>
@@ -194,8 +194,10 @@ const styles = StyleSheet.create({
   headerWrapper: {
     alignItems: 'center',
     borderBottomWidth: 1,
-    fontSize: HEADER_FONT_SIZE,
     paddingBottom: 11,
+  },
+  headerText: {
+    fontSize: HEADER_FONT_SIZE,
   },
   timeHeaderWrapper: {
     paddingBottom: 17, // NOTE: because of border
