@@ -1,11 +1,15 @@
 import React, { useMemo, ReactNode } from 'react';
-import { Text as TextNative, TextProps, StyleSheet } from 'react-native';
+import {
+  Text as TextNative,
+  TextProps as TextPropsNative,
+  StyleSheet,
+} from 'react-native';
 
 import resolveTextStyle from '../helpers/resolveTextStyle';
 import useTheme from '../helpers/useTheme';
 import { FontWeight, FontStyle } from '../types';
 
-export type Props = TextProps & {
+export type TextProps = TextPropsNative & {
   children?: ReactNode;
   uppercase?: boolean;
   preset: string;
@@ -20,8 +24,8 @@ function Text({
   fontStyle,
   style,
   ...otherProps
-}: Props) {
-  let { colors, fonts } = useTheme();
+}: TextProps) {
+  let { colors, fonts, style: themeStyle } = useTheme();
 
   let resolvedTextStyle = useMemo(
     () => resolveTextStyle(fonts || {}, preset, weight, fontStyle),
@@ -35,6 +39,7 @@ function Text({
         resolvedTextStyle,
         { color: colors.text },
         isUppercase && styles.uppercaseLabel,
+        themeStyle?.text?.style,
         style,
       ]}
     />
