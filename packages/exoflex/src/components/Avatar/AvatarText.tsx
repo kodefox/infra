@@ -8,7 +8,7 @@ import useTheme from '../../helpers/useTheme';
 const DEFAULT_SIZE = 64;
 
 type PaperAvatarTextProps = ComponentProps<typeof PaperAvatar.Text>;
-type AvatarTextProps = Readonly<
+export type AvatarTextProps = Readonly<
   Omit<PaperAvatarTextProps, 'theme' | 'color'> & {
     labelStyle?: StyleProp<TextStyle>;
     textPreset?: string;
@@ -18,7 +18,7 @@ type AvatarTextProps = Readonly<
 export default function AvatarText(props: AvatarTextProps) {
   let { label, size = DEFAULT_SIZE, style, labelStyle, textPreset } = props;
 
-  let { colors } = useTheme();
+  let { colors, style: themeStyle } = useTheme();
 
   const { backgroundColor = colors.primary, ...restStyle } =
     StyleSheet.flatten(style) || {};
@@ -33,6 +33,7 @@ export default function AvatarText(props: AvatarTextProps) {
           backgroundColor,
         },
         styles.container,
+        themeStyle?.avatarText?.style,
         restStyle,
       ]}
     >
@@ -44,6 +45,7 @@ export default function AvatarText(props: AvatarTextProps) {
             fontSize: size / 2,
             lineHeight: size,
           },
+          themeStyle?.avatarText?.labelStyle,
           labelStyle,
         ]}
         numberOfLines={1}
