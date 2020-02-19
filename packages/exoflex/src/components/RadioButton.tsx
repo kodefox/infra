@@ -74,7 +74,7 @@ export default function RadioButton(props: Props) {
   let handlePress = () =>
     contextOnValueChange
       ? contextOnValueChange(value)
-      : onPress(!isChecked, value);
+      : onPress(!isChecked, value); // NOTE: `onPress` should returns nothing, so this behaviour should be changes in v4
 
   return (
     <TouchableOpacity
