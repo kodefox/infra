@@ -16,7 +16,7 @@ import AnimatedIcon from './AnimatedIcon';
 import Text from './Text';
 import useTheme from '../helpers/useTheme';
 
-type Props = {
+export type CollapsibleProps = {
   title: string;
   children: ReactNode;
   style?: StyleProp<ViewStyle>;
@@ -40,8 +40,8 @@ function Collapsible({
   renderIconRight,
   disabled,
   ...otherProps
-}: Props) {
-  let { colors } = useTheme();
+}: CollapsibleProps) {
+  let { colors, style: themeStyle } = useTheme();
   let [isCollapsed, setCollapsed] = useState(true);
 
   let toggleCollapsible = useCallback(() => {
@@ -70,17 +70,30 @@ function Collapsible({
           backgroundColor: colors.surface,
           borderColor: colors.border,
         },
+        themeStyle?.collapsible?.style,
         style,
       ]}
     >
       <TouchableOpacity
         activeOpacity={0.9}
         onPress={toggleCollapsible}
-        style={[styles.titleContainer, titleContainerStyle]}
+        style={[
+          styles.titleContainer,
+          themeStyle?.collapsible?.titleContainerStyle,
+          titleContainerStyle,
+        ]}
         disabled={disabled}
       >
         {!!renderIconLeft ? renderIconLeft(animatedValue) : null}
-        <Text style={[styles.title, titleStyle]}>{title}</Text>
+        <Text
+          style={[
+            styles.title,
+            themeStyle?.collapsible?.titleStyle,
+            titleStyle,
+          ]}
+        >
+          {title}
+        </Text>
         {Object.is(renderIconRight, null) ? null : !!renderIconRight ? (
           renderIconRight(animatedValue)
         ) : (
@@ -99,6 +112,7 @@ function Collapsible({
                     },
                   ],
                 },
+                themeStyle?.collapsible?.iconStyle,
                 iconStyle,
               ] as StyleProp<ViewStyle>
             }
@@ -107,7 +121,11 @@ function Collapsible({
       </TouchableOpacity>
       <CollapsibleBase
         collapsed={isCollapsed}
-        style={[styles.contentContainer, contentContainerStyle]}
+        style={[
+          styles.contentContainer,
+          themeStyle?.collapsible?.contentContainerStyle,
+          contentContainerStyle,
+        ]}
         {...otherProps}
       />
     </View>
