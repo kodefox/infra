@@ -19,7 +19,7 @@ export type ModeProps = 'info' | 'warning' | 'error' | 'success';
 
 type ColorsProps = Record<ModeProps, string>;
 
-type Props = {
+export type ToastProps = {
   /**
    * Will determine the icon and the color used for the Toast.
    */
@@ -50,8 +50,8 @@ function Toast({
   colors,
   textStyle,
   showIcon = true,
-}: Props) {
-  let { colors: themeColors } = useTheme();
+}: ToastProps) {
+  let { colors: themeColors, style: themeStyle } = useTheme();
 
   let [animatedVisibility, animatedValue] = useFadingAnimation(visible, {
     duration: 200,
@@ -82,12 +82,19 @@ function Toast({
                 },
               ],
             },
+            themeStyle?.toast?.style,
             style,
           ] as StyleProp<ViewStyle>
         }
       >
         {showIcon && <ToastIcon name={IconName[mode]} color={colors[mode]} />}
-        <Text style={[{ color: themeColors.surface }, textStyle]}>
+        <Text
+          style={[
+            { color: themeColors.surface },
+            themeStyle?.toast?.textStyle,
+            textStyle,
+          ]}
+        >
           {children}
         </Text>
       </Surface>
