@@ -7,6 +7,9 @@ export type DateTimePickerProps = Readonly<
     RNDateTimePickerProps,
     'onCancel' | 'onConfirm' | 'date' | 'mode' | 'is24Hour'
   > & {
+    title?: string;
+    dateTitleWeb?: string;
+    timeTitleWeb?: string;
     mode?: DateTimePickerMode;
     date?: string;
     use24Hour?: boolean;
