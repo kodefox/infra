@@ -6,7 +6,7 @@ import Text from './Text';
 import useTheme from '../helpers/useTheme';
 import useFadingAnimation from '../helpers/useFadingAnimation';
 
-type BadgeProps = Omit<OmitPaperTheme<typeof PaperBadge>, 'visible'> & {
+export type BadgeProps = Omit<OmitPaperTheme<typeof PaperBadge>, 'visible'> & {
   visible?: boolean;
   textPreset?: string;
 };
@@ -16,7 +16,7 @@ export default function Badge(props: BadgeProps) {
   let [animatedVisibility, animatedValue] = useFadingAnimation(visible, {
     duration: 150,
   });
-  let { colors } = useTheme();
+  let { colors, style: themeStyle } = useTheme();
   let { backgroundColor = colors.notification, ...restStyle } =
     StyleSheet.flatten(style) || {};
   let textColor = color(backgroundColor).isLight()
@@ -35,6 +35,7 @@ export default function Badge(props: BadgeProps) {
         numberOfLines={1}
         style={[
           styles.container,
+          themeStyle?.badge?.style,
           {
             borderRadius,
             backgroundColor,
