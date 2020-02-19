@@ -3,7 +3,7 @@ import { TouchableOpacity, Animated, StyleProp, ViewStyle } from 'react-native';
 
 import useTheme from '../helpers/useTheme';
 
-type Props = {
+export type SwithcProps = {
   value: boolean;
   onValueChange: (value?: boolean) => void;
   disabled: boolean;
@@ -14,9 +14,9 @@ type Props = {
 
 const MARGIN = 2;
 
-export default function Switch(props: Props) {
+export default function Switch(props: SwithcProps) {
   let { value, width, onValueChange, disabled, trackStyle, thumbStyle } = props;
-  let { colors } = useTheme();
+  let { colors, style: themeStyle } = useTheme();
   let [xValue] = useState(new Animated.Value(value ? 1 : 0));
 
   let thumbSize = width / 2 - 2 * MARGIN;
@@ -58,7 +58,11 @@ export default function Switch(props: Props) {
 
   return (
     <TouchableOpacity
-      style={[styles.track, trackStyle] as StyleProp<ViewStyle>}
+      style={
+        [styles.track, themeStyle?.switch?.trackStyle, trackStyle] as StyleProp<
+          ViewStyle
+        >
+      }
       activeOpacity={0.9}
       onPress={() => onValueChange(!value)}
       disabled={disabled}
@@ -73,6 +77,7 @@ export default function Switch(props: Props) {
               },
             ],
           },
+          themeStyle?.switch?.thumbStyle,
           thumbStyle,
         ]}
       />
