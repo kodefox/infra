@@ -1,19 +1,29 @@
 import React from 'react';
 import { Menu as PaperMenu } from 'react-native-paper';
 import Text from './Text';
+import useTheme from '../helpers/useTheme';
 
-type MenuProps = OmitPaperTheme<typeof PaperMenu>;
+export type MenuProps = OmitPaperTheme<typeof PaperMenu>;
 
 function Menu(props: MenuProps) {
-  return <PaperMenu {...props} />;
+  const { style: themeStyle } = useTheme();
+  let { style, contentStyle, ...otherProps } = props;
+  return (
+    <PaperMenu
+      {...otherProps}
+      style={[themeStyle?.menu?.style, style]}
+      contentStyle={[themeStyle?.menu?.contentStyle, contentStyle]}
+    />
+  );
 }
 
-type MenuItemProps = OmitPaperTheme<typeof PaperMenu.Item> & {
+export type MenuItemProps = OmitPaperTheme<typeof PaperMenu.Item> & {
   textPreset?: string;
 };
 
 export function MenuItem(props: MenuItemProps) {
-  let { title, textPreset, ...otherProps } = props;
+  const { style: themeStyle } = useTheme();
+  let { title, textPreset, style, ...otherProps } = props;
   return (
     <PaperMenu.Item
       title={
@@ -23,6 +33,7 @@ export function MenuItem(props: MenuItemProps) {
           title
         )
       }
+      style={[themeStyle?.menuItem?.style, style]}
       {...otherProps}
     />
   );
