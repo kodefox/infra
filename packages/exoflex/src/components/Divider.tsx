@@ -3,14 +3,14 @@ import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
 
 import useTheme from '../helpers/useTheme';
 
-type Props = {
+export type DividerProps = {
   mode?: 'horizontal' | 'vertical';
   style?: StyleProp<ViewStyle>;
   inset?: number;
 };
 
-export default function Divider(props: Props) {
-  let { colors } = useTheme();
+export default function Divider(props: DividerProps) {
+  let { colors, style: themeStyle } = useTheme();
   let { mode = 'horizontal', inset, style } = props;
 
   return (
@@ -18,6 +18,7 @@ export default function Divider(props: Props) {
       style={[
         mode === 'horizontal' ? styles.horizontal : styles.vertical,
         { backgroundColor: colors.border, marginLeft: inset },
+        themeStyle?.divider?.style,
         style,
       ]}
     />
