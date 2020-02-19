@@ -13,11 +13,11 @@ import MultiSlider, {
 
 import useTheme from '../helpers/useTheme';
 
-type Props = MultiSliderProps & {
+export type SliderProps = MultiSliderProps & {
   showLabel: boolean;
 };
 
-export default function Slider(props: Props) {
+export default function Slider(props: SliderProps) {
   let {
     values,
     markerContainerStyle,
@@ -27,10 +27,12 @@ export default function Slider(props: Props) {
     unselectedStyle,
     customMarker,
     showLabel,
+    containerStyle,
+    pressedMarkerStyle,
     ...otherProps
   } = props;
 
-  let { colors } = useTheme();
+  let { colors, style: themeStyle } = useTheme();
   let CustomMarker;
   if (showLabel) {
     CustomMarker = customMarker;
@@ -39,21 +41,37 @@ export default function Slider(props: Props) {
   return (
     <MultiSlider
       values={values}
-      markerContainerStyle={[styles.markerContainerStyle, markerContainerStyle]}
+      markerContainerStyle={[
+        styles.markerContainerStyle,
+        themeStyle?.slider?.markerContainerStyle,
+        markerContainerStyle,
+      ]}
       trackStyle={[
         { borderColor: colors.border },
         styles.trackStyle,
+        themeStyle?.slider?.trackStyle,
         trackStyle,
       ]}
-      selectedStyle={[{ backgroundColor: colors.primary }, selectedStyle]}
+      selectedStyle={[
+        { backgroundColor: colors.primary },
+        themeStyle?.slider?.selectedStyle,
+        selectedStyle,
+      ]}
       unselectedStyle={[
         { backgroundColor: colors.background },
+        themeStyle?.slider?.unselectedStyle,
         unselectedStyle,
       ]}
       markerStyle={[
         { borderColor: colors.primary, backgroundColor: colors.background },
         styles.markerStyle,
+        themeStyle?.slider?.markerStyle,
         markerStyle,
+      ]}
+      containerStyle={[themeStyle?.slider?.containerStyle, containerStyle]}
+      pressedMarkerStyle={[
+        themeStyle?.slider?.pressedMarkerStyle,
+        pressedMarkerStyle,
       ]}
       customMarker={CustomMarker}
       {...otherProps}
@@ -68,16 +86,34 @@ let DefaultMarker = ({
   pressedMarkerStyle,
   markerStyle,
 }: MarkerProps) => {
-  let { colors } = useTheme();
+  let { colors, style: themeStyle } = useTheme();
   return (
-    <View style={[styles.customMarkerContainer, pressed && { top: -17 }]}>
+    <View
+      style={[
+        styles.customMarkerContainer,
+        pressed && { top: -17 },
+        themeStyle?.slider?.markerContainerStyle,
+      ]}
+    >
       {pressed && <Tooltip value={currentValue} />}
       <TouchableHighlight>
         <View
           style={
             enabled
-              ? [styles.markerStyle, markerStyle, pressed && pressedMarkerStyle]
-              : [styles.markerStyle, { backgroundColor: colors.disabled }]
+              ? [
+                  styles.markerStyle,
+                  themeStyle?.slider?.markerStyle,
+                  markerStyle,
+                  ...(pressed && [
+                    themeStyle?.slider?.pressedMarkerStyle,
+                    pressedMarkerStyle,
+                  ]),
+                ]
+              : [
+                  styles.markerStyle,
+                  themeStyle?.slider?.markerStyle,
+                  { backgroundColor: colors.disabled },
+                ]
           }
         />
       </TouchableHighlight>
