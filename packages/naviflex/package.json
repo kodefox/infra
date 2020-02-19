@@ -8,14 +8,15 @@
   "types": "lib/typescript/index.d.ts",
   "author": "KodeFox",
   "license": "MIT",
-  "files": [
-    "lib/",
-    "src"
-  ],
+  "files": ["lib/", "src"],
   "scripts": {
     "build": "yarn bob build",
     "prepare": "yarn build",
-    "release": "release-it"
+    "release": "release-it",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint --max-warnings 0 \"src/**/*.{ts,tsx}\"",
+    "typecheck": "tsc --noEmit -p ."
   },
   "peerDependencies": {
     "@react-navigation/native": "^5.0.0",
@@ -25,19 +26,26 @@
     "@react-native-community/bob": "0.8.0",
     "@react-navigation/native": "5.0.9",
     "@types/hookrouter": "2.2.1",
+    "eslint": "6.8.0",
+    "eslint-config-kodefox": "0.2.1",
     "hookrouter": "1.2.3",
+    "prettier": "1.19.1",
     "release-it": "12.4.3",
     "tsconfig-kodefox": "1.0.1",
-    "tslint-config-kodefox": "1.1.1",
     "typescript": "3.8.3"
   },
   "@react-native-community/bob": {
     "source": "src",
     "output": "lib",
-    "targets": [
-      "commonjs",
-      "module",
-      "typescript"
-    ]
+    "targets": ["commonjs", "module", "typescript"]
+  },
+  "eslintConfig": {
+    "extends": "kodefox/react-native"
+  },
+  "prettier": {
+    "bracketSpacing": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always"
   }
 }
