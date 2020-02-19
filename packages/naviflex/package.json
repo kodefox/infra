@@ -16,7 +16,8 @@
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --max-warnings 0 \"src/**/*.{ts,tsx}\"",
-    "typecheck": "tsc --noEmit -p ."
+    "typecheck": "tsc --noEmit -p .",
+    "test": "yarn format:check && yarn lint && yarn typecheck"
   },
   "peerDependencies": {
     "@react-navigation/native": "^5.0.0",
