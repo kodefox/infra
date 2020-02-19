@@ -49,7 +49,11 @@ jobs:
                 if [[ ${orbname} != "eslint-config-kodefox" ]]; then
                   cd packages/${orbname}
                   yarn install --frozen-lockfile
-                  yarn test --silent --maxWorkers=4
+                  if [[ ${orbname} == "nafivlex" ]]; then
+                    yarn test
+                  else
+                    yarn test --silent --maxWorkers=4
+                  fi
                   cd ../..
                 else
                   echo "no need to test this project"
