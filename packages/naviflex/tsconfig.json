@@ -6,5 +6,5 @@
     "noEmit": false,
     "allowJs": false
   },
-  "exclude": ["example/", "lib/"]
+  "exclude": ["examples/", "lib/"]
 }
