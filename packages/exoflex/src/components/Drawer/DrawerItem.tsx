@@ -2,8 +2,9 @@ import React from 'react';
 import { StyleSheet, StyleProp, ViewStyle, TextStyle } from 'react-native';
 import { TouchableRipple, IconButton } from 'react-native-paper';
 import Text from '../Text';
+import useTheme from '../../helpers/useTheme';
 
-type Props = {
+export type DrawerItemProps = {
   label: string;
   active?: boolean;
   style?: StyleProp<ViewStyle>;
@@ -12,20 +13,26 @@ type Props = {
   onPress: () => void;
 };
 
-export default function DrawerItem(props: Props) {
+export default function DrawerItem(props: DrawerItemProps) {
+  const { style: themeStyle } = useTheme();
   let { label, labelStyle, active, style, icon, onPress } = props;
   return (
     <TouchableRipple
       onPress={onPress}
       style={[
         styles.container,
+        themeStyle?.drawerItem?.style,
         active && { backgroundColor: '#fafafa' },
         style,
       ]}
     >
       <>
         {icon && <IconButton icon={icon} style={styles.icon} />}
-        <Text style={[styles.label, labelStyle]}>{label}</Text>
+        <Text
+          style={[styles.label, themeStyle?.drawerItem?.labelStyle, labelStyle]}
+        >
+          {label}
+        </Text>
       </>
     </TouchableRipple>
   );
