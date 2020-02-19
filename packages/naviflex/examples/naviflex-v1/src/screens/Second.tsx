@@ -1,8 +1,7 @@
 import React from "react";
 import { View, Text, Button } from "react-native";
 
-// import { useNavigation } from "naviflex";
-import { useNavigation } from "../../../../src/navigation";
+import { useNavigation } from "naviflex";
 
 export default function SecondScreen() {
   let { navigate, goBack, getParam } = useNavigation();

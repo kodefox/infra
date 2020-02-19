@@ -26,7 +26,7 @@ module.exports = async function(env, argv) {
     "./node_modules/hookrouter"
   );
 
-  // Add rule to transform exoflex files before loading it.
+  // Add rule to transform naviflex files before loading it.
   config.module.rules = [
     {
       test: /\.tsx?$/,
