@@ -1,6 +1,6 @@
 {
   "name": "naviflex",
-  "version": "0.0.2",
+  "version": "1.0.0-alpha.1",
   "description": "KodeFox Infrastructure Multi-platform Navigation",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
