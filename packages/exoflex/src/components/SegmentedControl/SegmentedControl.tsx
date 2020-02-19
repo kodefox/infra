@@ -14,7 +14,7 @@ import { SegmentedControlMode } from './types';
 import { Mode } from './constants';
 
 // TODO: support icon
-type Props = {
+export type SegmentedControlProps = {
   mode: SegmentedControlMode;
   values: Array<string>;
   activeIndex: number;
@@ -29,7 +29,7 @@ type Props = {
   dividerWidth?: number;
 };
 
-export default function SegmentedControl(props: Props) {
+export default function SegmentedControl(props: SegmentedControlProps) {
   let {
     mode,
     values,
@@ -45,7 +45,7 @@ export default function SegmentedControl(props: Props) {
     dividerWidth: dividerWidthProp,
   } = props;
   let [segmentWidth, setSegmentWidth] = useState(0);
-  let { colors } = useTheme();
+  let { colors, style: themeStyle } = useTheme();
 
   let dividerWidth = mode === Mode.default ? 0 : dividerWidthProp || 1;
 
@@ -95,6 +95,7 @@ export default function SegmentedControl(props: Props) {
         styles.container,
         containerStyle,
         { borderColor: colors.border },
+        themeStyle?.segmentedControl?.style,
         style,
       ]}
     >
@@ -102,7 +103,7 @@ export default function SegmentedControl(props: Props) {
         mode={mode}
         width={segmentWidth}
         activeIndex={activeIndex}
-        style={indicatorStyle}
+        style={[themeStyle?.segmentedControl?.indicatorStyle, indicatorStyle]}
         dividerWidth={dividerWidth}
       />
       <Segments
@@ -111,9 +112,12 @@ export default function SegmentedControl(props: Props) {
         activeIndex={activeIndex}
         disabled={disabled}
         onIndexChange={onIndexChange}
-        style={segmentStyle}
-        textStyle={textStyle}
-        activeTextStyle={activeTextStyle}
+        style={[themeStyle?.segmentedControl?.segmentStyle, segmentStyle]}
+        textStyle={[themeStyle?.segmentedControl?.textStyle, textStyle]}
+        activeTextStyle={[
+          themeStyle?.segmentedControl?.activeTextStyle,
+          activeTextStyle,
+        ]}
         dividerColor={dividerColor}
         dividerWidth={dividerWidth}
       />
