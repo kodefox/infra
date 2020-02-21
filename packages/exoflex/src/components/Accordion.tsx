@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import BaseAccordion, {
-  AccordionProps,
+  AccordionProps as BaseAccordionProps,
 } from 'react-native-collapsible/Accordion';
 import { TouchableRipple } from 'react-native-paper';
 import { useAnimation } from 'react-native-animation-hooks';
@@ -27,11 +27,11 @@ type AdditionalHeaderProps = {
   iconStyle?: StyleProp<ViewStyle>;
 };
 
-type Title = {
+export type Title = {
   title?: string;
 };
 
-type Props<T> = Omit<AccordionProps<T>, 'renderHeader'> &
+export type AccordionProps<T> = Omit<BaseAccordionProps<T>, 'renderHeader'> &
   AdditionalHeaderProps & {
     renderHeader?: (
       content: T,
@@ -53,7 +53,7 @@ const ARROW_DIRECTION = {
   DOWN: 0.5,
 };
 
-export default function Accordion<T extends Title>(props: Props<T>) {
+export default function Accordion<T extends Title>(props: AccordionProps<T>) {
   let {
     activeSections,
     renderIconLeft,
@@ -64,9 +64,11 @@ export default function Accordion<T extends Title>(props: Props<T>) {
     renderHeader: renderHeaderProps,
     onChange,
     useRipple = false,
+    containerStyle,
+    sectionContainerStyle,
     ...otherProps
   } = props;
-  let { colors } = useTheme();
+  let { colors, style: themeStyle } = useTheme();
 
   let renderHeader = (content: T, index: number, isActive: boolean) => (
     <Header
@@ -75,9 +77,12 @@ export default function Accordion<T extends Title>(props: Props<T>) {
       isActive={isActive}
       renderIconLeft={renderIconLeft}
       renderIconRight={renderIconRight}
-      titleContainerStyle={titleContainerStyle}
-      titleStyle={titleStyle}
-      iconStyle={iconStyle}
+      titleContainerStyle={[
+        themeStyle?.accordion?.titleContainerStyle,
+        titleContainerStyle,
+      ]}
+      titleStyle={[themeStyle?.accordion?.titleStyle, titleStyle]}
+      iconStyle={[themeStyle?.accordion?.iconStyle, iconStyle]}
     />
   );
 
@@ -87,6 +92,7 @@ export default function Accordion<T extends Title>(props: Props<T>) {
 
   return (
     <BaseAccordion
+      containerStyle={[themeStyle?.accordion?.containerStyle, containerStyle]}
       activeSections={activeSections}
       onChange={onChange}
       touchableComponent={touchableComponent}
@@ -97,6 +103,8 @@ export default function Accordion<T extends Title>(props: Props<T>) {
           backgroundColor: colors.surface,
           borderColor: colors.border,
         },
+        themeStyle?.accordion?.sectionContainerStyle,
+        sectionContainerStyle,
       ]}
       {...otherProps}
     />

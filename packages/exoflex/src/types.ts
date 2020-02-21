@@ -22,6 +22,7 @@ import { TextProps } from './components/Text';
 import { TextInputProps } from './components/TextInput/types';
 import { TimePickerProps } from './components/TimePicker/types';
 import { ToastProps } from './components/Toast';
+import { AccordionProps, Title } from './components/Accordion';
 
 export type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends Array<infer U>
@@ -43,7 +44,14 @@ export type Theme = {
     textinput: boolean;
   };
   style?: {
-    // accordion
+    accordion: Pick<
+      AccordionProps<Title>,
+      | 'containerStyle'
+      | 'iconStyle'
+      | 'sectionContainerStyle'
+      | 'titleContainerStyle'
+      | 'titleStyle'
+    >;
     activityIndicator: Pick<ActivityIndicatorProps, 'style'>;
     avatarIcon: Pick<AvatarIconProps, 'style'>;
     avatarImage: Pick<AvatarImageProps, 'style'>;
