@@ -2,6 +2,8 @@ import React from 'react';
 import RNDateTimePicker from 'react-native-modal-datetime-picker';
 
 import { DateTimePickerProps, DateTimePickerMode } from './types';
+import useTheme from '../../helpers/useTheme';
+import { StyleSheet } from 'react-native';
 
 export default function DateTimePicker(props: DateTimePickerProps) {
   let {
@@ -12,8 +14,14 @@ export default function DateTimePicker(props: DateTimePickerProps) {
     use24Hour = false,
     locale,
     title,
+    cancelButtonContainerStyleIOS,
+    contentContainerStyleIOS,
+    datePickerContainerStyleIOS,
+    titleStyle,
     ...otherProps
   } = props;
+
+  const { style: themeStyle } = useTheme();
 
   return (
     <RNDateTimePicker
@@ -25,6 +33,22 @@ export default function DateTimePicker(props: DateTimePickerProps) {
       onCancel={() => onCancel()}
       onConfirm={(newDate) => onConfirm(newDate.toISOString())}
       headerTextIOS={title}
+      cancelButtonContainerStyleIOS={StyleSheet.flatten([
+        themeStyle?.dateTimePicker?.cancelButtonContainerStyleIOS,
+        cancelButtonContainerStyleIOS,
+      ])}
+      contentContainerStyleIOS={StyleSheet.flatten([
+        themeStyle?.dateTimePicker?.contentContainerStyleIOS,
+        contentContainerStyleIOS,
+      ])}
+      datePickerContainerStyleIOS={StyleSheet.flatten([
+        themeStyle?.dateTimePicker?.datePickerContainerStyleIOS,
+        datePickerContainerStyleIOS,
+      ])}
+      titleStyle={StyleSheet.flatten([
+        themeStyle?.dateTimePicker?.titleStyle,
+        titleStyle,
+      ])}
       {...otherProps}
     />
   );
