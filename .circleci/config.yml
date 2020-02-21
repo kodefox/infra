@@ -49,7 +49,7 @@ jobs:
                 if [[ ${orbname} != "eslint-config-kodefox" ]]; then
                   cd packages/${orbname}
                   yarn install --frozen-lockfile
-                  if [[ ${orbname} == "nafivlex" ]]; then
+                  if [[ ${orbname} == "naviflex" ]]; then
                     yarn test
                   else
                     yarn test --silent --maxWorkers=4
