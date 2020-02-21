@@ -4,20 +4,31 @@ import { RadioButton } from 'exoflex';
 
 function RadioButtonExample() {
   let [radioButtonValue, setRadioButtonValue] = useState(false);
+  let [radioButtonValue2, setRadioButtonValue2] = useState('');
 
   return (
     <ScrollView contentContainerStyle={styles.root}>
       <RadioButton
         checked={radioButtonValue}
+        value="first"
         label="Default Radio Button"
-        onPress={(newValue) => {
-          setRadioButtonValue(newValue);
+        onPress={(isChecked) => {
+          setRadioButtonValue(isChecked);
         }}
       />
       <RadioButton
         checked={radioButtonValue}
+        value="second"
         label="Disabled Radio Button"
         disabled={true}
+      />
+      <RadioButton
+        checked={radioButtonValue2 === 'third'}
+        value="third"
+        label="Default Radio Button"
+        onPress={(_isChecked, newValue) => {
+          setRadioButtonValue2(newValue);
+        }}
       />
     </ScrollView>
   );
