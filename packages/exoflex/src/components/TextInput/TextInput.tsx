@@ -11,7 +11,7 @@ import useTheme from '../../helpers/useTheme';
 import { TextInputProps } from './types';
 
 function TextInput(props: TextInputProps, ref: Ref<NativeTextInput>) {
-  let { uppercase: uppercaseTheme } = useTheme();
+  let { uppercase: uppercaseTheme, style: themeStyle } = useTheme();
   let {
     autoCorrect = false,
     disabled = false,
@@ -22,6 +22,10 @@ function TextInput(props: TextInputProps, ref: Ref<NativeTextInput>) {
     onFocus,
     onBlur,
     onChangeText,
+    containerStyle,
+    errorMessageStyle,
+    labelStyle,
+    style,
     ...otherProps
   } = props;
 
@@ -64,6 +68,13 @@ function TextInput(props: TextInputProps, ref: Ref<NativeTextInput>) {
   return mode === 'outlined' ? (
     <TextInputOutlined
       {...otherProps}
+      containerStyle={[themeStyle?.textInput?.containerStyle, containerStyle]}
+      errorMessageStyle={[
+        themeStyle?.textInput?.errorMessageStyle,
+        errorMessageStyle,
+      ]}
+      labelStyle={[themeStyle?.textInput?.labelStyle, labelStyle]}
+      style={[themeStyle?.textInput?.style, style]}
       ref={ref}
       showErrorIcon={showErrorIcon}
       uppercase={uppercase}
@@ -78,6 +89,13 @@ function TextInput(props: TextInputProps, ref: Ref<NativeTextInput>) {
   ) : (
     <TextInputFlat
       {...otherProps}
+      containerStyle={[themeStyle?.textInput?.containerStyle, containerStyle]}
+      errorMessageStyle={[
+        themeStyle?.textInput?.errorMessageStyle,
+        errorMessageStyle,
+      ]}
+      labelStyle={[themeStyle?.textInput?.labelStyle, labelStyle]}
+      style={[themeStyle?.textInput?.style, style]}
       ref={ref}
       showErrorIcon={showErrorIcon}
       uppercase={uppercase}
