@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@react-native-community/bob": "0.8.0",
-    "@react-navigation/native": "5.0.6",
+    "@react-navigation/native": "5.0.7",
     "@types/hookrouter": "2.2.1",
     "hookrouter": "1.2.3",
     "release-it": "12.4.3",
