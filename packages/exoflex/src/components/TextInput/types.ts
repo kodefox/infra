@@ -38,7 +38,7 @@ export type TextInputProps = BaseTextInputProps & {
    * Determine to use error icon or not.
    * Defaults to 'true'.
    */
-  useErrorIcon?: boolean;
+  showErrorIcon?: boolean;
   /**
    * Additional style passed to the container of the TextInput
    */
