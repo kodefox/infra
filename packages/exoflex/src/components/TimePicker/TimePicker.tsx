@@ -18,7 +18,7 @@ export default function TimePicker(props: TimePickerProps) {
     onChangeTime,
     style,
   } = props;
-  let { colors } = useTheme();
+  let { colors, style: themeStyle } = useTheme();
 
   let [visible, setVisible] = useState(false);
 
@@ -49,7 +49,11 @@ export default function TimePicker(props: TimePickerProps) {
             borderColor: colors.border,
             backgroundColor: colors.surface,
           }}
-          style={[{ backgroundColor: colors.surface }, style]}
+          style={[
+            { backgroundColor: colors.surface },
+            themeStyle?.timePicker?.style,
+            style,
+          ]}
         />
       </TouchableOpacity>
       <DateTimePicker
