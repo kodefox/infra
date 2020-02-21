@@ -14,6 +14,7 @@ Toast is an alert like component that shows from the bottom of the screen.
 | `mode`      | `'info' \| 'warning' \| 'error' \| 'success'` |                                          `'info'`                                          | Determine the color and icon to display.        |
 | `colors`    |            `Record<mode, string>`             | `{ info: Themes.colors.accent, warning: '#ffce00', error: '#dc544b', success: '#27a163' }` | Configure the color to use for each mode.       |
 | `visible *` |                   `boolean`                   |                                                                                            | Will only display the toast when set to `true`. |
+| `showIcon`  |                   `boolean`                   |                                           `true`                                           | Set to `false` to hide the icon.                |
 | `style`     |            `StyleProp<ViewStyle>`             |                                                                                            | Additional props passed to the toast container. |
 | `textStyle` |            `StyleProp<TextStyle>`             |                                                                                            | Additional props passed to the text.            |
 
@@ -31,6 +32,9 @@ If the root component has already been wrapped by `<Provider />`, then `<ToastCo
 | `message *` |                   `string`                    |          | Text to display in the toast.                  |
 | `mode`      | `'info' \| 'warning' \| 'error' \| 'success'` | `'info'` | Determine the color and icon to display.       |
 | `duration`  |                   `number`                    |  `4000`  | How long the toast stay in the screen (in ms). |
+| `showIcon`  |                   `boolean`                   |  `true`  | Show mode icon in the toast.                   |
+| `style`     |            `StyleProp<ViewStyle>`             |          | Style passed to the toast container.           |
+| `textStyle` |            `StyleProp<TextStyle>`             |          | Style passed to the toast message.             |
 
 - `hideToast()` - dismiss the currently visible toast. Does nothing when there's no visible toast.
 

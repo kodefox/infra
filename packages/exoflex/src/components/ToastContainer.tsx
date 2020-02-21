@@ -1,20 +1,25 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { StyleProp, ViewProps, TextStyle } from 'react-native';
 
 import Toast, { ModeProps } from './Toast';
 import EventEmitter from '../helpers/EventEmitter';
 
 export type ToastConfig = {
   message: string;
+  showIcon?: boolean;
   mode?: ModeProps;
   duration?: number;
+  style?: StyleProp<ViewProps>;
+  textStyle?: StyleProp<TextStyle>;
 };
 
 type EmitEvents = { showToast: ToastConfig; hideToast: undefined };
 
-let DefaultToastConfig = {
+let DefaultToastConfig: ToastConfig = {
   message: '',
   mode: 'info' as ModeProps,
   duration: 4000,
+  showIcon: true,
 };
 
 let ToastEmitter = EventEmitter.create<EmitEvents>();
@@ -58,7 +63,13 @@ function ToastContainer() {
   }, [onShowToast, onHideToast]);
 
   return (
-    <Toast visible={visible} mode={config.mode}>
+    <Toast
+      visible={visible}
+      mode={config.mode}
+      showIcon={config.showIcon}
+      style={config.style}
+      textStyle={config.textStyle}
+    >
       {config.message}
     </Toast>
   );
