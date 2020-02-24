@@ -6,18 +6,21 @@ import useTheme from '../helpers/useTheme';
 
 type PaperProgressBarProps = ComponentProps<typeof PaperProgressBar>;
 
-type Props = Omit<PaperProgressBarProps, 'animating' | 'theme'> & {
+export type ProgressBarProps = Omit<
+  PaperProgressBarProps,
+  'animating' | 'theme'
+> & {
   visible?: boolean;
 };
 
 let useNativeDriver = Platform.OS !== 'web';
 const INDETERMINATE_MAX_WIDTH = 0.6;
 
-export default function ProgressBar(props: Props) {
+export default function ProgressBar(props: ProgressBarProps) {
   let { progress = 0, color, visible, style, indeterminate } = props;
   let [animatedValue] = useState(new Animated.Value(0));
   let [width, setWidth] = useState(0);
-  let { colors, roundness } = useTheme();
+  let { colors, roundness, style: themeStyle } = useTheme();
 
   useEffect(() => {
     let animation: Animated.CompositeAnimation;
@@ -58,6 +61,7 @@ export default function ProgressBar(props: Props) {
     <View
       style={[
         styles.container,
+        themeStyle?.progressBar?.style,
         {
           height,
           borderRadius,

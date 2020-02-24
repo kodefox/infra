@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import Text, { Props as TextProps } from '../Text';
+import Text, { TextProps } from '../Text';
 
 type Props = TextProps;
 

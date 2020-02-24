@@ -8,14 +8,14 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import IconButton, { Props as IconButtonProps } from './IconButton';
+import IconButton, { IconButtonProps } from './IconButton';
 import Text from './Text';
 import useTheme from '../helpers/useTheme';
 
 type ModeProps = 'active' | 'inactive';
 type IconSource = IconButtonProps['icon'];
 
-type Props = TouchableOpacityProps & {
+export type ChipProps = TouchableOpacityProps & {
   mode: ModeProps;
   children?: string;
   textStyle?: StyleProp<TextStyle>;
@@ -32,8 +32,8 @@ function Chip({
   icon,
   iconStyle,
   ...otherProps
-}: Props) {
-  let { colors } = useTheme();
+}: ChipProps) {
+  let { colors, style: themeStyle } = useTheme();
 
   let isActive = mode === 'active';
 
@@ -52,6 +52,7 @@ function Chip({
               borderWidth: 1,
               backgroundColor: colors.surface,
             },
+        themeStyle?.chip?.style,
         style,
       ]}
       {...otherProps}
@@ -61,6 +62,7 @@ function Chip({
           {
             color: isActive ? colors.surface : colors.primary,
           },
+          themeStyle?.chip?.textStyle,
           textStyle,
         ]}
       >
@@ -71,7 +73,7 @@ function Chip({
           icon={icon}
           color={isActive ? colors.surface : colors.primary}
           size={18}
-          style={[styles.icon, iconStyle]}
+          style={[styles.icon, themeStyle?.chip?.iconStyle, iconStyle]}
         />
       )}
     </TouchableOpacity>

@@ -11,7 +11,7 @@ import useTheme from '../helpers/useTheme';
 import Text from './Text';
 import RadioButtonGroup, { RadioButtonContext } from './RadioButtonGroup';
 
-type Props = {
+export type RadioButtonProps = {
   /**
    * The text/string for the radio button
    */
@@ -50,7 +50,7 @@ type Props = {
   style?: StyleProp<ViewStyle>;
 };
 
-export default function RadioButton(props: Props) {
+export default function RadioButton(props: RadioButtonProps) {
   let {
     label,
     value,
@@ -62,7 +62,7 @@ export default function RadioButton(props: Props) {
     textStyle,
     style,
   } = props;
-  let { colors } = useTheme();
+  let { colors, style: themeStyle } = useTheme();
   let { value: contextValue, onValueChange: contextOnValueChange } = useContext(
     RadioButtonContext,
   );
@@ -86,6 +86,7 @@ export default function RadioButton(props: Props) {
       <View
         style={[
           styles.icon,
+          themeStyle?.radioButton?.style,
           {
             borderRadius: size / 2,
             width: size,
@@ -111,7 +112,11 @@ export default function RadioButton(props: Props) {
           />
         )}
       </View>
-      <Text style={[styles.text, textStyle]}>{label}</Text>
+      <Text
+        style={[styles.text, themeStyle?.radioButton?.textStyle, textStyle]}
+      >
+        {label}
+      </Text>
     </TouchableOpacity>
   );
 }

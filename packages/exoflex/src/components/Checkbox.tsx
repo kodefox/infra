@@ -12,7 +12,7 @@ import { DefaultTheme } from '../constants/themes';
 import useTheme from '../helpers/useTheme';
 import Check from './svg/Check';
 
-type Props = {
+export type CheckboxProps = {
   /**
    * The text/string for the checkbox
    */
@@ -47,7 +47,7 @@ type Props = {
   style?: StyleProp<ViewStyle>;
 };
 
-export default function Checkbox(props: Props) {
+export default function Checkbox(props: CheckboxProps) {
   let {
     size,
     checked,
@@ -58,7 +58,7 @@ export default function Checkbox(props: Props) {
     textStyle,
     style,
   } = props;
-  let { colors, roundness } = useTheme();
+  let { colors, roundness, style: themeStyle } = useTheme();
 
   return (
     <TouchableOpacity
@@ -70,6 +70,7 @@ export default function Checkbox(props: Props) {
       <View
         style={[
           styles.iconContainer,
+          themeStyle?.checkbox?.style,
           {
             borderRadius: roundness,
             width: size,
@@ -83,7 +84,9 @@ export default function Checkbox(props: Props) {
       >
         {checked && <Check size={size} fill="white" />}
       </View>
-      <Text style={[styles.text, textStyle]}>{label}</Text>
+      <Text style={[styles.text, themeStyle?.checkbox?.textStyle, textStyle]}>
+        {label}
+      </Text>
     </TouchableOpacity>
   );
 }
