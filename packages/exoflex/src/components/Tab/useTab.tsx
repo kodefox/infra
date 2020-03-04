@@ -1,78 +1,98 @@
-import React, { useContext, createContext, ReactNode, useReducer } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import Animated, { Easing } from 'react-native-reanimated';
+import {
+  PanGestureHandlerGestureEvent,
+  State,
+} from 'react-native-gesture-handler';
 
-type TabState = {
-  scrollPercentage: number;
+const { eq, neq, lessThan, greaterThan, cond, timing } = Animated;
+
+type useTabParams = {
+  width: number;
+  activeIndex: number;
+  totalScene: number;
+  onIndexChange: (index: number) => void;
 };
 
-type TabAction = {
-  type: 'CHANGE_SCROLL_PERCENTAGE';
-  scrollPercentage: number;
-};
+export function useTab(params: useTabParams) {
+  let { width, activeIndex, totalScene, onIndexChange } = params;
 
-type Dispatch = (action: TabAction) => void;
+  let [translationX] = useState(new Animated.Value<number>(0));
+  let [velocityX] = useState(new Animated.Value<number>(0));
+  let [left] = useState(new Animated.Value<number>(0));
 
-const INITIAL_STATE: TabState = {
-  scrollPercentage: 0,
-};
-
-function tabReducer(state: TabState, action: TabAction) {
-  switch (action.type) {
-    case 'CHANGE_SCROLL_PERCENTAGE':
-      let { scrollPercentage } = action;
-      return { ...state, scrollPercentage };
-    default:
-      return state;
-  }
-}
-
-const TabStateContext = createContext<TabState | null>(null);
-const TabDispatchContext = createContext<Dispatch | null>(null);
-
-function TabProvider(props: { children: ReactNode }) {
-  let [state, dispatch] = useReducer(tabReducer, INITIAL_STATE);
-  return (
-    <TabStateContext.Provider value={state}>
-      <TabDispatchContext.Provider value={dispatch}>
-        {props.children}
-      </TabDispatchContext.Provider>
-    </TabStateContext.Provider>
+  let transformStyle = useMemo(
+    () => ({
+      width: width * totalScene,
+      left,
+      transform: [
+        {
+          translateX: cond(
+            neq(left, 0),
+            cond(
+              eq(left, width * (totalScene - 1) * -1),
+              // disable translation to left when on the last scene and `translationX` < 0 (swiped left)
+              cond(lessThan(translationX, 0), 0, translationX),
+              translationX,
+            ),
+            // disable translation to right when `left` is 0 and `translationX` > 0 (swiped right)
+            cond(greaterThan(translationX, 0), 0, translationX),
+          ),
+        },
+      ],
+    }),
+    [width, activeIndex, totalScene], // eslint-disable-line react-hooks/exhaustive-deps
   );
-}
+  useEffect(() => {
+    timing(translationX, {
+      duration: 150,
+      toValue: 0,
+      easing: Easing.linear,
+    }).start();
+    timing(left, {
+      duration: 150,
+      toValue: width * activeIndex * -1,
+      easing: Easing.linear,
+    }).start();
+  }, [activeIndex, width]); // eslint-disable-line react-hooks/exhaustive-deps
 
-function useTabState() {
-  let context = useContext(TabStateContext);
-  if (!context) {
-    throw new Error('useTabState must be used within a TabProvider');
-  }
-  return context;
-}
+  let onPanGestureEvent = useCallback(
+    Animated.event([{ nativeEvent: { translationX, velocityX } }], {
+      useNativeDriver: true,
+    }),
+    [],
+  );
 
-function useTabDispatch() {
-  let context = useContext(TabDispatchContext);
-  if (!context) {
-    throw new Error('useTabDispatch must be used within a TabProvider');
-  }
-  return context;
-}
+  let slideBack = () => {
+    timing(translationX, {
+      duration: 150,
+      toValue: 0,
+      easing: Easing.linear,
+    }).start();
+  };
 
-function useTab() {
-  let { scrollPercentage } = useTabState();
-  let dispatch = useTabDispatch();
-
-  let changeScrollPercentage = (scrollPercentage: number) =>
-    dispatch({ type: 'CHANGE_SCROLL_PERCENTAGE', scrollPercentage });
+  let onHandlerStateChange = (e: PanGestureHandlerGestureEvent) => {
+    let { state, translationX, velocityX } = e.nativeEvent;
+    if (state === State.END) {
+      let halfWidth = width / 2;
+      if (Math.abs(velocityX) > 500 || Math.abs(translationX) >= halfWidth) {
+        let direction = translationX < 0 ? 'SWIPE_RIGHT' : 'SWIPE_LEFT';
+        let newIndex =
+          direction === 'SWIPE_RIGHT' ? activeIndex + 1 : activeIndex - 1;
+        newIndex >= 0 && newIndex < totalScene && onIndexChange(newIndex);
+        return;
+      }
+      slideBack();
+      return;
+    }
+  };
 
   return {
-    scrollPercentage,
-    changeScrollPercentage,
+    translationX,
+    velocityX,
+    left,
+    transformStyle,
+    onPanGestureEvent,
+    onHandlerStateChange,
   };
 }
-
-export {
-  useTab,
-  TabProvider,
-  useTabState,
-  useTabDispatch,
-  TabStateContext,
-  TabDispatchContext,
-};

@@ -3,7 +3,6 @@ import { View, StyleProp, ViewStyle, TextStyle } from 'react-native';
 import TabBar from './TabBar';
 import TabContent from './TabContent';
 
-import { TabProvider } from './useTab';
 import { TabScenes } from './types';
 import { IS_ANDROID } from '../../constants/platforms';
 
@@ -42,7 +41,7 @@ export default function TabView(props: TabViewProps) {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <TabProvider>
+    <>
       <View style={[{ flex: 1 }, style]}>
         <TabBar
           activeIndex={activeIndex}
@@ -60,6 +59,6 @@ export default function TabView(props: TabViewProps) {
           onIndexChange={changeTabIndex}
         />
       </View>
-    </TabProvider>
+    </>
   );
 }
