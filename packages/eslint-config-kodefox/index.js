@@ -49,12 +49,12 @@ module.exports = {
 
     // Import/export syntax (eslint-plugin-import)
     'import/no-useless-path-segments': [
-      'error',
+      'warn',
       {
         noUselessIndex: true,
       },
     ],
-    'import/order': ['error', { 'newlines-between': 'always' }],
+    'import/order': ['warn', { 'newlines-between': 'always' }],
 
     // Custom
     'array-callback-return': 'warn',
