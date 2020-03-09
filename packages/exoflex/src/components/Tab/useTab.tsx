@@ -8,6 +8,7 @@ import {
 const { eq, neq, lessThan, greaterThan, cond, timing } = Animated;
 
 type useTabParams = {
+  x: Animated.Value<number>;
   width: number;
   activeIndex: number;
   totalScene: number;
@@ -15,41 +16,41 @@ type useTabParams = {
 };
 
 export function useTab(params: useTabParams) {
-  let { width, activeIndex, totalScene, onIndexChange } = params;
+  let { x, width, activeIndex, totalScene, onIndexChange } = params;
 
   let [translationX] = useState(new Animated.Value<number>(0));
   let [velocityX] = useState(new Animated.Value<number>(0));
-  let [left] = useState(new Animated.Value<number>(0));
+
+  let translateX = useMemo(() => {
+    return cond(
+      neq(x, 0),
+      cond(
+        eq(x, width * (totalScene - 1) * -1),
+        // disable translation to left when on the last scene and `translationX` < 0 (swiped left)
+        cond(lessThan(translationX, 0), 0, translationX),
+        translationX,
+      ),
+      // disable translation to right when `left` is 0 and `translationX` > 0 (swiped right)
+      cond(greaterThan(translationX, 0), 0, translationX),
+    );
+  }, [activeIndex, totalScene, width]); // eslint-disable-line react-hooks/exhaustive-deps
 
   let transformStyle = useMemo(
     () => ({
       width: width * totalScene,
-      left,
-      transform: [
-        {
-          translateX: cond(
-            neq(left, 0),
-            cond(
-              eq(left, width * (totalScene - 1) * -1),
-              // disable translation to left when on the last scene and `translationX` < 0 (swiped left)
-              cond(lessThan(translationX, 0), 0, translationX),
-              translationX,
-            ),
-            // disable translation to right when `left` is 0 and `translationX` > 0 (swiped right)
-            cond(greaterThan(translationX, 0), 0, translationX),
-          ),
-        },
-      ],
+      left: x,
+      transform: [{ translateX }],
     }),
-    [width, activeIndex, totalScene], // eslint-disable-line react-hooks/exhaustive-deps
+    [width, activeIndex, totalScene, translateX], // eslint-disable-line react-hooks/exhaustive-deps
   );
+
   useEffect(() => {
     timing(translationX, {
       duration: 150,
       toValue: 0,
       easing: Easing.linear,
     }).start();
-    timing(left, {
+    timing(x, {
       duration: 150,
       toValue: width * activeIndex * -1,
       easing: Easing.linear,
@@ -90,7 +91,6 @@ export function useTab(params: useTabParams) {
   return {
     translationX,
     velocityX,
-    left,
     transformStyle,
     onPanGestureEvent,
     onHandlerStateChange,
