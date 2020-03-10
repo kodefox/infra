@@ -20,6 +20,7 @@ export { default as Portal } from './Portal';
 export { default as ProgressBar } from './ProgressBar';
 export { default as Provider } from './Provider';
 export { default as RadioButton } from './RadioButton';
+export { default as RichRadioButton } from './RichRadioButton';
 export { default as SegmentedControl } from './SegmentedControl/SegmentedControl';
 export { default as Slider } from './Slider';
 export { default as Switch } from './Switch';

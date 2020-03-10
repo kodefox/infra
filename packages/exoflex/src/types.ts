@@ -15,6 +15,7 @@ import { IconButtonProps } from './components/IconButton';
 import { MenuProps, MenuItemProps } from './components/Menu';
 import { ProgressBarProps } from './components/ProgressBar';
 import { RadioButtonProps } from './components/RadioButton';
+import { RichRadioButtonProps } from './components/RichRadioButton';
 import { SegmentedControlProps } from './components/SegmentedControl/SegmentedControl';
 import { SliderProps } from './components/Slider';
 import { SwithcProps } from './components/Switch';
@@ -31,6 +32,7 @@ export type DeepPartial<T> = {
     ? ReadonlyArray<DeepPartial<U>>
     : DeepPartial<T[P]>;
 };
+
 export type Theme = {
   fonts: Fonts;
   colors: Colors;
@@ -83,6 +85,10 @@ export type Theme = {
     menuItem: Pick<MenuItemProps, 'style'>;
     progressBar: Pick<ProgressBarProps, 'style'>;
     radioButton: Pick<RadioButtonProps, 'style' | 'textStyle'>;
+    richRadioButton: Pick<
+      RichRadioButtonProps,
+      'style' | 'contentContainerStyle' | 'itemStyle' | 'textStyle'
+    >;
     segmentedControl: Pick<
       SegmentedControlProps,
       | 'activeTextStyle'
