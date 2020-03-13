@@ -5,9 +5,7 @@
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
   "types": "lib/typescript/src/index.d.ts",
-  "files": [
-    "lib/"
-  ],
+  "files": ["lib/"],
   "author": "KodeFox",
   "license": "MIT",
   "scripts": {
@@ -80,14 +78,8 @@
   "@react-native-community/bob": {
     "source": "src",
     "output": "lib",
-    "targets": [
-      "commonjs",
-      "module",
-      "typescript"
-    ],
-    "files": [
-      "src/"
-    ]
+    "targets": ["commonjs", "module", "typescript"],
+    "files": ["src/"]
   },
   "eslintConfig": {
     "extends": "kodefox/react-native"
@@ -97,5 +89,8 @@
     "singleQuote": true,
     "trailingComma": "all",
     "arrowParens": "always"
+  },
+  "resolutions": {
+    "micromatch": "^3.0.0"
   }
 }
