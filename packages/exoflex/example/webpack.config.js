@@ -22,31 +22,16 @@ module.exports = async function(env, argv) {
    * @see https://stackoverflow.com/questions/57455200/cant-use-hooks-with-my-react-component-library-invariant-violation-invalid-hoo
    */
   config.resolve.alias['react'] = path.resolve('./node_modules/react');
-  config.resolve.alias['@ptomasroos/react-native-multi-slider'] = path.resolve(
-    './node_modules/react-native-multi-slider',
-  );
-  config.resolve.alias['@unimodules/core'] = path.resolve(
-    './node_modules/@unimodules/core',
-  );
-  config.resolve.alias['expo-asset'] = path.resolve(
-    './node_modules/expo-asset',
-  );
-  config.resolve.alias['expo-constants'] = path.resolve(
-    './node_modules/expo-constants',
-  );
-  config.resolve.alias['expo-font'] = path.resolve('./node_modules/expo-font');
-  config.resolve.alias['react-native-web/dist/exports'] = path.resolve(
-    './node_modules/react-native-web/dist/exports',
-  );
-  config.resolve.alias['react-native-svg'] = path.resolve(
-    './node_modules/react-native-svg',
-  );
-  config.resolve.alias['@expo/vector-icons'] = path.resolve(
-    './node_modules/@expo/vector-icons',
-  );
-  config.resolve.alias['react-native-calendars'] = path.resolve(
-    './node_modules/react-native-calendars',
-  );
+
+  [
+    '@unimodules/core',
+    '@expo/vector-icons',
+    'expo-asset',
+    'expo-font',
+    'react-native-web/dist/exports',
+  ].forEach((module) => {
+    config.resolve.alias[module] = path.resolve('./node_modules/' + module);
+  });
 
   // Add rule to transform exoflex files before loading it.
   config.module.rules = [
