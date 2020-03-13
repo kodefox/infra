@@ -91,6 +91,6 @@
     "arrowParens": "always"
   },
   "resolutions": {
-    "micromatch": "^3.0.0"
+    "micromatch": "^4.0.0"
   }
 }
