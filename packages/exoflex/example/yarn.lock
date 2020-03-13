@@ -8851,10 +8851,10 @@ react-native-animation-hooks@1.0.1:
   resolved "https://registry.yarnpkg.com/react-native-animation-hooks/-/react-native-animation-hooks-1.0.1.tgz#fcda58867d708084cc63c6fcd001f5375a40f45b"
   integrity sha512-s1o71m9sPpEYwFpHTdBouO50jzvyxIVB4MmNwfVGgPWkdL02zKOzyXcNuPJmoCuLIstUj5TBEwtnGk1WMFJx5A==
 
-react-native-calendars@1.260.0:
-  version "1.260.0"
-  resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.260.0.tgz#d3decc6dd38051ed7dd90a33a5ead29c87a09a4f"
-  integrity sha512-PPElud4eq/YhqKU1cTNcAkdFpMmfcN0bY/kc+kEiLKnRaV+a6BICURPqzSSbNxNuD857g8FjOEjVCq+8Wt/8Ng==
+react-native-calendars@1.264.0:
+  version "1.264.0"
+  resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.264.0.tgz#552cfff1480ab6c860f54e12ec2b82f9b514aae6"
+  integrity sha512-NHNekv1iwHMI+evr8dDLFqCdvnCWGlBxPKO0/bw1+HDy4uukuab//akoOx9/GGl/3+XV6MVTLdda+qjT6pD2Bg==
   dependencies:
     hoist-non-react-statics "^3.3.1"
     lodash "^4.0.0"
