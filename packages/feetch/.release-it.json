@@ -1,0 +1,17 @@
+{
+  "npm": {
+    "publish": true
+  },
+  "github": {
+    "release": true,
+    "releaseName": "Feetch ${version}"
+  },
+  "git": {
+    "pushRepo": "upstream",
+    "requireUpstream": false,
+    "commitMessage": "release(feetch): ${version}",
+    "tagAnnotation": "Feetch ${version}",
+    "tagName": "feetch-${version}",
+    "changelog": "git log --pretty=format:\"* %s (%h)\" ${latestTag}...HEAD | grep -F \"(feetch):\""
+  }
+}
