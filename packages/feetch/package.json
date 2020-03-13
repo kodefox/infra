@@ -1,6 +1,6 @@
 {
   "name": "feetch",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "KodeFox fetching library for REST API",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
