@@ -7,7 +7,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['eslint-comments', 'import', 'prettier'],
+  plugins: ['eslint-comments', 'import', 'import-helpers', 'prettier'],
   extends: [
     'plugin:@typescript-eslint/recommended',
     'prettier',
@@ -54,7 +54,18 @@ module.exports = {
         noUselessIndex: true,
       },
     ],
-    'import/order': ['warn', { 'newlines-between': 'always' }],
+    'import-helpers/order-imports': [
+      'warn',
+      {
+        newlinesBetween: 'always',
+        groups: [
+          'module',
+          ['parent', 'sibling', 'index'],
+          ['//use[A-Z].*/', '//helper(s?)/'],
+          ['//constant(s?)/', '/type(s?)/'],
+        ],
+      },
+    ],
 
     // Custom
     'array-callback-return': 'warn',
