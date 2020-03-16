@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Provider from '../Provider';
 import { render, fireEvent, act } from 'react-native-testing-library';
+
+import Provider from '../Provider';
 import '../../../test/customFireEvent.web';
 import RichRadioButton from '../RichRadioButton';
 import Text from '../Text';

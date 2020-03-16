@@ -6,6 +6,7 @@ import { DateObject } from 'react-native-calendars';
 import { Calendar } from '../Calendar';
 import TimePicker from '../TimePicker/TimePicker.web';
 import Text from '../Text';
+import { Subtitle } from '../Typography';
 import IconButton from '../IconButton';
 import useTheme from '../../helpers/useTheme';
 

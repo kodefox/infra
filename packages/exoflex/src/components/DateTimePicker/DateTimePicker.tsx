@@ -1,9 +1,10 @@
 import React from 'react';
 import RNDateTimePicker from 'react-native-modal-datetime-picker';
+import { StyleSheet } from 'react-native';
+
+import useTheme from '../../helpers/useTheme';
 
 import { DateTimePickerProps, DateTimePickerMode } from './types';
-import useTheme from '../../helpers/useTheme';
-import { StyleSheet } from 'react-native';
 
 export default function DateTimePicker(props: DateTimePickerProps) {
   let {
