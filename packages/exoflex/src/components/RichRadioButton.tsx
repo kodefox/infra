@@ -54,7 +54,7 @@ export default function RichRadioButton(props: RichRadioButtonProps) {
   let combinedTextStyle = [
     themeStyle?.richRadioButton?.textStyle,
     textStyle,
-  ] as ViewStyle;
+  ] as TextStyle;
 
   return (
     <ScrollView
@@ -77,13 +77,11 @@ export default function RichRadioButton(props: RichRadioButtonProps) {
             key={item.label}
             activeOpacity={0.7}
             onPress={() => onValueChanged(item.value)}
-            style={
-              [
-                combinedItemStyle,
-                isFirstItem && firstItemStyle,
-                isSelected && selectedStyle,
-              ] as ViewStyle
-            }
+            style={[
+              combinedItemStyle,
+              isFirstItem && firstItemStyle,
+              isSelected && selectedStyle,
+            ]}
           >
             {!!renderCustomItemContent ? (
               renderCustomItemContent(item.label)
