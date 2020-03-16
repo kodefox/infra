@@ -27,6 +27,7 @@ export {
   ProgressBar,
   Provider,
   RadioButton,
+  RichRadioButton,
   SegmentedControl,
   Slider,
   Switch,
