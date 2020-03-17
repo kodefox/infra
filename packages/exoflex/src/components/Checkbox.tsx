@@ -45,6 +45,10 @@ export type CheckboxProps = {
    * Additional style for the checkbox container
    */
   style?: StyleProp<ViewStyle>;
+  /**
+   * Selector for testing purpose (especially e2e test)
+   */
+  testID?: string;
 };
 
 export default function Checkbox(props: CheckboxProps) {
@@ -57,6 +61,7 @@ export default function Checkbox(props: CheckboxProps) {
     label,
     textStyle,
     style,
+    testID,
   } = props;
   let { colors, roundness, style: themeStyle } = useTheme();
 
@@ -66,6 +71,7 @@ export default function Checkbox(props: CheckboxProps) {
       onPress={() => onPress(!checked)}
       disabled={disabled}
       activeOpacity={0.7}
+      testID={testID}
     >
       <View
         style={[

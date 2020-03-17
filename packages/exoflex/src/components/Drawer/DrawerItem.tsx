@@ -11,11 +11,12 @@ export type DrawerItemProps = {
   labelStyle?: StyleProp<TextStyle>;
   icon?: string;
   onPress: () => void;
+  testID?: string;
 };
 
 export default function DrawerItem(props: DrawerItemProps) {
   const { style: themeStyle } = useTheme();
-  let { label, labelStyle, active, style, icon, onPress } = props;
+  let { label, labelStyle, active, style, icon, onPress, testID } = props;
   return (
     <TouchableRipple
       onPress={onPress}
@@ -25,6 +26,7 @@ export default function DrawerItem(props: DrawerItemProps) {
         active && { backgroundColor: '#fafafa' },
         style,
       ]}
+      testID={testID}
     >
       <>
         {icon && <IconButton icon={icon} style={styles.icon} />}
