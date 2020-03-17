@@ -1,7 +1,7 @@
 import {
   useNavigation as useBaseNavigation,
-  useRoute
-} from "@react-navigation/native";
+  useRoute,
+} from '@react-navigation/native';
 
 export function useNavigation() {
   let { navigate, replace, goBack } = useBaseNavigation();
@@ -9,7 +9,7 @@ export function useNavigation() {
 
   let getParam = (
     paramName: string,
-    fallback?: string | number | null | undefined
+    fallback?: string | number | null | undefined,
   ) => {
     let param = (params ?? {}) as Record<
       string,
