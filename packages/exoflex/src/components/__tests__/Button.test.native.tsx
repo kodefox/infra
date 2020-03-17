@@ -6,11 +6,13 @@ import Text from '../Text';
 
 describe('Button', () => {
   it('should render normally', () => {
-    let { getByText } = render(
+    let { getByText, getByTestId } = render(
       <Provider>
-        <Button preset="primary">This is primary button</Button>
+        <Button testID="defaultButton" preset="primary">
+          This is primary button
+        </Button>
         <Button preset="secondary">This is secondary button</Button>
-        <Button useRipple preset="primary">
+        <Button testID="rippleButton" useRipple preset="primary">
           Primary ripple
         </Button>
         <Button useRipple preset="secondary">
@@ -22,6 +24,8 @@ describe('Button', () => {
     expect(getByText('This is secondary button')).toBeTruthy();
     expect(getByText('Primary ripple')).toBeTruthy();
     expect(getByText('Secondary ripple')).toBeTruthy();
+    expect(getByTestId('defaultButton')).toBeTruthy();
+    expect(getByTestId('rippleButton')).toBeTruthy();
   });
 
   it('should render normally with icon', () => {
@@ -41,15 +45,23 @@ describe('Button', () => {
 
   it('should run onPress', () => {
     let mockPress = jest.fn();
-    let { getByText } = render(
+    let { getByText, getByTestId } = render(
       <Provider>
-        <Button preset="invisible" color="red" onPress={mockPress}>
+        <Button
+          testID="button"
+          preset="invisible"
+          color="red"
+          onPress={mockPress}
+        >
           Press me!
         </Button>
       </Provider>,
     );
     fireEvent.press(getByText('Press me!'));
     expect(mockPress).toBeCalledTimes(1);
+
+    fireEvent.press(getByTestId('button'));
+    expect(mockPress).toBeCalledTimes(2);
   });
 
   it('should render disabled', () => {

@@ -5,11 +5,12 @@ import Badge from '../Badge';
 
 describe('Badge', () => {
   it('should render badge properly', () => {
-    let { getByText } = render(
+    let { getByText, getByTestId } = render(
       <Provider>
-        <Badge>2</Badge>
+        <Badge testID="badge">2</Badge>
       </Provider>,
     );
     expect(getByText('2')).toBeTruthy();
+    expect(getByTestId('badge')).toBeTruthy();
   });
 });

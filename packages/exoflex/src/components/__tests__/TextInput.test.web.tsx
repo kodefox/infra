@@ -7,20 +7,31 @@ describe('TextInput', () => {
   it('should render the label properly', () => {
     let App = () => (
       <>
-        <TextInput label="Label for Outlined" value="Cool" />
+        <TextInput
+          testID="outlinedInput"
+          label="Label for Outlined"
+          value="Cool"
+        />
         <TextInput
           label="Label for Outlined (Disabled)"
           value="Cool"
           disabled
         />
-        <TextInput mode="flat" label="Label for Flat" value="Cool" />
+        <TextInput
+          testID="flatInput"
+          mode="flat"
+          label="Label for Flat"
+          value="Cool"
+        />
       </>
     );
 
-    let { getByText } = render(<App />);
+    let { getByText, getByTestId } = render(<App />);
     expect(getByText('Label for Outlined')).toBeTruthy();
     expect(getByText('Label for Outlined (Disabled)')).toBeTruthy();
     expect(getByText('Label for Flat')).toBeTruthy();
+    expect(getByTestId('outlinedInput')).toBeTruthy();
+    expect(getByTestId('flatInput')).toBeTruthy();
   });
 
   it('should render the error message', () => {
@@ -77,11 +88,13 @@ describe('TextInput', () => {
     let App = () => (
       <>
         <TextInput
+          testID="outlinedInput"
           label="Label"
           value="Cool Outlined"
           onChangeText={onChangeOutlinedMock}
         />
         <TextInput
+          testID="flatInput"
           mode="flat"
           label="Label"
           value="Cool Flat"
@@ -90,7 +103,7 @@ describe('TextInput', () => {
       </>
     );
 
-    let { getByDisplayValue } = render(<App />);
+    let { getByDisplayValue, getByTestId } = render(<App />);
     fireEvent.change(getByDisplayValue('Cool Outlined'), {
       target: { value: 'bar' },
     });
@@ -100,6 +113,16 @@ describe('TextInput', () => {
 
     expect(onChangeOutlinedMock).toHaveBeenCalledWith('bar');
     expect(onChangeFlatMock).toHaveBeenCalledWith('foo');
+
+    fireEvent.change(getByTestId('outlinedInput'), {
+      target: { value: 'bar bar' },
+    });
+    fireEvent.change(getByTestId('flatInput'), {
+      target: { value: 'foo foo' },
+    });
+
+    expect(onChangeOutlinedMock).toHaveBeenCalledWith('bar bar');
+    expect(onChangeFlatMock).toHaveBeenCalledWith('foo foo');
   });
 
   it('should handle focus and blur properly', () => {

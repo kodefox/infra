@@ -5,7 +5,7 @@ import RichRadioButton from '../RichRadioButton';
 import Text from '../Text';
 
 const SIZES = [
-  { label: 'S', value: 'small' },
+  { label: 'S', value: 'small', testID: 'small' },
   { label: 'M', value: 'medium' },
   { label: 'L', value: 'large' },
 ];
@@ -51,7 +51,7 @@ describe('RichRadioButton', () => {
         </Provider>
       );
     };
-    let { getByText } = render(<App />);
+    let { getByText, getByTestId } = render(<App />);
 
     expect(getByText('S')).toBeTruthy();
     expect(getByText('M')).toBeTruthy();
@@ -59,8 +59,10 @@ describe('RichRadioButton', () => {
     expect(newSize).toBe('');
 
     act(() => fireEvent.press(getByText('M')));
-
     expect(newSize).toBe('medium');
+
+    act(() => fireEvent.press(getByTestId('small')));
+    expect(newSize).toBe('small');
   });
 
   it('should render custom item content properly', () => {
