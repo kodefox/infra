@@ -4,7 +4,7 @@ import { Record, Number, String } from 'runtypes';
 import fetchMock from 'fetch-mock';
 import 'isomorphic-fetch';
 
-import { createClient, useQuery, ClientContextProvider } from '../index';
+import { createClient, useQuery, ClientContextProvider } from '..';
 
 let client = createClient({});
 
