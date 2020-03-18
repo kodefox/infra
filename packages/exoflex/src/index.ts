@@ -49,3 +49,6 @@ export {
   Label,
   Caption,
 } from './components/Typography';
+
+// Hooks
+export { default as useTheme } from './helpers/useTheme';
