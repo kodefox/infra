@@ -1,5 +1,4 @@
 import { useQuery as useLibraryQuery, Action } from 'react-fetching-library';
-
 import { Runtype } from 'runtypes';
 
 type QueryOption<T> = {

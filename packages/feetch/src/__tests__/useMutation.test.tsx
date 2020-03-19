@@ -4,7 +4,7 @@ import { Record, String } from 'runtypes';
 import fetchMock from 'fetch-mock';
 import 'isomorphic-fetch';
 
-import { createClient, useMutation, ClientContextProvider, Action } from '../';
+import { createClient, useMutation, ClientContextProvider, Action } from '..';
 
 let client = createClient({});
 let FetchProvider: ComponentType = ({ children }: { children?: ReactNode }) => (

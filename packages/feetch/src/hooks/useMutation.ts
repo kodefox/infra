@@ -3,7 +3,6 @@ import {
   Action,
 } from 'react-fetching-library';
 import { UseMutationResponse as UseLibraryMutationResponse } from 'react-fetching-library/lib/client/client.types';
-
 import { Runtype } from 'runtypes';
 
 type ActionCreator<S, R> = (action: S) => Action<R>;
