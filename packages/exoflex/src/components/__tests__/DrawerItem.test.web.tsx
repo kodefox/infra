@@ -8,12 +8,13 @@ const emptyFn = () => {};
 
 describe('DrawerItem', () => {
   it('should render normally', () => {
-    let { getByText } = render(
+    let { getByText, getByTestId } = render(
       <Provider>
-        <DrawerItem label="First menu" onPress={emptyFn} />
+        <DrawerItem testID="item" label="First menu" onPress={emptyFn} />
       </Provider>,
     );
     expect(getByText('First menu')).toBeTruthy();
+    expect(getByTestId('item')).toBeTruthy();
   });
 
   it('should render normally with icon', () => {
@@ -27,12 +28,20 @@ describe('DrawerItem', () => {
 
   it('should run onPress', () => {
     let mockPress = jest.fn();
-    let { getByText } = render(
+    let { getByText, getByTestId } = render(
       <Provider>
-        <DrawerItem label="First menu" icon="home" onPress={mockPress} />
+        <DrawerItem
+          testID="item"
+          label="First menu"
+          icon="home"
+          onPress={mockPress}
+        />
       </Provider>,
     );
     fireEvent.click(getByText('First menu'));
     expect(mockPress).toBeCalledTimes(1);
+
+    fireEvent.click(getByTestId('item'));
+    expect(mockPress).toBeCalledTimes(2);
   });
 });

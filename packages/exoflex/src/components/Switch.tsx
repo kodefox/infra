@@ -10,12 +10,21 @@ export type SwithcProps = {
   width: number;
   trackStyle?: StyleProp<ViewStyle>;
   thumbStyle?: StyleProp<ViewStyle>;
+  testID?: string;
 };
 
 const MARGIN = 2;
 
 export default function Switch(props: SwithcProps) {
-  let { value, width, onValueChange, disabled, trackStyle, thumbStyle } = props;
+  let {
+    value,
+    width,
+    onValueChange,
+    disabled,
+    trackStyle,
+    thumbStyle,
+    testID,
+  } = props;
   let { colors, style: themeStyle } = useTheme();
   let [xValue] = useState(new Animated.Value(value ? 1 : 0));
 
@@ -66,6 +75,7 @@ export default function Switch(props: SwithcProps) {
       activeOpacity={0.9}
       onPress={() => onValueChange(!value)}
       disabled={disabled}
+      testID={testID}
     >
       <Animated.View
         style={[

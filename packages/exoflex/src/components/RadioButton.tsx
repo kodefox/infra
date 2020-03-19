@@ -48,6 +48,10 @@ export type RadioButtonProps = {
    * Additional style for the radio button container
    */
   style?: StyleProp<ViewStyle>;
+  /**
+   * Selector for testing purpose (especially e2e test)
+   */
+  testID?: string;
 };
 
 export default function RadioButton(props: RadioButtonProps) {
@@ -61,6 +65,7 @@ export default function RadioButton(props: RadioButtonProps) {
     onPress,
     textStyle,
     style,
+    testID,
   } = props;
   let { colors, style: themeStyle } = useTheme();
   let { value: contextValue, onValueChange: contextOnValueChange } = useContext(
@@ -82,6 +87,7 @@ export default function RadioButton(props: RadioButtonProps) {
       style={[styles.container, style]}
       activeOpacity={0.7}
       disabled={disabled}
+      testID={testID}
     >
       <View
         style={[

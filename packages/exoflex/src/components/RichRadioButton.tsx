@@ -12,7 +12,7 @@ import Text from './Text';
 import useTheme from '../helpers/useTheme';
 
 export type RichRadioButtonProps = {
-  data: Array<{ label: string; value: string }>;
+  data: Array<{ label: string; value: string; testID?: string }>;
   selectedValue: string;
   selectedColor?: string;
   uppercase?: boolean;
@@ -82,6 +82,7 @@ export default function RichRadioButton(props: RichRadioButtonProps) {
               isFirstItem && firstItemStyle,
               isSelected && selectedStyle,
             ]}
+            testID={item.testID}
           >
             {!!renderCustomItemContent ? (
               renderCustomItemContent(item.label)

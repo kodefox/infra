@@ -40,6 +40,7 @@ export type ToastProps = {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   children?: string;
+  testID?: string;
 };
 
 function Toast({
@@ -50,6 +51,7 @@ function Toast({
   colors,
   textStyle,
   showIcon = true,
+  testID,
 }: ToastProps) {
   let { colors: themeColors, style: themeStyle } = useTheme();
 
@@ -86,6 +88,7 @@ function Toast({
             style,
           ] as StyleProp<ViewStyle>
         }
+        testID={testID}
       >
         {showIcon && <ToastIcon name={IconName[mode]} color={colors[mode]} />}
         <Text
