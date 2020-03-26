@@ -102,7 +102,7 @@ function RichRadioButtonExample() {
       <RichRadio.Group
         data={DATA}
         keyExtractor={(item) => item.label}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <TouchableOpacity
             activeOpacity={0.7}
             onPress={() => setSize(item.value)}
@@ -112,6 +112,7 @@ function RichRadioButtonExample() {
               borderColor: item.value === size ? 'blue' : 'gray',
               paddingVertical: 10,
               paddingHorizontal: 15,
+              marginLeft: index === 0 ? 0 : 15,
             }}
           >
             <IconButton
