@@ -49,7 +49,6 @@ describe('RichRadioButton', () => {
         <Provider>
           <RichRadio.Group
             data={SIZES}
-            separatorWidth={10}
             keyExtractor={(item) => item.value}
             renderItem={({ item }) => (
               <RichRadio.Item
