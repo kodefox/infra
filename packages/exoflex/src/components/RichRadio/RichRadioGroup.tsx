@@ -11,7 +11,6 @@ import useTheme from '../../helpers/useTheme';
 
 export type RichRadioGroupProps<T> = {
   data: Array<T>;
-  separatorWidth?: number;
   keyExtractor: (item: T, index: number) => string;
   renderItem: ({ item, index }: { item: T; index: number }) => ReactNode;
   style?: StyleProp<ViewStyle>;
@@ -22,7 +21,6 @@ export type RichRadioGroupProps<T> = {
 export default function RichRadioGroup<T>(props: RichRadioGroupProps<T>) {
   let {
     data,
-    separatorWidth,
     keyExtractor,
     renderItem,
     style,
@@ -47,16 +45,8 @@ export default function RichRadioGroup<T>(props: RichRadioGroupProps<T>) {
       testID={testID}
     >
       {data.map((item, index) => {
-        let isFirstItem = index === 0;
-        let firstItemStyle = { marginLeft: 0 } as ViewStyle;
-        let itemWrapperStyle = [
-          styles.itemWrapper,
-          !!separatorWidth && { marginLeft: separatorWidth },
-          isFirstItem && firstItemStyle,
-        ] as ViewStyle;
-
         return (
-          <View key={keyExtractor(item, index)} style={itemWrapperStyle}>
+          <View key={keyExtractor(item, index)}>
             {renderItem({ item, index })}
           </View>
         );
@@ -68,8 +58,5 @@ export default function RichRadioGroup<T>(props: RichRadioGroupProps<T>) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-  },
-  itemWrapper: {
-    marginLeft: 15,
   },
 });

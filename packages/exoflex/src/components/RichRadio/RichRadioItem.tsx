@@ -16,9 +16,11 @@ export type RichRadioItemProps = {
   selectedColor?: string;
   selected?: boolean;
   uppercase?: boolean;
+  firstItem?: boolean;
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
+  firstItemCustomStyle?: StyleProp<ViewStyle>;
   testID?: string;
 };
 
@@ -27,10 +29,12 @@ export default function RichRadioItem(props: RichRadioItemProps) {
     label,
     selected,
     uppercase,
+    firstItem,
     selectedColor,
     onPress,
     style,
     textStyle,
+    firstItemCustomStyle,
     testID,
   } = props;
   let { colors, style: themeStyle } = useTheme();
@@ -40,6 +44,7 @@ export default function RichRadioItem(props: RichRadioItemProps) {
   } as ViewStyle;
   let combinedItemStyle = StyleSheet.flatten([
     styles.item,
+    firstItem && (firstItemCustomStyle || styles.firstItem),
     { borderColor: colors.border },
     selected && selectedStyle,
     themeStyle?.richRadioItem?.style,
@@ -65,9 +70,13 @@ export default function RichRadioItem(props: RichRadioItemProps) {
 }
 
 const styles = StyleSheet.create({
+  firstItem: {
+    marginLeft: 0,
+  },
   item: {
     borderWidth: 1,
     paddingVertical: 10,
     paddingHorizontal: 15,
+    marginLeft: 15,
   },
 });
