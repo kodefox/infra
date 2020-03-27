@@ -9,7 +9,7 @@
     "react-native.js"
   ],
   "author": "devteam@kodefox.com",
-  "license": "ISC",
+  "license": "MIT",
   "peerDependencies": {
     "eslint": ">=5.0.0",
     "prettier": ">=1.0.0"
