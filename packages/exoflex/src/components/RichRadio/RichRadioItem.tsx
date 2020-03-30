@@ -44,11 +44,11 @@ export default function RichRadioItem(props: RichRadioItemProps) {
   } as ViewStyle;
   let combinedItemStyle = StyleSheet.flatten([
     styles.item,
-    firstItem && (firstItemCustomStyle || styles.firstItem),
     { borderColor: colors.border },
     selected && selectedStyle,
     themeStyle?.richRadioItem?.style,
     style,
+    firstItem && (firstItemCustomStyle || styles.firstItem),
   ]) as ViewStyle;
   let combinedTextStyle = [
     themeStyle?.richRadioItem?.textStyle,
