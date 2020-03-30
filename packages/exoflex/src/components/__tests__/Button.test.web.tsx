@@ -1,6 +1,7 @@
 import React from 'react';
-import Provider from '../Provider';
 import { render, fireEvent } from '@testing-library/react';
+
+import Provider from '../Provider';
 import '../../../test/customFireEvent.web';
 import Button from '../Button';
 import Text from '../Text';

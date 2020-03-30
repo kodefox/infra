@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react';
 import { View, Image, StyleSheet, ImageSourcePropType } from 'react-native';
 import { Avatar } from 'react-native-paper';
-import DrawerItem from './DrawerItem';
 
 import { DefaultTheme } from '../../constants/themes';
+
+import DrawerItem from './DrawerItem';
 
 type Props = {
   headerMode: 'full' | 'circle';

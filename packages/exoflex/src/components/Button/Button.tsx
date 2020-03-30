@@ -1,9 +1,9 @@
 import React from 'react';
-import ButtonRipple from './ButtonRipple';
-import ButtonOpacity from './ButtonOpacity';
 
 import useTheme from '../../helpers/useTheme';
 
+import ButtonRipple from './ButtonRipple';
+import ButtonOpacity from './ButtonOpacity';
 import { ButtonProps } from './types';
 
 export default function Button(props: ButtonProps) {

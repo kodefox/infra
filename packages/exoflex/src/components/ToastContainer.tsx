@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { StyleProp, ViewProps, TextStyle } from 'react-native';
 
-import Toast, { ModeProps } from './Toast';
 import EventEmitter from '../helpers/EventEmitter';
+
+import Toast, { ModeProps } from './Toast';
 
 export type ToastConfig = {
   message: string;

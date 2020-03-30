@@ -1,8 +1,9 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 
-import ActivityIndicator from './ActivityIndicator';
 import { Theme } from '../types';
+
+import ActivityIndicator from './ActivityIndicator';
 
 type Props = {
   theme: Theme;

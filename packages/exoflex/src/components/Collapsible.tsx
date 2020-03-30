@@ -12,9 +12,10 @@ import {
 import CollapsibleBase from 'react-native-collapsible';
 import { useAnimation } from 'react-native-animation-hooks';
 
+import useTheme from '../helpers/useTheme';
+
 import AnimatedIcon from './AnimatedIcon';
 import Text from './Text';
-import useTheme from '../helpers/useTheme';
 
 export type CollapsibleProps = {
   title: string;

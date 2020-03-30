@@ -6,8 +6,10 @@ import {
   StyleSheet,
   Platform,
 } from 'react-native';
-import { SegmentedControlMode } from './types';
+
 import useTheme from '../../helpers/useTheme';
+
+import { SegmentedControlMode } from './types';
 import { Mode } from './constants';
 
 type Props = {

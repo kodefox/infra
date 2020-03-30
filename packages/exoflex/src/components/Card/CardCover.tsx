@@ -7,6 +7,7 @@ import {
   ImageProps,
   ViewStyle,
 } from 'react-native';
+
 import useTheme from '../../helpers/useTheme';
 
 type Props = ImageProps & {

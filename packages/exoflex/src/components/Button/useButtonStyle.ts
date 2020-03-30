@@ -2,6 +2,7 @@ import { TextStyle, ViewStyle } from 'react-native';
 import color from 'color';
 
 import useTheme from '../../helpers/useTheme';
+
 import { ButtonPresets } from './types';
 
 type Options = {

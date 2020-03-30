@@ -9,11 +9,12 @@ import {
 } from 'react-native';
 import { Surface, IconButton } from 'react-native-paper';
 
-import Text from './Text';
-import { ToastConfig } from './ToastContainer';
 import useTheme from '../helpers/useTheme';
 import { DefaultTheme } from '../constants/themes';
 import useFadingAnimation from '../helpers/useFadingAnimation';
+
+import { ToastConfig } from './ToastContainer';
+import Text from './Text';
 
 export type ModeProps = 'info' | 'warning' | 'error' | 'success';
 

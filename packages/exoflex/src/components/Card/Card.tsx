@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
 import { View, ViewProps } from 'react-native';
 
+import useTheme from '../../helpers/useTheme';
+
 import CardActions from './CardActions';
 import CardContent from './CardContent';
 import CardCover from './CardCover';
 import CardTitle from './CardTitle';
-
-import useTheme from '../../helpers/useTheme';
 
 type Props = ViewProps & {
   children?: ReactNode;

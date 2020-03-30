@@ -6,9 +6,9 @@ import {
   TextInputFocusEventData,
   View,
 } from 'react-native';
+
 import TextInput from '../TextInput/TextInput';
 import IconButton from '../IconButton';
-
 import { HourFormat } from '../../helpers/timeChecker';
 import { padTime } from '../../helpers/displayTime';
 import useTheme from '../../helpers/useTheme';

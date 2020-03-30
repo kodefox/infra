@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from 'react-native-testing-library';
+
 import Checkbox from '../Checkbox';
 
 describe('Checkbox', () => {

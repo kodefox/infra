@@ -1,4 +1,5 @@
 import mergeWith from 'lodash.mergewith';
+
 import { Theme, Font, ThemeShape } from '../types';
 
 /**

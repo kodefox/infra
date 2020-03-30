@@ -1,11 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import { TouchableOpacity } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import TextInput from '../TextInput/TextInput';
 
+import TextInput from '../TextInput/TextInput';
 import { HourFormat } from '../../helpers/timeChecker';
 import useTheme from '../../helpers/useTheme';
 import { createTimeForDisplay } from '../../helpers/displayTime';
+
 import { TimePickerProps } from './types';
 
 export default function TimePicker(props: TimePickerProps) {

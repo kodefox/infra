@@ -1,5 +1,6 @@
 import React from 'react';
 import { IconButton as PaperIconButton } from 'react-native-paper';
+
 import useTheme from '../helpers/useTheme';
 
 export type IconButtonProps = OmitPaperTheme<typeof PaperIconButton>;

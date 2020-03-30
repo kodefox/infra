@@ -1,8 +1,9 @@
 import * as React from 'react';
 import Svg, { Path } from 'react-native-svg';
 
-import { IconProps } from './types';
 import { DefaultTheme } from '../../constants/themes';
+
+import { IconProps } from './types';
 
 const DEFAULT_SIZE = 24;
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, StyleProp, ViewStyle, TextStyle } from 'react-native';
 import { TouchableRipple, IconButton } from 'react-native-paper';
+
 import Text from '../Text';
 import useTheme from '../../helpers/useTheme';
 

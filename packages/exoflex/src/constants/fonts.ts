@@ -6,7 +6,6 @@ import RubikMedium from '../assets/fonts/Rubik-Medium.ttf';
 import RubikMediumItalic from '../assets/fonts/Rubik-MediumItalic.ttf';
 import RubikRegular from '../assets/fonts/Rubik-Regular.ttf';
 import RubikRegularItalic from '../assets/fonts/Rubik-RegularItalic.ttf';
-
 import { FontWeight, FontPreset } from '../types';
 
 export const FontWeights: Record<FontWeight, keyof FontPreset> = {

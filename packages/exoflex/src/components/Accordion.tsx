@@ -16,6 +16,7 @@ import { TouchableRipple } from 'react-native-paper';
 import { useAnimation } from 'react-native-animation-hooks';
 
 import useTheme from '../helpers/useTheme';
+
 import AnimatedIcon from './AnimatedIcon';
 import Text from './Text';
 

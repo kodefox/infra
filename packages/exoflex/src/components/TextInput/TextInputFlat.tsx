@@ -7,19 +7,18 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import ErrorMessage from './ErrorMessage';
-import ErrorIcon from './ErrorIcon';
 import { Label } from '../Typography';
 import useTheme from '../../helpers/useTheme';
-import { ChildTextInputProps } from './types';
+import { IS_WEB } from '../../constants/platforms';
 
+import ErrorMessage from './ErrorMessage';
+import ErrorIcon from './ErrorIcon';
+import { ChildTextInputProps } from './types';
 import styles, {
   DEFAULT_HEIGHT,
   TEXTAREA_NUMBER_OF_LINES,
   TEXTAREA_STYLE,
 } from './styles';
-
-import { IS_WEB } from '../../constants/platforms';
 
 export type Props = ChildTextInputProps;
 

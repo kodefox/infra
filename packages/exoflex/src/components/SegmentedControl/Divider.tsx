@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleProp, ViewStyle, StyleSheet } from 'react-native';
+
 import useTheme from '../../helpers/useTheme';
 
 // NOTE: This should be a temporary component. change it to Exoflex's Divider when available

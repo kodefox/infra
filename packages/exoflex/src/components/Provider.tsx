@@ -1,8 +1,6 @@
 import React, { ReactNode, useMemo, ComponentType } from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
 
-import DefaultLoadingPlaceholder from './LoadingPlaceholder';
-import ToastContainer from './ToastContainer';
 import getFontsSource from '../helpers/getFontsSource';
 import getPaperTheme from '../helpers/getPaperTheme';
 import mergeTheme from '../helpers/mergeTheme';
@@ -10,6 +8,9 @@ import useLoadFonts from '../helpers/useLoadFonts';
 import { ThemeContext } from '../helpers/useTheme';
 import { DefaultTheme } from '../constants/themes';
 import { Theme, ThemeShape, FontSource } from '../types';
+
+import ToastContainer from './ToastContainer';
+import DefaultLoadingPlaceholder from './LoadingPlaceholder';
 
 type Props = {
   children: ReactNode;

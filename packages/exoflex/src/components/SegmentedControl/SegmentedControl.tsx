@@ -7,7 +7,9 @@ import {
   StyleSheet,
   ViewStyle,
 } from 'react-native';
+
 import useTheme from '../../helpers/useTheme';
+
 import Indicator from './Indicator';
 import Segments from './Segments';
 import { SegmentedControlMode } from './types';

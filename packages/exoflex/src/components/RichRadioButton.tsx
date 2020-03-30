@@ -7,9 +7,10 @@ import {
   ScrollView,
   TextStyle,
 } from 'react-native';
-import Text from './Text';
 
 import useTheme from '../helpers/useTheme';
+
+import Text from './Text';
 
 export type RichRadioButtonProps = {
   data: Array<{ label: string; value: string; testID?: string }>;
