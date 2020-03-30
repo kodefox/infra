@@ -18,7 +18,7 @@ import { RadioButtonProps } from './components/RadioButton';
 import { RichRadioButtonProps } from './components/RichRadioButton';
 import { SegmentedControlProps } from './components/SegmentedControl/SegmentedControl';
 import { SliderProps } from './components/Slider';
-import { SwithcProps } from './components/Switch';
+import { SwitchProps } from './components/Switch';
 import { TextProps } from './components/Text';
 import { TextInputProps } from './components/TextInput/types';
 import { TimePickerProps } from './components/TimePicker/types';
@@ -107,7 +107,7 @@ export type Theme = {
       | 'trackStyle'
       | 'unselectedStyle'
     >;
-    switch: Pick<SwithcProps, 'thumbStyle' | 'trackStyle'>;
+    switch: Pick<SwitchProps, 'thumbStyle' | 'trackStyle'>;
     text: Pick<TextProps, 'style'>;
     textInput: Pick<
       TextInputProps,

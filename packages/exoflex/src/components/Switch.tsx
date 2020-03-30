@@ -3,7 +3,7 @@ import { TouchableOpacity, Animated, StyleProp, ViewStyle } from 'react-native';
 
 import useTheme from '../helpers/useTheme';
 
-export type SwithcProps = {
+export type SwitchProps = {
   value: boolean;
   onValueChange: (value?: boolean) => void;
   disabled: boolean;
@@ -15,7 +15,7 @@ export type SwithcProps = {
 
 const MARGIN = 2;
 
-export default function Switch(props: SwithcProps) {
+export default function Switch(props: SwitchProps) {
   let {
     value,
     width,
