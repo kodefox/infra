@@ -41,6 +41,7 @@ function Chip({
     <TouchableOpacity
       activeOpacity={0.7}
       disabled={!onPress}
+      onPress={onPress}
       style={[
         styles.root,
         isActive
