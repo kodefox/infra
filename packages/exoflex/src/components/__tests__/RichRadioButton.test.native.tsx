@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import Provider from '../Provider';
+import { TouchableOpacity } from 'react-native';
 import { render, fireEvent, act } from 'react-native-testing-library';
-import RichRadioButton from '../RichRadioButton';
+
+import Provider from '../Provider';
+import * as RichRadio from '../RichRadio';
 import Text from '../Text';
 
 const SIZES = [
@@ -16,10 +18,16 @@ describe('RichRadioButton', () => {
       let [size, setSize] = useState('');
       return (
         <Provider>
-          <RichRadioButton
+          <RichRadio.Group
             data={SIZES}
-            selectedValue={size}
-            onValueChanged={setSize}
+            keyExtractor={(item) => item.value}
+            renderItem={({ item }) => (
+              <RichRadio.Item
+                label={item.label}
+                selected={item.value === size}
+                onPress={() => setSize(item.value)}
+              />
+            )}
             style={{ marginBottom: 30 }}
           />
         </Provider>
@@ -39,13 +47,20 @@ describe('RichRadioButton', () => {
       let [size, setSize] = useState('');
       return (
         <Provider>
-          <RichRadioButton
+          <RichRadio.Group
             data={SIZES}
-            selectedValue={size}
-            onValueChanged={(value) => {
-              newSize = value;
-              setSize(value);
-            }}
+            keyExtractor={(item) => item.value}
+            renderItem={({ item }) => (
+              <RichRadio.Item
+                label={item.label}
+                selected={item.value === size}
+                onPress={() => {
+                  newSize = item.value;
+                  setSize(newSize);
+                }}
+                testID={`item-${item.value}`}
+              />
+            )}
             style={{ marginBottom: 30 }}
           />
         </Provider>
@@ -61,8 +76,8 @@ describe('RichRadioButton', () => {
     act(() => fireEvent.press(getByText('M')));
     expect(newSize).toBe('medium');
 
-    act(() => fireEvent.press(getByTestId('small')));
-    expect(newSize).toBe('small');
+    act(() => fireEvent.press(getByTestId('item-large')));
+    expect(newSize).toBe('large');
   });
 
   it('should render custom item content properly', () => {
@@ -72,17 +87,32 @@ describe('RichRadioButton', () => {
       let [size, setSize] = useState('');
       return (
         <Provider>
-          <RichRadioButton
+          <RichRadio.Group
             data={SIZES}
-            selectedValue={size}
-            onValueChanged={(value) => {
-              newSize = value;
-              setSize(value);
-            }}
-            renderCustomItemContent={(label) => (
-              <Text fontStyle="italic" weight="bold" style={{ marginLeft: 10 }}>
-                {label}
-              </Text>
+            keyExtractor={(item) => item.value}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => {
+                  newSize = item.value;
+                  setSize(newSize);
+                }}
+                style={{
+                  flexDirection: 'row',
+                  borderWidth: 1,
+                  borderColor: item.value === size ? 'blue' : 'gray',
+                  paddingVertical: 10,
+                  paddingHorizontal: 15,
+                }}
+              >
+                <Text
+                  weight="bold"
+                  fontStyle="italic"
+                  style={{ marginLeft: 10 }}
+                >
+                  {item.label}
+                </Text>
+              </TouchableOpacity>
             )}
             style={{ marginBottom: 30 }}
           />

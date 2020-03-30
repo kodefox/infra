@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
-import { RichRadioButton, Title, Text, IconButton } from 'exoflex';
+import { TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { RichRadio, Title, Text, IconButton } from 'exoflex';
 
 const DATA = [
   { label: 'S', value: 'small' },
@@ -28,54 +28,93 @@ function RichRadioButtonExample() {
   return (
     <ScrollView style={styles.root}>
       <Title style={{ marginBottom: 10 }}>Default</Title>
-      <RichRadioButton
+      <RichRadio.Group
         data={DATA}
-        selectedValue={size}
-        onValueChanged={setSize}
+        keyExtractor={(item) => item.label}
+        renderItem={({ item }) => (
+          <RichRadio.Item
+            label={item.label}
+            selected={item.value === size}
+            onPress={() => setSize(item.value)}
+          />
+        )}
         style={{ marginBottom: 30 }}
       />
       <Title style={{ marginBottom: 10 }}>Long List</Title>
-      <RichRadioButton
+      <RichRadio.Group
         data={COLORS}
-        selectedValue={color}
-        onValueChanged={setColor}
-        style={{ marginBottom: 30, marginHorizontal: -16 }}
-        contentContainerStyle={{ paddingHorizontal: 16 }}
+        keyExtractor={(item) => item.label}
+        renderItem={({ item }) => (
+          <RichRadio.Item
+            label={item.label}
+            selected={item.value === color}
+            onPress={() => setColor(item.value)}
+          />
+        )}
+        style={{ marginBottom: 30 }}
       />
       <Title style={{ marginBottom: 10 }}>Custom Selected Color</Title>
-      <RichRadioButton
+      <RichRadio.Group
         data={DATA}
-        selectedValue={size}
-        selectedColor="red"
-        onValueChanged={setSize}
+        keyExtractor={(item) => item.label}
+        renderItem={({ item }) => (
+          <RichRadio.Item
+            label={item.label}
+            selected={item.value === size}
+            selectedColor="red"
+            onPress={() => setSize(item.value)}
+          />
+        )}
         style={{ marginBottom: 30 }}
       />
       <Title style={{ marginBottom: 10 }}>Custom Item Style</Title>
-      <RichRadioButton
+      <RichRadio.Group
         data={DATA}
-        selectedValue={size}
-        onValueChanged={setSize}
+        keyExtractor={(item) => item.label}
+        renderItem={({ item }) => (
+          <RichRadio.Item
+            label={item.label}
+            selected={item.value === size}
+            onPress={() => setSize(item.value)}
+            style={{ borderRadius: 20 }}
+          />
+        )}
         style={{ marginBottom: 30 }}
-        itemStyle={{ borderRadius: 20 }}
       />
       <Title style={{ marginBottom: 10 }}>Custom Text Style</Title>
-      <RichRadioButton
+      <RichRadio.Group
         data={DATA}
-        selectedValue={size}
-        onValueChanged={setSize}
+        keyExtractor={(item) => item.label}
+        renderItem={({ item }) => (
+          <RichRadio.Item
+            label={item.label}
+            selected={item.value === size}
+            onPress={() => setSize(item.value)}
+            textStyle={{
+              color: 'red',
+              fontSize: 24,
+            }}
+          />
+        )}
         style={{ marginBottom: 30 }}
-        textStyle={{
-          color: 'red',
-          fontSize: 24,
-        }}
       />
       <Title style={{ marginBottom: 10 }}>Custom Item Component</Title>
-      <RichRadioButton
+      <RichRadio.Group
         data={DATA}
-        selectedValue={size}
-        onValueChanged={setSize}
-        renderCustomItemContent={(label) => (
-          <View style={{ flexDirection: 'row' }}>
+        keyExtractor={(item) => item.label}
+        renderItem={({ item, index }) => (
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => setSize(item.value)}
+            style={{
+              flexDirection: 'row',
+              borderWidth: 1,
+              borderColor: item.value === size ? 'blue' : 'gray',
+              paddingVertical: 10,
+              paddingHorizontal: 15,
+              marginLeft: index === 0 ? 0 : 15,
+            }}
+          >
             <IconButton
               icon="home"
               size={14}
@@ -86,10 +125,11 @@ function RichRadioButtonExample() {
                 alignItems: 'center',
               }}
             />
-            <Text fontStyle="italic" weight="bold" style={{ marginLeft: 10 }}>
-              {label}
+
+            <Text weight="bold" fontStyle="italic" style={{ marginLeft: 10 }}>
+              {item.label}
             </Text>
-          </View>
+          </TouchableOpacity>
         )}
         style={{ marginBottom: 30 }}
       />

@@ -1,5 +1,6 @@
 import * as Avatar from './Avatar';
 import * as Drawer from './Drawer';
+import * as RichRadio from './RichRadio';
 import * as Typography from './Typography';
 
 export { default as Accordion } from './Accordion';
@@ -20,7 +21,6 @@ export { default as Portal } from './Portal';
 export { default as ProgressBar } from './ProgressBar';
 export { default as Provider } from './Provider';
 export { default as RadioButton } from './RadioButton';
-export { default as RichRadioButton } from './RichRadioButton';
 export { default as SegmentedControl } from './SegmentedControl/SegmentedControl';
 export { default as Slider } from './Slider';
 export { default as Switch } from './Switch';
@@ -30,5 +30,5 @@ export { default as TimePicker } from './TimePicker/TimePicker';
 export { default as Toast } from './Toast';
 export { default as ToastContainer } from './ToastContainer';
 
-export { Avatar, Drawer, Typography };
+export { Avatar, Drawer, RichRadio, Typography };
 export { Calendar } from './Calendar';
