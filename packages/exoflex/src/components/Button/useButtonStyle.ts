@@ -23,19 +23,13 @@ export function useButtonStyle(options: Options) {
   if (preset === 'primary') {
     elevation = 2;
     backgroundColor = disabled
-      ? color(colors.primary)
-          .alpha(0.12)
-          .rgb()
-          .string()
+      ? color(colors.primary).alpha(0.12).rgb().string()
       : !!buttonColor
       ? buttonColor
       : colors.primary;
   } else if (preset === 'secondary') {
     borderColor = disabled
-      ? color(colors.primary)
-          .alpha(0.4)
-          .rgb()
-          .string()
+      ? color(colors.primary).alpha(0.4).rgb().string()
       : colors.primary;
     borderWidth = 2;
   }

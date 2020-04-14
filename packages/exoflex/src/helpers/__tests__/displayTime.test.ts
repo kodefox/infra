@@ -30,10 +30,7 @@ describe('createTimeForDisplay', () => {
   });
 
   it('should return display time in 24h format', () => {
-    const hours = new Date(initialDate)
-      .getHours()
-      .toString()
-      .padStart(2, '0');
+    const hours = new Date(initialDate).getHours().toString().padStart(2, '0');
     const hours2 = new Date(initialDate2)
       .getHours()
       .toString()
