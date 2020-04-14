@@ -87,6 +87,11 @@ let DefaultMarker = ({
   markerStyle,
 }: MarkerProps) => {
   let { colors, style: themeStyle } = useTheme();
+
+  let themePressedStyles = pressed
+    ? [themeStyle?.slider?.pressedMarkerStyle, pressedMarkerStyle]
+    : [];
+
   return (
     <View
       style={[
@@ -104,10 +109,7 @@ let DefaultMarker = ({
                   styles.markerStyle,
                   themeStyle?.slider?.markerStyle,
                   markerStyle,
-                  ...(pressed && [
-                    themeStyle?.slider?.pressedMarkerStyle,
-                    pressedMarkerStyle,
-                  ]),
+                  ...themePressedStyles,
                 ]
               : [
                   styles.markerStyle,
