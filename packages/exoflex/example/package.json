@@ -8,7 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "36.0.2",
+    "expo": "37.0.7",
     "expo-font": "8.0.0",
     "hookrouter": "1.2.3",
     "naviflex": "0.0.2",
