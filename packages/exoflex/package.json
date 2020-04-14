@@ -39,7 +39,7 @@
   "devDependencies": {
     "@babel/preset-typescript": "7.9.0",
     "@react-native-community/bob": "0.8.0",
-    "@testing-library/react": "10.0.1",
+    "@testing-library/react": "10.0.2",
     "@testing-library/react-hooks": "3.2.1",
     "@types/color": "3.0.1",
     "@types/jest": "25.1.4",
