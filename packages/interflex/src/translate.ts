@@ -17,8 +17,7 @@ const DEFAULT_DICTIONARY = {
 let dictionary: LocaleDictionary = {};
 let tLocale: Locale = 'en';
 
-export type Params = { [key: string]: unknown };
-export type ParamsWithResolver = {
+export type Params = {
   [key: string]:
     | null
     | undefined

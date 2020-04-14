@@ -54,7 +54,7 @@ describe('translate function', () => {
     expect(
       t('complexInterpolate', {
         params: {
-          foo: (contents: unknown) => ({
+          foo: (contents) => ({
             component: 'Foo',
             contents,
           }),
@@ -64,8 +64,8 @@ describe('translate function', () => {
     expect(
       t('nextedComplexInterpolate', {
         params: {
-          foo: (contents: unknown) => ({ component: 'Foo', contents }),
-          bar: (contents: unknown) => ({ component: 'Bar', contents }),
+          foo: (contents) => ({ component: 'Foo', contents }),
+          bar: (contents) => ({ component: 'Bar', contents }),
         },
       }),
     ).toEqual([
@@ -87,7 +87,7 @@ describe('translate function', () => {
       t('complexInterpolate', {
         params: {
           name: 'John',
-          foo: (contents: unknown) => ({
+          foo: (contents) => ({
             component: 'Foo',
             contents,
           }),
@@ -99,8 +99,8 @@ describe('translate function', () => {
         params: {
           firstName: 'John',
           lastName: 'Doe',
-          foo: (contents: unknown) => ({ component: 'Foo', contents }),
-          bar: (contents: unknown) => ({ component: 'Bar', contents }),
+          foo: (contents) => ({ component: 'Foo', contents }),
+          bar: (contents) => ({ component: 'Bar', contents }),
         },
       }),
     ).toEqual([
