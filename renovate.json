@@ -8,6 +8,7 @@
     "@react-native-community/bob",
     "@react-native-community/datetimepicker",
     "babel-preset-expo",
+    "chalk",
     "expo",
     "expo-font",
     "react",
