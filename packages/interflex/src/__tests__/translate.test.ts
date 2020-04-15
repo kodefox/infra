@@ -8,7 +8,7 @@ describe('translate function', () => {
         interpolate: 'Welcome, {name}.',
         complex: 'Welcome! Please click <Link>here</Link>.',
         complexInterpolate: 'Welcome, <foo>{name}</foo>.',
-        nextedComplexInterpolate:
+        nestedComplexInterpolate:
           'Welcome, <foo>{firstName} <bar>{lastName}</bar></foo>.',
       }),
     });
@@ -26,7 +26,7 @@ describe('translate function', () => {
     expect(t('interpolate')).toBe('Welcome, {name}.');
     expect(t('complex')).toBe('Welcome! Please click <Link>here</Link>.');
     expect(t('complexInterpolate')).toBe('Welcome, <foo>{name}</foo>.');
-    expect(t('nextedComplexInterpolate')).toBe(
+    expect(t('nestedComplexInterpolate')).toBe(
       'Welcome, <foo>{firstName} <bar>{lastName}</bar></foo>.',
     );
   });
@@ -44,7 +44,7 @@ describe('translate function', () => {
       '.',
     ]);
     expect(
-      t('nextedComplexInterpolate', {
+      t('nestedComplexInterpolate', {
         params: { firstName: 'John', lastName: 'Doe' },
       }),
     ).toEqual(['Welcome, ', '<foo>John <bar>Doe</bar></foo>', '.']);
@@ -62,7 +62,7 @@ describe('translate function', () => {
       }),
     ).toEqual(['Welcome, ', { component: 'Foo', contents: ['name'] }, '.']);
     expect(
-      t('nextedComplexInterpolate', {
+      t('nestedComplexInterpolate', {
         params: {
           foo: (contents) => ({ component: 'Foo', contents }),
           bar: (contents) => ({ component: 'Bar', contents }),
@@ -95,7 +95,7 @@ describe('translate function', () => {
       }),
     ).toEqual(['Welcome, ', { component: 'Foo', contents: ['John'] }, '.']);
     expect(
-      t('nextedComplexInterpolate', {
+      t('nestedComplexInterpolate', {
         params: {
           firstName: 'John',
           lastName: 'Doe',
