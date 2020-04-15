@@ -9064,10 +9064,10 @@ react-native-calendars@1.265.0:
     prop-types "^15.5.10"
     xdate "^0.8.0"
 
-react-native-collapsible@1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/react-native-collapsible/-/react-native-collapsible-1.5.1.tgz#da2937b509921b28bf1b0f9eb8e50ad61c3ffb5d"
-  integrity sha512-uQQ2s6l+7+L/pzJroisWsDsyVYVF5bQ+jGbLATNioRh/03SpEL8pcQEVKqVWswcNNR0B9GENixHaLzmuZIwpQg==
+react-native-collapsible@1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/react-native-collapsible/-/react-native-collapsible-1.5.2.tgz#544616dc04a71870508dc707049544a805402993"
+  integrity sha512-pmETueIStEhKY93yO/nh+G9jyMZaZta9xyUO51KP+p/tefXDtDG8Ok9QELld0Fk/kiDOldvG5Tjy+JcdS8Sdxw==
   dependencies:
     prop-types "^15.6.2"
 
