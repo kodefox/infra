@@ -7570,6 +7570,11 @@ mkdirp@0.5.1, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.1:
   dependencies:
     minimist "0.0.8"
 
+months@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/months/-/months-2.1.0.tgz#9385ae1968b84313dff223b11080058d1ec326fd"
+  integrity sha512-2M9gdDB/uVt304/hJ3k2UIquJhOV5dRjp9BovHmZSINaRp7pdJuHXxOcuSjmJaKNomFyYyu0y3LBigdWiAUEmQ==
+
 morgan@^1.9.0:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.9.1.tgz#0a8d16734a1d9afbc824b99df87e738e58e2da59"
@@ -9054,13 +9059,13 @@ react-native-animation-hooks@1.0.1:
   resolved "https://registry.yarnpkg.com/react-native-animation-hooks/-/react-native-animation-hooks-1.0.1.tgz#fcda58867d708084cc63c6fcd001f5375a40f45b"
   integrity sha512-s1o71m9sPpEYwFpHTdBouO50jzvyxIVB4MmNwfVGgPWkdL02zKOzyXcNuPJmoCuLIstUj5TBEwtnGk1WMFJx5A==
 
-react-native-calendars@1.265.0:
-  version "1.265.0"
-  resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.265.0.tgz#4144408254afaebc97213708e3c7d911dc73a335"
-  integrity sha512-iOv5JXgo7Dm9yQ+P0PE5a8tmxGUHwGQOk1AddD8cmNZiuCIAv5G3f5fuBRJ8+sLcNdic1tamrh+e8A4UNMZsHA==
+"react-native-calendars@https://github.com/oshimayoan/react-native-calendars/archive/oshimayoan-0.0.1.tar.gz":
+  version "1.22.0"
+  resolved "https://github.com/oshimayoan/react-native-calendars/archive/oshimayoan-0.0.1.tar.gz#3750211597de33b4980d837724751f8aa56209ad"
   dependencies:
     hoist-non-react-statics "^3.3.1"
     lodash "^4.0.0"
+    months "^2.1.0"
     prop-types "^15.5.10"
     xdate "^0.8.0"
 
