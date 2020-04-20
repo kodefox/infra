@@ -122,9 +122,36 @@ function TimePickerArrow(props: TimePickerArrowProps) {
   let { colors } = useTheme();
   let { onPressUp, onPressDown, label } = props;
 
+  let accessibilityLabel = '';
+  switch (label) {
+    case 'hh':
+      accessibilityLabel = 'the hour';
+      break;
+    case 'mm':
+      accessibilityLabel = 'the minute';
+      break;
+    case 'ss':
+      accessibilityLabel = 'the second';
+      break;
+    default:
+      accessibilityLabel = 'Change am/pm';
+      break;
+  }
+
   return (
     <View style={[styles.arrowWrapper, { borderColor: colors.border }]}>
       <TouchableOpacity
+        accessibilityLabel={
+          label === 'am/pm'
+            ? `Time Picker: ${accessibilityLabel}`
+            : `Time Picker: Increase ${accessibilityLabel}`
+        }
+        accessibilityHint={
+          label === 'am/pm'
+            ? accessibilityLabel
+            : `Increase ${accessibilityLabel} value by one`
+        }
+        accessibilityRole="button"
         activeOpacity={0.7}
         onPress={onPressUp}
         data-testid={`arrowUp${label}`}
@@ -132,6 +159,17 @@ function TimePickerArrow(props: TimePickerArrowProps) {
         <MemoizedArrowUp />
       </TouchableOpacity>
       <TouchableOpacity
+        accessibilityLabel={
+          label === 'am/pm'
+            ? `Time Picker: ${accessibilityLabel}`
+            : `Time Picker: Decrease ${accessibilityLabel}`
+        }
+        accessibilityHint={
+          label === 'am/pm'
+            ? accessibilityLabel
+            : `Increase ${accessibilityLabel} value by one`
+        }
+        accessibilityRole="button"
         activeOpacity={0.7}
         onPress={onPressDown}
         data-testid={`arrowDown${label}`}
