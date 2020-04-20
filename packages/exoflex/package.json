@@ -16,8 +16,7 @@
     "lint": "eslint --max-warnings 0 \"src/**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit -p .",
     "jest": "jest --coverage --passWithNoTests",
-    "test": "yarn format:check && yarn lint && yarn typecheck && yarn jest",
-    "postinstall": "patch-package"
+    "test": "yarn format:check && yarn lint && yarn typecheck && yarn jest"
   },
   "peerDependencies": {
     "expo-font": "*",
@@ -54,11 +53,9 @@
     "eslint": "6.8.0",
     "eslint-config-kodefox": "0.1.0",
     "jest": "25.4.0",
-    "jest-in-case": "1.0.2",
     "jest-watch-select-projects": "2.0.0",
     "jest-watch-typeahead": "0.5.0",
     "jest-with-platform": "0.0.3",
-    "postinstall-postinstall": "2.1.0",
     "prettier": "2.0.5",
     "react": "16.12.0",
     "react-dom": "16.12.0",
@@ -72,9 +69,7 @@
     "release-it": "12.4.3",
     "typescript": "3.8.3"
   },
-  "optionalDependencies": {
-    "patch-package": "^6.2.0"
-  },
+  "optionalDependencies": {},
   "@react-native-community/bob": {
     "source": "src",
     "output": "lib",
