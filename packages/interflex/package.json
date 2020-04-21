@@ -1,9 +1,8 @@
 {
   "name": "interflex",
   "version": "0.0.1",
-  "description": "KodeFox i18n library",
+  "description": "A library for internationalization of React apps with a focus on unobtrusive devex",
   "author": "KodeFox",
-  "license": "MIT",
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
@@ -15,7 +14,6 @@
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "24.0.18",
-    "concurrently": "4.1.2",
     "eslint": "6.7.2",
     "eslint-config-kodefox": "0.0.2",
     "jest": "24.9.0",
@@ -28,9 +26,9 @@
     "extends": "kodefox"
   },
   "prettier": {
-    "bracketSpacing": true,
     "singleQuote": true,
     "trailingComma": "all",
     "arrowParens": "always"
-  }
+  },
+  "license": "MIT"
 }

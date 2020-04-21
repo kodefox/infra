@@ -565,17 +565,7 @@ type Locale =
 
 type LocaleData = {
   localizedName: string;
-  currencySymbol: string;
-  thousandSeparator: string;
-  decimalSeparator: string;
-  decimalPlaces: number;
-  dateFormat: string;
   strings: Record<string, string>;
-  monthNames: Array<string>;
-  monthNamesShort: Array<string>;
-  daysOfWeek: Array<string>;
-  daysOfWeekShort: Array<string>;
-  startOfWeek: number;
 };
 
 type LocaleDictionary = { [K in Locale]?: LocaleData };
