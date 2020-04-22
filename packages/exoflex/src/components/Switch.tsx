@@ -34,6 +34,7 @@ export default function Switch(props: SwitchProps) {
     accessibilityHint,
     accessibilityLabel,
     accessibilityRole,
+    accessibilityState,
     ...otherProps
   } = props;
   let { colors, style: themeStyle } = useTheme();
@@ -87,6 +88,7 @@ export default function Switch(props: SwitchProps) {
       {...otherProps}
       accessibilityLabel={accessibilityLabel || 'Switch'}
       accessibilityRole={accessibilityRole || defaultAccessibilityRole}
+      accessibilityState={accessibilityState || { disabled, checked: !!value }}
       style={
         [styles.track, themeStyle?.switch?.trackStyle, trackStyle] as StyleProp<
           ViewStyle
