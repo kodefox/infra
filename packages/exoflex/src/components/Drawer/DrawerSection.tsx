@@ -1,17 +1,28 @@
 import React, { ReactNode } from 'react';
-import { View, Image, StyleSheet, ImageSourcePropType } from 'react-native';
+import {
+  View,
+  Image,
+  StyleSheet,
+  ImageSourcePropType,
+  AccessibilityProps,
+  AccessibilityRole,
+} from 'react-native';
 import { Avatar } from 'react-native-paper';
 import DrawerItem from './DrawerItem';
 
 import { DefaultTheme } from '../../constants/themes';
+import { IS_MOBILE } from '../../constants/platforms';
 
-type Props = {
+type Props = AccessibilityProps & {
   headerMode: 'full' | 'circle';
   headerSource: ImageSourcePropType;
   children: ReactNode;
   footerLabel?: string;
   footerIcon?: string;
   footerOnPress?: () => void;
+  footerAccessibilityLabel?: string;
+  footerAccessibilityHint?: string;
+  footerAccessibilityRole?: AccessibilityRole;
 };
 
 const emptyFn = () => {};
@@ -24,12 +35,25 @@ export default function DrawerSection(props: Props) {
     footerLabel,
     footerIcon,
     footerOnPress,
+    accessibilityLabel,
+    accessibilityRole,
+    footerAccessibilityLabel,
+    footerAccessibilityHint,
+    footerAccessibilityRole,
+    ...otherProps
   } = props;
+
+  // NOTE: Use `link` for web as RNW doesn't support `menuitem` yet
+  // https://github.com/necolas/react-native-web/blob/master/packages/react-native-web/src/modules/AccessibilityUtil/propsToAriaRole.js
+  let defaultFooterAccessibilityRole = (IS_MOBILE ? 'menuitem' : 'link') as
+    | 'menuitem'
+    | 'link';
 
   const Header = () => {
     if (headerMode === 'circle') {
       return (
         <View
+          accessibilityRole="header"
           style={styles.headerCircleWrapper}
           testID="drawerHeaderCircleImage"
         >
@@ -38,18 +62,34 @@ export default function DrawerSection(props: Props) {
       );
     }
     return (
-      <View style={styles.headerFullWrapper} testID="drawerHeaderFullImage">
+      <View
+        accessibilityRole="header"
+        style={styles.headerFullWrapper}
+        testID="drawerHeaderFullImage"
+      >
         <Image source={headerSource} style={styles.headerFullImage} />
       </View>
     );
   };
 
   return (
-    <View style={styles.container}>
+    <View
+      {...otherProps}
+      accessibilityLabel={accessibilityLabel || 'Drawer'}
+      accessibilityRole={accessibilityRole || 'menubar'}
+      style={styles.container}
+    >
       <Header />
       <View style={{ flex: 1 }}>{children}</View>
       {footerLabel && (
         <DrawerItem
+          accessibilityLabel={
+            footerAccessibilityLabel || `Drawer Item: ${footerLabel}`
+          }
+          accessibilityRole={
+            footerAccessibilityRole || defaultFooterAccessibilityRole
+          }
+          accessibilityHint={footerAccessibilityHint}
           label={footerLabel}
           icon={footerIcon}
           onPress={footerOnPress || emptyFn}
