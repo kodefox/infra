@@ -1,10 +1,17 @@
 import React from 'react';
-import { StyleSheet, StyleProp, ViewStyle, TextStyle } from 'react-native';
+import {
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+  TextStyle,
+  AccessibilityProps,
+} from 'react-native';
 import { TouchableRipple, IconButton } from 'react-native-paper';
 import Text from '../Text';
 import useTheme from '../../helpers/useTheme';
+import { IS_MOBILE } from '../../constants/platforms';
 
-export type DrawerItemProps = {
+export type DrawerItemProps = AccessibilityProps & {
   label: string;
   active?: boolean;
   style?: StyleProp<ViewStyle>;
@@ -16,9 +23,30 @@ export type DrawerItemProps = {
 
 export default function DrawerItem(props: DrawerItemProps) {
   const { style: themeStyle } = useTheme();
-  let { label, labelStyle, active, style, icon, onPress, testID } = props;
+  let {
+    label,
+    labelStyle,
+    active,
+    style,
+    icon,
+    onPress,
+    testID,
+    accessibilityLabel,
+    accessibilityRole,
+    ...otherProps
+  } = props;
+
+  // NOTE: Use `link` for web as RNW doesn't support `menuitem` yet
+  // https://github.com/necolas/react-native-web/blob/master/packages/react-native-web/src/modules/AccessibilityUtil/propsToAriaRole.js
+  let defaultAccessibilityRole = (IS_MOBILE ? 'menuitem' : 'link') as
+    | 'menuitem'
+    | 'link';
+
   return (
     <TouchableRipple
+      {...otherProps}
+      accessibilityLabel={accessibilityLabel || `Drawer Item: ${label}`}
+      accessibilityRole={accessibilityRole || defaultAccessibilityRole}
       onPress={onPress}
       style={[
         styles.container,
