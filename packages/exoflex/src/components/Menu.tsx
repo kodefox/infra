@@ -2,6 +2,9 @@ import React from 'react';
 import { Menu as PaperMenu } from 'react-native-paper';
 import Text from './Text';
 import useTheme from '../helpers/useTheme';
+import { AccessibilityProps, View } from 'react-native';
+
+import { IS_MOBILE } from '../constants/platforms';
 
 export type MenuProps = OmitPaperTheme<typeof PaperMenu>;
 
@@ -17,25 +20,53 @@ function Menu(props: MenuProps) {
   );
 }
 
-export type MenuItemProps = OmitPaperTheme<typeof PaperMenu.Item> & {
-  textPreset?: string;
-};
+export type MenuItemProps = OmitPaperTheme<typeof PaperMenu.Item> &
+  AccessibilityProps & {
+    textPreset?: string;
+  };
 
 export function MenuItem(props: MenuItemProps) {
   const { style: themeStyle } = useTheme();
-  let { title, textPreset, style, ...otherProps } = props;
+  let {
+    title,
+    textPreset,
+    style,
+    icon,
+    disabled,
+    onPress,
+    accessibilityLabel,
+    accessibilityRole,
+    accessibilityState,
+    ...otherAccessibilityProps
+  } = props;
+
+  // NOTE: Use `button` for web as RNW doesn't support `menuitem` yet
+  // https://github.com/necolas/react-native-web/blob/master/packages/react-native-web/src/modules/AccessibilityUtil/propsToAriaRole.js
+  let defaultAccessibilityRole = (IS_MOBILE ? 'menuitem' : 'button') as
+    | 'menuitem'
+    | 'button';
+
   return (
-    <PaperMenu.Item
-      title={
-        typeof title === 'string' ? (
-          <Text preset={textPreset}>{title}</Text>
-        ) : (
-          title
-        )
-      }
-      style={[themeStyle?.menuItem?.style, style]}
-      {...otherProps}
-    />
+    <View
+      {...otherAccessibilityProps}
+      accessibilityLabel={accessibilityLabel || 'Menu Item'}
+      accessibilityRole={accessibilityRole || defaultAccessibilityRole}
+      accessibilityState={accessibilityState || { disabled }}
+    >
+      <PaperMenu.Item
+        disabled={disabled}
+        title={
+          typeof title === 'string' ? (
+            <Text preset={textPreset}>{title}</Text>
+          ) : (
+            title
+          )
+        }
+        icon={icon}
+        onPress={onPress}
+        style={[themeStyle?.menuItem?.style, style]}
+      />
+    </View>
   );
 }
 
