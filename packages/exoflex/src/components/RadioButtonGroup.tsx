@@ -1,4 +1,5 @@
 import React, { createContext, ReactNode } from 'react';
+import { AccessibilityProps, View } from 'react-native';
 
 type RadioButtonContextType = {
   value?: string;
@@ -14,7 +15,7 @@ export let RadioButtonContext = createContext<RadioButtonContextType>(
   DefaultRadioButtonGroupContextValue,
 );
 
-type Props = {
+type Props = AccessibilityProps & {
   /**
    * Value of the selected radio button
    */
@@ -30,7 +31,14 @@ type Props = {
 };
 
 export default function RadioButtonGroup(props: Props) {
-  let { value, onValueChange, children } = props;
+  let {
+    value,
+    onValueChange,
+    children,
+    accessibilityLabel,
+    accessibilityRole,
+    ...otherProps
+  } = props;
 
   return (
     <RadioButtonContext.Provider
@@ -39,7 +47,13 @@ export default function RadioButtonGroup(props: Props) {
         onValueChange,
       }}
     >
-      {children}
+      <View
+        {...otherProps}
+        accessibilityLabel={accessibilityLabel || 'Radio Group'}
+        accessibilityRole={accessibilityRole || 'radiogroup'}
+      >
+        {children}
+      </View>
     </RadioButtonContext.Provider>
   );
 }
