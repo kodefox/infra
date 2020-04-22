@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import useTheme from '../helpers/useTheme';
+import { IS_MOBILE } from '../constants/platforms';
 
 export type SwitchProps = AccessibilityProps & {
   value: boolean;
@@ -33,6 +34,7 @@ export default function Switch(props: SwitchProps) {
     accessibilityHint,
     accessibilityLabel,
     accessibilityRole,
+    ...otherProps
   } = props;
   let { colors, style: themeStyle } = useTheme();
   let [xValue] = useState(new Animated.Value(value ? 1 : 0));
@@ -67,6 +69,12 @@ export default function Switch(props: SwitchProps) {
     outputRange: [0, width / 2],
   });
 
+  // NOTE: Use `button` for web as RNW doesn't support it yet
+  // https://github.com/necolas/react-native-web/blob/master/packages/react-native-web/src/modules/AccessibilityUtil/propsToAriaRole.js
+  let defaultAccessibilityRole = (IS_MOBILE ? 'switch' : 'button') as
+    | 'switch'
+    | 'button';
+
   useEffect(() => {
     Animated.timing(xValue, {
       toValue: value ? 1 : 0,
@@ -76,9 +84,9 @@ export default function Switch(props: SwitchProps) {
 
   return (
     <TouchableOpacity
+      {...otherProps}
       accessibilityLabel={accessibilityLabel || 'Switch'}
-      accessibilityRole={accessibilityRole || 'button'}
-      accessibilityHint={accessibilityHint}
+      accessibilityRole={accessibilityRole || defaultAccessibilityRole}
       style={
         [styles.track, themeStyle?.switch?.trackStyle, trackStyle] as StyleProp<
           ViewStyle
