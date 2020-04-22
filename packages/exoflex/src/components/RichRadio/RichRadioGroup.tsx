@@ -5,11 +5,12 @@ import {
   ViewStyle,
   ScrollView,
   View,
+  AccessibilityProps,
 } from 'react-native';
 
 import useTheme from '../../helpers/useTheme';
 
-export type RichRadioGroupProps<T> = {
+export type RichRadioGroupProps<T> = AccessibilityProps & {
   data: Array<T>;
   keyExtractor: (item: T, index: number) => string;
   renderItem: ({ item, index }: { item: T; index: number }) => ReactNode;
@@ -26,6 +27,9 @@ export default function RichRadioGroup<T>(props: RichRadioGroupProps<T>) {
     style,
     contentContainerStyle,
     testID,
+    accessibilityLabel,
+    accessibilityRole,
+    ...otherProps
   } = props;
   let { style: themeStyle } = useTheme();
 
@@ -38,6 +42,9 @@ export default function RichRadioGroup<T>(props: RichRadioGroupProps<T>) {
 
   return (
     <ScrollView
+      {...otherProps}
+      accessibilityLabel={accessibilityLabel || 'Radio Group'}
+      accessibilityRole={accessibilityRole || 'radiogroup'}
       horizontal
       showsHorizontalScrollIndicator={false}
       style={rootStyle}
