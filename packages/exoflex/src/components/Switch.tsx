@@ -11,6 +11,7 @@ export type SwitchProps = {
   trackStyle?: StyleProp<ViewStyle>;
   thumbStyle?: StyleProp<ViewStyle>;
   testID?: string;
+  accessibilityHint?: string;
 };
 
 const MARGIN = 2;
@@ -24,6 +25,7 @@ export default function Switch(props: SwitchProps) {
     trackStyle,
     thumbStyle,
     testID,
+    accessibilityHint,
   } = props;
   let { colors, style: themeStyle } = useTheme();
   let [xValue] = useState(new Animated.Value(value ? 1 : 0));
@@ -67,6 +69,9 @@ export default function Switch(props: SwitchProps) {
 
   return (
     <TouchableOpacity
+      accessibilityLabel="Switch"
+      accessibilityRole="button"
+      accessibilityHint={accessibilityHint}
       style={
         [styles.track, themeStyle?.switch?.trackStyle, trackStyle] as StyleProp<
           ViewStyle
