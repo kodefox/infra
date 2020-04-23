@@ -6,6 +6,7 @@ import {
   ImageSourcePropType,
   AccessibilityProps,
   AccessibilityRole,
+  AccessibilityState,
 } from 'react-native';
 import { Avatar } from 'react-native-paper';
 import DrawerItem from './DrawerItem';
@@ -23,6 +24,7 @@ type Props = AccessibilityProps & {
   footerAccessibilityLabel?: string;
   footerAccessibilityHint?: string;
   footerAccessibilityRole?: AccessibilityRole;
+  footerAccessibilityState?: AccessibilityState;
 };
 
 const emptyFn = () => {};
@@ -40,11 +42,10 @@ export default function DrawerSection(props: Props) {
     footerAccessibilityLabel,
     footerAccessibilityHint,
     footerAccessibilityRole,
+    footerAccessibilityState,
     ...otherProps
   } = props;
 
-  // NOTE: Use `link` for web as RNW doesn't support `menuitem` yet
-  // https://github.com/necolas/react-native-web/blob/master/packages/react-native-web/src/modules/AccessibilityUtil/propsToAriaRole.js
   let defaultFooterAccessibilityRole = (IS_MOBILE ? 'menuitem' : 'link') as
     | 'menuitem'
     | 'link';
@@ -75,7 +76,6 @@ export default function DrawerSection(props: Props) {
   return (
     <View
       {...otherProps}
-      accessibilityLabel={accessibilityLabel || 'Drawer'}
       accessibilityRole={accessibilityRole || 'menubar'}
       style={styles.container}
     >
@@ -83,13 +83,10 @@ export default function DrawerSection(props: Props) {
       <View style={{ flex: 1 }}>{children}</View>
       {footerLabel && (
         <DrawerItem
-          accessibilityLabel={
-            footerAccessibilityLabel || `Drawer Item: ${footerLabel}`
-          }
           accessibilityRole={
             footerAccessibilityRole || defaultFooterAccessibilityRole
           }
-          accessibilityHint={footerAccessibilityHint}
+          accessibilityState={footerAccessibilityState}
           label={footerLabel}
           icon={footerIcon}
           onPress={footerOnPress || emptyFn}

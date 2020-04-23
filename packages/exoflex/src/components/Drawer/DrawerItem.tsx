@@ -5,6 +5,7 @@ import {
   ViewStyle,
   TextStyle,
   AccessibilityProps,
+  View,
 } from 'react-native';
 import { TouchableRipple, IconButton } from 'react-native-paper';
 import Text from '../Text';
@@ -31,40 +32,45 @@ export default function DrawerItem(props: DrawerItemProps) {
     icon,
     onPress,
     testID,
-    accessibilityLabel,
     accessibilityRole,
-    ...otherProps
+    accessibilityState,
+    ...otherAcessibilityProps
   } = props;
 
-  // NOTE: Use `link` for web as RNW doesn't support `menuitem` yet
-  // https://github.com/necolas/react-native-web/blob/master/packages/react-native-web/src/modules/AccessibilityUtil/propsToAriaRole.js
   let defaultAccessibilityRole = (IS_MOBILE ? 'menuitem' : 'link') as
     | 'menuitem'
     | 'link';
 
   return (
-    <TouchableRipple
-      {...otherProps}
-      accessibilityLabel={accessibilityLabel || `Drawer Item: ${label}`}
+    <View
+      {...otherAcessibilityProps}
       accessibilityRole={accessibilityRole || defaultAccessibilityRole}
-      onPress={onPress}
-      style={[
-        styles.container,
-        themeStyle?.drawerItem?.style,
-        active && { backgroundColor: '#fafafa' },
-        style,
-      ]}
-      testID={testID}
+      accessibilityState={{ selected: active, ...accessibilityState }}
     >
-      <>
-        {icon && <IconButton icon={icon} style={styles.icon} />}
-        <Text
-          style={[styles.label, themeStyle?.drawerItem?.labelStyle, labelStyle]}
-        >
-          {label}
-        </Text>
-      </>
-    </TouchableRipple>
+      <TouchableRipple
+        onPress={onPress}
+        style={[
+          styles.container,
+          themeStyle?.drawerItem?.style,
+          active && { backgroundColor: '#fafafa' },
+          style,
+        ]}
+        testID={testID}
+      >
+        <>
+          {icon && <IconButton icon={icon} style={styles.icon} />}
+          <Text
+            style={[
+              styles.label,
+              themeStyle?.drawerItem?.labelStyle,
+              labelStyle,
+            ]}
+          >
+            {label}
+          </Text>
+        </>
+      </TouchableRipple>
+    </View>
   );
 }
 
