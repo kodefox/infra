@@ -35,9 +35,8 @@ export default function RadioButtonGroup(props: Props) {
     value,
     onValueChange,
     children,
-    accessibilityLabel,
     accessibilityRole,
-    ...otherProps
+    ...otherAccessibilityProps
   } = props;
 
   return (
@@ -48,8 +47,7 @@ export default function RadioButtonGroup(props: Props) {
       }}
     >
       <View
-        {...otherProps}
-        accessibilityLabel={accessibilityLabel || 'Radio Group'}
+        {...otherAccessibilityProps}
         accessibilityRole={accessibilityRole || 'radiogroup'}
       >
         {children}

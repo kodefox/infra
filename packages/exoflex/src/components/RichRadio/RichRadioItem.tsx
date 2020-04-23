@@ -11,7 +11,6 @@ import {
 import Text from '../Text';
 
 import useTheme from '../../helpers/useTheme';
-import { IS_MOBILE } from '../../constants/platforms';
 
 export type RichRadioItemProps = AccessibilityProps & {
   label: string;
@@ -38,9 +37,9 @@ export default function RichRadioItem(props: RichRadioItemProps) {
     textStyle,
     firstItemCustomStyle,
     testID,
-    accessibilityLabel,
     accessibilityRole,
-    ...otherProps
+    accessibilityState,
+    ...otherAcessibilityProps
   } = props;
   let { colors, style: themeStyle } = useTheme();
 
@@ -60,17 +59,11 @@ export default function RichRadioItem(props: RichRadioItemProps) {
     textStyle,
   ] as TextStyle;
 
-  // NOTE: Use `button` for web as RNW doesn't support it yet
-  // https://github.com/necolas/react-native-web/blob/master/packages/react-native-web/src/modules/AccessibilityUtil/propsToAriaRole.js
-  let defaultAccessibilityRole = (IS_MOBILE ? 'radio' : 'button') as
-    | 'radio'
-    | 'button';
-
   return (
     <TouchableOpacity
-      {...otherProps}
-      accessibilityLabel={accessibilityLabel || `Radio Item: ${label}`}
-      accessibilityRole={accessibilityRole || defaultAccessibilityRole}
+      {...otherAcessibilityProps}
+      accessibilityRole={accessibilityRole || 'radio'}
+      accessibilityState={{ checked: selected, ...accessibilityState }}
       activeOpacity={0.7}
       onPress={onPress}
       style={combinedItemStyle}

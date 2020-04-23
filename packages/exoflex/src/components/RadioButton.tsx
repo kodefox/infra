@@ -11,7 +11,6 @@ import {
 import useTheme from '../helpers/useTheme';
 import Text from './Text';
 import RadioButtonGroup, { RadioButtonContext } from './RadioButtonGroup';
-import { IS_MOBILE } from '../constants/platforms';
 
 export type RadioButtonProps = AccessibilityProps & {
   /**
@@ -68,9 +67,9 @@ export default function RadioButton(props: RadioButtonProps) {
     textStyle,
     style,
     testID,
-    accessibilityLabel,
+    accessibilityState,
     accessibilityRole,
-    ...otherProps
+    ...otherAccessibilityProps
   } = props;
   let { colors, style: themeStyle } = useTheme();
   let { value: contextValue, onValueChange: contextOnValueChange } = useContext(
@@ -81,12 +80,6 @@ export default function RadioButton(props: RadioButtonProps) {
 
   let isChecked = contextValue === value || checked;
 
-  // NOTE: Use `button` for web as RNW doesn't support it yet
-  // https://github.com/necolas/react-native-web/blob/master/packages/react-native-web/src/modules/AccessibilityUtil/propsToAriaRole.js
-  let defaultAccessibilityRole = (IS_MOBILE ? 'radio' : 'button') as
-    | 'radio'
-    | 'button';
-
   let handlePress = () =>
     contextOnValueChange
       ? contextOnValueChange(value)
@@ -94,9 +87,13 @@ export default function RadioButton(props: RadioButtonProps) {
 
   return (
     <TouchableOpacity
-      {...otherProps}
-      accessibilityLabel={accessibilityLabel || `Radio Item: ${label}`}
-      accessibilityRole={accessibilityRole || defaultAccessibilityRole}
+      {...otherAccessibilityProps}
+      accessibilityRole={accessibilityRole || 'radio'}
+      accessibilityState={{
+        checked: isChecked,
+        disabled,
+        ...accessibilityState,
+      }}
       onPress={handlePress}
       style={[styles.container, style]}
       activeOpacity={0.7}

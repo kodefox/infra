@@ -27,9 +27,8 @@ export default function RichRadioGroup<T>(props: RichRadioGroupProps<T>) {
     style,
     contentContainerStyle,
     testID,
-    accessibilityLabel,
     accessibilityRole,
-    ...otherProps
+    ...otherAccessibilityProps
   } = props;
   let { style: themeStyle } = useTheme();
 
@@ -42,8 +41,7 @@ export default function RichRadioGroup<T>(props: RichRadioGroupProps<T>) {
 
   return (
     <ScrollView
-      {...otherProps}
-      accessibilityLabel={accessibilityLabel || 'Radio Group'}
+      {...otherAccessibilityProps}
       accessibilityRole={accessibilityRole || 'radiogroup'}
       horizontal
       showsHorizontalScrollIndicator={false}
