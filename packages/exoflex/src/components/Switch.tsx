@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, Animated, StyleProp, ViewStyle } from 'react-native';
+import {
+  TouchableOpacity,
+  Animated,
+  StyleProp,
+  ViewStyle,
+  AccessibilityProps,
+} from 'react-native';
 
 import useTheme from '../helpers/useTheme';
 
-export type SwitchProps = {
+export type SwitchProps = AccessibilityProps & {
   value: boolean;
   onValueChange: (value?: boolean) => void;
   disabled: boolean;
@@ -24,6 +30,9 @@ export default function Switch(props: SwitchProps) {
     trackStyle,
     thumbStyle,
     testID,
+    accessibilityRole,
+    accessibilityState,
+    ...otherAccessibilityProps
   } = props;
   let { colors, style: themeStyle } = useTheme();
   let [xValue] = useState(new Animated.Value(value ? 1 : 0));
@@ -67,6 +76,9 @@ export default function Switch(props: SwitchProps) {
 
   return (
     <TouchableOpacity
+      {...otherAccessibilityProps}
+      accessibilityRole={accessibilityRole || 'switch'}
+      accessibilityState={{ disabled, checked: !!value, ...accessibilityState }}
       style={
         [styles.track, themeStyle?.switch?.trackStyle, trackStyle] as StyleProp<
           ViewStyle
