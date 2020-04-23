@@ -39,6 +39,7 @@ export default function DrawerSection(props: Props) {
     footerOnPress,
     accessibilityRole,
     footerAccessibilityLabel,
+    footerAccessibilityHint,
     footerAccessibilityRole,
     footerAccessibilityState,
     ...otherProps
@@ -81,6 +82,8 @@ export default function DrawerSection(props: Props) {
       <View style={{ flex: 1 }}>{children}</View>
       {footerLabel && (
         <DrawerItem
+          accessibilityLabel={footerAccessibilityLabel}
+          accessibilityHint={footerAccessibilityHint}
           accessibilityRole={
             footerAccessibilityRole || defaultFooterAccessibilityRole
           }
