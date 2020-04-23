@@ -5,13 +5,14 @@ import {
   TextStyle,
   TouchableOpacity,
   StyleSheet,
+  AccessibilityProps,
 } from 'react-native';
 
 import Text from '../Text';
 
 import useTheme from '../../helpers/useTheme';
 
-export type RichRadioItemProps = {
+export type RichRadioItemProps = AccessibilityProps & {
   label: string;
   selectedColor?: string;
   selected?: boolean;
@@ -36,6 +37,9 @@ export default function RichRadioItem(props: RichRadioItemProps) {
     textStyle,
     firstItemCustomStyle,
     testID,
+    accessibilityRole,
+    accessibilityState,
+    ...otherAcessibilityProps
   } = props;
   let { colors, style: themeStyle } = useTheme();
 
@@ -57,6 +61,9 @@ export default function RichRadioItem(props: RichRadioItemProps) {
 
   return (
     <TouchableOpacity
+      {...otherAcessibilityProps}
+      accessibilityRole={accessibilityRole || 'radio'}
+      accessibilityState={{ checked: selected, ...accessibilityState }}
       activeOpacity={0.7}
       onPress={onPress}
       style={combinedItemStyle}

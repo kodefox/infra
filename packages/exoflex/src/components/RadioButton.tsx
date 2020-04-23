@@ -6,12 +6,13 @@ import {
   TextStyle,
   ViewStyle,
   StyleSheet,
+  AccessibilityProps,
 } from 'react-native';
 import useTheme from '../helpers/useTheme';
 import Text from './Text';
 import RadioButtonGroup, { RadioButtonContext } from './RadioButtonGroup';
 
-export type RadioButtonProps = {
+export type RadioButtonProps = AccessibilityProps & {
   /**
    * The text/string for the radio button
    */
@@ -66,6 +67,9 @@ export default function RadioButton(props: RadioButtonProps) {
     textStyle,
     style,
     testID,
+    accessibilityState,
+    accessibilityRole,
+    ...otherAccessibilityProps
   } = props;
   let { colors, style: themeStyle } = useTheme();
   let { value: contextValue, onValueChange: contextOnValueChange } = useContext(
@@ -83,6 +87,13 @@ export default function RadioButton(props: RadioButtonProps) {
 
   return (
     <TouchableOpacity
+      {...otherAccessibilityProps}
+      accessibilityRole={accessibilityRole || 'radio'}
+      accessibilityState={{
+        checked: isChecked,
+        disabled,
+        ...accessibilityState,
+      }}
       onPress={handlePress}
       style={[styles.container, style]}
       activeOpacity={0.7}
