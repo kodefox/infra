@@ -37,10 +37,8 @@ export default function DrawerSection(props: Props) {
     footerLabel,
     footerIcon,
     footerOnPress,
-    accessibilityLabel,
     accessibilityRole,
     footerAccessibilityLabel,
-    footerAccessibilityHint,
     footerAccessibilityRole,
     footerAccessibilityState,
     ...otherProps
