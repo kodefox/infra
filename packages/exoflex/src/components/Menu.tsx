@@ -4,8 +4,6 @@ import Text from './Text';
 import useTheme from '../helpers/useTheme';
 import { AccessibilityProps, View } from 'react-native';
 
-import { IS_MOBILE } from '../constants/platforms';
-
 export type MenuProps = OmitPaperTheme<typeof PaperMenu>;
 
 function Menu(props: MenuProps) {
@@ -34,24 +32,16 @@ export function MenuItem(props: MenuItemProps) {
     icon,
     disabled,
     onPress,
-    accessibilityLabel,
     accessibilityRole,
     accessibilityState,
     ...otherAccessibilityProps
   } = props;
 
-  // NOTE: Use `button` for web as RNW doesn't support `menuitem` yet
-  // https://github.com/necolas/react-native-web/blob/master/packages/react-native-web/src/modules/AccessibilityUtil/propsToAriaRole.js
-  let defaultAccessibilityRole = (IS_MOBILE ? 'menuitem' : 'button') as
-    | 'menuitem'
-    | 'button';
-
   return (
     <View
       {...otherAccessibilityProps}
-      accessibilityLabel={accessibilityLabel || 'Menu Item'}
-      accessibilityRole={accessibilityRole || defaultAccessibilityRole}
-      accessibilityState={accessibilityState || { disabled }}
+      accessibilityRole={accessibilityRole || 'menuitem'}
+      accessibilityState={{ disabled, ...accessibilityState }}
     >
       <PaperMenu.Item
         disabled={disabled}
