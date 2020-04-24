@@ -129,10 +129,20 @@ export function DatePicker(props: PickerProps) {
         renderArrow={arrow}
       />
       <View style={styles.touchableActionWrapper}>
-        <TouchableRipple onPress={onCancel} style={styles.touchableAction}>
+        <TouchableRipple
+          accessibilityHint="Close the picker"
+          accessibilityRole="button"
+          onPress={onCancel}
+          style={styles.touchableAction}
+        >
           <Text>CANCEL</Text>
         </TouchableRipple>
-        <TouchableRipple onPress={confirm} style={styles.touchableAction}>
+        <TouchableRipple
+          accessibilityHint="Confirm the date"
+          accessibilityRole="button"
+          onPress={confirm}
+          style={styles.touchableAction}
+        >
           <Text style={{ color: colors.primary }}>CONFIRM</Text>
         </TouchableRipple>
       </View>
@@ -173,10 +183,20 @@ export function TimePickerContainer(props: PickerProps) {
         </View>
       </View>
       <View style={styles.touchableActionWrapper}>
-        <TouchableRipple onPress={onCancel} style={styles.touchableAction}>
+        <TouchableRipple
+          accessibilityHint="Close the picker"
+          accessibilityRole="button"
+          onPress={onCancel}
+          style={styles.touchableAction}
+        >
           <Text>CANCEL</Text>
         </TouchableRipple>
-        <TouchableRipple onPress={confirm} style={styles.touchableAction}>
+        <TouchableRipple
+          accessibilityHint="Confirm the time"
+          accessibilityRole="button"
+          onPress={confirm}
+          style={styles.touchableAction}
+        >
           <Text style={{ color: colors.primary }}>CONFIRM</Text>
         </TouchableRipple>
       </View>
