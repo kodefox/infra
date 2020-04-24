@@ -25,6 +25,7 @@ import { TextInputProps } from './components/TextInput/types';
 import { TimePickerProps } from './components/TimePicker/types';
 import { ToastProps } from './components/Toast';
 import { AccordionProps, Title } from './components/Accordion';
+import { ViewStyle, TextStyle, ImageStyle } from 'react-native';
 
 export type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends Array<infer U>
@@ -182,3 +183,7 @@ export type Colors = {
 };
 
 export type FontSource = string | number;
+
+export type NamedStyles<T> = {
+  [P in keyof T]: ViewStyle | TextStyle | ImageStyle;
+};
