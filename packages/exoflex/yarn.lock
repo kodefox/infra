@@ -7375,10 +7375,10 @@ react-native-svg@9.13.5:
     css-select "^2.0.2"
     css-tree "^1.0.0-alpha.37"
 
-react-native-testing-library@1.13.0:
-  version "1.13.0"
-  resolved "https://registry.yarnpkg.com/react-native-testing-library/-/react-native-testing-library-1.13.0.tgz#5cefff5fde2f3aba6efd6c6dc47bed97e7dc9019"
-  integrity sha512-SL9BTZH65CRsB4zZPcvaymLgegLJ/hXlPEbrzt+xWxT4PwGTmZtVpnyw9LnMzWACe+VTBs3h8lIVvqUIabuLZA==
+react-native-testing-library@1.13.2:
+  version "1.13.2"
+  resolved "https://registry.yarnpkg.com/react-native-testing-library/-/react-native-testing-library-1.13.2.tgz#0d56e72cb38a9ceb065402607449deb5eb328b47"
+  integrity sha512-ljUo4U5cCoMudNh11/TXN74Fy/uVKcF4sWaTM1xgNDCU6hWdnud87BZo3a4FArkTuF3kFaiILj666JnIkr1VMQ==
   dependencies:
     pretty-format "^24.0.0"
 
