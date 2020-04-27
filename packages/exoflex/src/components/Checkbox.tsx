@@ -6,13 +6,14 @@ import {
   TouchableOpacity,
   View,
   ViewStyle,
+  AccessibilityProps,
 } from 'react-native';
 import Text from './Text';
 import { DefaultTheme } from '../constants/themes';
 import useTheme from '../helpers/useTheme';
 import Check from './svg/Check';
 
-export type CheckboxProps = {
+export type CheckboxProps = AccessibilityProps & {
   /**
    * The text/string for the checkbox
    */
@@ -62,11 +63,17 @@ export default function Checkbox(props: CheckboxProps) {
     textStyle,
     style,
     testID,
+    accessibilityRole,
+    accessibilityState,
+    ...otherAccessibilityProps
   } = props;
   let { colors, roundness, style: themeStyle } = useTheme();
 
   return (
     <TouchableOpacity
+      {...otherAccessibilityProps}
+      accessibilityRole={accessibilityRole || 'checkbox'}
+      accessibilityState={{ checked, disabled, ...accessibilityState }}
       style={[styles.container, style]}
       onPress={() => onPress(!checked)}
       disabled={disabled}
