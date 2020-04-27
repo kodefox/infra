@@ -8,6 +8,7 @@ import {
   TextStyle,
   Platform,
   View,
+  AccessibilityProps,
 } from 'react-native';
 import CollapsibleBase from 'react-native-collapsible';
 import { useAnimation } from 'react-native-animation-hooks';
@@ -16,7 +17,7 @@ import AnimatedIcon from './AnimatedIcon';
 import Text from './Text';
 import useTheme from '../helpers/useTheme';
 
-export type CollapsibleProps = {
+export type CollapsibleProps = AccessibilityProps & {
   title: string;
   children: ReactNode;
   style?: StyleProp<ViewStyle>;
@@ -27,6 +28,8 @@ export type CollapsibleProps = {
   renderIconLeft?: null | ((animatedValue: Animated.Value) => ReactNode);
   renderIconRight?: null | ((animatedValue: Animated.Value) => ReactNode);
   disabled?: boolean;
+  // NOTE: Deprecated prop, remove `isCollapsed` on v4.0
+  isCollapsed?: boolean;
 };
 
 function Collapsible({
@@ -39,7 +42,11 @@ function Collapsible({
   renderIconLeft,
   renderIconRight,
   disabled,
-  ...otherProps
+  children,
+  isCollapsed: isCollapsedProp,
+  accessibilityRole,
+  accessibilityState,
+  ...otherAccessibilityProps
 }: CollapsibleProps) {
   let { colors, style: themeStyle } = useTheme();
   let [isCollapsed, setCollapsed] = useState(true);
@@ -55,7 +62,7 @@ function Collapsible({
     duration: 300,
   });
 
-  if (otherProps.hasOwnProperty('isCollapsed')) {
+  if (isCollapsedProp) {
     // eslint-disable-next-line no-console
     console.warn(
       '`isCollapsed` props is deprecated. To control the Collapsible, please use Accordion component instead.',
@@ -75,6 +82,9 @@ function Collapsible({
       ]}
     >
       <TouchableOpacity
+        {...otherAccessibilityProps}
+        accessibilityRole={accessibilityRole || 'button'}
+        accessibilityState={{ expanded: !isCollapsed, ...accessibilityState }}
         activeOpacity={0.9}
         onPress={toggleCollapsible}
         style={[
@@ -126,8 +136,9 @@ function Collapsible({
           themeStyle?.collapsible?.contentContainerStyle,
           contentContainerStyle,
         ]}
-        {...otherProps}
-      />
+      >
+        {children}
+      </CollapsibleBase>
     </View>
   );
 }
