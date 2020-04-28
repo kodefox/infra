@@ -9059,9 +9059,9 @@ react-native-animation-hooks@1.0.1:
   resolved "https://registry.yarnpkg.com/react-native-animation-hooks/-/react-native-animation-hooks-1.0.1.tgz#fcda58867d708084cc63c6fcd001f5375a40f45b"
   integrity sha512-s1o71m9sPpEYwFpHTdBouO50jzvyxIVB4MmNwfVGgPWkdL02zKOzyXcNuPJmoCuLIstUj5TBEwtnGk1WMFJx5A==
 
-"react-native-calendars@https://github.com/oshimayoan/react-native-calendars/archive/oshimayoan-0.0.2.tar.gz":
-  version "0.0.2"
-  resolved "https://github.com/oshimayoan/react-native-calendars/archive/oshimayoan-0.0.2.tar.gz#1eb8276a06844c2fc66ade9ad94c74b081ab5816"
+"react-native-calendars@https://github.com/oshimayoan/react-native-calendars/archive/oshimayoan-0.0.3.tar.gz":
+  version "0.0.3"
+  resolved "https://github.com/oshimayoan/react-native-calendars/archive/oshimayoan-0.0.3.tar.gz#60bd33bbd3cefa3ff0031e979b98ba766a3ab695"
   dependencies:
     hoist-non-react-statics "^3.3.1"
     lodash "^4.0.0"
