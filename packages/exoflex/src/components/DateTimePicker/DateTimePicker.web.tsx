@@ -26,6 +26,8 @@ export default function DateTimePicker(props: DateTimePickerProps) {
     onConfirm,
     minimumDate,
     maximumDate,
+    cancelTextWeb = 'CANCEL',
+    confirmTextWeb = 'CONFIRM',
   } = props;
 
   let { colors } = useTheme();
@@ -50,6 +52,8 @@ export default function DateTimePicker(props: DateTimePickerProps) {
         date={dateTime}
         minDate={minimumDate}
         maxDate={maximumDate}
+        cancelText={cancelTextWeb}
+        confirmText={confirmTextWeb}
         onCancel={cancel}
         onConfirm={confirmDate}
       />
@@ -58,6 +62,8 @@ export default function DateTimePicker(props: DateTimePickerProps) {
         title={timeTitleWeb || title}
         date={dateTime}
         use24Hour={use24Hour}
+        cancelText={cancelTextWeb}
+        confirmText={confirmTextWeb}
         onCancel={cancel}
         onConfirm={confirmTime}
       />
@@ -85,6 +91,8 @@ export default function DateTimePicker(props: DateTimePickerProps) {
 export type PickerProps = Readonly<{
   date: string;
   title?: string;
+  cancelText: string;
+  confirmText: string;
   minDate?: Date;
   maxDate?: Date;
   use24Hour?: boolean;
@@ -93,7 +101,16 @@ export type PickerProps = Readonly<{
 }>;
 
 export function DatePicker(props: PickerProps) {
-  let { date, title, minDate, maxDate, onCancel, onConfirm } = props;
+  let {
+    date,
+    title,
+    cancelText,
+    confirmText,
+    minDate,
+    maxDate,
+    onCancel,
+    onConfirm,
+  } = props;
   let { colors } = useTheme();
 
   let [selectedDate, setSelectedDate] = useState(date);
@@ -130,20 +147,18 @@ export function DatePicker(props: PickerProps) {
       />
       <View style={styles.touchableActionWrapper}>
         <TouchableRipple
-          accessibilityHint="Close the picker"
           accessibilityRole="button"
           onPress={onCancel}
           style={styles.touchableAction}
         >
-          <Text>CANCEL</Text>
+          <Text>{cancelText}</Text>
         </TouchableRipple>
         <TouchableRipple
-          accessibilityHint="Confirm the date"
           accessibilityRole="button"
           onPress={confirm}
           style={styles.touchableAction}
         >
-          <Text style={{ color: colors.primary }}>CONFIRM</Text>
+          <Text style={{ color: colors.primary }}>{confirmText}</Text>
         </TouchableRipple>
       </View>
     </>
@@ -151,7 +166,15 @@ export function DatePicker(props: PickerProps) {
 }
 
 export function TimePickerContainer(props: PickerProps) {
-  let { date, title, use24Hour, onCancel, onConfirm } = props;
+  let {
+    date,
+    title,
+    cancelText,
+    confirmText,
+    use24Hour,
+    onCancel,
+    onConfirm,
+  } = props;
   let { colors } = useTheme();
 
   let [selectedDateTime, setSelectedDateTime] = useState(date);
@@ -189,7 +212,7 @@ export function TimePickerContainer(props: PickerProps) {
           onPress={onCancel}
           style={styles.touchableAction}
         >
-          <Text>CANCEL</Text>
+          <Text>{cancelText}</Text>
         </TouchableRipple>
         <TouchableRipple
           accessibilityHint="Confirm the time"
@@ -197,7 +220,7 @@ export function TimePickerContainer(props: PickerProps) {
           onPress={confirm}
           style={styles.touchableAction}
         >
-          <Text style={{ color: colors.primary }}>CONFIRM</Text>
+          <Text style={{ color: colors.primary }}>{confirmText}</Text>
         </TouchableRipple>
       </View>
     </>
