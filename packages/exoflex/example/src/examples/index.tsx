@@ -24,6 +24,7 @@ import RadioButtonGroupExample from './RadioButtonGroupExample';
 import RichRadioButtonExample from './RichRadioButtonExample';
 import SegmentedControlExample from './SegmentedControlExample';
 import SwitchExample from './SwitchExample';
+import TabExample from './TabExample';
 import TextInputExample from './TextInputExample';
 import ToastExample from './ToastExample';
 import TypographyExample from './TypographyExample';
@@ -54,6 +55,7 @@ export let EXAMPLES = {
   segmentedcontrol: SegmentedControlExample,
   slider: SliderExample,
   switch: SwitchExample,
+  tab: TabExample,
   textinput: TextInputExample,
   toast: ToastExample,
   typography: TypographyExample,

@@ -12,6 +12,8 @@ let extraNodeModules = {};
   'react-native',
   'react',
   'react-native-svg',
+  'react-native-reanimated',
+  'react-native-gesture-handler',
   'expo-font',
   '@babel/runtime',
   ...dependencies,
