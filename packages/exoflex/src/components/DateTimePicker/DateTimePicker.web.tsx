@@ -207,7 +207,6 @@ export function TimePickerContainer(props: PickerProps) {
       </View>
       <View style={styles.touchableActionWrapper}>
         <TouchableRipple
-          accessibilityHint="Close the picker"
           accessibilityRole="button"
           onPress={onCancel}
           style={styles.touchableAction}
@@ -215,7 +214,6 @@ export function TimePickerContainer(props: PickerProps) {
           <Text>{cancelText}</Text>
         </TouchableRipple>
         <TouchableRipple
-          accessibilityHint="Confirm the time"
           accessibilityRole="button"
           onPress={confirm}
           style={styles.touchableAction}
