@@ -29,7 +29,7 @@
     "color": "^3.1.2",
     "lodash.mergewith": "^4.6.2",
     "react-native-animation-hooks": "^1.0.1",
-    "react-native-calendars": "^1.212.0",
+    "react-native-calendars": "https://github.com/oshimayoan/react-native-calendars/archive/oshimayoan-0.0.3.tar.gz",
     "react-native-collapsible": "^1.5.1",
     "react-native-modal-datetime-picker": "8.1.1",
     "react-native-multi-slider": "npm:@ptomasroos/react-native-multi-slider",
