@@ -31,6 +31,7 @@ function Chip({
   textStyle,
   icon,
   iconStyle,
+  accessibilityRole,
   ...otherProps
 }: ChipProps) {
   let { colors, style: themeStyle } = useTheme();
@@ -39,6 +40,7 @@ function Chip({
 
   return (
     <TouchableOpacity
+      accessibilityRole={accessibilityRole || 'button'}
       activeOpacity={0.7}
       disabled={!onPress}
       onPress={onPress}
