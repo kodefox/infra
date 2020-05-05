@@ -10,6 +10,8 @@ export type DateTimePickerProps = Readonly<
     title?: string;
     dateTitleWeb?: string;
     timeTitleWeb?: string;
+    cancelTextWeb?: string;
+    confirmTextWeb?: string;
     mode?: DateTimePickerMode;
     date?: string;
     use24Hour?: boolean;
