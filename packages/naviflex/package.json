@@ -24,7 +24,7 @@
     "hookrouter": "^1.2.3"
   },
   "devDependencies": {
-    "@react-native-community/bob": "0.8.0",
+    "@react-native-community/bob": "0.14.1",
     "@react-navigation/native": "5.0.9",
     "@types/hookrouter": "2.2.1",
     "eslint": "7.0.0",
