@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { TouchableRipple } from 'react-native-paper';
 import Text from '../Text';
 import ActivityIndicator from '../ActivityIndicator';
@@ -47,35 +47,30 @@ export default function ButtonRipple(props: ButtonProps) {
       accessibilityRole="button"
       accessibilityStates={disabled ? ['disabled'] : []}
       style={[
-        localStyles.button,
-        compact && localStyles.compact,
+        styles.button,
+        compact && styles.compact,
         buttonStyle,
         noShadowStyle,
         style,
       ]}
     >
-      <View style={[localStyles.content, styles.contentWrapper, contentStyle]}>
+      <View style={[styles.content, styles.contentWrapper, contentStyle]}>
         {icon && loading !== true && (
-          <View style={localStyles.icon}>
+          <View style={styles.icon}>
             <IconButton icon={icon} size={16} color={textColor} />
           </View>
         )}
         {loading && (
-          <ActivityIndicator
-            size={16}
-            color={textColor}
-            style={localStyles.icon}
-          />
+          <ActivityIndicator size={16} color={textColor} style={styles.icon} />
         )}
         {typeof children === 'string' ? (
           <Text
             preset={textPreset}
-            weight="500"
             numberOfLines={1}
             style={[
-              localStyles.label,
-              compact && localStyles.compactLabel,
-              uppercase && localStyles.uppercaseLabel,
+              styles.label,
+              compact && styles.compactLabel,
+              uppercase && styles.uppercaseLabel,
               textStyle,
               labelStyle,
             ]}
@@ -89,33 +84,3 @@ export default function ButtonRipple(props: ButtonProps) {
     </TouchableRipple>
   );
 }
-
-const localStyles = StyleSheet.create({
-  button: {
-    minWidth: 64,
-    borderStyle: 'solid',
-  },
-  compact: {
-    minWidth: 'auto',
-  },
-  content: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  icon: {
-    width: 21,
-  },
-  label: {
-    textAlign: 'center',
-    letterSpacing: 1,
-    marginVertical: 9,
-    marginHorizontal: 16,
-  },
-  compactLabel: {
-    marginHorizontal: 8,
-  },
-  uppercaseLabel: {
-    textTransform: 'uppercase',
-  },
-});
