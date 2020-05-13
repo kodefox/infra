@@ -39,7 +39,6 @@ export default function ButtonOpacity(props: ButtonProps) {
       onPress={onPress}
       activeOpacity={preset === 'primary' ? 0.8 : 0.5}
       disabled={disabled}
-      accessibilityLabel={accessibilityLabel}
       accessibilityTraits={disabled ? ['button', 'disabled'] : 'button'}
       accessibilityComponentType="button"
       accessibilityRole="button"

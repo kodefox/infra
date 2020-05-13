@@ -41,7 +41,6 @@ export default function ButtonRipple(props: ButtonProps) {
       borderless
       onPress={onPress}
       disabled={disabled}
-      accessibilityLabel={accessibilityLabel}
       accessibilityTraits={disabled ? ['button', 'disabled'] : 'button'}
       accessibilityComponentType="button"
       accessibilityRole="button"
