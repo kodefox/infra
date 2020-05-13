@@ -1,11 +1,13 @@
 import React from 'react';
-import { Button as PaperButton } from 'react-native-paper';
+import { View, StyleSheet } from 'react-native';
+import { TouchableRipple } from 'react-native-paper';
 import Text from '../Text';
+import ActivityIndicator from '../ActivityIndicator';
+import IconButton from '../IconButton';
 
 import { useButtonStyle } from './useButtonStyle';
 
 import { ButtonProps } from './types';
-import { PRESETS } from './presets';
 import { styles } from './styles';
 
 export default function ButtonRipple(props: ButtonProps) {
@@ -19,38 +21,101 @@ export default function ButtonRipple(props: ButtonProps) {
     labelStyle,
     disabled,
     onPress,
+    compact,
     color: buttonColor,
+    loading,
+    icon,
+    accessibilityLabel,
     ...otherProps
   } = props;
 
-  let { buttonStyle, textStyle, noShadowStyle } = useButtonStyle({
+  let { buttonStyle, textStyle, textColor, noShadowStyle } = useButtonStyle({
     preset,
     disabled,
     buttonColor,
   });
-  let mode = PRESETS[preset];
 
   return (
-    <PaperButton
-      mode={mode}
-      uppercase={uppercase}
-      contentStyle={[styles.contentWrapper, contentStyle]}
-      style={[buttonStyle, noShadowStyle, style]}
-      onPress={!disabled ? onPress : undefined}
+    <TouchableRipple
       {...otherProps}
+      borderless
+      onPress={onPress}
+      disabled={disabled}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityTraits={disabled ? ['button', 'disabled'] : 'button'}
+      accessibilityComponentType="button"
+      accessibilityRole="button"
+      accessibilityStates={disabled ? ['disabled'] : []}
+      style={[
+        localStyles.button,
+        compact && localStyles.compact,
+        buttonStyle,
+        noShadowStyle,
+        style,
+      ]}
     >
-      {typeof children === 'string' ? (
-        <Text
-          preset={textPreset}
-          weight="500"
-          numberOfLines={1}
-          style={[textStyle, labelStyle]}
-        >
-          {children}
-        </Text>
-      ) : (
-        children
-      )}
-    </PaperButton>
+      <View style={[localStyles.content, styles.contentWrapper, contentStyle]}>
+        {icon && loading !== true && (
+          <View style={localStyles.icon}>
+            <IconButton icon={icon} size={16} color={textColor} />
+          </View>
+        )}
+        {loading && (
+          <ActivityIndicator
+            size={16}
+            color={textColor}
+            style={localStyles.icon}
+          />
+        )}
+        {typeof children === 'string' ? (
+          <Text
+            preset={textPreset}
+            weight="500"
+            numberOfLines={1}
+            style={[
+              localStyles.label,
+              compact && localStyles.compactLabel,
+              uppercase && localStyles.uppercaseLabel,
+              textStyle,
+              labelStyle,
+            ]}
+          >
+            {children}
+          </Text>
+        ) : (
+          children
+        )}
+      </View>
+    </TouchableRipple>
   );
 }
+
+const localStyles = StyleSheet.create({
+  button: {
+    minWidth: 64,
+    borderStyle: 'solid',
+  },
+  compact: {
+    minWidth: 'auto',
+  },
+  content: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    width: 21,
+  },
+  label: {
+    textAlign: 'center',
+    letterSpacing: 1,
+    marginVertical: 9,
+    marginHorizontal: 16,
+  },
+  compactLabel: {
+    marginHorizontal: 8,
+  },
+  uppercaseLabel: {
+    textTransform: 'uppercase',
+  },
+});
