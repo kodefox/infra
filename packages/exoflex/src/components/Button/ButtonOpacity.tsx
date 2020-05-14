@@ -59,8 +59,8 @@ export default function ButtonOpacity(props: ButtonProps) {
         {typeof children === 'string' ? (
           <Text
             preset={textPreset}
-            weight={themeStyle?.button?.fontWeight}
-            fontStyle={themeStyle?.button?.fontStyle}
+            weight={themeStyle?.button?.labelFontWeight}
+            fontStyle={themeStyle?.button?.labelFontStyle}
             numberOfLines={1}
             style={[
               styles.label,

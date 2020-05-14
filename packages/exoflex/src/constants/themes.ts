@@ -189,7 +189,7 @@ export const DefaultTheme: Theme = {
   },
   style: {
     button: {
-      fontWeight: '500',
+      labelFontWeight: '500',
     },
   },
 };

@@ -61,8 +61,8 @@ export type Theme = {
     avatarText?: Pick<AvatarTextProps, 'style' | 'labelStyle'>;
     badge?: Pick<BadgeProps, 'style'>;
     button?: Pick<ButtonProps, 'contentStyle' | 'labelStyle' | 'style'> & {
-      fontWeight?: FontWeight;
-      fontStyle?: FontStyle;
+      labelFontWeight?: FontWeight;
+      labelFontStyle?: FontStyle;
     };
     calendar?: Pick<CalendarProps, 'style'>;
     checkbox?: Pick<CheckboxProps, 'style' | 'textStyle'>;
