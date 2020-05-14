@@ -8,6 +8,7 @@ import { useButtonStyle } from './useButtonStyle';
 
 import { ButtonProps } from './types';
 import { styles } from './styles';
+import useTheme from '../../helpers/useTheme';
 
 export default function ButtonOpacity(props: ButtonProps) {
   let {
@@ -32,6 +33,7 @@ export default function ButtonOpacity(props: ButtonProps) {
     disabled,
     buttonColor,
   });
+  let { style: themeStyle } = useTheme();
 
   return (
     <TouchableOpacity
@@ -57,6 +59,8 @@ export default function ButtonOpacity(props: ButtonProps) {
         {typeof children === 'string' ? (
           <Text
             preset={textPreset}
+            weight={themeStyle?.button?.fontWeight}
+            fontStyle={themeStyle?.button?.fontStyle}
             numberOfLines={1}
             style={[
               styles.label,
