@@ -808,10 +808,10 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/hookrouter@2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@types/hookrouter/-/hookrouter-2.2.1.tgz#0c69e671957b48ade9e042612faf3fc833a3fd59"
-  integrity sha512-C4Ae6yf8vE4TEKZa0EpP2o85UMVHKsZeJwT0oWiQ1QkNBbkQ8bk5A+qWS25Uect9r1Uivz/dnSg6v4WwzFjgrg==
+"@types/hookrouter@2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@types/hookrouter/-/hookrouter-2.2.2.tgz#0200514c0685c4e3c27f6b6688d03b2fc09263c0"
+  integrity sha512-USN2WrGknTln+fDOLHrU3ynqbxJI7x01F5kz1OYSG9BZ1NhAnJluIX2o6vagTp5anc9yUIN8FON3cUnDKtyakQ==
   dependencies:
     "@types/react" "*"
     csstype "^2.2.0"
