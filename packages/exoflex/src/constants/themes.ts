@@ -187,6 +187,11 @@ export const DefaultTheme: Theme = {
     button: true,
     textinput: false,
   },
+  style: {
+    button: {
+      labelFontWeight: '500',
+    },
+  },
 };
 
 /**

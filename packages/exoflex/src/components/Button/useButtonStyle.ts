@@ -55,7 +55,7 @@ export function useButtonStyle(options: Options) {
     borderColor,
     borderWidth,
     borderRadius: roundness,
-    elevation,
+    elevation: disabled ? 0 : elevation,
   } as ViewStyle;
   let noShadowStyle = {
     shadowOffset: { width: 0, height: 0 },

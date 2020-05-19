@@ -47,7 +47,7 @@ export type Theme = {
     textinput: boolean;
   };
   style?: {
-    accordion: Pick<
+    accordion?: Pick<
       AccordionProps<Title>,
       | 'containerStyle'
       | 'iconStyle'
@@ -55,16 +55,19 @@ export type Theme = {
       | 'titleContainerStyle'
       | 'titleStyle'
     >;
-    activityIndicator: Pick<ActivityIndicatorProps, 'style'>;
-    avatarIcon: Pick<AvatarIconProps, 'style'>;
-    avatarImage: Pick<AvatarImageProps, 'style'>;
-    avatarText: Pick<AvatarTextProps, 'style' | 'labelStyle'>;
-    badge: Pick<BadgeProps, 'style'>;
-    button: Pick<ButtonProps, 'contentStyle' | 'labelStyle' | 'style'>;
-    calendar: Pick<CalendarProps, 'style'>;
-    checkbox: Pick<CheckboxProps, 'style' | 'textStyle'>;
-    chip: Pick<ChipProps, 'style' | 'iconStyle' | 'textStyle'>;
-    collapsible: Pick<
+    activityIndicator?: Pick<ActivityIndicatorProps, 'style'>;
+    avatarIcon?: Pick<AvatarIconProps, 'style'>;
+    avatarImage?: Pick<AvatarImageProps, 'style'>;
+    avatarText?: Pick<AvatarTextProps, 'style' | 'labelStyle'>;
+    badge?: Pick<BadgeProps, 'style'>;
+    button?: Pick<ButtonProps, 'contentStyle' | 'labelStyle' | 'style'> & {
+      labelFontWeight?: FontWeight;
+      labelFontStyle?: FontStyle;
+    };
+    calendar?: Pick<CalendarProps, 'style'>;
+    checkbox?: Pick<CheckboxProps, 'style' | 'textStyle'>;
+    chip?: Pick<ChipProps, 'style' | 'iconStyle' | 'textStyle'>;
+    collapsible?: Pick<
       CollapsibleProps,
       | 'contentContainerStyle'
       | 'iconStyle'
@@ -72,26 +75,26 @@ export type Theme = {
       | 'titleContainerStyle'
       | 'titleStyle'
     >;
-    dateTimePicker: Pick<
+    dateTimePicker?: Pick<
       DateTimePickerProps,
       | 'cancelButtonContainerStyleIOS'
       | 'contentContainerStyleIOS'
       | 'datePickerContainerStyleIOS'
       | 'titleStyle'
     >;
-    divider: Pick<DividerProps, 'style'>;
-    drawerItem: Pick<DrawerItemProps, 'labelStyle' | 'style'>;
-    iconButton: Pick<IconButtonProps, 'style'>;
-    menu: Pick<MenuProps, 'style' | 'contentStyle'>;
-    menuItem: Pick<MenuItemProps, 'style'>;
-    progressBar: Pick<ProgressBarProps, 'style'>;
-    radioButton: Pick<RadioButtonProps, 'style' | 'textStyle'>;
-    richRadioGroup: Pick<
+    divider?: Pick<DividerProps, 'style'>;
+    drawerItem?: Pick<DrawerItemProps, 'labelStyle' | 'style'>;
+    iconButton?: Pick<IconButtonProps, 'style'>;
+    menu?: Pick<MenuProps, 'style' | 'contentStyle'>;
+    menuItem?: Pick<MenuItemProps, 'style'>;
+    progressBar?: Pick<ProgressBarProps, 'style'>;
+    radioButton?: Pick<RadioButtonProps, 'style' | 'textStyle'>;
+    richRadioGroup?: Pick<
       RichRadioGroupProps<{}>,
       'style' | 'contentContainerStyle'
     >;
-    richRadioItem: Pick<RichRadioItemProps, 'style' | 'textStyle'>;
-    segmentedControl: Pick<
+    richRadioItem?: Pick<RichRadioItemProps, 'style' | 'textStyle'>;
+    segmentedControl?: Pick<
       SegmentedControlProps,
       | 'activeTextStyle'
       | 'indicatorStyle'
@@ -99,7 +102,7 @@ export type Theme = {
       | 'style'
       | 'textStyle'
     >;
-    slider: Pick<
+    slider?: Pick<
       SliderProps,
       | 'containerStyle'
       | 'markerStyle'
@@ -109,14 +112,14 @@ export type Theme = {
       | 'trackStyle'
       | 'unselectedStyle'
     >;
-    switch: Pick<SwitchProps, 'thumbStyle' | 'trackStyle'>;
-    text: Pick<TextProps, 'style'>;
-    textInput: Pick<
+    switch?: Pick<SwitchProps, 'thumbStyle' | 'trackStyle'>;
+    text?: Pick<TextProps, 'style'>;
+    textInput?: Pick<
       TextInputProps,
       'containerStyle' | 'errorMessageStyle' | 'labelStyle' | 'style'
     >;
-    timePicker: Pick<TimePickerProps, 'style'>;
-    toast: Pick<ToastProps, 'style' | 'textStyle'>;
+    timePicker?: Pick<TimePickerProps, 'style'>;
+    toast?: Pick<ToastProps, 'style' | 'textStyle'>;
   };
 };
 

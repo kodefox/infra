@@ -3,6 +3,8 @@ import Provider from '../Provider';
 import { render } from 'react-native-testing-library';
 import Badge from '../Badge';
 
+jest.useFakeTimers();
+
 describe('Badge', () => {
   it('should render badge properly', () => {
     let { getByType, getByText, getByTestId } = render(
