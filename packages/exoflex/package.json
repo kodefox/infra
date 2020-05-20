@@ -67,7 +67,7 @@
     "react-test-renderer": "16.12.0",
     "regenerator-runtime": "0.13.5",
     "release-it": "12.4.3",
-    "typescript": "3.9.2"
+    "typescript": "3.9.3"
   },
   "optionalDependencies": {},
   "@react-native-community/bob": {
