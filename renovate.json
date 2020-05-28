@@ -4,12 +4,23 @@
   "prHourlyLimit": 2,
   "semanticCommitScope": null,
   "ignoreDeps": [
-    "react-native-svg",
+    "@expo/webpack-config",
+    "@react-native-community/bob",
+    "@react-native-community/datetimepicker",
+    "babel-preset-expo",
+    "chalk",
+    "expo",
+    "expo-font",
+    "react",
+    "react-dom",
+    "react-native",
     "react-native-gesture-handler",
+    "react-native-modal-datetime-picker",
     "react-native-reanimated",
     "react-native-screens",
-    "expo-font",
-    "react-native-modal-datetime-picker",
-    "@react-native-community/datetimepicker"
+    "react-native-svg",
+    "react-native-web",
+    "react-test-renderer",
+    "release-it"
   ]
 }
