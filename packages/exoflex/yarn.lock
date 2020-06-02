@@ -1789,10 +1789,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-native-calendars@1.20.7":
-  version "1.20.7"
-  resolved "https://registry.yarnpkg.com/@types/react-native-calendars/-/react-native-calendars-1.20.7.tgz#5c8d549d78676f49c49848b6f439f9a495b804d4"
-  integrity sha512-2lpdEw6ls2/VGfrDfIBEpx+v3fjXpESMpJ/jK5VKpT+6YX2K4XqADZFXKlT/E0155vP7thNnTHgQdwMqjtE9Hg==
+"@types/react-native-calendars@1.20.8":
+  version "1.20.8"
+  resolved "https://registry.yarnpkg.com/@types/react-native-calendars/-/react-native-calendars-1.20.8.tgz#5d2055dd37f56cd2cee7bf385ee63efdea6badb8"
+  integrity sha512-VSZEzh+tBiHdo/ZRaLk18f8u7jS/o66rhhsSNPEUpSAYXxXBeOCl5fdJ6CI1YAnX7LWZ0cPRuhwQ1lneje4RwA==
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"
