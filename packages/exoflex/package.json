@@ -52,7 +52,7 @@
     "core-js": "3.6.5",
     "eslint": "7.0.0",
     "eslint-config-kodefox": "0.1.0",
-    "jest": "25.5.4",
+    "jest": "26.1.0",
     "jest-watch-select-projects": "2.0.0",
     "jest-watch-typeahead": "0.6.0",
     "jest-with-platform": "0.0.3",
