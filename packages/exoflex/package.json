@@ -84,8 +84,5 @@
     "singleQuote": true,
     "trailingComma": "all",
     "arrowParens": "always"
-  },
-  "resolutions": {
-    "micromatch": "^3.0.0"
   }
 }
