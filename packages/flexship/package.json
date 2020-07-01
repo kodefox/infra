@@ -39,7 +39,7 @@
     "prettier": "2.0.5",
     "release-it": "12.4.3",
     "ts-jest": "26.1.1",
-    "typescript": "3.9.5"
+    "typescript": "3.9.6"
   },
   "eslintConfig": {
     "extends": "kodefox"
