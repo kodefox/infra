@@ -1,8 +1,10 @@
+> **THIS PACKAGE IS DEPRECATED AS REACT-NAVIGATION FOR WEB IS TABLE NOW**
+
 # naviflex · ![npm](https://img.shields.io/npm/v/naviflex)
 
 This is a wrapper that will wrap the functionality of `react-navigation` and `hookrouter` so you will be able to do navigation using the same syntax on multi-platform between `mobile`, and `web`.
 
-> We will deprecate this library when `react-navigation` for the web is ready and stable for production
+> ~We will deprecate this library when `react-navigation` for the web is ready and stable for production~
 
 ## Pre-requisites
 

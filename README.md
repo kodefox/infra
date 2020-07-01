@@ -8,4 +8,3 @@ Reusable solutions to common problems we encounter as we build projects (both we
 - [exoflex](https://github.com/kodefox/infra/tree/master/packages/exoflex)
 - [feetch](https://github.com/kodefox/infra/tree/master/packages/feetch)
 - [flexship](https://github.com/kodefox/infra/tree/master/packages/flexship)
-- [naviflex](https://github.com/kodefox/infra/tree/master/packages/naviflex)

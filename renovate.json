@@ -22,5 +22,6 @@
     "react-native-web",
     "react-test-renderer",
     "release-it"
-  ]
+  ],
+  "ignorePaths": ["./packages/naviflex"]
 }
