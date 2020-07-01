@@ -35,7 +35,7 @@
     "@types/node-fetch": "2.5.7",
     "eslint": "7.0.0",
     "eslint-config-kodefox": "^0.2.2",
-    "jest": "25.5.4",
+    "jest": "26.1.0",
     "prettier": "2.0.5",
     "release-it": "12.4.3",
     "ts-jest": "25.5.1",
