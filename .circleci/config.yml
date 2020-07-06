@@ -17,12 +17,6 @@ jobs:
 
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "packages/naviflex/yarn.lock" }}
-            # fallback to use the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - restore_cache:
-          keys:
             - v1-dependencies-{{ checksum "packages/exoflex/yarn.lock" }}
             # fallback to use the latest cache if no exact match is found
             - v1-dependencies-
@@ -46,14 +40,10 @@ jobs:
               orbname=$(basename $ORB)
               if [[ $(git diff $COMMIT_RANGE --name-status | grep "$orbname") ]]; then
                 echo "testing ${orbname}"
-                if [[ ${orbname} != "eslint-config-kodefox" ]]; then
+                if [[ ${orbname} != "eslint-config-kodefox" && ${orbname} != "naviflex" ]]; then
                   cd packages/${orbname}
                   yarn install --frozen-lockfile
-                  if [[ ${orbname} == "naviflex" ]]; then
-                    yarn test
-                  else
-                    yarn test --silent --maxWorkers=4
-                  fi
+                  yarn test --silent --maxWorkers=4
                   cd ../..
                 else
                   echo "no need to test this project"
@@ -62,11 +52,6 @@ jobs:
                 echo "${orbname} not modified; no need to test"
               fi
             done
-
-      - save_cache:
-          paths:
-            - packages/naviflex/node_modules
-          key: v1-dependencies-{{ checksum "packages/naviflex/yarn.lock" }}
 
       - save_cache:
           paths:
