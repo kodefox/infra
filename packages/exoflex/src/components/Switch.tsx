@@ -41,8 +41,8 @@ export default function Switch(props: SwitchProps) {
 
   let thumbSize =
     +(
-      StyleSheet.flatten(themeStyle?.switch?.thumbStyle)?.width ||
       StyleSheet.flatten(thumbStyle)?.width ||
+      StyleSheet.flatten(themeStyle?.switch?.thumbStyle)?.width ||
       width / 2
     ) -
     2 * MARGIN;
