@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Switch, Text, Button } from 'exoflex';
+import { Switch, Text } from 'exoflex';
 
 function SwitchExample() {
   let [switchValue, setSwitchValue] = useState(false);
@@ -23,6 +23,16 @@ function SwitchExample() {
         }}
         width={40}
         disabled={true}
+      />
+      <Text>Custom Switch</Text>
+      <Switch
+        value={switchValue}
+        trackStyle={{ height: 30 }}
+        thumbStyle={{ height: 30, width: 30 }}
+        width={300}
+        onValueChange={(newValue) => {
+          setSwitchValue(newValue);
+        }}
       />
     </ScrollView>
   );
