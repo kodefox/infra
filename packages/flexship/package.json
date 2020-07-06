@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@types/inquirer": "6.5.0",
-    "@types/jest": "26.0.3",
+    "@types/jest": "26.0.4",
     "@types/node-fetch": "2.5.7",
     "eslint": "7.0.0",
     "eslint-config-kodefox": "^0.2.2",
