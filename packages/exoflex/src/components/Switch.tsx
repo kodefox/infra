@@ -5,6 +5,7 @@ import {
   StyleProp,
   ViewStyle,
   AccessibilityProps,
+  StyleSheet,
 } from 'react-native';
 
 import useTheme from '../helpers/useTheme';
@@ -24,7 +25,7 @@ const MARGIN = 2;
 export default function Switch(props: SwitchProps) {
   let {
     value,
-    width,
+    width: widthProps,
     onValueChange,
     disabled,
     trackStyle,
@@ -36,8 +37,15 @@ export default function Switch(props: SwitchProps) {
   } = props;
   let { colors, style: themeStyle } = useTheme();
   let [xValue] = useState(new Animated.Value(value ? 1 : 0));
+  let width = +(StyleSheet.flatten(trackStyle)?.width || widthProps);
 
-  let thumbSize = width / 2 - 2 * MARGIN;
+  let thumbSize =
+    +(
+      StyleSheet.flatten(thumbStyle)?.width ||
+      StyleSheet.flatten(themeStyle?.switch?.thumbStyle)?.width ||
+      width / 2
+    ) -
+    2 * MARGIN;
 
   let styles = {
     track: {
@@ -51,20 +59,26 @@ export default function Switch(props: SwitchProps) {
         ? colors.primary
         : colors.border,
     },
-    thumb: {
-      margin: MARGIN,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: colors.background,
-      width: thumbSize,
-      height: thumbSize,
-      borderRadius: thumbSize / 2,
-    },
+    thumb: [
+      {
+        margin: MARGIN,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: colors.background,
+        borderRadius: thumbSize / 2,
+      },
+      themeStyle?.switch?.thumbStyle,
+      thumbStyle,
+      {
+        width: thumbSize,
+        height: thumbSize,
+      },
+    ],
   };
 
   let translateXValue = xValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, width / 2],
+    outputRange: [0, width - (thumbSize + 2 * MARGIN)],
   });
 
   useEffect(() => {
@@ -99,8 +113,6 @@ export default function Switch(props: SwitchProps) {
               },
             ],
           },
-          themeStyle?.switch?.thumbStyle,
-          thumbStyle,
         ]}
       />
     </TouchableOpacity>
