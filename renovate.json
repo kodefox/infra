@@ -23,5 +23,5 @@
     "react-test-renderer",
     "release-it"
   ],
-  "ignorePaths": ["./packages/naviflex"]
+  "ignorePaths": ["packages/naviflex/**"]
 }
