@@ -22,6 +22,29 @@ export type SwitchProps = AccessibilityProps & {
 
 const MARGIN = 2;
 
+export function getTrueWidth(
+  type: 'track' | 'thumb',
+  defaultWidth: number,
+  style?: StyleProp<ViewStyle>,
+): number {
+  let flattenedStyle = StyleSheet.flatten(style);
+  let width = flattenedStyle?.width;
+  let minWidth = flattenedStyle?.minWidth;
+  let maxWidth = flattenedStyle?.maxWidth;
+  let trueWidth = !!width
+    ? +width
+    : type === 'track'
+    ? defaultWidth
+    : defaultWidth / 2;
+  if (!!minWidth) {
+    trueWidth = +minWidth > trueWidth ? +minWidth : trueWidth;
+  }
+  if (!!maxWidth) {
+    trueWidth = +maxWidth < trueWidth ? +maxWidth : trueWidth;
+  }
+  return trueWidth;
+}
+
 export default function Switch(props: SwitchProps) {
   let {
     value,
@@ -37,14 +60,14 @@ export default function Switch(props: SwitchProps) {
   } = props;
   let { colors, style: themeStyle } = useTheme();
   let [xValue] = useState(new Animated.Value(value ? 1 : 0));
-  let width = +(StyleSheet.flatten(trackStyle)?.width || widthProps);
+
+  let width = getTrueWidth('track', widthProps, [
+    themeStyle?.switch?.trackStyle,
+    trackStyle,
+  ]);
 
   let thumbSize =
-    +(
-      StyleSheet.flatten(thumbStyle)?.width ||
-      StyleSheet.flatten(themeStyle?.switch?.thumbStyle)?.width ||
-      width / 2
-    ) -
+    getTrueWidth('thumb', width, [themeStyle?.switch?.thumbStyle, thumbStyle]) -
     2 * MARGIN;
 
   let styles = {
