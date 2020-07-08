@@ -7,6 +7,8 @@ import {
   AccessibilityProps,
   StyleSheet,
 } from 'react-native';
+// import clamp from 'clamp';
+import { clamp, toNumber } from 'lodash';
 
 import useTheme from '../helpers/useTheme';
 
@@ -23,26 +25,18 @@ export type SwitchProps = AccessibilityProps & {
 const MARGIN = 2;
 
 export function getTrueWidth(
-  type: 'track' | 'thumb',
-  defaultWidth: number,
+  baseWidth: number,
   style?: StyleProp<ViewStyle>,
 ): number {
   let flattenedStyle = StyleSheet.flatten(style);
-  let width = flattenedStyle?.width;
+  let width = +(flattenedStyle?.width ?? baseWidth);
   let minWidth = flattenedStyle?.minWidth;
   let maxWidth = flattenedStyle?.maxWidth;
-  let trueWidth = !!width
-    ? +width
-    : type === 'track'
-    ? defaultWidth
-    : defaultWidth / 2;
-  if (!!minWidth) {
-    trueWidth = +minWidth > trueWidth ? +minWidth : trueWidth;
+
+  if (!!!minWidth && !!!maxWidth) {
+    return width;
   }
-  if (!!maxWidth) {
-    trueWidth = +maxWidth < trueWidth ? +maxWidth : trueWidth;
-  }
-  return trueWidth;
+  return clamp(width, toNumber(minWidth), toNumber(maxWidth));
 }
 
 export default function Switch(props: SwitchProps) {
@@ -61,21 +55,21 @@ export default function Switch(props: SwitchProps) {
   let { colors, style: themeStyle } = useTheme();
   let [xValue] = useState(new Animated.Value(value ? 1 : 0));
 
-  let width = getTrueWidth('track', widthProps, [
+  let trackWidth = getTrueWidth(widthProps, [
     themeStyle?.switch?.trackStyle,
     trackStyle,
   ]);
 
   let thumbSize =
-    getTrueWidth('thumb', width, [themeStyle?.switch?.thumbStyle, thumbStyle]) -
+    getTrueWidth(trackWidth / 2, [themeStyle?.switch?.thumbStyle, thumbStyle]) -
     2 * MARGIN;
 
   let styles = {
     track: {
       justifyContent: 'center',
-      width: width,
-      height: width / 2,
-      borderRadius: width / 4,
+      width: trackWidth,
+      height: trackWidth / 2,
+      borderRadius: trackWidth / 4,
       backgroundColor: disabled
         ? colors.disabled
         : value
@@ -101,7 +95,7 @@ export default function Switch(props: SwitchProps) {
 
   let translateXValue = xValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, width - (thumbSize + 2 * MARGIN)],
+    outputRange: [0, trackWidth - (thumbSize + 2 * MARGIN)],
   });
 
   useEffect(() => {
