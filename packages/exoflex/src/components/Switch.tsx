@@ -28,7 +28,7 @@ export function getTrueWidth(
   style?: StyleProp<ViewStyle>,
 ): number {
   let flattenedStyle = StyleSheet.flatten(style);
-  let width = +(flattenedStyle?.width ?? baseWidth);
+  let width = toNumber(flattenedStyle?.width ?? baseWidth);
   let minWidth = flattenedStyle?.minWidth;
   let maxWidth = flattenedStyle?.maxWidth;
 
