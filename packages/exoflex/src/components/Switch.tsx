@@ -32,7 +32,7 @@ export function getTrueWidth(
   let minWidth = flattenedStyle?.minWidth;
   let maxWidth = flattenedStyle?.maxWidth;
 
-  if (!!!minWidth && !!!maxWidth) {
+  if (!minWidth && !maxWidth) {
     return width;
   }
   return clamp(width, toNumber(minWidth), toNumber(maxWidth));
