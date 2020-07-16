@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
-    "runtypes": "^4.0.3"
+    "runtypes": "^5.0.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

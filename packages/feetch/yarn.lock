@@ -5002,10 +5002,10 @@ run-parallel@^1.1.9:
   resolved "https://registry.yarnpkg.com/run-parallel/-/run-parallel-1.1.9.tgz#c9dd3a7cf9f4b2c4b6244e173a6ed866e61dd679"
   integrity sha512-DEqnSRTDw/Tc3FXf49zedI638Z9onwUotBMiUFKmrO2sdFKIbXamXGQ3Axd4qgphxKB4kw/qP1w5kTxnfU1B9Q==
 
-runtypes@^4.0.3:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/runtypes/-/runtypes-4.0.3.tgz#dd32206633c1166a45c22d64abcabeb5c5c790b7"
-  integrity sha512-ss4Smt9GVqz7TP1hPNZ5Kdz0poUVO04IMzSpk4iaKOvFPOpcDleQUb8yGpzdsA2rzwZXy2ztU2PA10qhcNMwZw==
+runtypes@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/runtypes/-/runtypes-5.0.0.tgz#c0e3dab2f48a6dbe740a93332344dfd12140aef2"
+  integrity sha512-09RHUW0QYf768M7FPGZu8oyJTCzV/THSH9n9qhAohmSzDCI9uK9l3L5unb2O3ISnMDPtIRfJJ/2zipznKcZ1cQ==
 
 rxjs@^6.4.0:
   version "6.5.3"
