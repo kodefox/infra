@@ -28,7 +28,7 @@
     "jest": "26.1.0",
     "prettier": "2.0.5",
     "ts-jest": "26.2.0",
-    "typescript": "3.9.6"
+    "typescript": "3.9.7"
   },
   "@react-native-community/bob": {
     "source": "src",
