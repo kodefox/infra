@@ -44,7 +44,7 @@
     "react": "16.12.0",
     "react-fetching-library": "1.5.14",
     "react-test-renderer": "16.12.0",
-    "ts-jest": "26.1.1",
+    "ts-jest": "26.2.0",
     "typescript": "3.9.6"
   },
   "eslintConfig": {
