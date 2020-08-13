@@ -33,7 +33,7 @@
   "devDependencies": {
     "@react-native-community/bob": "0.8.0",
     "@testing-library/react-hooks": "3.4.1",
-    "@types/jest": "26.0.7",
+    "@types/jest": "26.0.9",
     "@types/react": "16.9.43",
     "eslint": "7.0.0",
     "eslint-config-kodefox": "^0.2.2",
