@@ -8,7 +8,6 @@ import { CalendarProps } from './components/Calendar/Calendar';
 import { CheckboxProps } from './components/Checkbox';
 import { ChipProps } from './components/Chip';
 import { CollapsibleProps } from './components/Collapsible';
-import { DateTimePickerProps } from './components/DateTimePicker/types';
 import { DividerProps } from './components/Divider';
 import { DrawerItemProps } from './components/Drawer/DrawerItem';
 import { IconButtonProps } from './components/IconButton';
@@ -73,13 +72,6 @@ export type Theme = {
       | 'iconStyle'
       | 'style'
       | 'titleContainerStyle'
-      | 'titleStyle'
-    >;
-    dateTimePicker?: Pick<
-      DateTimePickerProps,
-      | 'cancelButtonContainerStyleIOS'
-      | 'contentContainerStyleIOS'
-      | 'datePickerContainerStyleIOS'
       | 'titleStyle'
     >;
     divider?: Pick<DividerProps, 'style'>;
