@@ -7,7 +7,8 @@ import {
   AccessibilityProps,
   StyleSheet,
 } from 'react-native';
-import { clamp, toNumber } from 'lodash';
+import clamp from 'lodash.clamp';
+import toNumber from 'lodash.tonumber';
 
 import useTheme from '../helpers/useTheme';
 
