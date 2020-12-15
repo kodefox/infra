@@ -2998,10 +2998,10 @@
     sudo-prompt "^9.0.0"
     wcwidth "^1.0.1"
 
-"@react-native-community/datetimepicker@3.0.4":
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-3.0.4.tgz#ad3efa90fab78fc3c0710abf3cb06d2976603140"
-  integrity sha512-IsBkemz1XYubH5twfQPC/xleZdILA5SEUaLJ2C86IbnIOctb6suk8tB6uT9VxQkCsw4zjkrlqt9p9LGx9DJ97w==
+"@react-native-community/datetimepicker@3.0.8":
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-3.0.8.tgz#3960b39dfeea4a0f11425e24e0852764ed9133ca"
+  integrity sha512-85pOIjRnhrUmyWFH52qGGya1MDwE7vU4fDqt21yY6EyT7TolwQvZknwId8TAmREawsMoCMchke6VFo1IqRaUOA==
   dependencies:
     invariant "^2.2.4"
 
@@ -9830,10 +9830,10 @@ react-native-gesture-handler@1.8.0:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
-react-native-modal-datetime-picker@8.1.1:
-  version "8.1.1"
-  resolved "https://registry.yarnpkg.com/react-native-modal-datetime-picker/-/react-native-modal-datetime-picker-8.1.1.tgz#63609aff50c44cf939ab3024f185a13822b46f76"
-  integrity sha512-tZUl/GjuMGSxRNcF84nt7uKoLiyDJztdtTQ9e0dVbDFC0UduZ5bTA5DIzXiCLZCbghZuD6tPLmw5ULPXGiO7Lw==
+react-native-modal-datetime-picker@9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-modal-datetime-picker/-/react-native-modal-datetime-picker-9.1.0.tgz#a1286efa6d9c456e931805fd0687cf9e916af6ed"
+  integrity sha512-KwZEduMvfxp1BMQ2nMOckJCpR5Wiw+GIBazqtWm6zptNTL+iQyeYQeyjIubsMGWh4MkMueActSRWMvHut98h/Q==
   dependencies:
     prop-types "^15.7.2"
 
