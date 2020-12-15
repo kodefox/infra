@@ -14,9 +14,6 @@ let extraNodeModules = {};
   'react-native-svg',
   'expo-font',
   '@babel/runtime',
-  // We probably shouldn't use the entire lodash package here.
-  // TODO: Remove direct import from lodash in exoflex.
-  'lodash',
   ...dependencies,
 ].forEach((dep) => {
   extraNodeModules[dep] = path.resolve(__dirname, 'node_modules', dep);
