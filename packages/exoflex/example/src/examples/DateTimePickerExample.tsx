@@ -144,8 +144,8 @@ function DateTimePickerExample() {
         {textDateTimeWithDifferentTitles}
       </Button>
       <DateTimePicker
-        dateTitle="Select date"
-        timeTitle="Select start time"
+        dateTitleWeb="Select date"
+        timeTitleWeb="Select start time"
         isVisible={isDateTimePickerWithDifferentTitlesVisible}
         date={dateTimeWithDifferentTitles}
         mode="datetime"
