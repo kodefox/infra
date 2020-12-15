@@ -77,10 +77,7 @@ export type Theme = {
     >;
     dateTimePicker?: Pick<
       DateTimePickerProps,
-      | 'cancelButtonContainerStyleIOS'
-      | 'contentContainerStyleIOS'
-      | 'datePickerContainerStyleIOS'
-      | 'titleStyle'
+      'pickerContainerStyleIOS' | 'modalStyleIOS'
     >;
     divider?: Pick<DividerProps, 'style'>;
     drawerItem?: Pick<DrawerItemProps, 'labelStyle' | 'style'>;
