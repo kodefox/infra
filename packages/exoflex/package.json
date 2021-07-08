@@ -45,7 +45,7 @@
     "@babel/preset-typescript": "7.9.0",
     "@react-native-community/bob": "0.8.0",
     "@testing-library/react": "10.4.7",
-    "@testing-library/react-hooks": "3.4.2",
+    "@testing-library/react-hooks": "3.7.0",
     "@types/color": "3.0.1",
     "@types/jest": "26.0.9",
     "@types/jest-in-case": "1.0.1",
