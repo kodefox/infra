@@ -4731,10 +4731,10 @@ querystring@^0.2.0:
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
-react-fetching-library@1.5.14:
-  version "1.5.14"
-  resolved "https://registry.yarnpkg.com/react-fetching-library/-/react-fetching-library-1.5.14.tgz#75eebc1fcfe17b1baa4d7542e80d21c59bf7b2ec"
-  integrity sha512-PRHzz/WUvSJVfrudDpXoumkM8ZwmGwwaL7Pqu7+oRC5An87nFS7/tWEQKw3HpzlhaxAGw+baf/tCQiHbFbUREQ==
+react-fetching-library@1.7.6:
+  version "1.7.6"
+  resolved "https://registry.yarnpkg.com/react-fetching-library/-/react-fetching-library-1.7.6.tgz#8086e459395e165252b60f0713f88d55acd4ca52"
+  integrity sha512-+A+I4TzuVTqfOGCJ1UrZbOVvXdcl8hCUCITto8p9QW2v7hqgiHThQhG9hOPjCqDnLTdw041+7D9ploHDUPZS4w==
 
 react-is@^16.12.0:
   version "16.13.0"
