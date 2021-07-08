@@ -22,7 +22,7 @@
   "license": "MIT",
   "devDependencies": {
     "@react-native-community/bob": "0.8.0",
-    "@types/jest": "26.0.9",
+    "@types/jest": "26.0.24",
     "eslint": "7.0.0",
     "eslint-config-kodefox": "^0.2.2",
     "jest": "26.1.0",
