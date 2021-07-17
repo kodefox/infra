@@ -2167,7 +2167,7 @@ escodegen@^1.14.1:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-kodefox@^0.2.2:
+eslint-config-kodefox@0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/eslint-config-kodefox/-/eslint-config-kodefox-0.2.2.tgz#0adb0555369685b804fe30b66e2ef77e1bb9cec6"
   integrity sha512-R0cAFvsfCIhbt/xiaDOZp8JlE95Gtrdkm1hJZvNcbODdxUPRMJW89PaC+RDjo+Sv5mXQuxfitHiumUx5xlW+bA==
