@@ -11,8 +11,8 @@
   "author": "devteam@kodefox.com",
   "license": "MIT",
   "peerDependencies": {
-    "eslint": ">=7.30.0",
-    "prettier": ">=2.3.2"
+    "eslint": "^7",
+    "prettier": "^2"
   },
   "optionalDependencies": {
     "eslint-plugin-react": "^7",
