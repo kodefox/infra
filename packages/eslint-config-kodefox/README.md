@@ -5,7 +5,17 @@ ESLint configuration used for TypeScript projects.
 ## Install
 
 ```
-$ yarn add --dev eslint-config-kodefox
+yarn add --dev eslint-config-kodefox @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-eslint-comments eslint-plugin-import eslint-plugin-prettier
+```
+
+When using the `react` config, these additional dependencies are needed:
+```
+yarn add --dev eslint-plugin-react eslint-plugin-react-hooks
+```
+
+When using the `react-native` config, these additional dependencies are needed:
+```
+yarn add --dev eslint-plugin-react-native
 ```
 
 ## Usage
