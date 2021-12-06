@@ -11,13 +11,13 @@
   "author": "devteam@kodefox.com",
   "license": "MIT",
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4",
-    "@typescript-eslint/parser": "^4",
-    "eslint": "^7",
-    "eslint-config-prettier": "^6",
+    "@typescript-eslint/eslint-plugin": "^5",
+    "@typescript-eslint/parser": "^5",
+    "eslint": "^8",
+    "eslint-config-prettier": "^8",
     "eslint-plugin-eslint-comments": "^3",
     "eslint-plugin-import": "^2",
-    "eslint-plugin-prettier": "^3",
+    "eslint-plugin-prettier": "^4",
     "prettier": "^2"
   },
   "optionalDependencies": {
@@ -26,8 +26,18 @@
     "eslint-plugin-react-native": "^3"
   },
   "devDependencies": {
-    "eslint": "^7.30.0",
-    "prettier": "^2.3.2"
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "eslint": "^8.4.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.2"
+  },
+  "eslintConfig": {
+    "extends": "./index.js"
   },
   "prettier": {
     "bracketSpacing": true,

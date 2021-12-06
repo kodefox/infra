@@ -11,7 +11,6 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended',
     'prettier',
-    'prettier/@typescript-eslint',
   ],
   settings: {
     'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
