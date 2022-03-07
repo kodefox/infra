@@ -22,7 +22,7 @@
     "react-native-svg": "12.1.0",
     "react-native-web": "0.13.12",
     "react-navigation": "4.2.2",
-    "react-navigation-drawer": "2.4.13"
+    "react-navigation-drawer": "2.7.2"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "7.8.3",
