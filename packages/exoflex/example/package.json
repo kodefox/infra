@@ -41,7 +41,7 @@
     "react-native-calendars": "https://github.com/oshimayoan/react-native-calendars/archive/oshimayoan-0.0.3.tar.gz",
     "react-native-collapsible": "1.5.3",
     "react-native-modal-datetime-picker": "9.1.0",
-    "react-native-paper": "3.11.0",
+    "react-native-paper": "4.12.5",
     "typescript": "4.0.5"
   },
   "private": true
