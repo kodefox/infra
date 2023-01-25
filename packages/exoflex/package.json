@@ -39,7 +39,7 @@
     "react-native-collapsible": "^1.5.1",
     "react-native-modal-datetime-picker": "9.1.0",
     "react-native-multi-slider": "npm:@ptomasroos/react-native-multi-slider",
-    "react-native-paper": "^3.4.0"
+    "react-native-paper": "^5.1.4"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.9.0",
@@ -52,8 +52,7 @@
     "@types/lodash.clamp": "4.0.6",
     "@types/lodash.mergewith": "4.6.6",
     "@types/lodash.tonumber": "4.0.6",
-    "@types/react": "16.9.53",
-    "@types/react-native": "0.60.4",
+    "@types/react-native": "^0.70.6",
     "@types/react-native-calendars": "1.20.8",
     "@types/react-test-renderer": "16.9.2",
     "chalk": "2.4.2",
@@ -65,9 +64,9 @@
     "jest-watch-typeahead": "0.6.0",
     "jest-with-platform": "0.0.3",
     "prettier": "2.0.5",
-    "react": "16.12.0",
+    "react": "18.1.0",
     "react-dom": "16.12.0",
-    "react-native": "0.61.5",
+    "react-native": "0.70.6",
     "react-native-svg": "9.13.5",
     "react-native-testing-library": "1.14.0",
     "react-native-vector-icons": "7.1.0",
