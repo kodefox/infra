@@ -29,7 +29,7 @@ export function MenuItem(props: MenuItemProps) {
     title,
     textPreset,
     style,
-    icon,
+    leadingIcon,
     disabled,
     onPress,
     accessibilityRole,
@@ -52,7 +52,7 @@ export function MenuItem(props: MenuItemProps) {
             title
           )
         }
-        icon={icon}
+        leadingIcon={leadingIcon}
         onPress={onPress}
         style={[themeStyle?.menuItem?.style, style]}
       />

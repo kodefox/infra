@@ -121,6 +121,7 @@ function Header<T extends Title>({
   iconStyle,
 }: Header<T>) {
   let animatedValue = useAnimation({
+    useNativeDriver: true,
     type: 'timing',
     initialValue: ARROW_DIRECTION.DOWN,
     toValue: isActive ? ARROW_DIRECTION.UP : ARROW_DIRECTION.DOWN,

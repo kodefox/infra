@@ -121,9 +121,9 @@ let ToastIcon = ({ name, color }: { name: string; color: string }) => {
       ]}
     >
       {isInfo ? (
-        <IconButton icon={name} color={colors.surface} size={36} />
+        <IconButton icon={name} iconColor={colors.surface} size={36} />
       ) : (
-        <IconButton icon={name} color={color} />
+        <IconButton icon={name} iconColor={color} />
       )}
     </View>
   );
