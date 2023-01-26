@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { StyleProp, ViewProps, TextStyle } from 'react-native';
+import { StyleProp, ViewProps, TextStyle, ViewStyle } from 'react-native';
 
 import Toast, { ModeProps } from './Toast';
 import EventEmitter from '../helpers/EventEmitter';
@@ -9,7 +9,8 @@ export type ToastConfig = {
   showIcon?: boolean;
   mode?: ModeProps;
   duration?: number;
-  style?: StyleProp<ViewProps>;
+  style?: ViewStyle;
+  // style?: StyleProp<ViewProps>;
   textStyle?: StyleProp<TextStyle>;
 };
 
