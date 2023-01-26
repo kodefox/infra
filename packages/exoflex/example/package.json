@@ -8,19 +8,19 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "^42.0.0",
-    "expo-font": "~9.2.1",
+    "expo": "^43.0.0",
+    "expo-font": "~10.0.3",
     "hookrouter": "1.2.3",
     "naviflex": "0.0.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-native": "0.64.3",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-multi-slider": "npm:@ptomasroos/react-native-multi-slider",
     "react-native-reanimated": "~2.2.0",
-    "react-native-screens": "~3.4.0",
+    "react-native-screens": "~3.8.0",
     "react-native-svg": "12.1.1",
-    "react-native-web": "~0.13.12",
+    "react-native-web": "0.17.1",
     "react-navigation": "4.2.2",
     "react-navigation-drawer": "2.4.13"
   },
@@ -28,12 +28,12 @@
     "@babel/plugin-proposal-class-properties": "7.8.3",
     "@babel/plugin-proposal-object-rest-spread": "7.10.0",
     "@babel/preset-typescript": "7.9.0",
-    "@expo/webpack-config": "~0.12.63",
+    "@expo/webpack-config": "^0.16.2",
     "@react-native-community/datetimepicker": "3.5.2",
-    "@types/react": "~16.9.35",
-    "@types/react-native": "~0.63.2",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "~0.64.12",
     "babel-plugin-module-resolver": "4.0.0",
-    "babel-preset-expo": "8.3.0",
+    "babel-preset-expo": "8.5.1",
     "lodash.clamp": "4.0.3",
     "lodash.mergewith": "4.6.2",
     "lodash.tonumber": "4.0.3",
@@ -42,7 +42,7 @@
     "react-native-collapsible": "1.5.3",
     "react-native-modal-datetime-picker": "9.1.0",
     "react-native-paper": "3.11.0",
-    "typescript": "~4.0.0"
+    "typescript": "~4.3.5"
   },
   "private": true
 }
