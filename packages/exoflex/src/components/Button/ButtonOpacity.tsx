@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import Text from '../Text';
 import ActivityIndicator from '../ActivityIndicator';
@@ -26,6 +26,7 @@ export default function ButtonOpacity(props: ButtonProps) {
     loading,
     icon,
     accessibilityLabel,
+    ref,
     ...otherProps
   } = props;
   let { buttonStyle, textStyle, textColor } = useButtonStyle({
@@ -38,19 +39,18 @@ export default function ButtonOpacity(props: ButtonProps) {
   return (
     <TouchableOpacity
       {...otherProps}
+      ref={ref as RefObject<TouchableOpacity>}
       onPress={onPress}
       activeOpacity={preset === 'primary' ? 0.8 : 0.5}
       disabled={disabled}
-      accessibilityTraits={disabled ? ['button', 'disabled'] : 'button'}
-      accessibilityComponentType="button"
       accessibilityRole="button"
-      accessibilityStates={disabled ? ['disabled'] : []}
+      accessibilityState={disabled ? { disabled: true } : undefined}
       style={[styles.button, compact && styles.compact, buttonStyle, style]}
     >
       <View style={[styles.content, styles.contentWrapper, contentStyle]}>
         {icon && loading !== true && (
           <View style={styles.icon}>
-            <IconButton icon={icon} size={16} color={textColor} />
+            <IconButton icon={icon} size={16} iconColor={textColor} />
           </View>
         )}
         {loading && (

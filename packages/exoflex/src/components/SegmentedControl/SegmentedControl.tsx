@@ -50,7 +50,7 @@ export default function SegmentedControl(props: SegmentedControlProps) {
   let dividerWidth = mode === Mode.default ? 0 : dividerWidthProp || 1;
 
   let onLayout = (e: LayoutChangeEvent) => {
-    let flattenedStyle = StyleSheet.flatten([
+    let flattenedStyle: StyleProp<ViewStyle> = StyleSheet.flatten([
       styles.container,
       containerStyle,
       style,

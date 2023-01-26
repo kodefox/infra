@@ -21,7 +21,7 @@ export default function Indicator(props: Props) {
   let { mode, width, dividerWidth, activeIndex, style } = props;
 
   let { colors } = useTheme();
-  let indicatorStyle;
+  let indicatorStyle: StyleProp<ViewStyle>;
   switch (mode) {
     case Mode.default: {
       indicatorStyle = {

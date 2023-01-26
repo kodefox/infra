@@ -179,6 +179,7 @@ export type Colors = {
   onSurface: string;
   onBackground: string;
   notification: string;
+  tooltip: string;
 };
 
 export type FontSource = string | number;
