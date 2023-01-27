@@ -152,13 +152,17 @@ function Header<T extends Title>({
 
   return (
     <View style={[styles.titleContainer, titleContainerStyle]}>
-      {!!renderIconLeft && renderIconLeft(animatedValue)}
-      <Text style={[styles.title, titleStyle]}>{content && content.title}</Text>
-      {Object.is(renderIconRight, null)
-        ? null
-        : !!renderIconRight
-        ? renderIconRight(animatedValue)
-        : DefaultIcon}
+      <>
+        {!!renderIconLeft && renderIconLeft(animatedValue)}
+        <Text style={[styles.title, titleStyle]}>
+          {content && content.title}
+        </Text>
+        {Object.is(renderIconRight, null)
+          ? null
+          : !!renderIconRight
+          ? renderIconRight(animatedValue)
+          : DefaultIcon}
+      </>
     </View>
   );
 }

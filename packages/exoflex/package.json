@@ -20,7 +20,8 @@
     "lint": "eslint --max-warnings 0 \"src/**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit -p .",
     "jest": "jest --coverage --passWithNoTests",
-    "test": "yarn format:check && yarn lint && yarn typecheck && yarn jest"
+    "test": "yarn format:check && yarn lint && yarn typecheck && yarn jest",
+    "postinstall": "patch-package"
   },
   "peerDependencies": {
     "expo-font": "*",
@@ -34,9 +35,10 @@
     "lodash.clamp": "4.0.3",
     "lodash.mergewith": "4.6.2",
     "lodash.tonumber": "4.0.3",
+    "patch-package": "^6.5.1",
     "react-native-animation-hooks": "^1.0.1",
     "react-native-calendars": "https://github.com/oshimayoan/react-native-calendars/archive/oshimayoan-0.0.3.tar.gz",
-    "react-native-collapsible": "^1.5.1",
+    "react-native-collapsible": "^1.6.0",
     "react-native-modal-datetime-picker": "9.1.0",
     "react-native-multi-slider": "npm:@ptomasroos/react-native-multi-slider",
     "react-native-paper": "^5.1.4"
@@ -70,7 +72,7 @@
     "react-native-svg": "9.13.5",
     "react-native-testing-library": "1.14.0",
     "react-native-vector-icons": "7.1.0",
-    "react-native-web": "0.11.7",
+    "react-native-web": "^0.18.12",
     "react-test-renderer": "16.12.0",
     "regenerator-runtime": "0.13.5",
     "release-it": "12.4.3",

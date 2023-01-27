@@ -1,0 +1,27 @@
+diff --git a/node_modules/react-native-collapsible/Accordion.js b/node_modules/react-native-collapsible/Accordion.js
+index b89f78a..9fc1db8 100644
+--- a/node_modules/react-native-collapsible/Accordion.js
++++ b/node_modules/react-native-collapsible/Accordion.js
+@@ -12,6 +12,7 @@ const COLLAPSIBLE_PROPS = [
+   'easing',
+   'style',
+   'onAnimationEnd',
++  'children',
+ ];
+ 
+ export default class Accordion extends Component {
+diff --git a/node_modules/react-native-collapsible/index.d.ts b/node_modules/react-native-collapsible/index.d.ts
+index 26f8d56..0a73b98 100644
+--- a/node_modules/react-native-collapsible/index.d.ts
++++ b/node_modules/react-native-collapsible/index.d.ts
+@@ -93,6 +93,10 @@ export interface CollapsibleProps {
+    * Function called when the animation finished
+    */
+   onAnimationEnd?: () => void;
++  
++  children: React.ReactNode;
++
++  
+ }
+ 
+ export default class Collapsible extends React.Component<CollapsibleProps> {}

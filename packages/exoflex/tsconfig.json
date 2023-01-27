@@ -12,5 +12,5 @@
     "downlevelIteration": true,
     "types": ["react", "react-native", "jest"]
   },
-  "exclude": ["example/", "lib/"]
+  "exclude": ["example/", "new-example/", "lib/"]
 }

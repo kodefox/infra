@@ -19,10 +19,10 @@ declare module 'react-native-multi-slider' {
   }
 
   export interface MultiSliderProps {
-    values?: number[];
-    onValuesChange?: (values: number[]) => void;
+    values?: Array<number>;
+    onValuesChange?: (values: Array<number>) => void;
     onValuesChangeStart?: () => void;
-    onValuesChangeFinish?: (values: number[]) => void;
+    onValuesChangeFinish?: (values: Array<number>) => void;
     sliderLength?: number;
     touchDimensions?: {
       height: number;
@@ -37,7 +37,7 @@ declare module 'react-native-multi-slider' {
     min?: number;
     max?: number;
     step?: number;
-    optionsArray?: number[];
+    optionsArray?: Array<number>;
     containerStyle?: StyleProp<ViewStyle>;
     trackStyle?: StyleProp<ViewStyle>;
     selectedStyle?: StyleProp<ViewStyle>;
