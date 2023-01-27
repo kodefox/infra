@@ -1,16 +1,14 @@
 import React, { useMemo } from 'react';
 import {
   Calendar as WixCalendar,
-  CalendarMarkingProps,
-  CalendarBaseProps,
-  CalendarTheme,
+  CalendarProps as WixCalendarProps,
 } from 'react-native-calendars';
 
 import resolveTextStyle from '../../helpers/resolveTextStyle';
 import useTheme from '../../helpers/useTheme';
 
-export type CalendarProps = CalendarMarkingProps &
-  CalendarBaseProps & { textPreset?: string };
+export type CalendarProps = WixCalendarProps & { textPreset?: string };
+export type CalendarTheme = Pick<CalendarProps, 'theme'>;
 
 export default function Calendar(props: CalendarProps) {
   let { fonts, colors, style: themeStyle } = useTheme();
@@ -21,7 +19,7 @@ export default function Calendar(props: CalendarProps) {
     [fonts, textPreset],
   );
 
-  let calendarTheme: Partial<CalendarTheme> = { ...theme };
+  let calendarTheme: CalendarTheme['theme'] = { ...theme };
   if (resolvedTextStyle) {
     let { fontFamily, fontSize } = resolvedTextStyle;
     calendarTheme = {
