@@ -37,8 +37,13 @@
     "lodash.tonumber": "4.0.3",
     "patch-package": "^6.5.1",
     "react-native-animation-hooks": "^1.0.1",
+<<<<<<< HEAD
     "react-native-calendars": "https://github.com/oshimayoan/react-native-calendars/archive/oshimayoan-0.0.3.tar.gz",
     "react-native-collapsible": "^1.6.0",
+=======
+    "react-native-calendars": "^1.1293.0",
+    "react-native-collapsible": "^1.5.1",
+>>>>>>> a88be8a (update react-native-calendars)
     "react-native-modal-datetime-picker": "9.1.0",
     "react-native-multi-slider": "npm:@ptomasroos/react-native-multi-slider",
     "react-native-paper": "^5.1.4"
