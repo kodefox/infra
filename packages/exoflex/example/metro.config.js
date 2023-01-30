@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 const path = require('path');
-const blacklist = require('metro-config/src/defaults/blacklist');
+const blacklist = require('metro-config/src/defaults/exclusionList');
 const pak = require('../package.json');
 const escape = require('escape-string-regexp');
 
@@ -33,3 +33,14 @@ module.exports = {
     extraNodeModules,
   },
 };
+
+// const { getDefaultConfig } = require('expo/metro-config');
+
+// const config = getDefaultConfig(__dirname);
+
+// config.resolver.assetExts.push(
+//   // Adds support for `.db` files for SQLite databases
+//   'db'
+// );
+
+// module.exports = config;
