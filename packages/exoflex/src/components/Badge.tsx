@@ -57,7 +57,7 @@ export default function Badge(props: BadgeProps) {
           },
         ]}
         preset={textPreset}
-        testID={testID as string}
+        testID={String(testID)}
       >
         {children}
       </Text>
