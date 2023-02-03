@@ -1,5 +1,5 @@
-import React, { RefObject } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { Animated, View, Pressable } from 'react-native';
 import Text from '../Text';
 import ActivityIndicator from '../ActivityIndicator';
 import IconButton from '../IconButton';
@@ -26,7 +26,6 @@ export default function ButtonOpacity(props: ButtonProps) {
     loading,
     icon,
     accessibilityLabel,
-    ref,
     ...otherProps
   } = props;
   let { buttonStyle, textStyle, textColor } = useButtonStyle({
@@ -36,46 +35,75 @@ export default function ButtonOpacity(props: ButtonProps) {
   });
   let { style: themeStyle } = useTheme();
 
+  const animatedOpacity = new Animated.Value(1);
+  const fadeOpacityIn = () => {
+    Animated.timing(animatedOpacity, {
+      toValue: preset === 'primary' ? 0.8 : 0.5,
+      duration: 100,
+      useNativeDriver: true,
+    }).start();
+  };
+  const fadeOpacityOut = () => {
+    Animated.timing(animatedOpacity, {
+      toValue: 1,
+      duration: 150,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
-    <TouchableOpacity
+    <Pressable
       {...otherProps}
-      ref={ref as RefObject<TouchableOpacity>}
       onPress={onPress}
-      activeOpacity={preset === 'primary' ? 0.8 : 0.5}
+      onPressIn={fadeOpacityIn}
+      onPressOut={fadeOpacityOut}
       disabled={disabled}
       accessibilityRole="button"
       accessibilityState={disabled ? { disabled: true } : undefined}
-      style={[styles.button, compact && styles.compact, buttonStyle, style]}
     >
-      <View style={[styles.content, styles.contentWrapper, contentStyle]}>
-        {icon && loading !== true && (
-          <View style={styles.icon}>
-            <IconButton icon={icon} size={16} iconColor={textColor} />
-          </View>
-        )}
-        {loading && (
-          <ActivityIndicator size={16} color={textColor} style={styles.icon} />
-        )}
-        {typeof children === 'string' ? (
-          <Text
-            preset={textPreset}
-            weight={themeStyle?.button?.labelFontWeight}
-            fontStyle={themeStyle?.button?.labelFontStyle}
-            numberOfLines={1}
-            style={[
-              styles.label,
-              compact && styles.compactLabel,
-              uppercase && styles.uppercaseLabel,
-              textStyle,
-              labelStyle,
-            ]}
-          >
-            {children}
-          </Text>
-        ) : (
-          children
-        )}
-      </View>
-    </TouchableOpacity>
+      <Animated.View
+        style={[
+          styles.button,
+          compact && styles.compact,
+          buttonStyle,
+          style,
+          { opacity: animatedOpacity },
+        ]}
+      >
+        <View style={[styles.content, styles.contentWrapper, contentStyle]}>
+          {icon && loading !== true && (
+            <View style={styles.icon}>
+              <IconButton icon={icon} size={16} iconColor={textColor} />
+            </View>
+          )}
+          {loading && (
+            <ActivityIndicator
+              size={16}
+              color={textColor}
+              style={styles.icon}
+            />
+          )}
+          {typeof children === 'string' ? (
+            <Text
+              preset={textPreset}
+              weight={themeStyle?.button?.labelFontWeight}
+              fontStyle={themeStyle?.button?.labelFontStyle}
+              numberOfLines={1}
+              style={[
+                styles.label,
+                compact && styles.compactLabel,
+                uppercase && styles.uppercaseLabel,
+                textStyle,
+                labelStyle,
+              ]}
+            >
+              {children}
+            </Text>
+          ) : (
+            children
+          )}
+        </View>
+      </Animated.View>
+    </Pressable>
   );
 }
