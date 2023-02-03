@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import { Animated, View, Pressable } from 'react-native';
 import Text from '../Text';
 import ActivityIndicator from '../ActivityIndicator';
@@ -21,6 +21,8 @@ export default function ButtonOpacity(props: ButtonProps) {
     labelStyle,
     disabled,
     onPress,
+    onPressIn,
+    onPressOut,
     compact,
     color: buttonColor,
     loading,
@@ -35,28 +37,36 @@ export default function ButtonOpacity(props: ButtonProps) {
   });
   let { style: themeStyle } = useTheme();
 
-  const animatedOpacity = new Animated.Value(1);
-  const fadeOpacityIn = () => {
+  const animatedOpacity = useRef(new Animated.Value(1)).current;
+  const fadeOpacityIn = useCallback(() => {
     Animated.timing(animatedOpacity, {
       toValue: preset === 'primary' ? 0.8 : 0.5,
       duration: 100,
       useNativeDriver: true,
     }).start();
-  };
-  const fadeOpacityOut = () => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const fadeOpacityOut = useCallback(() => {
     Animated.timing(animatedOpacity, {
       toValue: 1,
       duration: 150,
       useNativeDriver: true,
     }).start();
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Pressable
       {...otherProps}
       onPress={onPress}
-      onPressIn={fadeOpacityIn}
-      onPressOut={fadeOpacityOut}
+      onPressIn={(e) => {
+        onPressIn && onPressIn(e);
+        fadeOpacityIn();
+      }}
+      onPressOut={(e) => {
+        onPressOut && onPressOut(e);
+        fadeOpacityOut();
+      }}
       disabled={disabled}
       accessibilityRole="button"
       accessibilityState={disabled ? { disabled: true } : undefined}
