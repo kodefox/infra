@@ -8,7 +8,7 @@ const {
 module.exports = withWatchPlugins({
   projects: [
     // Create a new project for each platform.
-    getWebPreset(),
+    // getWebPreset(),
     getIOSPreset(),
     getAndroidPreset(),
   ],
