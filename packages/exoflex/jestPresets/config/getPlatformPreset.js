@@ -52,22 +52,12 @@ function getPlatformPreset(displayOptions, extensions) {
 // Combine React Native for web with React Native
 // Use RNWeb for the testEnvironment
 function getBaseWebPreset() {
-  let rnwPreset;
-  try {
-    rnwPreset = require('react-native-web/jest-preset');
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  // Adjusting rnw jest-preset, since file `jest-preset.js` got removed from react-native-web version 0.18.xx
+  // Reference: https://github.com/necolas/react-native-web/issues/2312
   return {
     ...rnPreset,
-    ...rnwPreset,
-    setupFiles: rnwPreset.setupFiles,
     moduleNameMapper: {
-      ...rnPreset.moduleNameMapper,
-      // Add react-native-web alias
-      // This makes the tests take ~2x longer
-      ...rnwPreset.moduleNameMapper,
+      '^react-native$': 'react-native-web',
     },
   };
 }
@@ -83,12 +73,12 @@ module.exports = {
     let webPreset = {
       ...baseWebPreset,
       ...platformPreset,
-      setupFiles: [...baseWebPreset.setupFiles, ...platformSetupFiles],
+      setupFiles: [...platformSetupFiles],
       moduleNameMapper: {
         ...baseWebPreset.moduleNameMapper,
         ...platformPreset.moduleNameMapper,
       },
-      testEnvironment: baseWebPreset.testEnvironment,
+      testEnvironment: 'jsdom',
     };
     return webPreset;
   },
