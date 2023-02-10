@@ -70,7 +70,13 @@ describe('DrawerSection', () => {
     expect(getByText('First menu')).toBeTruthy();
     expect(footerElement).toBeTruthy();
     expect(getByTestId('drawerHeaderFullImage')).toBeTruthy();
-    fireEvent.click(footerElement);
+    fireEvent(
+      footerElement,
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
     expect(mockPress).toHaveBeenCalledTimes(1);
   });
 });

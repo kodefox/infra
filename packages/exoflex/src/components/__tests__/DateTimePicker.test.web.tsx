@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { render, fireEvent, cleanup, act, wait } from '@testing-library/react';
+import {
+  render,
+  fireEvent,
+  cleanup,
+  act,
+  waitFor,
+} from '@testing-library/react';
 import '../../../test/customFireEvent.web';
 import Provider from '../Provider';
 import Button from '../Button';
@@ -41,12 +47,30 @@ describe('DateTimePicker', () => {
 
     let { getByText } = render(<App />);
     act(() => {
-      fireEvent.click(getByText('Open'));
+      fireEvent(
+        getByText('Open'),
+        new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+        }),
+      );
     });
-    await wait(() => getByText('CONFIRM'));
+    await waitFor(() => getByText('CONFIRM'));
 
-    fireEvent.click(getByText('9'));
-    fireEvent.click(getByText('CONFIRM'));
+    fireEvent(
+      getByText('9'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+    fireEvent(
+      getByText('CONFIRM'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
     expect(onConfirm).toHaveBeenCalled();
     expect(date).toBe(new Date(selectedDate).toISOString());
   });
@@ -79,15 +103,33 @@ describe('DateTimePicker', () => {
       <App />,
     );
     act(() => {
-      fireEvent.click(getByText('Open'));
+      fireEvent(
+        getByText('Open'),
+        new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+        }),
+      );
     });
-    await wait(() => getByPlaceholderText('hh'));
+    await waitFor(() => getByPlaceholderText('hh'));
 
     let minuteElement = getByDisplayValue('10');
-    fireEvent.click(minuteElement);
+    fireEvent(
+      minuteElement,
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
     fireEvent.change(minuteElement, { target: { value: '27' } });
     fireEvent.blur(minuteElement);
-    fireEvent.click(getByText('CONFIRM'));
+    fireEvent(
+      getByText('CONFIRM'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
     expect(onConfirm).toHaveBeenCalled();
     expect(date).toBe(new Date(selectedDate).toISOString());
   });
@@ -121,19 +163,49 @@ describe('DateTimePicker', () => {
       <App />,
     );
     act(() => {
-      fireEvent.click(getByText('Open'));
+      fireEvent(
+        getByText('Open'),
+        new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+        }),
+      );
     });
-    await wait(() => getByText('CONFIRM'));
+    await waitFor(() => getByText('CONFIRM'));
 
-    fireEvent.click(getByText('9'));
-    fireEvent.click(getByText('CONFIRM'));
-    await wait(() => getByPlaceholderText('hh'));
+    fireEvent(
+      getByText('9'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+    fireEvent(
+      getByText('CONFIRM'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+    await waitFor(() => getByPlaceholderText('hh'));
 
     let minuteElement = getByDisplayValue('10');
-    fireEvent.click(minuteElement);
+    fireEvent(
+      minuteElement,
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
     fireEvent.change(minuteElement, { target: { value: '27' } });
     fireEvent.blur(minuteElement);
-    fireEvent.click(getByText('CONFIRM'));
+    fireEvent(
+      getByText('CONFIRM'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
     expect(onConfirm).toHaveBeenCalled();
     expect(date).toBe(new Date(selectedDate).toISOString());
   });

@@ -49,11 +49,35 @@ describe('TimePickerInput', () => {
       </>,
     );
     getAllByTestId('arrowUphh').forEach((element) => {
-      fireEvent.click(element);
+      fireEvent(
+        element,
+        new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+        }),
+      );
     });
-    fireEvent.click(getByTestId('arrowUpmm'));
-    fireEvent.click(getByTestId('arrowUpss'));
-    fireEvent.click(getByTestId('arrowUpam/pm'));
+    fireEvent(
+      getByTestId('arrowUpmm'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+    fireEvent(
+      getByTestId('arrowUpss'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+    fireEvent(
+      getByTestId('arrowUpam/pm'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
     expect(mockHours24).toBe('00');
     expect(mockHours).toBe('01');
     expect(mockMinutes).toBe('01');
@@ -94,10 +118,35 @@ describe('TimePickerInput', () => {
         />
       </>,
     );
-    fireEvent.click(getByTestId('arrowDownhh'));
-    fireEvent.click(getByTestId('arrowDownmm'));
-    fireEvent.click(getByTestId('arrowDownss'));
-    fireEvent.click(getByTestId('arrowDownam/pm'));
+    fireEvent(
+      getByTestId('arrowDownhh'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+    fireEvent(
+      getByTestId('arrowDownmm'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+    fireEvent(
+      getByTestId('arrowDownss'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+    fireEvent(
+      getByTestId('arrowDownam/pm'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+
     expect(mockHours).toBe('11');
     expect(mockMinutes).toBe('59');
     expect(mockSeconds).toBe('19');

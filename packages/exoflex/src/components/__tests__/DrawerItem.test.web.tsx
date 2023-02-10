@@ -38,10 +38,22 @@ describe('DrawerItem', () => {
         />
       </Provider>,
     );
-    fireEvent.click(getByText('First menu'));
+    fireEvent(
+      getByText('First menu'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
     expect(mockPress).toBeCalledTimes(1);
 
-    fireEvent.click(getByTestId('item'));
+    fireEvent(
+      getByTestId('item'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
     expect(mockPress).toBeCalledTimes(2);
   });
 });
