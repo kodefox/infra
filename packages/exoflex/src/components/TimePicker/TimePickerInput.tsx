@@ -155,6 +155,7 @@ function TimePickerArrow(props: TimePickerArrowProps) {
         activeOpacity={0.7}
         onPress={onPressUp}
         data-testid={`arrowUp${label}`}
+        testID={`arrowUp${label}`}
       >
         <MemoizedArrowUp />
       </TouchableOpacity>
@@ -173,6 +174,7 @@ function TimePickerArrow(props: TimePickerArrowProps) {
         activeOpacity={0.7}
         onPress={onPressDown}
         data-testid={`arrowDown${label}`}
+        testID={`arrowDown${label}`}
       >
         <MemoizedArrowDown />
       </TouchableOpacity>
