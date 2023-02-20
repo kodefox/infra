@@ -1,4 +1,4 @@
-import { Theme as PaperTheme } from 'react-native-paper';
+import { MD2Theme as PaperTheme } from 'react-native-paper';
 
 import { Theme, Fonts, Font } from '../types';
 
@@ -23,6 +23,8 @@ function getPaperFonts(fonts: Fonts): PaperTheme['fonts'] {
 function getPaperTheme(theme: Theme): PaperTheme {
   return {
     ...theme,
+    version: 2,
+    isV3: false,
     fonts: getPaperFonts(theme.fonts),
   };
 }

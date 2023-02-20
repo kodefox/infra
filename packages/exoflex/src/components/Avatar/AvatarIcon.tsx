@@ -11,6 +11,8 @@ export default function AvatarIcon(props: AvatarIconProps) {
   return (
     <PaperAvatar.Icon
       style={[themeStyle?.avatarIcon?.style, style]}
+      // Probably need another solution that's more robust for testing the Avatar.Icon
+      testID="avatarIcon"
       {...otherProps}
     />
   );

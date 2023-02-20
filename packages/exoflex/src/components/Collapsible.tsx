@@ -56,6 +56,7 @@ function Collapsible({
   }, []);
 
   let animatedValue = useAnimation({
+    useNativeDriver: true,
     type: 'timing',
     initialValue: -0.5,
     toValue: isCollapsed ? -0.5 : 0.5,

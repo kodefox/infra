@@ -22,6 +22,11 @@ export type SwitchProps = AccessibilityProps & {
   testID?: string;
 };
 
+type Styles = {
+  track: StyleProp<ViewStyle>;
+  thumb: StyleProp<ViewStyle>;
+};
+
 const MARGIN = 2;
 
 export function getTrueWidth(
@@ -64,7 +69,7 @@ export default function Switch(props: SwitchProps) {
     getTrueWidth(trackWidth / 2, [themeStyle?.switch?.thumbStyle, thumbStyle]) -
     2 * MARGIN;
 
-  let styles = {
+  let styles: Styles = {
     track: {
       justifyContent: 'center',
       width: trackWidth,
@@ -100,6 +105,7 @@ export default function Switch(props: SwitchProps) {
 
   useEffect(() => {
     Animated.timing(xValue, {
+      useNativeDriver: true,
       toValue: value ? 1 : 0,
       duration: 300,
     }).start();

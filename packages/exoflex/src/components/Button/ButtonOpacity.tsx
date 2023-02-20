@@ -1,5 +1,5 @@
-import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import React, { useCallback, useRef } from 'react';
+import { Animated, View, Pressable } from 'react-native';
 import Text from '../Text';
 import ActivityIndicator from '../ActivityIndicator';
 import IconButton from '../IconButton';
@@ -21,6 +21,8 @@ export default function ButtonOpacity(props: ButtonProps) {
     labelStyle,
     disabled,
     onPress,
+    onPressIn,
+    onPressOut,
     compact,
     color: buttonColor,
     loading,
@@ -35,47 +37,83 @@ export default function ButtonOpacity(props: ButtonProps) {
   });
   let { style: themeStyle } = useTheme();
 
+  const animatedOpacity = useRef(new Animated.Value(1)).current;
+  const fadeOpacityIn = useCallback(() => {
+    Animated.timing(animatedOpacity, {
+      toValue: preset === 'primary' ? 0.8 : 0.5,
+      duration: 100,
+      useNativeDriver: true,
+    }).start();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const fadeOpacityOut = useCallback(() => {
+    Animated.timing(animatedOpacity, {
+      toValue: 1,
+      duration: 150,
+      useNativeDriver: true,
+    }).start();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <TouchableOpacity
+    <Pressable
       {...otherProps}
       onPress={onPress}
-      activeOpacity={preset === 'primary' ? 0.8 : 0.5}
+      onPressIn={(e) => {
+        onPressIn && onPressIn(e);
+        fadeOpacityIn();
+      }}
+      onPressOut={(e) => {
+        onPressOut && onPressOut(e);
+        fadeOpacityOut();
+      }}
       disabled={disabled}
-      accessibilityTraits={disabled ? ['button', 'disabled'] : 'button'}
-      accessibilityComponentType="button"
       accessibilityRole="button"
-      accessibilityStates={disabled ? ['disabled'] : []}
-      style={[styles.button, compact && styles.compact, buttonStyle, style]}
+      accessibilityState={disabled ? { disabled: true } : undefined}
     >
-      <View style={[styles.content, styles.contentWrapper, contentStyle]}>
-        {icon && loading !== true && (
-          <View style={styles.icon}>
-            <IconButton icon={icon} size={16} color={textColor} />
-          </View>
-        )}
-        {loading && (
-          <ActivityIndicator size={16} color={textColor} style={styles.icon} />
-        )}
-        {typeof children === 'string' ? (
-          <Text
-            preset={textPreset}
-            weight={themeStyle?.button?.labelFontWeight}
-            fontStyle={themeStyle?.button?.labelFontStyle}
-            numberOfLines={1}
-            style={[
-              styles.label,
-              compact && styles.compactLabel,
-              uppercase && styles.uppercaseLabel,
-              textStyle,
-              labelStyle,
-            ]}
-          >
-            {children}
-          </Text>
-        ) : (
-          children
-        )}
-      </View>
-    </TouchableOpacity>
+      <Animated.View
+        style={[
+          styles.button,
+          compact && styles.compact,
+          buttonStyle,
+          style,
+          { opacity: animatedOpacity },
+        ]}
+      >
+        <View style={[styles.content, styles.contentWrapper, contentStyle]}>
+          {icon && loading !== true && (
+            <View style={styles.icon}>
+              <IconButton icon={icon} size={16} iconColor={textColor} />
+            </View>
+          )}
+          {loading && (
+            <ActivityIndicator
+              size={16}
+              color={textColor}
+              style={styles.icon}
+            />
+          )}
+          {typeof children === 'string' ? (
+            <Text
+              preset={textPreset}
+              weight={themeStyle?.button?.labelFontWeight}
+              fontStyle={themeStyle?.button?.labelFontStyle}
+              numberOfLines={1}
+              style={[
+                styles.label,
+                compact && styles.compactLabel,
+                uppercase && styles.uppercaseLabel,
+                textStyle,
+                labelStyle,
+              ]}
+            >
+              {children}
+            </Text>
+          ) : (
+            children
+          )}
+        </View>
+      </Animated.View>
+    </Pressable>
   );
 }

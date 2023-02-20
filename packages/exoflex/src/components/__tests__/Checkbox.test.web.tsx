@@ -17,10 +17,22 @@ describe('Checkbox', () => {
     let { getByText, getByTestId } = render(
       <Checkbox testID="checkbox" label="bar" onPress={onPressMock} />,
     );
-    fireEvent.click(getByText('bar'));
+    fireEvent(
+      getByText('bar'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
     expect(onPressMock).toBeCalledTimes(1);
 
-    fireEvent.click(getByTestId('checkbox'));
+    fireEvent(
+      getByTestId('checkbox'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
     expect(onPressMock).toBeCalledTimes(2);
   });
 });

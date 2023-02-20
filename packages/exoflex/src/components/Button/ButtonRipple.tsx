@@ -43,10 +43,8 @@ export default function ButtonRipple(props: ButtonProps) {
       borderless
       onPress={onPress}
       disabled={disabled}
-      accessibilityTraits={disabled ? ['button', 'disabled'] : 'button'}
-      accessibilityComponentType="button"
       accessibilityRole="button"
-      accessibilityStates={disabled ? ['disabled'] : []}
+      accessibilityState={disabled ? { disabled: true } : undefined}
       style={[
         styles.button,
         compact && styles.compact,
@@ -58,7 +56,7 @@ export default function ButtonRipple(props: ButtonProps) {
       <View style={[styles.content, styles.contentWrapper, contentStyle]}>
         {icon && loading !== true && (
           <View style={styles.icon}>
-            <IconButton icon={icon} size={16} color={textColor} />
+            <IconButton icon={icon} size={16} iconColor={textColor} />
           </View>
         )}
         {loading && (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Provider from '../Provider';
-import { render, fireEvent, act, wait } from '@testing-library/react';
+import { render, fireEvent, act, waitFor } from '@testing-library/react';
 import '../../../test/customFireEvent.web';
 import Menu from '../Menu';
 import Text from '../Text';
@@ -46,9 +46,15 @@ describe('Menu', () => {
     let { getByText } = render(<App />);
 
     act(() => {
-      fireEvent.click(getByText('Show menu'));
+      fireEvent(
+        getByText('Show menu'),
+        new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+        }),
+      );
     });
-    await wait(() => getByText('Item 1'));
+    await waitFor(() => getByText('Item 1'));
 
     expect(getByText('Item 1')).toBeTruthy();
   });

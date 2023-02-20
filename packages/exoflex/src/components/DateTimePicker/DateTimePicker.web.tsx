@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Modal, Portal, TouchableRipple } from 'react-native-paper';
-import { DateObject } from 'react-native-calendars';
+import { DateData } from 'react-native-calendars';
 
 import TimePicker from '../TimePicker/TimePicker.web';
 import Text from '../Text';
@@ -115,7 +115,7 @@ export function DatePicker(props: PickerProps) {
 
   let [selectedDate, setSelectedDate] = useState(date);
 
-  let changeDate = (dateObject: DateObject) => {
+  let changeDate = (dateObject: DateData) => {
     setSelectedDate(new Date(dateObject.timestamp).toISOString());
   };
   let confirm = () => onConfirm(selectedDate);
@@ -140,8 +140,8 @@ export function DatePicker(props: PickerProps) {
       <Calendar
         current={selectedDate}
         markedDates={{ [selectedDate.split('T')[0]]: { selected: true } }}
-        minDate={minDate}
-        maxDate={maxDate}
+        minDate={minDate?.toISOString()}
+        maxDate={maxDate?.toISOString()}
         onDayPress={changeDate}
         renderArrow={arrow}
       />

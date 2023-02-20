@@ -74,7 +74,7 @@ function Chip({
       {icon && (
         <IconButton
           icon={icon}
-          color={isActive ? colors.surface : colors.primary}
+          iconColor={isActive ? colors.surface : colors.primary}
           size={18}
           style={[styles.icon, themeStyle?.chip?.iconStyle, iconStyle]}
         />

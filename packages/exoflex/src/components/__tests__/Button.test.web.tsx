@@ -58,10 +58,22 @@ describe('Button', () => {
         </Button>
       </Provider>,
     );
-    fireEvent.click(getByText('Press me!'));
+    fireEvent(
+      getByText('Press me!'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
     expect(mockPress).toBeCalledTimes(1);
 
-    fireEvent.click(getByTestId('button'));
+    fireEvent(
+      getByTestId('button'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
     expect(mockPress).toBeCalledTimes(2);
   });
 

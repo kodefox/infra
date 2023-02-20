@@ -38,7 +38,13 @@ describe('SegmentedControl', () => {
       </Provider>,
     );
 
-    fireEvent.click(getByText('Tab Two'));
+    fireEvent(
+      getByText('Tab Two'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
     expect(changeIndex).toBeCalledTimes(1);
     expect(activeIndex).toEqual(1);
   });
@@ -59,7 +65,13 @@ describe('SegmentedControl', () => {
         />
       </Provider>,
     );
-    fireEvent.click(getByText('Tab Two'));
+    fireEvent(
+      getByText('Tab Two'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
     expect(getByText('Tab Two')).toBeTruthy();
     expect(changeIndex).toBeCalledTimes(0);
     expect(activeIndex).toEqual(0);

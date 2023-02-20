@@ -177,6 +177,14 @@ export const DefaultTheme: Theme = {
      * color for backdrops of various components such as modals.
      */
     error: '#dd0101',
+    /**
+     * color for notification, added since new version of react-native-paper requires it. Primary color assigned for now.
+     */
+    notification: '#0099dd',
+    /**
+     * color for tooltip, added since new version of react-native-paper requires it. Primary color assigned for now.
+     */
+    tooltip: '#0099dd',
   },
   /**
    * roundness of common elements, such as buttons.
