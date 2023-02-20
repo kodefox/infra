@@ -71,7 +71,7 @@
     "react-dom": "18.1.0",
     "react-native": "0.70.6",
     "react-native-svg": "9.13.5",
-    "react-native-testing-library": "1.14.0",
+    "react-native-testing-library": "2.2.0",
     "react-native-vector-icons": "7.1.0",
     "react-native-web": "^0.18.12",
     "react-test-renderer": "18.1.0",

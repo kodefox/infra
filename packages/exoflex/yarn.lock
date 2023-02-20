@@ -7394,10 +7394,10 @@ react-native-swipe-gestures@^1.0.5:
   resolved "https://registry.yarnpkg.com/react-native-swipe-gestures/-/react-native-swipe-gestures-1.0.5.tgz#a172cb0f3e7478ccd681fd36b8bfbcdd098bde7c"
   integrity sha512-Ns7Bn9H/Tyw278+5SQx9oAblDZ7JixyzeOczcBK8dipQk2pD7Djkcfnf1nB/8RErAmMLL9iXgW0QHqiII8AhKw==
 
-react-native-testing-library@1.14.0:
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/react-native-testing-library/-/react-native-testing-library-1.14.0.tgz#d3f3d39225d2f0c1ed4d857a187b787307cd96c0"
-  integrity sha512-AzWmhe4VfkaWAvetqsbQkPVC/aMcixj26WMxtiOpXRXsKuqwR3ijQMAG/OjO5IXNixueO0VoPhvL4FeDfDtBKQ==
+react-native-testing-library@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-testing-library/-/react-native-testing-library-2.2.0.tgz#f118897671d7dfeb6d30c5897f1edff94cf4c259"
+  integrity sha512-3otPjDYnDRh/c2HtcTRDtyAJLWZmKRdUylNZeiE0i8j8fP+Cz74yp6Nnn6E2W85Sk2MZuCuvSpaYeZLoFhuqsQ==
   dependencies:
     pretty-format "^26.0.1"
 
