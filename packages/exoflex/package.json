@@ -76,7 +76,7 @@
     "react-native-web": "^0.18.12",
     "react-test-renderer": "18.1.0",
     "regenerator-runtime": "0.13.5",
-    "release-it": "12.4.3",
+    "release-it": "15.6.0",
     "typescript": "3.9.7"
   },
   "optionalDependencies": {},
