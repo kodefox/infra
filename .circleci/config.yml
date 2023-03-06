@@ -6,7 +6,7 @@ orbs:
 jobs:
   testing:
     docker:
-      - image: circleci/node:12.22.7
+      - image: circleci/node:16.10.0
 
     working_directory: ~/repo
 
