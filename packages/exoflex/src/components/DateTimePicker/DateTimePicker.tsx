@@ -1,9 +1,10 @@
 import React from 'react';
 import RNDateTimePicker from 'react-native-modal-datetime-picker';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { DateTimePickerProps, DateTimePickerMode } from './types';
 import useTheme from '../../helpers/useTheme';
+import Text from '../Text';
 
 export default function DateTimePicker(props: DateTimePickerProps) {
   let {
@@ -21,6 +22,12 @@ export default function DateTimePicker(props: DateTimePickerProps) {
 
   const { style: themeStyle } = useTheme();
 
+  const CustomHeaderComponent = () => (
+    <View>
+      <Text>{title}</Text>
+    </View>
+  );
+
   return (
     <RNDateTimePicker
       mode={mode}
@@ -30,7 +37,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
       locale={locale || use24Hour ? 'en-GB' : 'en-US'}
       onCancel={() => onCancel()}
       onConfirm={(newDate) => onConfirm(newDate.toISOString())}
-      headerTextIOS={title}
+      customHeaderIOS={CustomHeaderComponent}
       modalStyleIOS={StyleSheet.flatten([
         themeStyle?.dateTimePicker?.modalStyleIOS,
         modalStyleIOS,
