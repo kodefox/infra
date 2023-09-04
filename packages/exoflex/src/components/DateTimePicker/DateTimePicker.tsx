@@ -23,8 +23,8 @@ export default function DateTimePicker(props: DateTimePickerProps) {
   const { style: themeStyle } = useTheme();
 
   const CustomHeaderComponent = () => (
-    <View>
-      <Text>{title}</Text>
+    <View style={styles.headerContainer}>
+      <Text style={styles.headerTextStyle}>{title}</Text>
     </View>
   );
 
@@ -37,7 +37,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
       locale={locale || use24Hour ? 'en-GB' : 'en-US'}
       onCancel={() => onCancel()}
       onConfirm={(newDate) => onConfirm(newDate.toISOString())}
-      customHeaderIOS={CustomHeaderComponent}
+      customHeaderIOS={title ? CustomHeaderComponent : undefined}
       modalStyleIOS={StyleSheet.flatten([
         themeStyle?.dateTimePicker?.modalStyleIOS,
         modalStyleIOS,
@@ -51,3 +51,18 @@ export default function DateTimePicker(props: DateTimePickerProps) {
     />
   );
 }
+
+const styles = StyleSheet.create({
+  headerContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(158, 150, 150, .1)',
+    padding: 14,
+  },
+  headerTextStyle: {
+    fontSize: 20,
+    color: '#8f8f8f',
+    letterSpacing: -0.5,
+  },
+});

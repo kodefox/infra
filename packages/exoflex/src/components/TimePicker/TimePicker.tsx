@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import TextInput from '../TextInput/TextInput';
 
@@ -37,8 +37,8 @@ export default function TimePicker(props: TimePickerProps) {
   ]);
 
   const CustomHeaderComponent = () => (
-    <View>
-      <Text>{title}</Text>
+    <View style={styles.headerContainer}>
+      <Text style={styles.headerTextStyle}>{title}</Text>
     </View>
   );
 
@@ -65,7 +65,7 @@ export default function TimePicker(props: TimePickerProps) {
       </TouchableOpacity>
       <DateTimePicker
         date={new Date(date)}
-        customHeaderIOS={CustomHeaderComponent}
+        customHeaderIOS={title ? CustomHeaderComponent : undefined}
         // NOTE: Android only
         is24Hour={use24Hour}
         // NOTE: If locale is not provided, use `en-GB` for 12h format
@@ -78,3 +78,18 @@ export default function TimePicker(props: TimePickerProps) {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  headerContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(158, 150, 150, .1)',
+    padding: 14,
+  },
+  headerTextStyle: {
+    fontSize: 20,
+    color: '#8f8f8f',
+    letterSpacing: -0.5,
+  },
+});
