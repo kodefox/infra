@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import RNDateTimePicker from 'react-native-modal-datetime-picker';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { DateTimePickerProps, DateTimePickerMode } from './types';
 import useTheme from '../../helpers/useTheme';
+import Text from '../Text';
 
 export default function DateTimePicker(props: DateTimePickerProps) {
   let {
@@ -21,6 +22,14 @@ export default function DateTimePicker(props: DateTimePickerProps) {
 
   const { style: themeStyle } = useTheme();
 
+  const CustomHeaderComponent = useCallback(() => {
+    return (
+      <View style={styles.headerContainer}>
+        <Text style={styles.headerTextStyle}>{title}</Text>
+      </View>
+    );
+  }, [title]);
+
   return (
     <RNDateTimePicker
       mode={mode}
@@ -30,7 +39,7 @@ export default function DateTimePicker(props: DateTimePickerProps) {
       locale={locale || use24Hour ? 'en-GB' : 'en-US'}
       onCancel={() => onCancel()}
       onConfirm={(newDate) => onConfirm(newDate.toISOString())}
-      headerTextIOS={title}
+      customHeaderIOS={title ? CustomHeaderComponent : undefined}
       modalStyleIOS={StyleSheet.flatten([
         themeStyle?.dateTimePicker?.modalStyleIOS,
         modalStyleIOS,
@@ -44,3 +53,18 @@ export default function DateTimePicker(props: DateTimePickerProps) {
     />
   );
 }
+
+const styles = StyleSheet.create({
+  headerContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(158, 150, 150, .1)',
+    padding: 14,
+  },
+  headerTextStyle: {
+    fontSize: 20,
+    color: '#8f8f8f',
+    letterSpacing: -0.5,
+  },
+});
