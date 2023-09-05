@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import TextInput from '../TextInput/TextInput';
@@ -36,11 +36,13 @@ export default function TimePicker(props: TimePickerProps) {
     format,
   ]);
 
-  const CustomHeaderComponent = () => (
-    <View style={styles.headerContainer}>
-      <Text style={styles.headerTextStyle}>{title}</Text>
-    </View>
-  );
+  const CustomHeaderComponent = useCallback(() => {
+    return (
+      <View style={styles.headerContainer}>
+        <Text style={styles.headerTextStyle}>{title}</Text>
+      </View>
+    );
+  }, [title]);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import RNDateTimePicker from 'react-native-modal-datetime-picker';
 import { StyleSheet, View } from 'react-native';
 
@@ -22,11 +22,13 @@ export default function DateTimePicker(props: DateTimePickerProps) {
 
   const { style: themeStyle } = useTheme();
 
-  const CustomHeaderComponent = () => (
-    <View style={styles.headerContainer}>
-      <Text style={styles.headerTextStyle}>{title}</Text>
-    </View>
-  );
+  const CustomHeaderComponent = useCallback(() => {
+    return (
+      <View style={styles.headerContainer}>
+        <Text style={styles.headerTextStyle}>{title}</Text>
+      </View>
+    );
+  }, [title]);
 
   return (
     <RNDateTimePicker
