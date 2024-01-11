@@ -6,7 +6,8 @@
   "files": [
     "index.js",
     "react.js",
-    "react-native.js"
+    "react-native.js",
+    "node.js"
   ],
   "author": "devteam@kodefox.com",
   "license": "MIT",
