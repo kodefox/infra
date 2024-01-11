@@ -5,7 +5,7 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 'latest',
+    ecmaVersion: '2023',
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint', 'eslint-comments', 'import', 'prettier'],
