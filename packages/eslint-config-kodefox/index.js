@@ -1,17 +1,18 @@
 module.exports = {
   env: {
-    es6: true,
+    es2023: true,
   },
+  root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: '2023',
     sourceType: 'module',
   },
-  plugins: ['eslint-comments', 'import', 'prettier'],
+  plugins: ['@typescript-eslint', 'eslint-comments', 'import', 'prettier'],
   extends: [
+    'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
-    'prettier/@typescript-eslint',
   ],
   settings: {
     'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
