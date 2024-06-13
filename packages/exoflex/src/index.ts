@@ -52,3 +52,7 @@ export {
 
 // Hooks
 export { default as useTheme } from './helpers/useTheme';
+export { useStyle } from './helpers/useStyle';
+
+// Helper
+export { default as StyleSheet } from './helpers/StyleSheet';
