@@ -1642,10 +1642,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest-in-case@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@types/jest-in-case/-/jest-in-case-1.0.1.tgz#712b6ccd1a51fe6e342cf836a99fbb6889a83034"
-  integrity sha512-fADBNWvW40tsitQhPWewmVNTr6oZj7W0FVYlwRrBNQGLyqOznWdM5S1Nnw/3IWdG1Q4edgNYQHX4Et4POKpWiw==
+"@types/jest-in-case@1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@types/jest-in-case/-/jest-in-case-1.0.9.tgz#1cc6b6271f309d5537018900d6e8a8b9d6868a01"
+  integrity sha512-tapHpzWGjCC/hxYJyzbJ/5ZV6rA2153Sve5lGJUAIA1Jzrphfp27TznAWfGeXf+d8TLN7zMujaC0UwNQwSJaQg==
   dependencies:
     "@types/jest" "*"
     "@types/node" "*"
