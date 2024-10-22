@@ -45,7 +45,7 @@
     "react-native-safe-area-context": "^4.5.0"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "7.9.0",
+    "@babel/preset-typescript": "7.25.9",
     "@react-native-community/bob": "0.8.0",
     "@testing-library/react": "13.4.0",
     "@testing-library/react-hooks": "3.4.2",
