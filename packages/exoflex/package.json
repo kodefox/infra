@@ -55,7 +55,7 @@
     "@types/lodash.clamp": "4.0.6",
     "@types/lodash.mergewith": "4.6.6",
     "@types/lodash.tonumber": "4.0.6",
-    "@types/react-native": "^0.70.6",
+    "@types/react-native": "^0.73.0",
     "@types/react-native-calendars": "1.20.8",
     "@types/react-test-renderer": "16.9.2",
     "chalk": "2.4.2",
